@@ -5,7 +5,11 @@
 #include<cstdlib>
 #include<conio.h>
 #include<iomanip>
-//bitacaora es un histórico
+
+#include <ctime>
+//bitacaora es un histÃ³rico
+//Ferdynand Monroy 9959-24-14049 Mayo 2025
+
 using namespace std;
 
 void bitacora::menu()
@@ -41,14 +45,25 @@ void bitacora::menu()
 	}
     }while(choice!= 2);
 }
-void bitacora::insertar(string nombre, string aplicacion, string accion)
+void bitacora::insertar(string nombre, int codigo, string aplicacion, string accion)
 {
-	system("cls");
-	fstream file;
-	file.open("bitacora.txt", ios::app | ios::out);
-	file<<std::left<<std::setw(15)<< nombre <<std::left<<std::setw(15)<< aplicacion <<std::left<<std::setw(15)<< accion << "\n";
-	file.close();
+    fstream file;
+    file.open("bitacora.txt", ios::app | ios::out);
+
+    time_t now = time(0); // obtener la fecha y hora actual Ferdynand Monroy
+    char* dt = ctime(&now);
+
+    dt[strcspn(dt, "\n")] = 0; // salto de linea Ferdynand Monroy
+
+    file << std::left << std::setw(15) << nombre
+         << std::left << std::setw(15) << aplicacion
+         << std::left << std::setw(15) << accion
+         << std::left << std::setw(25) << dt << "\n";
+         << _TIME_ << "\n";
+
+    file.close();
 }
+
 void bitacora::desplegar()
 {
 	system("cls");
@@ -58,20 +73,26 @@ void bitacora::desplegar()
 	file.open("bitacora.txt",ios::in);
 	if(!file)
 	{
-		cout<<"\n\t\t\tNo hay información...";
+		cout<<"\n\t\t\tNo hay informaciÃ³n...";
 		file.close();
 	}
 	else
 	{
 		file >> nombre >> aplicacion >> accion;
+		getline(file, fecha); // Lee la hora restante Ferdynand Monroy
+    
 		while(!file.eof())
 		{
 			total++;
 			cout<<"\n\n\t\t\t Nombre Usuario: "<<nombre<<endl;
 			cout<<"\t\t\t No. Aplicacion: "<<aplicacion<<endl;
-            cout<<"\t\t\t Accion realizada: "<<accion<<endl;
+
+            cout<<"\t\t\t Fecha y hora: "<<fecha<<endl; // se muestra la fecha y hora actualizada en bitacora.txt Ferdynand Monroy
+
 
 			file >> nombre >> aplicacion >> accion;
+			getline(file, fecha);
+
 		}
 		if(total==0)
 		{
@@ -81,7 +102,5 @@ void bitacora::desplegar()
 	}
 	file.close();
 }
-
-
 
 
