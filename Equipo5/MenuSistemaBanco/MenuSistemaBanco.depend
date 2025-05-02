@@ -1,0 +1,301 @@
+# depslib dependency file v1.0
+1743731606 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+
+1743730496 c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\include\auditoria.h
+	<iostream>
+
+1743731588 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+
+1743730596 c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\include\cliente.h
+	<iostream>
+
+1743731622 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+
+1743731783 c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\include\contabilidad.h
+	<iostream>
+
+1743731217 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\main.cpp
+	"Banco.h"
+
+1743731763 c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\include\banco.h
+	<iostream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+
+1743731804 c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\include\empleados.h
+	<iostream>
+
+1743730626 c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\include\proveedores.h
+	<iostream>
+
+1743731927 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\src\banco.cpp
+	"Banco.h"
+
+1743731662 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+
+1743731640 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+
+1743731097 c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\include\configuraciones.h
+	<iostream>
+	<cstdlib>
+
+1743731108 source:c:\users\deleo\onedrive\documentos\tareas\progra1\programacion1\primer proyecto\menusistemabanco\src\configuraciones.cpp
+	"Configuraciones.h"
+
+1745783787 source:c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Banco.h"
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+
+1745785128 c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\include\banco.h
+	<iostream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+
+1745785128 c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\include\empleados.h
+	<iostream>
+
+1743730596 c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\include\cliente.h
+	<iostream>
+
+1745785128 c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\include\proveedores.h
+	<iostream>
+
+1743731783 c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\include\contabilidad.h
+	<iostream>
+
+1743730496 c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\include\auditoria.h
+	<iostream>
+
+1743731606 source:c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+
+1745785128 source:c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\src\banco.cpp
+	"Banco.h"
+
+1743731588 source:c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+
+1743731622 source:c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+
+1743731662 source:c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+
+1743731640 source:c:\users\pc\documents\menusistemabanco actualizado\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+
+1745798984 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Banco.h"
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+
+1745796037 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\banco.h
+	<iostream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+
+1745796037 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\empleados.h
+	<iostream>
+
+1745796037 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\cliente.h
+	<iostream>
+
+1745796037 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\proveedores.h
+	<iostream>
+
+1745796037 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\contabilidad.h
+	<iostream>
+
+1745796037 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\auditoria.h
+	<iostream>
+
+1745796037 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+
+1745796037 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\banco.cpp
+	"Banco.h"
+
+1745796037 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+
+1745796037 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+
+1745796037 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+
+1745796038 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+
+1745798463 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+
+1745798469 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\usuario.h
+	<string>
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Banco.h"
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+
+1745802401 c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\banco.h
+	<iostream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+
+1745802401 c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\empleados.h
+	<iostream>
+
+1745802401 c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\cliente.h
+	<iostream>
+
+1745802401 c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\proveedores.h
+	<iostream>
+
+1745802401 c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\contabilidad.h
+	<iostream>
+
+1745802401 c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\auditoria.h
+	<iostream>
+
+1745803059 c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\include\usuario.h
+	<string>
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\banco.cpp
+	"Banco.h"
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+
+1745802401 source:c:\users\deleo\onedrive\desktop\menusistemabanco actualizado(1)\menusistemabanco actualizado(1)\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+
+1746172484 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+
+1745814829 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\banco.h
+	<iostream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+
+1745814829 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\empleados.h
+	<iostream>
+
+1745814829 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\cliente.h
+	<iostream>
+
+1745814829 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\proveedores.h
+	<iostream>
+
+1745814829 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\contabilidad.h
+	<iostream>
+
+1745814829 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\auditoria.h
+	<iostream>
+
+1746088670 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\usuario.h
+	<string>
+
+1745814829 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+
+1745814829 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\banco.cpp
+	"Banco.h"
+
+1745814829 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+
+1745814829 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+
+1745854666 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+
+1745814829 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+
+1746088572 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
+1746172676 source:c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746170457 c:\users\prisc\onedrive\documentos\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(documentado)\menusistemabanco actualizado(1)\menusistemabanco\include\nominas.h
+	<string>
+	<vector>
+
