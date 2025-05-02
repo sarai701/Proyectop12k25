@@ -5,9 +5,11 @@
 #include<cstdlib>
 #include<conio.h>
 #include<iomanip>
+
 #include <ctime>
-//bitacaora es un histórico
+//bitacaora es un histÃ³rico
 //Ferdynand Monroy 9959-24-14049 Mayo 2025
+
 using namespace std;
 
 void bitacora::menu()
@@ -71,23 +73,26 @@ void bitacora::desplegar()
 	file.open("bitacora.txt",ios::in);
 	if(!file)
 	{
-		cout<<"\n\t\t\tNo hay información...";
+		cout<<"\n\t\t\tNo hay informaciÃ³n...";
 		file.close();
 	}
 	else
 	{
 		file >> nombre >> aplicacion >> accion;
 		getline(file, fecha); // Lee la hora restante Ferdynand Monroy
+    
 		while(!file.eof())
 		{
 			total++;
 			cout<<"\n\n\t\t\t Nombre Usuario: "<<nombre<<endl;
 			cout<<"\t\t\t No. Aplicacion: "<<aplicacion<<endl;
+
             cout<<"\t\t\t Fecha y hora: "<<fecha<<endl; // se muestra la fecha y hora actualizada en bitacora.txt Ferdynand Monroy
 
 
 			file >> nombre >> aplicacion >> accion;
 			getline(file, fecha);
+
 		}
 		if(total==0)
 		{
