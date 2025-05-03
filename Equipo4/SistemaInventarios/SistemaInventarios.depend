@@ -227,3 +227,50 @@
 1745851826 c:\users\usuario\documents\progra\programación 1\sistema-inventario\sistemainventarios\include\usuario.h
 	<iostream>
 
+1746233986 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1746233986 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+	<iostream>
+
+1746233986 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+	"Facturacion.h"
+
+1746233986 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+	<iostream>
+	<vector>
+	<iomanip>
+	"Inventario.h"
+
+1746233986 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+	<vector>
+	"Producto.h"
+
+1746234647 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+	<string>
+
+1746233986 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+
+1746234647 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+	"Producto.h"
+
+1746233986 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\usuario.cpp
+	"Usuario.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	<sstream>
+	"Bitacora.h"
+
+1746233986 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+	<iostream>
+

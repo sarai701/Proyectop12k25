@@ -11,7 +11,7 @@ class Menu {
 public:
     Menu();
     ~Menu();
-    void mostrarOpciones(Inventario& inventario, Facturacion& factura);
+    void mostrarOpciones(Inventario& inventario, Facturacion& factura, const string& nombreUsuario);
 };
 
 #endif
