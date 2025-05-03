@@ -36,5 +36,18 @@ void Inventario::mostrarInventarioPorTipo(string tipo) {
         }
     }
 }
+void Inventario::ventas(int codigo, int stock) {
+    Producto* p = buscarProducto(codigo);
+    if (p != nullptr) {
+        if (p->stock >= stock) {
+            p->stock -= stock;
+            cout << "Venta realizada: " << stock << " unidades de " << p->nombre << " vendidas." << endl;
+        } else {
+            cout << "No hay suficiente stock para realizar la venta." << endl;
+        }
+    } else {
+        cout << "Producto no encontrado." << endl;
+    }
+}
 
 Inventario::~Inventario() {}

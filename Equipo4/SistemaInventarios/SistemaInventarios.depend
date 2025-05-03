@@ -227,3 +227,44 @@
 1745851826 c:\users\usuario\documents\progra\programación 1\sistema-inventario\sistemainventarios\include\usuario.h
 	<iostream>
 
+1746204584 source:c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+	<iostream>
+	"Usuario.h"
+	"Menu.h"
+	"Inventario.h"
+	"Facturacion.h"
+
+1746204584 c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+	<iostream>
+
+1746204584 c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+	<iostream>
+	"Inventario.h"
+	"Facturacion.h"
+
+1746233008 c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+	<vector>
+	"Producto.h"
+
+1746204584 c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+	<string>
+
+1746204584 c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+	<iostream>
+	<vector>
+	<iomanip>
+	"Inventario.h"
+
+1746204584 source:c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+	"Facturacion.h"
+
+1746204584 source:c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+
+1746204584 source:c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+	"Producto.h"
+
+1746232873 source:c:\users\macoh\onedrive\documents\programacion\progra1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+
