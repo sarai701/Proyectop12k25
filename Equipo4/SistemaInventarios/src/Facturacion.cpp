@@ -1,6 +1,4 @@
 #include "Facturacion.h"
-
-
 Facturacion::Facturacion() {
     total = 0;
 }
@@ -8,7 +6,7 @@ Facturacion::Facturacion() {
 //funcion ingreso de datos para facturacion - kevin
 void Facturacion::generarFactura(Inventario& inventario) {
     total = 0;
-    int opc2 = 1;
+    string opc2 = "1";
 
     cout << "Generando factura...\n";
     cout << "Ingrese los datos del cliente:\n";
@@ -18,10 +16,12 @@ void Facturacion::generarFactura(Inventario& inventario) {
     cout << "Teléfono: "; cin >> tel;
     cout << "Dirección: "; cin.ignore(); getline(cin, dir);
 
-    while (opc2 == 1) {
+    while (opc2 == "1") { //corrección de error de desbordamiento al ingresaar tipos de datos incompatibles con el tipo de variables, Luis Valenzuela 2 de mayo de 2025
         ProductoFactura nuevoProducto;
-        cout << "Código del producto: "; cin >> nuevoProducto.CodigoSeleccionado;
-        cout << "Cantidad: "; cin >> nuevoProducto.CantidadLlevada;
+        cout << "Código del producto: ";
+        cin >> nuevoProducto.CodigoSeleccionado;
+        cout << "Cantidad: ";
+        cin >> nuevoProducto.CantidadLlevada;
 
         listprod.push_back(nuevoProducto);
 
