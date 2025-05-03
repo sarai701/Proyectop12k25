@@ -12,6 +12,7 @@ public:
     Inventario();
     void agregarProducto(int codigo, std::string nombre, float precio, int stock, std::string tipo);
     void mostrarInventarioGeneral();
+    void ventas(int stock, int codigo);
     void mostrarInventarioPorTipo(std::string tipo);
     Producto* buscarProducto(int codigo); // Nueva función
     ~Inventario();
