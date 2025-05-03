@@ -1,6 +1,7 @@
 //Implementacion Marco H. 03/04/2025
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
+#include "Bitacora.h"
 #include <string>
 // cambios realizados para el guardado de productos por Anthony Suc
 class Producto {

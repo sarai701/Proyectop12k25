@@ -2,16 +2,14 @@
 //funcionamiento del menú (Luis)
 //Actualizacion (Anthony)
 #include "Menu.h"
+#include "Bitacora.h"
 
 Menu::Menu() {}
+
 
 void Menu::mostrarOpciones(Inventario& inventario, Facturacion& factura, const string& nombreUsuario) {
     int opcion;
     bitacora auditoria;
-
-
-void Menu::mostrarOpciones(Inventario& inventario, Facturacion& factura) {
-    int opcion;
     do {
         system("cls"); // Usa "clear" y mejora en lo visual por Anthony Suc
         cout << "=====================================\n";
@@ -58,27 +56,28 @@ void Menu::mostrarOpciones(Inventario& inventario, Facturacion& factura) {
 
                     switch (subopcion) {
                         case 1:
-                            auditoria.insertar(nombreUsuario, 2001, "Ver Inventario General");
+                            auditoria.insertar(nombreUsuario, 2001, "Ver Inventario General", "Visualización del inventario");
                             inventario.mostrarInventarioGeneral();
                             break;
                         case 2:
-                            auditoria.insertar(nombreUsuario, 2002, "Ver Inventario Ventas");
+                            auditoria.insertar(nombreUsuario, 2002, "Ver Inventario Ventas", "Visualización de inventario de ventas");
                             inventario.mostrarInventarioPorTipo("ventas");
                             break;
                         case 3:
-                            auditoria.insertar(nombreUsuario, 2003, "Ver Inventario Stock");
+                            auditoria.insertar(nombreUsuario, 2003, "Ver Inventario Stock", "Visualización de inventario de stock");
                             inventario.mostrarInventarioPorTipo("stock");
                             break;
                         case 4:
-                            auditoria.insertar(nombreUsuario, 2004, "Ver Inventario Compras");
+                            auditoria.insertar(nombreUsuario, 2004, "Ver Inventario Compras", "Visualización de inventario de compras");
                             inventario.mostrarInventarioPorTipo("compras");
                             break;
                         case 5:
-                            cout << "Regresando al menu principal...\n";
+                            cout << "Regresando al menú principal...\n";
                             break;
                         default:
-                            cout << "Opción no valida, intente de nuevo.\n";
+                            cout << "Opción no válida, intente de nuevo.\n";
                     }
+
                 } while (subopcion != 5);
                 break;
             }
