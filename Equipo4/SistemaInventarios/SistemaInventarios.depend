@@ -1,30 +1,30 @@
 # depslib dependency file v1.0
-1743661323 source:c:\users\usuario\desktop\kevin\programaci髇 1\juegos\sistemainventarios\main.cpp
+1743661323 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\main.cpp
 	<iostream>
 	"Menu.h"
 
-1743661292 c:\users\usuario\desktop\kevin\programaci髇 1\juegos\sistemainventarios\include\menu.h
+1743661292 c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\include\menu.h
 	<iostream>
 	"Inventario.h"
 	"Facturacion.h"
 
-1743662159 c:\users\usuario\desktop\kevin\programaci髇 1\juegos\sistemainventarios\include\inventario.h
+1743662159 c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\include\inventario.h
 	<iostream>
 	<vector>
 
-1743662159 c:\users\usuario\desktop\kevin\programaci髇 1\juegos\sistemainventarios\include\facturacion.h
+1743662159 c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\include\facturacion.h
 	<iostream>
 	<vector>
 	<iomanip>
 	"Inventario.h"
 
-1743662159 source:c:\users\usuario\desktop\kevin\programaci髇 1\juegos\sistemainventarios\src\facturacion.cpp
+1743662159 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\src\facturacion.cpp
 	"Facturacion.h"
 
-1743661154 source:c:\users\usuario\desktop\kevin\programaci髇 1\juegos\sistemainventarios\src\menu.cpp
+1743661154 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\src\menu.cpp
 	"Menu.h"
 
-1743662512 source:c:\users\usuario\desktop\kevin\programaci髇 1\juegos\sistemainventarios\src\inventario.cpp
+1743662512 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\src\inventario.cpp
 	"Inventario.h"
 
 1743720150 source:c:\users\antho\onedrive\desktop\c++ ejemplos\sistemainventarios - copia\main.cpp
@@ -165,45 +165,45 @@
 1743734656 source:c:\users\lava2\documents\umg\2025\progra 1\inventarios\sistema-inventario\sistemainventarios\src\menu.cpp
 	"Menu.h"
 
-1743720147 source:c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\src\facturacion.cpp
+1743720147 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\facturacion.cpp
 	"Facturacion.h"
 
-1743741723 c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\include\facturacion.h
+1743741723 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\facturacion.h
 	<iostream>
 	<vector>
 	<iomanip>
 	"Inventario.h"
 
-1743741723 c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\include\inventario.h
+1743741723 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\inventario.h
 	<vector>
 	"Producto.h"
 
-1743741723 c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\include\producto.h
+1743741723 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\producto.h
 	<string>
 
-1743741723 source:c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\src\inventario.cpp
+1743741723 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\inventario.cpp
 	"Inventario.h"
 	<iostream>
 
-1743741723 source:c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\src\menu.cpp
+1743741723 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\menu.cpp
 	"Menu.h"
 
-1743661292 c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\include\menu.h
+1743661292 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\menu.h
 	<iostream>
 	"Inventario.h"
 	"Facturacion.h"
 
-1743741723 source:c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\src\producto.cpp
+1743741723 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\producto.cpp
 	"Producto.h"
 
-1746199113 source:c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\main.cpp
+1746199113 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\main.cpp
 	<iostream>
 	"Usuario.h"
 	"Menu.h"
 	"Inventario.h"
 	"Facturacion.h"
 
-1745854714 source:c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\src\bitacora.cpp
+1745854714 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\bitacora.cpp
 	"Bitacora.h"
 	<iostream>
 	<fstream>
@@ -212,10 +212,10 @@
 	<conio.h>
 	<iomanip>
 
-1745854714 c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\include\bitacora.h
+1745854714 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\bitacora.h
 	<iostream>
 
-1745854567 source:c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\src\usuario.cpp
+1745854567 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\usuario.cpp
 	"Usuario.h"
 	<fstream>
 	<cstdlib>
@@ -224,9 +224,8 @@
 	<sstream>
 	"Bitacora.h"
 
-1745851826 c:\users\usuario\documents\progra\programaci髇 1\sistema-inventario\sistemainventarios\include\usuario.h
+1745851826 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\usuario.h
 	<iostream>
-
 1746233986 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
 	"Bitacora.h"
 	<iostream>
