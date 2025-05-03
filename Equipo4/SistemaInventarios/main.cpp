@@ -14,7 +14,8 @@ int main() {
     if (accesoUsuarios) {
         Inventario inventario;  // Instanciar Inventario
         Facturacion factura;    // Instanciar Facturacion
-        menu.mostrarOpciones(inventario, factura); // Llamar menú pasando los objetos
+        string nombreUsuario = usuarioRegistrado.getNombre();
+        menu.mostrarOpciones(inventario, factura, nombreUsuario); // Llamar menú pasando los objetos
     }
 
     system("cls");

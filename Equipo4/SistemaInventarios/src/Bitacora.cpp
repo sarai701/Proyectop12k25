@@ -5,6 +5,8 @@
 #include<cstdlib>
 #include<conio.h>
 #include<iomanip>
+#include <cstring>
+
 
 #include <ctime>
 //bitacaora es un histórico
@@ -55,11 +57,17 @@ void bitacora::insertar(string nombre, int codigo, string aplicacion, string acc
 
     dt[strcspn(dt, "\n")] = 0; // salto de linea Ferdynand Monroy
 
+    struct tm * timeinfo;
+    timeinfo = localtime(&now);
+    char timeBuffer[9];  // hh:mm:ss
+    strftime(timeBuffer, sizeof(timeBuffer), "%H:%M:%S", timeinfo);
+
+    // Escribir la información en el archivo
     file << std::left << std::setw(15) << nombre
          << std::left << std::setw(15) << aplicacion
          << std::left << std::setw(15) << accion
-         << std::left << std::setw(25) << dt << "\n";
-         << _TIME_ << "\n";
+         << std::left << std::setw(25) << dt    // Fecha completa
+         << std::left << std::setw(10) << timeBuffer << "\n"; // Hora exacta
 
     file.close();
 }
@@ -80,7 +88,7 @@ void bitacora::desplegar()
 	{
 		file >> nombre >> aplicacion >> accion;
 		getline(file, fecha); // Lee la hora restante Ferdynand Monroy
-    
+
 		while(!file.eof())
 		{
 			total++;

@@ -61,14 +61,14 @@ bool usuarios::loginUsuarios()
             ingresa = true;
             cout << "\n=== Bienvenido al Sistema ===" << endl;
             bitacora auditoria;
-            auditoria.insertar(name, "100", "LOGS");
+            auditoria.insertar(name, 100, "LOGS", "Inicio exitoso");
             cin.get();
         }
         else
         {
             cout << "\nEl usuario y/o contrasena son incorrectos" << endl;
             bitacora auditoria;
-            auditoria.insertar(usuario, "100", "LOGF");
+            auditoria.insertar(usuario, 100, "LOGF", "Intento fallido");
             cin.get();
             contador++;
         }
