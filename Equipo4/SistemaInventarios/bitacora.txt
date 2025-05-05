@@ -1,0 +1,20 @@
+kevin          100            LOGS           
+Inventario inventario;100            LOGF           
+kevin          100            LOGS           
+Inventario inventario;100            LOGF           
+kevin          100            LOGS           
+kevin          100            LOGS           
+kevin          100            LOGS           
+kevin          100            LOGS           
+asdasd         100            LOGF           
+               100            LOGF           
+asdas          100            LOGF           
+kevin          100            LOGS           
+kevin          100            LOGF           
+kevin          100            LOGS           
+kevin          100            LOGS           
+kevin          100            LOGS           
+kevin          100            LOGS           
+kevin          LOGS           Inicio exitoso Fri May 02 22:19:16 2025 22:19:16  
+kevin          Ver Inventario GeneralVisualización del inventarioFri May 02 22:19:23 2025 22:19:23  
+kevin          Ver Inventario VentasVisualización de inventario de ventasFri May 02 22:19:26 2025 22:19:26  
