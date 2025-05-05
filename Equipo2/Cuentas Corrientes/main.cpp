@@ -2,12 +2,17 @@
 #include <fstream>
 
 #include "usuarios.h"
+#include "catalogos.h"
+#include "procesos.h"
 
 using namespace std;
 
 void menuGeneral ();
 void menuInicio();
+
+//Objetos
 usuarios usuariosrRegistrado;
+Catalogos catalogo;
 
 int main()
 {
@@ -72,10 +77,10 @@ void menuGeneral(){
 
         switch (opciones) {
             case 1:
-                //menuCatalogos();
+                catalogo.menuCatalogos();
                 break;
             case 2:
-                //menuProcesos();
+                menuProcesos();
                 break;
             case 3:
                 //menuReportes();

@@ -1,0 +1,1 @@
+001            Proveedor1     12345678       Banco1         123            

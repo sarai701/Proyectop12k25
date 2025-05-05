@@ -15,4 +15,8 @@ usuario        100            LOGS
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS           
+<<<<<<< HEAD
 usuario        100            LOGS           
+=======
+usuario1       Transacción    Registro de nueva transacción ID: 8701
+>>>>>>> 6ad56619e7b5284eab0880eb50fa314d941501a1

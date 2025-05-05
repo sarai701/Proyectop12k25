@@ -53,6 +53,7 @@
 	<iostream>
 	"bitacora.h"
 
+<<<<<<< HEAD
 1746201152 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\main.cpp
 	<iostream>
 	<fstream>
@@ -62,6 +63,9 @@
 	<iostream>
 
 1746201152 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+=======
+1745800336 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+>>>>>>> 6ad56619e7b5284eab0880eb50fa314d941501a1
 	"bitacora.h"
 	<iostream>
 	<fstream>
@@ -69,6 +73,7 @@
 	<conio.h>
 	<iomanip>
 
+<<<<<<< HEAD
 1746201152 c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
 	<iostream>
 
@@ -87,6 +92,12 @@
 	<iostream>
 
 1746201152 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
+=======
+1745800336 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+	<iostream>
+
+1745851900 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
+>>>>>>> 6ad56619e7b5284eab0880eb50fa314d941501a1
 	"usuarios.h"
 	<fstream>
 	<cstdlib>
@@ -94,3 +105,9 @@
 	<iostream>
 	"bitacora.h"
 
+<<<<<<< HEAD
+=======
+1745851900 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
+	<iostream>
+
+>>>>>>> 6ad56619e7b5284eab0880eb50fa314d941501a1
