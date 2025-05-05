@@ -35,12 +35,17 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<Unit filename="include/facturacion.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/facturacion.cpp" />
 =======
+=======
+		<Unit filename="include/Reportes.h" />
+>>>>>>> d36d11456fb2d713be769bfa6fe945354e61408f
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Reportes.cpp" />
 		<Unit filename="src/bitacora.cpp" />
 >>>>>>> refs/remotes/origin/main
 		<Extensions>
