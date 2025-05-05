@@ -1,13 +1,15 @@
+//Clase catalogos
+
 #ifndef CATALOGOS_H
 #define CATALOGOS_H
 
 
-class catalogos
+class Catalogos
 {
     public:
-        catalogos();
-        virtual ~catalogos();
-        void menu();
+        Catalogos();
+
+        void menuCatalogos();
 
     protected:
 
