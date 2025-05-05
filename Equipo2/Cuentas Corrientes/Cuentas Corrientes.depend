@@ -53,3 +53,25 @@
 	<iostream>
 	"bitacora.h"
 
+1745800336 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1745800336 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+	<iostream>
+
+1745851900 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	"bitacora.h"
+
+1745851900 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
+	<iostream>
+

@@ -3,6 +3,7 @@
 
 #include "usuarios.h"
 #include "catalogos.h"
+#include "procesos.h"
 
 using namespace std;
 
@@ -79,7 +80,7 @@ void menuGeneral(){
                 catalogo.menuCatalogos();
                 break;
             case 2:
-                //menuProcesos();
+                menuProcesos();
                 break;
             case 3:
                 //menuReportes();
