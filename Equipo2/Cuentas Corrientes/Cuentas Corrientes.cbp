@@ -34,10 +34,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/acreedor.h" />
 		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/catalogos.h" />
+		<Unit filename="include/cliente.h" />
+		<Unit filename="include/proveedor.h" />
 		<Unit filename="include/usuarios.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/acreedor.cpp" />
 		<Unit filename="src/bitacora.cpp" />
+		<Unit filename="src/catalogos.cpp" />
+		<Unit filename="src/cliente.cpp" />
+		<Unit filename="src/proveedor.cpp" />
 		<Unit filename="src/usuarios.cpp" />
 		<Extensions />
 	</Project>
