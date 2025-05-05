@@ -34,8 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Reportes.h" />
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Reportes.cpp" />
 		<Unit filename="src/bitacora.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
