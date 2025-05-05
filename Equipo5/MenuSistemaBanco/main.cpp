@@ -59,7 +59,7 @@ void mostrarMenu() {
             case 2: cliente.menuCliente(); break;
             case 3: empleado.gestionarEmpleados(); break;
             case 4: contabilidad.generarReporte(); break;
-            case 5: auditoria.revisarTransacciones(); break;
+            case 5: auditoria.menuAuditoria(); break;
             case 6: proveedor.menuProveedor(); break; // Llamada a menú de proveedor
             case 7: cout << "\nSaliendo del sistema... Gracias!\n"; break;
             default:

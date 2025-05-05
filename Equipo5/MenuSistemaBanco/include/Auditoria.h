@@ -1,16 +1,30 @@
+//Jonathan Samuel Gonzalez Ixpata
 #ifndef AUDITORIA_H
 #define AUDITORIA_H
 
-#include <iostream>
+#include <string>
+#include <vector>
 
-//Clase Auditoria
-//Maneja la revisión de transacciones bancarias.
+struct Auditores {
+    std::string nombre;
+    std::string codigo;
+};
+
 class Auditoria {
+private:
+    std::vector<Auditores> auditores;
+
 public:
-    /**
-     * Simula la revisión de transacciones bancarias.
-     */
-    void revisarTransacciones();
+    void menuAuditoria();          // Menú principal
+    void registrosRealizados();    // Tabla de movimientos
+    void limpiarPantalla();        // Limpiar pantalla
+    void pausar();                 // Pausar ejecución
+
+    // Funciones para gestionar auditores
+    void submenuAuditor();         // Submenú de opciones
+    void registrarAuditor();       // Registrar nuevo auditor
+    void borrarAuditor();          // Borrar por código
+    void despliegueAuditores();    // Mostrar todos los auditores
 };
 
 #endif
