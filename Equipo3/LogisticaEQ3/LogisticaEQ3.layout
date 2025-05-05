@@ -4,8 +4,12 @@
 	<ActiveTarget name="Debug" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	<File name="src\bitacora.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+=======
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+>>>>>>> 3a2d7c3c88c68ba28eec6d67c1c18d29a7eedca8
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
