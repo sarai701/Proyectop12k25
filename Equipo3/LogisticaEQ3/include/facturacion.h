@@ -1,5 +1,8 @@
 // Angoly Araujo Mayo 2025
+<<<<<<< HEAD
 // 9959-24-17623
+=======
+>>>>>>> refs/remotes/origin/main
 #ifndef FACTURACION_H
 #define FACTURACION_H
 

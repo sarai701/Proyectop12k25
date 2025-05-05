@@ -1,0 +1,18 @@
+usuario        100            LOGS           
+usuario        100            LOGF           
+usuario        100            LOGF           
+usuario        100            LOGF           
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGF           
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGF           
+usuario        100            LOGF           
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario1       Transacción    Registro de nueva transacción ID: 8701

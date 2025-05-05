@@ -299,3 +299,87 @@
 	<string>
 	<vector>
 
+1746330189 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+
+1746330142 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\empleados.h
+	<iostream>
+
+1746381900 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
+	<string>
+	<vector>
+
+1746381892 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\proveedores.h
+	<string>
+	<vector>
+
+1746201304 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\contabilidad.h
+	<iostream>
+
+1746201304 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\auditoria.h
+	<iostream>
+
+1746326342 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\usuario.h
+	<string>
+
+1746326342 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
+	<string>
+	<vector>
+
+1746201304 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+
+1746201304 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1746201304 c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
+	<iostream>
+
+1746328675 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1746201304 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+
+1746330134 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+
+1746326342 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746329694 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746326342 source:c:\users\deleo\onedrive\documentos\github\proyectop12k25\equipo5\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+

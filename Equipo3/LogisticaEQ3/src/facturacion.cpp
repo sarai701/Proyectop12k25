@@ -1,5 +1,8 @@
 // Angoly Araujo Mayo 2025
+<<<<<<< HEAD
 // 9959-24-17623
+=======
+>>>>>>> refs/remotes/origin/main
 #include "facturacion.h" // Inclusión del encabezado donde están declaradas las funciones de la clase Facturacion
 #include <iostream> // Inclusión de la biblioteca estándar para entrada/salida
 using namespace std;
@@ -66,3 +69,7 @@ void Facturacion::verReportesFinancieros() {
     auditoria.insertar(usuarioRegistrado.getNombre(), "400", "REPFIN"); // Registro en la bitácora
     system("pause");
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/main

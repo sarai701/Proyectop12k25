@@ -34,9 +34,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+<<<<<<< HEAD
 		<Unit filename="include/facturacion.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/facturacion.cpp" />
+=======
+		<Unit filename="include/bitacora.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/bitacora.cpp" />
+>>>>>>> refs/remotes/origin/main
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
