@@ -1,9 +1,10 @@
-//Programaddo por Boris Ivan de Leon Santos 9959-24-6203
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
 #include <string>
 #include <vector>
+#include "Bitacora.h" // Línea nueva
+
 
 using namespace std;
 

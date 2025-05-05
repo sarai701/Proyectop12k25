@@ -1,0 +1,4 @@
+Admin          4000      Clientes            Crear Cliente                 Sun May 04 19:57:00 2025 
+Admin          4101      Clientes            Crear Cliente                 Sun May 04 20:12:32 2025 
+Admin          4103      Clientes            Modificar Cliente             Sun May 04 20:12:49 2025 
+Admin          4201      Proveedores         Crear Proveedor               Sun May 04 20:24:57 2025 
