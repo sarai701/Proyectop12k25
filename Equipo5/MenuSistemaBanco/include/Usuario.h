@@ -1,13 +1,14 @@
-//Programaddo por Priscila Sarai Guzmán Calgua 9959-23-450
+//Programado por Priscila Sarai Guzmán Calgua 9959-23-450
 #ifndef USUARIO_H
 #define USUARIO_H
+#include "Bitacora.h"
 
 #include <string>
-
+using namespace std;
 class Usuario {
 private:
-    std::string nombreUsuario;  // Almacena el nombre de usuario
-    std::string contrasena;     // Almacena la contraseña del usuario
+    string nombreUsuario;  // Almacena el nombre de usuario
+    string contrasena;     // Almacena la contraseña del usuario
     static const std::string ARCHIVO_LOGIN; // Declaración
 
 public:
@@ -17,27 +18,27 @@ public:
 
     // Constructor con parámetros
     // Inicializa el nombre de usuario y la contraseña con los valores proporcionados
-    Usuario(const std::string& usuario, const std::string& contrasena);
+    Usuario(const string& usuario, const std::string& contrasena);
 
     // Método para obtener el nombre de usuario
     // Devuelve el nombre del usuario
-    std::string getNombreUsuario() const;
+    string getNombreUsuario() const;
 
     // Método para obtener la contraseña
     // Devuelve la contraseña del usuario
-    std::string getContrasena() const;
+    string getContrasena() const;
 
     // Método para establecer (modificar) el nombre de usuario
     // Recibe un nuevo nombre de usuario y lo asigna
-    void setNombreUsuario(const std::string& usuario);
+    void setNombreUsuario(const string& usuario);
 
     // Método para establecer (modificar) la contraseña
     // Recibe una nueva contraseña y la asigna
-    void setContrasena(const std::string& contrasena);
+    void setContrasena(const string& contrasena);
 
     // Método que verifica si el nombre de usuario y la contraseña proporcionados son correctos
     // Compara los valores proporcionados con los almacenados en el objeto
-    bool autenticar(const std::string& usuario, const std::string& contrasena) const;
+    bool autenticar(const string& usuario, const string& contrasena) const;
 
     // Métodos estáticos para control de acceso (no dependen de un objeto)
 
@@ -52,7 +53,7 @@ public:
 
     // Muestra el menú de autenticación (iniciar sesión o registrar nuevo usuario)
     // Devuelve true si se inicia sesión correctamente, false si se cancela
-    static bool menuAutenticacion();
+    static bool menuAutenticacion(string& usuarioAutenticado);
 
     // Método para hacer una pausa y esperar que el usuario presione Enter para continuar
     // Esto ayuda a hacer la interfaz más interactiva
@@ -60,7 +61,7 @@ public:
     static void limpiarPantalla();
 
     // Función para autenticar desde el archivo
-    static bool autenticarDesdeArchivo();
+    static bool autenticarDesdeArchivo(string& usuarioAutenticado);
 
 
 };
