@@ -4,3 +4,9 @@ Pascual,45342322,987,zona 1,4500
 Pedro,87965655,222,zona 16,5000
 Priscila,47681373,1234,zona 18,40000
 admin,2345343,1234,zona 17,2000
+<<<<<<< HEAD
+=======
+patty,123,Asistente,36969215
+patty,123,trabajador,65841358
+patty,654,Jefe,38546205
+>>>>>>> 3509a453d075eb4d294700013dae9ae14bc31c71
