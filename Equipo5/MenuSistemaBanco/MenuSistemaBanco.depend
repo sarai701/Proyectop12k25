@@ -383,3 +383,27 @@
 	<conio.h>
 	<cstdlib>
 
+1746202526 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+
+1746202525 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\auditoria.h
+	<iostream>
+
+1746202526 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1746202525 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
+	<iostream>
+
+1746202526 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+
+1746202525 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\contabilidad.h
+	<iostream>
+
