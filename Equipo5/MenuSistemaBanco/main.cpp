@@ -56,11 +56,11 @@ void mostrarMenu() {
 
         switch (opcion) {
             case 1: nominas.menuNominas(); break;
-            case 2: cliente.realizarPago(); break;
-            case 3: cliente.consultarSaldo(); break;
-            case 4: proveedor.registrarFactura(); break;
-            case 5: contabilidad.generarReporte(); break;
-            case 6: auditoria.revisarTransacciones(); break;
+            case 2: cliente.menuCliente(); break;
+            case 3: empleado.gestionarEmpleados(); break;
+            case 4: contabilidad.generarReporte(); break;
+            case 5: auditoria.revisarTransacciones(); break;
+            case 6: proveedor.menuProveedor(); break; // Llamada a menú de proveedor
             case 7: cout << "\nSaliendo del sistema... Gracias!\n"; break;
             default:
                 cout << "\nOpcion invalida. Intente de nuevo.\n";

@@ -3,7 +3,7 @@
 using namespace std;
 
 //Simula la gestión de nóminas de empleados.
-void Empleado::gestionarNomina() {
+void Empleado::gestionarEmpleados() {
     cout << "Gestionando nomina de empleados...\n";
     cout << "Presione ENTER para volver al menú principal...";
     cin.ignore();
