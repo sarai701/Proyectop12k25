@@ -1,0 +1,77 @@
+# depslib dependency file v1.0
+1745739013 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\repositoriogrupal\cuentas corrientes\main.cpp
+	<iostream>
+	<fstream>
+	"usuarios.h"
+
+1745738677 c:\users\mishel\onedrive\documentos\programacion\programacion 1\repositoriogrupal\cuentas corrientes\include\usuarios.h
+	<iostream>
+
+1745739783 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\repositoriogrupal\cuentas corrientes\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	"bitacora.h"
+
+1745735847 c:\users\mishel\onedrive\documentos\programacion\programacion 1\repositoriogrupal\cuentas corrientes\include\bitacora.h
+	<iostream>
+
+1745738807 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\repositoriogrupal\cuentas corrientes\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1745825706 source:c:\users\astri\onedrive\documentos\ejerciciosenclase - proga i\cuentas corrientes\main.cpp
+	<iostream>
+	<fstream>
+	"usuarios.h"
+
+1745851900 c:\users\astri\onedrive\documentos\ejerciciosenclase - proga i\cuentas corrientes\include\usuarios.h
+	<iostream>
+
+1745800336 source:c:\users\astri\onedrive\documentos\ejerciciosenclase - proga i\cuentas corrientes\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1745800336 c:\users\astri\onedrive\documentos\ejerciciosenclase - proga i\cuentas corrientes\include\bitacora.h
+	<iostream>
+
+1745851900 source:c:\users\astri\onedrive\documentos\ejerciciosenclase - proga i\cuentas corrientes\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	"bitacora.h"
+
+1745800336 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1745800336 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+	<iostream>
+
+1745851900 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	"bitacora.h"
+
+1745851900 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
+	<iostream>
+
