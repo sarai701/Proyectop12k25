@@ -9,7 +9,7 @@
 #include "Usuario.h"
 #include <conio.h> //para la función getch() que permite capturar teclas sin mostrarlas
 #include "Nominas.h"
-
+#include "Bitacora.h"
 using namespace std;
 
 
@@ -24,12 +24,13 @@ void pausar() {
 // Mostrar el menú principal
 void mostrarMenu() {
     //se crean objetos de cada clase para poder usar sus funciones
-    Empleado empleado;
+    Empleados empleados;
     Cliente cliente;
     Proveedor proveedor;
     Contabilidad contabilidad;
     Auditoria auditoria;
     Nominas nominas;
+    Bitacora bitacora;
 
     int opcion;
     do {
@@ -42,7 +43,8 @@ void mostrarMenu() {
         cout << "\n 4. Contabilidad";
         cout << "\n 5. Auditoria";
         cout << "\n 6. Proveedores";
-        cout << "\n 7. Salir";
+        cout << "\n 7. Bitacora";
+        cout << "\n 8. Salir";
         cout << "\n------------------------------------";
         cout << "\nSeleccione una opcion: ";
         cin >> opcion;
@@ -55,19 +57,50 @@ void mostrarMenu() {
         }
 
         switch (opcion) {
-            case 1: nominas.menuNominas(); break;
-            case 2: cliente.realizarPago(); break;
-            case 3: cliente.consultarSaldo(); break;
-            case 4: proveedor.registrarFactura(); break;
-            case 5: contabilidad.generarReporte(); break;
-            case 6: auditoria.revisarTransacciones(); break;
-            case 7: cout << "\nSaliendo del sistema... Gracias!\n"; break;
-            default:
-                cout << "\nOpcion invalida. Intente de nuevo.\n";
-                pausar();
-        }
+    case 1:
+        nominas.menuNominas();
+        bitacora.insertar("Admin", 4000, "Nominas", "Ingresó al módulo de Nóminas");
+        break;
+    case 2:
+        cliente.menuCliente();
+        bitacora.insertar("Admin", 4100, "Clientes", "Ingresó al módulo de Clientes");
+        break;
+    case 3:
+    empleados.menuEmpleados();  // Aquí se llama al método correcto de la clase Empleados
+    bitacora.insertar("Admin", 4001, "Empleados", "Ingresó al módulo de Empleados");
+        break;
 
-    } while (opcion != 7);
+    case 4:
+        contabilidad.generarReporte();
+        bitacora.insertar("Admin", 4301, "Contabilidad", "Generar reporte contable");
+        break;
+    case 5:
+        auditoria.revisarTransacciones();
+        bitacora.insertar("Admin", 4401, "Auditoría", "Revisar transacciones");
+        break;
+    case 6:
+        proveedor.menuProveedor();
+        bitacora.insertar("Admin", 4200, "Proveedores", "Ingresó al módulo de Proveedores");
+        break;
+    case 7:
+        bitacora.menuBitacora();
+        bitacora.insertar("Admin", 4402, "Sistema", "Usuario cerró sesión");
+        break;
+    case 8:
+    bitacora.insertar("Admin", 4901, "Sistema", "Usuario cerró sesión");
+    cout << "\nSaliendo del sistema... Gracias!\n";
+    break;
+
+    default:
+        cout << "\nOpción inválida. Intente de nuevo.\n";
+        bitacora.insertar("Admin", 4902, "Sistema", "Intento de opción inválida");
+        break;
+}
+
+                pausar();
+
+
+    } while (opcion != 8);
 }
 
 // Función principal

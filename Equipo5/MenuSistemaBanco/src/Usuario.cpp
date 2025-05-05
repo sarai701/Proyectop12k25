@@ -4,33 +4,35 @@
 #include <fstream>
 #include <conio.h> // Para leer contraseñas ocultas con '*'
 #include <cstdlib>
+#include "Bitacora.h"
 
+Bitacora bitacoralog2;
 using namespace std;
 
 // Constructor por defecto
 Usuario::Usuario() : nombreUsuario(""), contrasena("") {}
 
 // Constructor con parámetros
-Usuario::Usuario(const std::string& usuario, const std::string& contrasena)
+Usuario::Usuario(const string& usuario, const string& contrasena)
     : nombreUsuario(usuario), contrasena(contrasena) {}
 
 // Devuelve el nombre de usuario
-std::string Usuario::getNombreUsuario() const {
+string Usuario::getNombreUsuario() const {
     return nombreUsuario;
 }
 
 // Devuelve la contraseña
-std::string Usuario::getContrasena() const {
+string Usuario::getContrasena() const {
     return contrasena;
 }
 
 // Asigna un nuevo nombre de usuario
-void Usuario::setNombreUsuario(const std::string& usuario) {
+void Usuario::setNombreUsuario(const string& usuario) {
     nombreUsuario = usuario;
 }
 
 // Asigna una nueva contraseña
-void Usuario::setContrasena(const std::string& contrasena) {
+void Usuario::setContrasena(const string& contrasena) {
     this->contrasena = contrasena;
 }
 
@@ -46,7 +48,7 @@ void Usuario::limpiarPantalla() {
 void pausar();  // Declaración si viene de otro archivo
 
 // Verifica si el nombre de usuario y la contraseña coinciden con los almacenados
-bool Usuario::autenticar(const std::string& usuario, const std::string& contrasena) const {
+bool Usuario::autenticar(const string& usuario, const string& contrasena) const {
     return (this->nombreUsuario == usuario && this->contrasena == contrasena);
 }
 
@@ -145,12 +147,12 @@ bool Usuario::menuAutenticacion() {
     int opcion;
     do {
         limpiarPantalla();
-        std::cout << "\n===== SISTEMA DE ACCESO =====";
-        std::cout << "\n1. Iniciar sesión";
-        std::cout << "\n2. Registrar nuevo usuario";
-        std::cout << "\n3. Salir";
-        std::cout << "\nSeleccione una opción: ";
-        std::cin >> opcion;
+        cout << "\n===== SISTEMA DE ACCESO =====";
+        cout << "\n1. Iniciar sesión";
+        cout << "\n2. Registrar nuevo usuario";
+        cout << "\n3. Salir";
+        cout << "\nSeleccione una opción: ";
+        cin >> opcion;
 
         switch (opcion) {
             case 1:
@@ -166,15 +168,15 @@ bool Usuario::menuAutenticacion() {
                 break;
 
             case 3:
-                std::cout << "\nSaliendo...\n";
+                cout << "\nSaliendo...\n";
                 return false;  // Si el usuario decide salir, retorna false
 
             default:
-                std::cout << "\nOpción inválida.\n";
+                cout << "\nOpción inválida.\n";
 
         }
     } while (true);
 
     return false;  // En caso de que el ciclo termine sin éxito
 }
-const std::string Usuario::ARCHIVO_LOGIN = "login.txt"; // Definición de archivo
+const string Usuario::ARCHIVO_LOGIN = "login.txt"; // Definición de archivo

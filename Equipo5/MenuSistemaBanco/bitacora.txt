@@ -1,0 +1,11 @@
+Admin          4000      Clientes            Crear Cliente                 Sun May 04 19:57:00 2025 
+Admin          4101      Clientes            Crear Cliente                 Sun May 04 20:12:32 2025 
+Admin          4103      Clientes            Modificar Cliente             Sun May 04 20:12:49 2025 
+Admin          4201      Proveedores         Crear Proveedor               Sun May 04 20:24:57 2025 
+Admin          4001      Nominas             Crear                         Sun May 04 23:46:03 2025 
+Admin          4000      Nominas             Ingresó al módulo de Nóminas  Sun May 04 23:46:07 2025 
+Admin          4901      Sistema             Usuario cerró sesión          Sun May 04 23:46:10 2025 
+Admin          5001      Empleados           Crear                         Mon May 05 01:13:41 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 01:14:01 2025 
+Admin          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 01:14:17 2025 
+Admin          4901      Sistema             Usuario cerró sesión          Mon May 05 01:14:20 2025 
