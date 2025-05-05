@@ -1,5 +1,6 @@
 //LUIS ANGEL MENDEZ FUENTES 9959-24-6845
 // MAYO 2025
+//Fase II - Proyecto Final (Mantenimientos)
 #ifndef BITACORA_H
 #define BITACORA_H
 
