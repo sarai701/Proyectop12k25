@@ -1,14 +1,18 @@
+//Jonathan Samuel GOnzalez Ixpata
 #ifndef CONTABILIDAD_H
 #define CONTABILIDAD_H
 
 #include <iostream>
+#include <fstream>
+#include <string>
 
-//Clase Contabilidad
-//Maneja la generación de reportes financieros.
 class Contabilidad {
 public:
-    //Simula la generación de un reporte financiero.
-    void generarReporte();
+    void menuContabilidad();               // Menú principal
+    void registroNomina();                 // Opción 1: Registrar pago
+    void desplegarRegistroSalarios();      // Opción 2: Generar salarios.txt
+    void limpiarPantalla();                // Limpiar pantalla
+    void pausar();                         // Pausar ejecución
 };
 
 #endif

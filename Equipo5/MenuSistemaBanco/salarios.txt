@@ -1,0 +1,5 @@
+NOMBRE                        CODIGO         PAGADO    
+admin                         1234           No        
+Priscila                      1234           No        
+Juan                          4321           No        
+Pedro                         222            No        

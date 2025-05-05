@@ -383,3 +383,85 @@
 	<conio.h>
 	<cstdlib>
 
+1746419773 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1746419773 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
+	<iostream>
+
+1746419773 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746419773 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
+	<string>
+	<vector>
+
+1746419773 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
+1746419773 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\usuario.h
+	<string>
+
+1746457813 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+
+1746457813 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\auditoria.h
+	<string>
+	<vector>
+
+1746457613 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1746457613 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
+	<string>
+	<vector>
+
+1746457813 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+	<vector>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	<cstdlib>
+
+1746457813 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\contabilidad.h
+	<iostream>
+	<fstream>
+	<string>
+
+1746457613 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+
+1746457613 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\empleados.h
+	<iostream>
+
+1746457613 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746457613 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\proveedores.h
+	<string>
+	<vector>
+
