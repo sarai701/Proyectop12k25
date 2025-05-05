@@ -1,0 +1,16 @@
+#ifndef SISTEMA_
+#define SISTEMA_
+
+
+class Sistema
+{
+    public:
+        Sistema();
+        virtual ~Sistema();
+
+    protected:
+
+    private:
+};
+
+#endif // SISTEMA_
