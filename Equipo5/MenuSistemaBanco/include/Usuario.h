@@ -1,6 +1,7 @@
-//Programaddo por Priscila Sarai Guzmán Calgua 9959-23-450
+//Programado por Priscila Sarai Guzmán Calgua 9959-23-450
 #ifndef USUARIO_H
 #define USUARIO_H
+#include "Bitacora.h"
 
 #include <string>
 using namespace std;
@@ -52,7 +53,7 @@ public:
 
     // Muestra el menú de autenticación (iniciar sesión o registrar nuevo usuario)
     // Devuelve true si se inicia sesión correctamente, false si se cancela
-    static bool menuAutenticacion();
+    static bool menuAutenticacion(string& usuarioAutenticado);
 
     // Método para hacer una pausa y esperar que el usuario presione Enter para continuar
     // Esto ayuda a hacer la interfaz más interactiva
@@ -60,7 +61,7 @@ public:
     static void limpiarPantalla();
 
     // Función para autenticar desde el archivo
-    static bool autenticarDesdeArchivo();
+    static bool autenticarDesdeArchivo(string& usuarioAutenticado);
 
 
 };

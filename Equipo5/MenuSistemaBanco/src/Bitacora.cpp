@@ -1,4 +1,4 @@
-//Primera version por Boris de Leon 9959-24-6203
+//Programado por Priscila Sarai Guzmán Calgua 9959-23-450
 #include "Bitacora.h"
 #include <fstream>
 #include <iostream>
@@ -7,16 +7,16 @@
 #include <cstring>
 
 using namespace std;
-
-void Bitacora::insertar(const std::string& usuario, int codigo, const std::string& aplicacion, const std::string& accion) {
+//Registra una acción realizada por un usuario en la bitacora
+void Bitacora::insertar(const string& usuario, int codigo, const std::string& aplicacion, const std::string& accion) {
     ofstream archivo("bitacora.txt", ios::app);
     if (!archivo.is_open()) {
         cerr << "Error al abrir el archivo de bitácora.\n";
         return;
     }
 
-    time_t now = time(nullptr);
-    char* fechaHora = ctime(&now);
+    time_t now = time(nullptr);//obtenr fecha y hora
+    char* fechaHora = ctime(&now);//convierte el tiempo en cadena
     fechaHora[strcspn(fechaHora, "\n")] = '\0';  // eliminar salto de línea
 
     archivo << left << setw(15) << usuario
@@ -27,7 +27,7 @@ void Bitacora::insertar(const std::string& usuario, int codigo, const std::strin
 
     archivo.close();
 }
-
+//Mostarar todos los registros almacenados en bitácora
 void Bitacora::mostrar() {
     ifstream archivo("bitacora.txt");
     if (!archivo.is_open()) {
@@ -51,3 +51,34 @@ void Bitacora::mostrar() {
 
     archivo.close();
 }
+
+void Bitacora::menuBitacora() {
+    int opcion;
+
+    do {
+        cout << "\n--- MENÚ DE BITÁCORA ---\n";
+        cout << "1. Desplegar bitácora\n";
+        cout << "2. Regresar al menú principal\n";
+        cout << "Seleccione una opción: ";
+        cin >> opcion;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            opcion = 0;
+        }
+
+        switch (opcion) {
+            case 1:
+                mostrar();
+                break;
+            case 2:
+                cout << "Regresando al menú principal...\n";
+                break;
+            default:
+                cout << "Opción inválida. Intente de nuevo.\n";
+        }
+
+    } while (opcion != 2);
+}
+
