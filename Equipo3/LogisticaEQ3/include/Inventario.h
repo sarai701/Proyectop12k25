@@ -1,7 +1,6 @@
 //Karina Alejandra Arriaza Ortiz
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
-
 #include "bitacora.h"
 #include "usuario.h"
 
