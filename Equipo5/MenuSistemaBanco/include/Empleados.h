@@ -1,12 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // Karla Patricia Ruiz OrdoÃ±ez 9959-24-6859
 >>>>>>> 3509a453d075eb4d294700013dae9ae14bc31c71
+=======
+//Karla Patricia Ruiz Ordoñez 9959-24-6859
+>>>>>>> 1ffb03612c47ce1169541ede7ad209ab9ac9dae4
 #ifndef EMPLEADOS_H
 #define EMPLEADOS_H
 
 #include <vector>
 #include <string>
+<<<<<<< HEAD
 <<<<<<< HEAD
 #include "Bitacora.h"
 
@@ -81,6 +86,54 @@ public:
     // - desplegarEmpleados()â†’ ID: 4005
     // Esto permite mantener un historial de auditorÃ­a bÃ¡sico.
 >>>>>>> 3509a453d075eb4d294700013dae9ae14bc31c71
+=======
+#include "BitacoraLog.h" // <-- Asegúrate de que este archivo exista y esté implementado
+
+using namespace std;
+
+// Variable global para registrar las acciones de empleados en la bitácora
+extern BitacoraLog bitacoralogEmpleados;
+
+// ==============================
+// Estructura de Datos Empleado
+// ==============================
+struct Empleado {
+    string nombre;   // Nombre completo del empleado
+    string codigo;   // Código identificador único del empleado
+    string puesto;   // Puesto o cargo que ocupa en la empresa
+    string telefono; // Número de contacto
+};
+
+// ============================
+// Clase Empleados
+// ============================
+class Empleados {
+private:
+    vector<Empleado> empleados;  // Contenedor de todos los empleados registrados
+
+public:
+    // Constructor
+    Empleados();
+
+    // Métodos CRUD
+    void crearEmpleado(const string& usuario);
+    void borrarEmpleado(const string& usuario);
+    void buscarEmpleado(const string& usuario);
+    void modificarEmpleado(const string& usuario);
+    void desplegarEmpleados(const string& usuario);
+
+    // Interfaz de usuario
+    void menuEmpleados(const string& usuario);
+
+    // Utilidades
+    void limpiarPantalla();
+    void pausar();
+
+    // Gestión de archivos
+    void cargarEmpleados();
+    void guardarEmpleados();
+    void ordenarEmpleados();
+>>>>>>> 1ffb03612c47ce1169541ede7ad209ab9ac9dae4
 };
 
 #endif // EMPLEADOS_H
