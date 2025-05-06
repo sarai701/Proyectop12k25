@@ -71,3 +71,51 @@
 	<conio.h>
 	<iomanip>
 
+1746504602 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\reportes.cpp
+	"reportes.h"
+	<iostream>
+	<thread>
+	<chrono>
+
+1746504602 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\reportes.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746505379 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\bitacora.h
+	<string>
+	<fstream>
+
+1746505955 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\usuarios.h
+	<string>
+	"bitacora.h"
+
+1746505575 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<iomanip>
+
+1746503214 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\pedidos.cpp
+	"pedidos.h"
+	<iostream>
+
+1746505586 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\pedidos.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746503214 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\envios.cpp
+	"envios.h"
+	<iostream>
+
+1746505601 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\envios.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746505891 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\inventario.cpp
+	"inventario.h"
+	<iostream>
+	<iomanip>
+
+1746505594 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\inventario.h
+	"bitacora.h"
+	"usuarios.h"
+

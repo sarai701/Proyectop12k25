@@ -4,7 +4,7 @@
 #define FACTURACION_H
 
 #include "bitacora.h"
-#include "usuario.h"
+#include "usuarios.h"
 
 class Facturacion {
 public:

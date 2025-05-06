@@ -2,7 +2,7 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 #include "bitacora.h"
-#include "usuario.h"
+#include "usuarios.h"
 
 class Inventario {
 public:

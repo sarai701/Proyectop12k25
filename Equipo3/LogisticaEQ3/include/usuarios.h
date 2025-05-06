@@ -20,6 +20,7 @@ public:
     void menuUsuarios();
     void consultarUsuarios();
     void eliminarUsuario();
+    void modificarUsuario();
 };
 
 #endif // USUARIOS_H

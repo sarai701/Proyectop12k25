@@ -2,7 +2,7 @@
 #define PEDIDOS_H
 
 #include "bitacora.h"
-#include "usuario.h"
+#include "usuarios.h"
 
 //JENNIFER BARRIOS COORD EQ 3
 //9959-24-10016

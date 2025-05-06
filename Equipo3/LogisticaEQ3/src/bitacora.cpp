@@ -1,5 +1,5 @@
 // LUIS ANGEL MENDEZ FUENTES 9959-24-6845
-#include "bitacora.h-"
+#include "bitacora.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
