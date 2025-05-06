@@ -1,76 +1,90 @@
-// Gabriela - Mayo 2025
+// 9959-24-11603
+// Programa principal que integra los módulos de usuarios, pedidos, inventario, envíos, facturación, reportes y bitácora.
+// Incluye autenticación de usuario y menú general de navegación del sistema.
+
 #include <iostream>
-#include "Reportes.h"
-#include "Usuario.h"
-#include "Inventario.h"
-#include "Facturacion.h"
-#include "Bitacora.h"
+#include "usuarios.h"
+#include "pedidos.h"
+#include "inventario.h"
+#include "envios.h"
+#include "facturacion.h"
+#include "reportes.h"
+#include "bitacora.h"
 
 using namespace std;
 
+// Instancias de clases globales para gestionar los distintos módulos
+usuarios usuarioRegistrado;
+bitacora auditoria;
+Pedidos gestorPedidos;
+Inventario gestorInventario;
+Envios gestorEnvios;
+Facturacion gestorFacturacion;
+Reportes gestorReportes;
+
+// Prototipo del menú principal
+void menuGeneral();
+
 int main() {
-    int opcion;
-    // Crear instancias de los módulos
-    Reportes reportes;
-    Usuarios usuarios;
-    Inventario inventario;
-    Facturacion facturacion;
-    Bitacora bitacora;
-    Envios envios;
-    Pedidos pedidos
+    bool accessUsuarios;
 
+    // Inicio de sesión del usuario
+    accessUsuarios = usuarioRegistrado.loginUsuarios();
 
+    // Si el login es exitoso, se muestra el menú principal
+    if (accessUsuarios) {
+        menuGeneral();
+    }
+
+    // Mensaje de despedida al salir
+    system("cls");
+    cout << "** Hasta la próxima **";
+    return 0;
+}
+
+// Función que muestra el menú general del sistema
+void menuGeneral() {
+    int choice;
     do {
-        // Menú principal del sistema logístico
         system("cls");
         cout << "\t\t========================================" << endl;
-        cout << "\t\t| SISTEMA LOGISTICO - MENU PRINCIPAL   |" << endl;
+        cout << "\t\t|     SISTEMA DE GESTIÓN LOGÍSTICA     |" << endl;
         cout << "\t\t========================================" << endl;
-        cout << "\t\t 1. Módulo de Reportes" << endl;
-        cout << "\t\t 2. Módulo de Usuarios" << endl;
-        cout << "\t\t 3. Módulo de Inventario" << endl;
-        cout << "\t\t 4. Módulo de Facturación" << endl;
-        cout << "\t\t 5. Módulo de Bitácora" << endl;
-         cout << "\t\t 5. Módulo de Envios" << endl;
-          cout << "\t\t 5. Módulo de Pedidos" << endl;
-        cout << "\t\t 6. Salir" << endl;
+        cout << "\t\t| Usuario: " << usuarioRegistrado.getNombre() << endl;
         cout << "\t\t========================================" << endl;
-        cout << "\t\tSeleccione una opción: ";
-        cin >> opcion;
+        cout << "\t\t 1. Gestión de Pedidos" << endl;
+        cout << "\t\t 2. Control de Inventario" << endl;
+        cout << "\t\t 3. Envíos y Transportes" << endl;
+        cout << "\t\t 4. Facturación y Análisis" << endl;
+        cout << "\t\t 5. Reportes y Análisis" << endl;
+        cout << "\t\t 6. Salir del Sistema" << endl;
+        cout << "\t\t========================================" << endl;
+        cout << "\t\tOpción a escoger: [1/2/3/4/5/6]" << endl;
+        cout << "\t\tIngresa tu opción: ";
+        cin >> choice;
 
-        switch(opcion) {
+        switch(choice) {
             case 1:
-                reportes.mostrarMenuReportes(); // Llamar al módulo de reportes
+                gestorPedidos.gestionPedidos();
                 break;
             case 2:
-                usuarios.mostrarMenuUsuarios(); // Llamar al módulo de usuarios
+                gestorInventario.controlInventario();
                 break;
             case 3:
-                inventario.mostrarMenuInventario(); // Llamar al módulo de inventario
+                gestorEnvios.gestionEnvios();
                 break;
             case 4:
-                facturacion.mostrarMenuFacturacion(); // Llamar al módulo de facturación
+                gestorFacturacion.gestionFacturacion();
                 break;
-
             case 5:
-                bitacora.mostrarMenuBitacora(); // Llamar al módulo de bitácora
+                gestorReportes.generarReportes();
                 break;
             case 6:
-                bitacora.mostrarMenuEnvios(); // Llamar al módulo de bitácora
-                break;
-            case 7:
-                bitacora.mostrarMenuPedidos(); // Llamar al módulo de bitácora
-                break;
-            case 8:
-                cout << "\nSaliendo del sistema... Gracias por usar el sistema logístico." << endl;
+                // Salida del menú
                 break;
             default:
-                cout << "\nOpción inválida. Intente de nuevo." << endl;
-                system("pause");
-                break;
+                cout << "\n\t\tOpción inválida... Intenta de nuevo...";
+                cin.get();
         }
-
-    } while(opcion != 6);
-
-    return 0;
+    } while(choice != 6);
 }

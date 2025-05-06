@@ -1,75 +1,30 @@
-// Gabriela Escobar - 5 de Mayo 2025
-// Implementación del módulo de reportes
+// 9959-24-11603 GE
+// Declaración de la clase Reportes, que se encarga de generar distintos
+// informes y análisis para el sistema logístico.
 
-#include "Reportes.h"
-#include <iostream>
-#include <fstream> // Para exportar reportes
-#include <vector>  // Para trabajar con colecciones dinámicas
+#ifndef REPORTES_H
+#define REPORTES_H
 
-using namespace std;
+#include "bitacora.h"   // Para registrar acciones en la bitácora
+#include "usuarios.h"   // Para acceder a información del usuario actual
 
-void Reportes::mostrarMenuReportes() {
-    int opcion;
+// Clase que encapsula las funcionalidades relacionadas con reportes y análisis
+class Reportes {
+public:
+    // Método principal para generar reportes desde el menú
+    void generarReportes();
 
-    do {
-        cout << "\t\t========================================" << endl;
-        cout << "\t\t| MODULO DE REPORTES - LOGISTICA       |" << endl;
-        cout << "\t\t========================================" << endl;
-        cout << "\t\t 1. Reporte de Ventas" << endl;
-        cout << "\t\t 2. Reporte de Usuarios" << endl;
-        cout << "\t\t 3. Exportar Reporte" << endl;
-        cout << "\t\t 4. Volver al menú principal" << endl;
-        cout << "\t\t========================================" << endl;
-        cout << "\t\tSeleccione una opción: ";
-        cin >> opcion;
+    // Genera un informe de ventas
+    void informeVentas();
 
-        switch (opcion) {
-            case 1:
-                generarReporteVentas();
-                break;
-            case 2:
-                generarReporteUsuarios();
-                break;
-            case 3:
-                exportarReporte();
-                break;
-            case 4:
-                break;
-            default:
-                cout << "\n\t\t¡Opción inválida!" << endl;
-                break;
-        }
+    // Realiza un análisis de los tiempos de entrega
+    void analisisTiemposEntrega();
 
-    } while (opcion != 4);
-}
+    // Muestra un reporte del estado actual del inventario
+    void reporteInventarios();
 
-void Reportes::generarReporteVentas() {
-    // Simula reporte de ventas
-    // Aquí podrías reemplazarlo con datos dinámicos de una base de datos o archivo.
-    cout << "\n\t\t[Mostrando reporte de ventas...]" << endl;
-    cout << "\t\tTotal ventas abril 2025: L. 120,000.00" << endl;
-    system("pause");
-}
+    // Evalúa el desempeño de los proveedores
+    void evaluacionProveedores();
+};
 
-void Reportes::generarReporteUsuarios() {
-    // Simula reporte de usuarios
-    // Aquí podrías consultar la base de datos o archivo de usuarios.
-    cout << "\n\t\t[Mostrando reporte de usuarios activos...]" << endl;
-    cout << "\t\tUsuarios activos: 25" << endl;
-    system("pause");
-}
-
-void Reportes::exportarReporte() {
-    // Guardar el reporte de ventas y usuarios en un archivo CSV
-    ofstream file("reporte_generado.csv");
-    if (file.is_open()) {
-        file << "Tipo de Reporte,Valor\n";
-        file << "Ventas abril 2025,L. 120,000.00\n";
-        file << "Usuarios activos,25\n";
-        file.close();
-        cout << "\n\t\t[Reporte exportado como 'reporte_generado.csv']" << endl;
-    } else {
-        cerr << "\n\t\tError al exportar el archivo." << endl;
-    }
-    system("pause");
-}
+#endif // REPORTES_H
