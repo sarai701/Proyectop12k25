@@ -1,4 +1,5 @@
 //Programado por Priscila Sarai Guzmán Calgua 9959-23-450
+//Boris de León 9959-24-6203
 #ifndef BITACORA_H
 #define BITACORA_H
 

@@ -52,35 +52,22 @@ Admin          4005      Nominas             Ver empleados                 Mon M
 Calgua         4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 04:41:05 2025 
 Calgua         4402      Sistema             Usuario revisó la bitácora    Mon May 05 04:41:34 2025 
 Calgua         4901      Sistema             Usuario cerró sesión          Mon May 05 04:41:37 2025 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 09:22:47 2025 
-Admin          5001      Empleados           Crear                         Mon May 05 09:23:41 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 09:23:47 2025 
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 09:27:33 2025 
-Admin          5001      Empleados           Crear                         Mon May 05 09:30:39 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 09:30:53 2025 
-karla          4402      Sistema             Usuario revisó la bitácora    Mon May 05 09:31:16 2025 
-karla          4901      Sistema             Usuario cerró sesión          Mon May 05 09:31:21 2025 
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 10:09:57 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 10:10:02 2025 
-karla          4901      Sistema             Usuario cerró sesión          Mon May 05 10:10:05 2025 
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 10:12:48 2025 
-Admin          5001      Empleados           Crear                         Mon May 05 10:13:08 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 10:13:14 2025 
->>>>>>> 3509a453d075eb4d294700013dae9ae14bc31c71
-=======
-Karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 20:47:50 2025 
-Admin          5001      Empleados           Crear                         Mon May 05 20:48:09 2025 
-Karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 20:48:12 2025 
->>>>>>> 1ffb03612c47ce1169541ede7ad209ab9ac9dae4
-=======
 Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 11:03:52 2025 
 Admin          5005      Empleados           Desplegar                     Mon May 05 11:03:58 2025 
 Prisci         4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 11:04:03 2025 
 Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 11:04:19 2025 
 Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 11:04:21 2025 
 admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 20:53:47 2025 
->>>>>>> 8b33fe42d0419989d49c8c78957c66ac41406032
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 21:06:53 2025 
+admin          4301      Contabilidad        Generar reporte contable      Mon May 05 21:06:57 2025 
+admin          4401      Auditoría           Revisar transacciones         Mon May 05 21:07:02 2025 
+admin          4301      Contabilidad        Generar reporte contable      Mon May 05 21:07:05 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 22:18:39 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 22:18:44 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 22:18:51 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 22:19:09 2025 
+Prisci         4401      Auditoría           Revisar transacciones         Mon May 05 22:19:22 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 22:19:25 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 22:19:35 2025 
+Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 22:19:44 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 22:19:47 2025 
