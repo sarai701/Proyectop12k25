@@ -1,30 +1,25 @@
-//LUIS ANGEL MENDEZ FUENTES 9959-24-6845
-// MAYO 2025
+// LUIS ANGEL MENDEZ FUENTES 9959-24-6845
 #ifndef BITACORA_H
 #define BITACORA_H
 
-// Inclusión de bibliotecas necesarias
 #include <string>
-#include <fstream> // Para manejo de archivos
-
+#include <fstream>
 using namespace std;
 
-// Clase bitacora: permite registrar y visualizar acciones realizadas por usuarios
+// Clase 'bitacora': Maneja el registro de acciones realizadas en el sistema.
 class bitacora {
 private:
-    // Atributos que pueden utilizarse para representar una entrada de bitácora
-    string nombreUsuario;   // Nombre del usuario que realizó la acción
-    string codigoAccion;    // Código asociado a la acción realizada
-    string descripcion;     // Descripción textual de la acción
-
+    string nombreUsuario;   // Nombre del usuario que realiza la acción
+    string codigoAccion;    // Código que identifica la acción
+    string descripcion;     // Descripción de la acción realizada
 public:
-    // Inserta un nuevo registro en el archivo de bitácora
+    // Inserta una nueva entrada en la bitácora con los datos proporcionados
     void insertar(string usuario, string codigo, string accion);
 
-    // Muestra en pantalla los registros actuales de la bitácora
+    // Muestra las entradas registradas en la bitácora
     void desplegar();
 
-    // Muestra el menú interactivo para gestionar la bitácora
+    // Muestra un menú para acceder a la bitácora (solo desde administración)
     void menuBitacora();
 };
 
