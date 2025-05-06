@@ -34,28 +34,20 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		<Unit filename="include/facturacion.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="src/facturacion.cpp" />
-=======
-=======
-		<Unit filename="include/Reportes.h" />
->>>>>>> d36d11456fb2d713be769bfa6fe945354e61408f
-		<Unit filename="include/bitacora.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="src/Reportes.cpp" />
-		<Unit filename="src/bitacora.cpp" />
->>>>>>> refs/remotes/origin/main
-=======
 		<Unit filename="include/Inventario.h" />
+		<Unit filename="include/Reportes.h" />
 		<Unit filename="include/Usuario.h" />
+		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/envios.h" />
+		<Unit filename="include/pedidos.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Inventario.cpp" />
+		<Unit filename="src/Reportes.cpp" />
 		<Unit filename="src/Usuario.cpp" />
->>>>>>> 3a2d7c3c88c68ba28eec6d67c1c18d29a7eedca8
+		<Unit filename="src/bitacora.cpp" />
+		<Unit filename="src/envios.cpp" />
+		<Unit filename="src/facturacion.cpp" />
+		<Unit filename="src/pedidos.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

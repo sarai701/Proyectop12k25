@@ -1,24 +1,16 @@
 #ifndef ENVIOS_H
-#define ENVIOS_H
+ #define ENVIOS_H
 
-#include "bitacora.h"
-#include "usuarios.h"
-#include <string>
+ #include "bitacora.h"
+ #include "usuarios.h"
 
-class Envios {
-private:
-    std::string numeroGuia;
-    std::string transportista;
-    std::string estado;
-    std::string destino;
-public:
-    void gestionEnvios();
-    void generarGuia();
-    void asignarTransportista();
-    void rastrearEnvio();
-    void confirmarEntrega();
-    void guardarEnvio(const std::string& archivo);
-    void cargarEnvios(const std::string& archivo);
-};
+ class Envios {
+ public:
+     void gestionEnvios();
+     void generarGuia();
+     void asignarTransportista();
+     void rastrearEnvio();
+     void confirmarEntrega();
+ };
 
-#endif // ENVIOS_H
+ #endif // ENVIOS_H
