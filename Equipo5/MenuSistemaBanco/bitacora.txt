@@ -54,6 +54,7 @@ Calgua         4402      Sistema             Usuario revisó la bitácora    Mon M
 Calgua         4901      Sistema             Usuario cerró sesión          Mon May 05 04:41:37 2025 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 09:22:47 2025 
 Admin          5001      Empleados           Crear                         Mon May 05 09:23:41 2025 
@@ -75,3 +76,11 @@ Karla          1000      Sistema             Inicio de sesión exitoso      Mon M
 Admin          5001      Empleados           Crear                         Mon May 05 20:48:09 2025 
 Karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 20:48:12 2025 
 >>>>>>> 1ffb03612c47ce1169541ede7ad209ab9ac9dae4
+=======
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 11:03:52 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 11:03:58 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 11:04:03 2025 
+Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 11:04:19 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 11:04:21 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 20:53:47 2025 
+>>>>>>> 8b33fe42d0419989d49c8c78957c66ac41406032

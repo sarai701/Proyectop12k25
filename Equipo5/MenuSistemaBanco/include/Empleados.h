@@ -1,11 +1,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // Karla Patricia Ruiz OrdoÃ±ez 9959-24-6859
 >>>>>>> 3509a453d075eb4d294700013dae9ae14bc31c71
 =======
 //Karla Patricia Ruiz Ordoñez 9959-24-6859
 >>>>>>> 1ffb03612c47ce1169541ede7ad209ab9ac9dae4
+=======
+>>>>>>> 8b33fe42d0419989d49c8c78957c66ac41406032
 #ifndef EMPLEADOS_H
 #define EMPLEADOS_H
 
@@ -13,6 +16,9 @@
 #include <string>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8b33fe42d0419989d49c8c78957c66ac41406032
 #include "Bitacora.h"
 
 // Clase para representar a un empleado
@@ -44,6 +50,7 @@ public:
     void buscarEmpleado();             // Busca un empleado por nombre y código
     void modificarEmpleado();          // Modifica los datos de un empleado
     void desplegarEmpleados();         // Muestra todos los empleados registrados
+<<<<<<< HEAD
 =======
 #include "Bitacora.h"  //  Se incluye para registrar acciones realizadas
 
@@ -134,6 +141,8 @@ public:
     void guardarEmpleados();
     void ordenarEmpleados();
 >>>>>>> 1ffb03612c47ce1169541ede7ad209ab9ac9dae4
+=======
+>>>>>>> 8b33fe42d0419989d49c8c78957c66ac41406032
 };
 
 #endif // EMPLEADOS_H

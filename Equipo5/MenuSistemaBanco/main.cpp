@@ -67,11 +67,11 @@ void mostrarMenu(const string& usuario) {
                 bitacora.insertar(usuario, 4001, "Empleados", "Ingresó al módulo de Empleados");
                 break;
             case 4:
-                contabilidad.generarReporte();
+                contabilidad.menuContabilidad();
                 bitacora.insertar(usuario, 4301, "Contabilidad", "Generar reporte contable");
                 break;
             case 5:
-                auditoria.revisarTransacciones();
+                auditoria.menuAuditoria();
                 bitacora.insertar(usuario, 4401, "Auditoría", "Revisar transacciones");
                 break;
             case 6:

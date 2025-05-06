@@ -6,6 +6,7 @@ Pedro,87965655,222,zona 16,5000
 Priscila,47681373,1234,zona 18,40000
 admin,2345343,1234,zona 17,2000
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 patty,123,Asistente,36969215
 patty,123,trabajador,65841358
@@ -17,3 +18,5 @@ Pedro,87965655,222,zona 16,5000
 Priscila,47681373,1234,zona 18,40000
 admin,2345343,1234,zona 17,2000
 >>>>>>> 1ffb03612c47ce1169541ede7ad209ab9ac9dae4
+=======
+>>>>>>> 8b33fe42d0419989d49c8c78957c66ac41406032
