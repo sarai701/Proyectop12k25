@@ -118,7 +118,6 @@ void Inventario::ajustarInventario() {
     system("pause");
 }
 
-// Reporte de existencias
 void Inventario::reporteExistencias() {
     system("cls");
     cout << "\t\t========================================" << endl;
@@ -135,9 +134,17 @@ void Inventario::reporteExistencias() {
     string id, nombre;
     int cantidad;
 
-    cout << "\t\t" << left << setw(10) << "ID" << setw(20) << "NOMBRE" << setw(10) << "CANTIDAD" << endl;
+    // Imprimir encabezados
+    cout << "\t\t" << left << setw(10) << "ID"
+         << setw(20) << "NOMBRE"
+         << setw(10) << "CANTIDAD" << endl;
+    cout << "\t\t" << string(40, '-') << endl; // Línea divisoria
+
+    // Imprimir los datos del inventario
     while (archivo >> id >> nombre >> cantidad) {
-        cout << "\t\t" << setw(10) << id << setw(20) << nombre << setw(10) << cantidad << endl;
+        cout << "\t\t" << setw(10) << id
+             << setw(20) << nombre
+             << setw(10) << cantidad << endl;
     }
     archivo.close();
 
