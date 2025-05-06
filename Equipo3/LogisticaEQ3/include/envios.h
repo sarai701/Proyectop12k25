@@ -2,7 +2,7 @@
  #define ENVIOS_H
 
  #include "bitacora.h"
- #include "usuarios.h"
+ #include "usuario.h"
 
  class Envios {
  public:

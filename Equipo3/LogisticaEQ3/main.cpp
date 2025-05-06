@@ -1,7 +1,7 @@
 // Gabriela - Mayo 2025
 #include <iostream>
 #include "Reportes.h"
-#include "Usuarios.h"
+#include "Usuario.h"
 #include "Inventario.h"
 #include "Facturacion.h"
 #include "Bitacora.h"

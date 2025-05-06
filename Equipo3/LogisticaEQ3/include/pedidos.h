@@ -2,7 +2,7 @@
 #define PEDIDOS_H
 
 #include "bitacora.h"
-#include "usuarios.h"
+#include "usuario.h"
 
  class Pedidos {
  public:
