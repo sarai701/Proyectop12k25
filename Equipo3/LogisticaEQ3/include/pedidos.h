@@ -4,6 +4,10 @@
 #include "bitacora.h"
 #include "usuario.h"
 
+//JENNIFER BARRIOS COORD EQ 3
+//9959-24-10016
+//MAYO 2025
+
  class Pedidos {
  public:
      void gestionPedidos();
