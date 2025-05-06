@@ -1,3 +1,4 @@
+//Programaddo por Priscila Sarai Guzmán Calgua 9959-23-450
 #ifndef NOMINAS_H
 #define NOMINAS_H
 

@@ -7,7 +7,7 @@ using namespace std;
 
 class Empleado {
 public:
-    void gestionarNomina();
+    void gestionarEmpleados();
 };
 
 #endif

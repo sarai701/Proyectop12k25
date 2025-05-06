@@ -1,0 +1,81 @@
+# depslib dependency file v1.0
+1743719223 source:c:\users\angel r\desktop\programas de progra 1 2025\nominas\src\opciones.cpp
+	"Opciones.h"
+
+1743719618 c:\users\angel r\desktop\programas de progra 1 2025\nominas\include\opciones.h
+
+1745850324 source:c:\users\angel r\desktop\programas de progra 1 2025\nominas\main.cpp
+	<iostream>
+	<fstream>
+	"usuarios.h"
+	"bitacora.h"
+
+1745850266 source:c:\users\angel r\desktop\programas de progra 1 2025\nominas\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1745850238 c:\users\angel r\desktop\programas de progra 1 2025\nominas\include\bitacora.h
+	<iostream>
+
+1745850194 c:\users\angel r\desktop\programas de progra 1 2025\nominas\include\usuarios.h
+	<iostream>
+
+1746409051 source:c:\users\angel r\documents\progra\programacion-1-tareas\nominas\src\opciones.cpp
+	"Opciones.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+
+1746409051 c:\users\angel r\documents\progra\programacion-1-tareas\nominas\include\opciones.h
+	<iostream>
+
+1746409051 source:c:\users\angel r\documents\progra\programacion-1-tareas\nominas\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<bitacora.h>
+	<iostream>
+
+1746409052 c:\users\angel r\documents\progra\programacion-1-tareas\nominas\include\usuarios.h
+	<iostream>
+
+1745850238 c:\users\angel r\documents\progra\programacion-1-tareas\nominas\include\bitacora.h
+	<iostream>
+
+1745855041 source:c:\users\angel r\documents\progra\programacion-1-tareas\nominas\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1746409052 source:c:\users\angel r\documents\progra\programacion-1-tareas\nominas\main.cpp
+	<iostream>
+	<fstream>
+	"Opciones.h"
+	"usuarios.h"
+	"bitacora.h"
+	"sistema.h"
+
+1746409051 c:\users\angel r\documents\progra\programacion-1-tareas\nominas\include\sistema.h
+	<fstream>
+	<vector>
+	"usuarios.h"
+
+1746409051 source:c:\users\angel r\documents\progra\programacion-1-tareas\nominas\src\sistema.cpp
+	"sistema.h"
+	"Opciones.h"
+
