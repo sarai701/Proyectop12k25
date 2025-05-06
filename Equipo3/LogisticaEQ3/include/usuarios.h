@@ -1,6 +1,6 @@
 //Karina Alejandra Arriaza Ortiz
-#ifndef USUARIO_H
-#define USUARIO_H
+#ifndef USUARIOS_H
+#define USUARIOS_H
 #include <string>
 #include "bitacora.h"
 
@@ -19,6 +19,7 @@ public:
     void setNombre(const std::string& nombre);
     void menuUsuarios();
     void consultarUsuarios();
+    void eliminarUsuario();
 };
 
-#endif // USUARIO_H
+#endif // USUARIOS_H

@@ -1,8 +1,8 @@
-#include "Usuario.h"
 //Karina Alejandra Arriaza Ortiz
+#include "usuarios.h"
 #include <iostream>
 #include <fstream>
-#include <conio.h> // Para getch()
+#include <conio.h>
 #include <iomanip>
 using namespace std;
 

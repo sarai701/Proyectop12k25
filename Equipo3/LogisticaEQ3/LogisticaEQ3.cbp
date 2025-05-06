@@ -36,9 +36,13 @@
 		</Compiler>
 		<Unit filename="include/Inventario.h" />
 		<Unit filename="include/Usuario.h" />
+		<Unit filename="include/inventario.h" />
+		<Unit filename="include/usuarios.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Inventario.cpp" />
 		<Unit filename="src/Usuario.cpp" />
+		<Unit filename="src/inventario.cpp" />
+		<Unit filename="src/usuarios.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

@@ -2,9 +2,49 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+	<File name="src\Usuario.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="238" />
+		</Cursor>
+	</File>
+	<File name="src\inventario.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="32" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\inventario.h" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="32" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Usuario.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="602" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\usuarios.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="116" topLine="99" />
+		</Cursor>
+	</File>
+	<File name="src\Inventario.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3959" topLine="119" />
+		</Cursor>
+	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="117" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\usuarios.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="604" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="include\Inventario.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="43" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

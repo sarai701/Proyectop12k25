@@ -1,5 +1,5 @@
-#include "Inventario.h"
 //Karina Alejandra Arriaza Ortiz
+#include "inventario.h"
 #include <iostream>
 using namespace std;
 
