@@ -52,20 +52,9 @@ Admin          4005      Nominas             Ver empleados                 Mon M
 Calgua         4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 04:41:05 2025 
 Calgua         4402      Sistema             Usuario revisó la bitácora    Mon May 05 04:41:34 2025 
 Calgua         4901      Sistema             Usuario cerró sesión          Mon May 05 04:41:37 2025 
-<<<<<<< HEAD
-=======
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 09:22:47 2025 
-Admin          5001      Empleados           Crear                         Mon May 05 09:23:41 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 09:23:47 2025 
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 09:27:33 2025 
-Admin          5001      Empleados           Crear                         Mon May 05 09:30:39 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 09:30:53 2025 
-karla          4402      Sistema             Usuario revisó la bitácora    Mon May 05 09:31:16 2025 
-karla          4901      Sistema             Usuario cerró sesión          Mon May 05 09:31:21 2025 
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 10:09:57 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 10:10:02 2025 
-karla          4901      Sistema             Usuario cerró sesión          Mon May 05 10:10:05 2025 
-karla          1000      Sistema             Inicio de sesión exitoso      Mon May 05 10:12:48 2025 
-Admin          5001      Empleados           Crear                         Mon May 05 10:13:08 2025 
-karla          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 10:13:14 2025 
->>>>>>> 3509a453d075eb4d294700013dae9ae14bc31c71
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 11:03:52 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 11:03:58 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 11:04:03 2025 
+Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 11:04:19 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 11:04:21 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 20:53:47 2025 
