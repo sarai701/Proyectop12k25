@@ -1,10 +1,12 @@
-//Programaddo por Boris Ivan de Leon Santos 9959-24-6203
+//Boris de León 9959-24-6203
 #include "Cliente.h"
+#include "Bitacora.h" // Agrega la bitacora
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <algorithm>
 
+Bitacora log; // Instancia global para registrar eventos
 using namespace std;
 
 // Limpia la pantalla según el sistema operativo
@@ -118,6 +120,8 @@ void Cliente::crearCliente() {
     guardarClientes();
 
     cout << "\nCliente agregado correctamente.";
+    log.insertar("Admin", 4101, "Clientes", "Crear Cliente");
+
     pausar();
 }
 
@@ -142,6 +146,8 @@ void Cliente::borrarCliente() {
     if (eliminado) {
         clientes = nuevaLista;
         guardarClientes();
+        log.insertar("Admin", 4104, "Clientes", "Borrar Cliente");
+
         cout << "\nCliente eliminado correctamente.";
     } else {
         cout << "\nCliente no encontrado.";
@@ -202,6 +208,8 @@ void Cliente::modificarCliente() {
     if (modificado) {
         ordenarClientes();
         guardarClientes();
+        log.insertar("Admin", 4103, "Clientes", "Modificar Cliente");
+
         cout << "\nCliente modificado exitosamente.";
     } else {
         cout << "\nCliente no encontrado.";
