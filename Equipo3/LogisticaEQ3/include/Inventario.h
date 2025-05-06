@@ -12,4 +12,5 @@ public:
     void ajustarInventario();
     void reporteExistencias();
 };
+
 #endif // INVENTARIO_H
