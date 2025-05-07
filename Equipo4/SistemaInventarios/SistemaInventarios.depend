@@ -274,7 +274,7 @@
 1746233986 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
 	<iostream
 
-1746242783 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
 	"Facturacion.h"
 
 1743741723 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
@@ -283,16 +283,16 @@
 	<iomanip>
 	"Inventario.h"
 
-1746243433 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+1746246778 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
 	<vector>
 	<string>
 	"Producto.h"
 
-1746245029 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+1746246778 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
 	"Bitacora.h"
 	<string>
 
-1746243837 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\usuario.cpp
+1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\usuario.cpp
 	"Usuario.h"
 	<fstream>
 	<cstdlib>
@@ -304,13 +304,13 @@
 1745851826 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
 	<iostream>
 
-1746243649 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+1746246778 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
 	<iostream>
 
-1746237188 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
 	"Producto.h"
 
-1746243300 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
 	"Inventario.h"
 	<iostream>
 	<fstream>
@@ -318,7 +318,7 @@
 	<algorithm>
 	<cstdlib>
 
-1746245887 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
 	"Bitacora.h"
 	<iostream>
 	<fstream>
@@ -329,15 +329,19 @@
 	<cstring>
 	<ctime>
 
-1746244794 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
 	<iostream>
 	"Usuario.h"
 	"Menu.h"
 	"Inventario.h"
 	"Facturacion.h"
 
-1746245400 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+1746246778 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
 	<iostream>
 	"Inventario.h"
 	"Facturacion.h"
+
+1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+	"Bitacora.h"
 
