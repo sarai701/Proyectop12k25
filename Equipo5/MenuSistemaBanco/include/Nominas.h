@@ -1,21 +1,22 @@
-//Programaddo por Priscila Sarai Guzmán Calgua 9959-23-450
+//Programado por Priscila Sarai Guzmán Calgua 9959-23-450
 #ifndef NOMINAS_H
 #define NOMINAS_H
-
+#include "Bitacora.h"
 #include <string>
 #include <vector>
+using namespace std;
 
-struct Empleados {
-    std::string nombre;
-    std::string telefono;
-    std::string codigo;
-    std::string direccion;
+struct EmpleadoNomina {
+    string nombre;
+    string telefono;
+    string codigo;
+    string direccion;
     float salario;
 };
 
 class Nominas {
 private:
-    std::vector<Empleados> empleados; // Lista en memoria de empleados
+    vector<EmpleadoNomina> empleados; // Lista en memoria de empleados
     void cargarEmpleados();           // Carga desde empleados.txt
     void guardarEmpleados();          // Guarda toda la lista en empleados.txt
     void ordenarEmpleados();          // Ordena alfabéticamente por nombre
