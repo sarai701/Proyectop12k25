@@ -5,10 +5,13 @@
 
 class Producto {
 public:
+    Producto(const std::string& nombre, double precio);
+    std::string getNombre() const;
+    double getPrecio() const;
+
+private:
     std::string nombre;
     double precio;
-
-    Producto(std::string n, double p);
 };
 
 #endif // PRODUCTO_H
