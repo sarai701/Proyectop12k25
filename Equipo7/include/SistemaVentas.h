@@ -6,6 +6,7 @@
 #include "Producto.h"
 #include "Venta.h"
 
+
 // Clase que representa el sistema de ventas.
 // Se encarga de gestionar clientes, productos y ventas.
 class SistemaVentas {
@@ -14,9 +15,10 @@ private:
     std::vector<Producto> productos; // Lista de productos disponibles para la venta.
     std::vector<Venta> ventas; // Registro de ventas realizadas.
 
-public:
+    void limpiarPantalla(); // Limpia la consola según el sistema operativo
 
-    // Agrega un nuevo cliente al sistema.
+public:
+     // Agrega un nuevo cliente al sistema.
     // Solicita el nombre y correo del cliente.
     void agregarCliente();
 
@@ -29,7 +31,7 @@ public:
     // Verifica la existencia del cliente y del producto antes de registrar la venta.
     void realizarVenta();
 
-    // Muestra un listado de todas las ventas realizadas.
+     // Muestra un listado de todas las ventas realizadas.
     // Incluye el nombre del cliente, el producto adquirido y la cantidad comprada.
     void mostrarVentas();
 
@@ -37,8 +39,6 @@ public:
     // Permite al usuario elegir entre agregar clientes, productos, realizar ventas o salir del sistema.
     void mostrarMenu();
 
-    void mostrarCatalogo();
-    // muestra un listrado princital de todos los productos registrados y su precio
 
 };
 
