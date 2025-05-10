@@ -5,6 +5,7 @@
 
 using namespace std;
 
+// Verifica si el usuario ya está registrado
 bool usuarioExiste(const string& username) {
     ifstream file("usuarios.txt");
     string user, pass;
@@ -16,8 +17,9 @@ bool usuarioExiste(const string& username) {
     return false;
 }
 
+// Registra un nuevo usuario en el archivo
 bool registrarUsuario() {
-    system ("cls");
+    system("cls");
     string username, password;
     cout << "\n--- Registro de Usuario ---\n";
     cout << "Ingrese nombre de usuario: ";
@@ -28,7 +30,7 @@ bool registrarUsuario() {
         return false;
     }
 
-    cout << "Ingrese contrase�a: ";
+    cout << "Ingrese contraseña: ";
     cin >> password;
 
     ofstream file("usuarios.txt", ios::app);
@@ -39,20 +41,22 @@ bool registrarUsuario() {
     return true;
 }
 
-bool iniciarSesion() {
-    system ("cls");
+// Iniciar sesión con referencia a usuarioActual para guardar su nombre
+bool iniciarSesion(string& usuarioActual) {
+    system("cls");
     string username, password;
     cout << "\n--- Inicio de Sesion ---\n";
     cout << "Usuario: ";
     cin >> username;
-    cout << "Contrase�a: ";
+    cout << "Contraseña: ";
     cin >> password;
 
     ifstream file("usuarios.txt");
     string user, pass;
     while (file >> user >> pass) {
         if (user == username && pass == password) {
-            cout << "Inicio de sesi�n exitoso. Bienvenido, " << username << ".\n";
+            usuarioActual = username; // ← Guarda el nombre del usuario para bitácora
+            cout << "Inicio de sesión exitoso. Bienvenido, " << username << ".\n";
             return true;
         }
     }

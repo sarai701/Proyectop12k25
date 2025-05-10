@@ -1,0 +1,3 @@
+[Fri May 09 20:29:53 2025] Usuario: meilyn - Entró a la opción Catálogos
+[Fri May 09 20:30:20 2025] Usuario: meilyn - Salió del menú general
+[Fri May 09 20:30:20 2025] Usuario: meilyn - Cerró sesión desde menú principal

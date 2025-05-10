@@ -38,6 +38,7 @@
 		<Unit filename="include/Producto.h" />
 		<Unit filename="include/SistemaVentas.h" />
 		<Unit filename="include/Venta.h" />
+		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/login.h" />
 		<Unit filename="include/usuario.h" />
 		<Unit filename="main.cpp" />
@@ -45,6 +46,7 @@
 		<Unit filename="src/Producto.cpp" />
 		<Unit filename="src/SistemaVentas.cpp" />
 		<Unit filename="src/Venta.cpp" />
+		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/login.cpp" />
 		<Unit filename="src/usuario.cpp" />
 		<Extensions>
