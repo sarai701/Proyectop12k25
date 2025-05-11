@@ -72,8 +72,8 @@ bool usuarios::loginUsuarios(){
     else{
         cout<< "\t\t\n\nINGRESANDO AL SISTEMA..."<<endl;
         bitacora auditoria;
-        auditoria.insertar("usuario","100", "LOGS");
         name=usuario;
+        auditoria.insertar(name,"100", "LOGS");
         cin.get();
     }
 

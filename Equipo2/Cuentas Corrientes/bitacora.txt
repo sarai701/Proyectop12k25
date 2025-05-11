@@ -18,3 +18,21 @@ usuario        100            LOGS
 usuario1       Transacción    Registro de nueva transacción ID: 8701
 usuario        100            LOGS           
 usuario        100            LOGS           
+usuario        100            LOGS           
+usuario registrado8011           INC            
+usuario registrado8011           MC             
+usuario registrado8011           UPD            
+usuario registrado8011           MC             
+usuario registrado8011           DEL            
+usuario registrado8012           INP            
+usuario registrado8012           MP             
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario registrado8011           INC            
+usuario registrado8011           INC            
+usuario registrado8011           MC             
+usuario registrado8011           MC             
+Fernanda       100            LOGS           
+Luisa          100            LOGS           
+Luisa          100            LOGS           
+Luisa          100            LOGS           
