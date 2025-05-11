@@ -6,13 +6,11 @@
 
 class Venta {
 public:
-    Venta(const Cliente& cliente, const Producto& producto, int cantidad);
-    double calcularTotal() const;
-
-private:
     Cliente cliente;
     Producto producto;
     int cantidad;
+
+    Venta(Cliente c, Producto p, int cant);
 };
 
 #endif // VENTA_H
