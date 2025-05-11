@@ -89,7 +89,7 @@ void acreedor::insertar()
         cout << "\t\t\tIngresa Banco del Acreedor  : ";
         cin >> banco;
 
-        // Mostrar resumen de la información ingresada antes de guardar
+        // Mostrar resumen de la información ingresada antes de guardar: Dulce R
         cout << "\nResumen de la información ingresada:\n";
         cout << "\t\t\tID Acreedor        : " << id << endl;
         cout << "\t\t\tNombre Acreedor    : " << nombreAcreedor << endl;
@@ -100,7 +100,7 @@ void acreedor::insertar()
         cout << "\n Esta seguro de guardar esta informacion? (S/N): ";
         cin >> confirmar;
 
-        // Si el usuario confirma, se guarda la información en el archivo
+        // Si el usuario confirma, se guarda la información en el archivo: Dulce R
         if (confirmar == 's' || confirmar == 'S') {
             file.open("acreedor.txt", ios::app | ios::out);
             file << left << setw(15) << id
