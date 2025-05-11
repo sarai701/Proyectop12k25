@@ -1,0 +1,8 @@
+001        NombreUno       123456        
+002        NombreDos       clave456       
+003        NombreTres      654321    
+4        Miriam       9090       
+005        Mario       4545       
+006        Juan       9999       
+                      
+7        Luisa       2121       
