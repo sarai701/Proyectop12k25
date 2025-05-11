@@ -4,6 +4,7 @@
 #include "usuarios.h"
 #include "catalogos.h"
 #include "procesos.h"
+#include "bitacora.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ void menuInicio();
 //Objetos
 usuarios usuariosrRegistrado;
 Catalogos catalogo;
+bitacora auditorias;
 
 int main()
 {
@@ -71,7 +73,8 @@ void menuGeneral(){
         cout << "\t\t2. Menu de Procesos" << endl;
         cout << "\t\t3. Menu de Reportes" << endl;
         cout << "\t\t4. Menu de Configuracion" << endl;
-        cout << "\t\t5. Salir" << endl;
+        cout << "\t\t5. Menu de Bitacora" << endl;
+        cout << "\t\t6. Salir" << endl;
         cout << "\n\t\tIngrese una opcion: ";
         cin >> opciones;
 
@@ -89,11 +92,14 @@ void menuGeneral(){
                 //menuConfiguracion();
                 break;
             case 5:
+                auditorias.menu();
+                break;
+            case 6:
                 cout << "\n\n\t\tSaliendo del sistema...\n" << endl;
                 break;
             default:
                 cout << "n\t\tOpción no válida. Intente de nuevo" << endl;
         }
-    } while (opciones != 5); // Repite el menú hasta que el usuario quiera salir
+    } while (opciones != 6); // Repite el menú hasta que el usuario quiera salir
 
 }
