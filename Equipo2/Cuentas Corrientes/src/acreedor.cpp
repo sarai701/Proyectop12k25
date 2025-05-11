@@ -11,6 +11,8 @@
 #include<iomanip>
 using namespace std;
 
+extern usuarios usuariosrRegistrado;
+
 void acreedor::menu()
 {
     int choice;
@@ -25,8 +27,8 @@ void acreedor::menu()
         cout<<"\t\t\t 3. Modifica Acreedores"<<endl;
         cout<<"\t\t\t 4. Busca Acreedores"<<endl;
         cout<<"\t\t\t 5. Borra Acreedores"<<endl;
-        cout<<"\t\t\t 6. Salida"<<endl;
-
+        cout<<"\t\t\t 6. Reportes Acreedores"<<endl;
+        cout<<"\t\t\t 7. Salida"<<endl;
         cout<<"\t\t\t-------------------------------"<<endl;
         cout<<"\t\t\tOpcion a escoger:[1/2/3/4/5/6]"<<endl;
         cout<<"\t\t\tIngresa tu Opcion: ";
@@ -36,59 +38,89 @@ void acreedor::menu()
         {
         case 1:
             do {
-                insertar();
+                insertar(); // Agregar nuevo acreedor
                 cout<<"\n\t\t\t Agrega otro Acreedor (Y/N): ";
                 cin>>x;
             } while(x=='y'||x=='Y');
             break;
         case 2:
-            desplegar();
+            desplegar(); // Mostrar todos los acreedores
             break;
         case 3:
-            modificar();
+            modificar(); // Editar información de un acreedor
             break;
         case 4:
-            buscar();
+            buscar(); // Buscar acreedor por ID
             break;
         case 5:
-            borrar();
+            borrar(); // Eliminar acreedor por ID
             break;
         case 6:
+            reporte(); // Mostrar reporte tabular de acreedores
+            break;
+        case 7:
             break;
         default:
-		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez..";
+            cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez..";
             cin.get();
         }
-    } while(choice!= 6);
+    } while(choice!= 7);
 }
 
+// Inserta un nuevo acreedor con validación y confirmación de datos
 void acreedor::insertar()
 {
     system("cls");
     fstream file;
-    cout<<"\n----------------------------------------------------------------------------------";
-    cout<<"\n-------------------------------- Agregar Acreedor --------------------------------"<<endl;
-    cout << "\t\t\tIngresa ID Acreedor         : ";
-    cin >> id;
-    cout << "\t\t\tIngresa Nombre Acreedor     : ";
-    cin >> nombreAcreedor;
-    cout << "\t\t\tIngresa Telefono Acreedor   : ";
-    cin >> telefono;
-    cout << "\t\t\tIngresa Num.Cuenta Acreedor : ";
-    cin >> numCuenta;
-    cout << "\t\t\tIngresa Banco del Acreedor  : ";
-    cin >> banco;
+    char confirmar;
 
+    do {
+        cout << "\n----------------------------------------------------------------------------------";
+        cout << "\n-------------------------------- Agregar Acreedor --------------------------------\n";
 
-    file.open("acreedor.txt", ios::app | ios::out);
-    file<<left<<setw(15)<< id << left<<setw(15)<< nombreAcreedor <<left<<setw(15)<< telefono <<left << setw(15) << numCuenta
-    << left << setw(15)<< banco << "\n";
-    file.close();
+        cout << "\t\t\tIngresa ID Acreedor         : ";
+        cin >> id;
+        cout << "\t\t\tIngresa Nombre Acreedor     : ";
+        cin >> nombreAcreedor;
+        cout << "\t\t\tIngresa Telefono Acreedor   : ";
+        cin >> telefono;
+        cout << "\t\t\tIngresa Num.Cuenta Acreedor : ";
+        cin >> numCuenta;
+        cout << "\t\t\tIngresa Banco del Acreedor  : ";
+        cin >> banco;
 
-    bitacora auditoria;
-    auditoria.insertar("usuario registrado", "8013", "INA");
+        // Mostrar resumen de la información ingresada antes de guardar
+        cout << "\nResumen de la información ingresada:\n";
+        cout << "\t\t\tID Acreedor        : " << id << endl;
+        cout << "\t\t\tNombre Acreedor    : " << nombreAcreedor << endl;
+        cout << "\t\t\tTelefono Acreedor  : " << telefono << endl;
+        cout << "\t\t\tNumero de Cuenta   : " << numCuenta << endl;
+        cout << "\t\t\tBanco              : " << banco << endl;
+
+        cout << "\n Esta seguro de guardar esta informacion? (S/N): ";
+        cin >> confirmar;
+
+        // Si el usuario confirma, se guarda la información en el archivo
+        if (confirmar == 's' || confirmar == 'S') {
+            file.open("acreedor.txt", ios::app | ios::out);
+            file << left << setw(15) << id
+                 << left << setw(15) << nombreAcreedor
+                 << left << setw(15) << telefono
+                 << left << setw(15) << numCuenta
+                 << left << setw(15) << banco << "\n";
+            file.close();
+
+            bitacora auditoria;
+            auditoria.insertar(usuariosrRegistrado.getNombre(), "8040", "INA"); // Insertar nuevo acreedor
+            cout << "\nAcreedor guardado correctamente.\n";
+        } else {
+            cout << "\nVolvamos a ingresar los datos...\n";
+        }
+
+    } while (confirmar != 's' && confirmar != 'S');
 }
 
+// Muestra todos los acreedores registrados
 void acreedor::desplegar()
 {
     system("cls");
@@ -115,13 +147,14 @@ void acreedor::desplegar()
         if(total==0){
             cout<<"\n\t\t\tNo hay informacion...";
         }
-		system("pause");
-		}
+        system("pause");
+    }
     file.close();
     bitacora auditoria;
-    auditoria.insertar("usuario registrado", "8013", "MA"); //Mostrar Acreedor
+    auditoria.insertar(usuariosrRegistrado.getNombre(), "8041", "MA"); // Mostrar Acreedor
 }
 
+// Permite modificar la información de un acreedor ya existente
 void acreedor::modificar()
 {
     system("cls");
@@ -145,20 +178,22 @@ void acreedor::modificar()
         while(!file.eof())
         {
             if(acreedor_id != id) {
+                // Copia el registro sin modificar si no es el ID buscado
                 file1<<left<<setw(15)<< id << left<<setw(15)<< nombreAcreedor <<left<<setw(15)<< telefono <<left << setw(15)
                 << numCuenta << left << setw(15)<< banco << "\n";
             }
-        else {
+            else {
+                // Solicita nueva información del acreedor
                 cout<<"\t\t\tIngrese Id Acreedor        : ";
-				cin>>id;
-				cout<<"\t\t\tIngrese Nombre Acreedor    : ";
-				cin>>nombreAcreedor;
-				cout<<"\t\t\tIngrese Telefono Acreedor  : ";
-				cin>>telefono;
-				cout<<"\t\t\tIngrese Num.Cuenta Acreedor: ";
-				cin >>numCuenta;
-				cout<<"\t\t\tIngrese Banco Acreedor     : ";
-				cin>>banco;
+                cin>>id;
+                cout<<"\t\t\tIngrese Nombre Acreedor    : ";
+                cin>>nombreAcreedor;
+                cout<<"\t\t\tIngrese Telefono Acreedor  : ";
+                cin>>telefono;
+                cout<<"\t\t\tIngrese Num.Cuenta Acreedor: ";
+                cin >>numCuenta;
+                cout<<"\t\t\tIngrese Banco Acreedor     : ";
+                cin>>banco;
 
                 file1<<left<<setw(15)<< id << left<<setw(15)<< nombreAcreedor <<left<<setw(15)<< telefono <<left << setw(15)
                 << numCuenta << left << setw(15)<< banco << "\n";
@@ -176,23 +211,22 @@ void acreedor::modificar()
         remove("acreedor.txt");
         rename("temporal.txt","acreedor.txt");
         bitacora auditoria;
-        auditoria.insertar("usuario registrado", "8013", "UDA");
+        auditoria.insertar(usuariosrRegistrado.getNombre(), "8042", "UAD"); // Actualizar Acreedor
     }
 }
 
+// Permite buscar un acreedor por ID y mostrar su información
 void acreedor::buscar()
 {
     system("cls");
     fstream file;
     int found=0;
 
-
     file.open("acreedor.txt", ios::in);
     cout<<"\n---------------- Buscar Acreedor ----------------"<<endl;
     if(!file) {
         cout<<"\n\t\t\tNo hay informacion...";
         file.close();
-
     } else {
         string acreedor_id;
         cout<<"\nIngrese ID del Acreedor que quiere buscar : ";
@@ -210,14 +244,15 @@ void acreedor::buscar()
             }
             file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
         }
-        if(found==0) cout<<"\n\t\t\Acreedor no encontrado...\n";
+        if(found==0) cout<<"\n\t\t\tAcreedor no encontrado...\n";
         system("pause");
         file.close();
     }
     bitacora auditoria;
-    auditoria.insertar("usuario registrado", "8012", "BAC");
+    auditoria.insertar(usuariosrRegistrado.getNombre(), "8043", "BAR"); // Buscar Acreedor
 }
 
+// Elimina un acreedor según su ID
 void acreedor::borrar()
 {
     system("cls");
@@ -227,45 +262,77 @@ void acreedor::borrar()
     cout<<"\n---------------- Borrar Acreedor ----------------"<<endl;
     file.open("acreedor.txt", ios::in);
 
-	if(!file)
-	{
-		cout<<"\n\t\t\tNo hay informacion...";
-		system("pause");
-		file.close();
-	}
-	else
-	{
-		cout<<"\n Ingrese el Id del Acreedor que quiere borrar: ";
-		cin>>acreedor_id;
-		file1.open("temporal.txt",ios::app | ios::out);
-		file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
-		while(!file.eof())
-		{
-			if(acreedor_id!= id)
-			{
-				file1<<left<<setw(15)<< id << left<<setw(15)<< nombreAcreedor <<left<<setw(15)<< telefono <<left << setw(15)
-				<< numCuenta << left << setw(15)<< banco << "\n";
-			}
-			else
-			{
-				found++;
-				cout << "\nAcreedor borrado exitosamente\n";
-				system("pause");
-			}
-			file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
-		}
-		if(found==0)
-		{
-			cout<<"\nAcreedor no encontrado\n";
-			system("pause");
-		}
-		file1.close();
-		file.close();
-		remove("acreedor.txt");
-		rename("temporal.txt","acreedor.txt");
+    if(!file) {
+        cout<<"\n\t\t\tNo hay informacion...";
+        system("pause");
+        file.close();
+    }
+    else {
+        cout<<"\n Ingrese el Id del Acreedor que quiere borrar: ";
+        cin>>acreedor_id;
+        file1.open("temporal.txt",ios::app | ios::out);
+        file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
+        while(!file.eof()) {
+            if(acreedor_id!= id) {
+                file1<<left<<setw(15)<< id << left<<setw(15)<< nombreAcreedor <<left<<setw(15)<< telefono <<left << setw(15)
+                << numCuenta << left << setw(15)<< banco << "\n";
+            } else {
+                found++;
+                cout << "\nAcreedor borrado exitosamente\n";
+                system("pause");
+            }
+            file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
+        }
+        if(found==0) {
+            cout<<"\nAcreedor no encontrado\n";
+            system("pause");
+        }
+        file1.close();
+        file.close();
+        remove("acreedor.txt");
+        rename("temporal.txt","acreedor.txt");
         bitacora auditoria;
-        auditoria.insertar("usuario registrado", "8012", "DAC"); //Eliminar acredor
-	}
+        auditoria.insertar(usuariosrRegistrado.getNombre(), "8044", "DAR"); // Eliminar Acreedor de bitácora
+    }
 }
 
+// Genera un reporte tabular con todos los acreedores
+void acreedor::reporte(){
+    system("cls");
+    fstream file;
+    int found = 0;
 
+    cout<<"\n----------------------------- Reporte de Acreedores -----------------------------\n"<<endl;
+    file.open("acreedor.txt", ios::in);
+
+    if (!file) {
+        cout << "\n\t\t\tNo hay informacion ...\n";
+    }
+    else {
+        // Encabezado del reporte en formato tabular
+        cout << left << setw(15) << "ID" << setw(15) << "Nombre"  << setw(15) << "Telefono"
+             << setw(15) << "Num. Cuenta" << setw(15) << "Banco" << endl;
+        cout << "----------------------------------------------------------------------------------\n";
+
+        file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
+        while (!file.eof()) {
+            found++;
+            // Mostrar cada fila con formato alineado
+            cout << left << setw(15) << id << setw(15) << nombreAcreedor << setw(15)
+                 << telefono << setw(15) << numCuenta << setw(15) << banco << endl;
+
+            file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
+        }
+
+        cout << "-----------------------------------------------------------------------------------\n";
+
+        if(found==0){
+            cout<<"\n\t\t\tNo hay Acreedores registrados...\n";
+        }
+    }
+    cout << endl;
+    file.close();
+    system("pause");
+    bitacora auditoria;
+    auditoria.insertar(usuariosrRegistrado.getNombre(), "8035", "RAR"); // Reporte Acreedor
+}
