@@ -329,15 +329,27 @@
 	<cstring>
 	<ctime>
 
+<<<<<<< Updated upstream
 1746244794 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+=======
+1746912182 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+>>>>>>> Stashed changes
 	<iostream>
 	"Usuario.h"
-	"Menu.h"
 	"Inventario.h"
 	"Facturacion.h"
+	"Bitacora.h"
+	"Menu.h"
 
 1746245400 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
 	<iostream>
 	"Inventario.h"
 	"Facturacion.h"
 
+<<<<<<< Updated upstream
+=======
+1746984765 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+	"Bitacora.h"
+
+>>>>>>> Stashed changes
