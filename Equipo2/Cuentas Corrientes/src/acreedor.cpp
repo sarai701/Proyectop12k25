@@ -89,7 +89,6 @@ void acreedor::insertar()
         cout << "\t\t\tIngresa Banco del Acreedor  : ";
         cin >> banco;
 
-        // Mostrar resumen de la información ingresada antes de guardar: Dulce R
         cout << "\nResumen de la información ingresada:\n";
         cout << "\t\t\tID Acreedor        : " << id << endl;
         cout << "\t\t\tNombre Acreedor    : " << nombreAcreedor << endl;
@@ -100,7 +99,6 @@ void acreedor::insertar()
         cout << "\n Esta seguro de guardar esta informacion? (S/N): ";
         cin >> confirmar;
 
-        // Si el usuario confirma, se guarda la información en el archivo: Dulce R
         if (confirmar == 's' || confirmar == 'S') {
             file.open("acreedor.txt", ios::app | ios::out);
             file << left << setw(15) << id
@@ -178,12 +176,10 @@ void acreedor::modificar()
         while(!file.eof())
         {
             if(acreedor_id != id) {
-                // Copia el registro sin modificar si no es el ID buscado
                 file1<<left<<setw(15)<< id << left<<setw(15)<< nombreAcreedor <<left<<setw(15)<< telefono <<left << setw(15)
                 << numCuenta << left << setw(15)<< banco << "\n";
             }
             else {
-                // Solicita nueva información del acreedor
                 cout<<"\t\t\tIngrese Id Acreedor        : ";
                 cin>>id;
                 cout<<"\t\t\tIngrese Nombre Acreedor    : ";
@@ -296,42 +292,53 @@ void acreedor::borrar()
     }
 }
 
-// Genera un reporte tabular con todos los acreedores
+// Genera un reporte tabular con todos los acreedores y guarda una copia en reportes.txt
 void acreedor::reporte(){
     system("cls");
-    fstream file;
+    fstream file, reporteFile;
     int found = 0;
 
     cout<<"\n----------------------------- Reporte de Acreedores -----------------------------\n"<<endl;
     file.open("acreedor.txt", ios::in);
+    reporteFile.open("reportes.txt", ios::app | ios::out); // nuevo archivo
 
     if (!file) {
         cout << "\n\t\t\tNo hay informacion ...\n";
+        reporteFile << "No hay informacion en acreedor.txt\n\n";
     }
     else {
-        // Encabezado del reporte en formato tabular
         cout << left << setw(15) << "ID" << setw(15) << "Nombre"  << setw(15) << "Telefono"
              << setw(15) << "Num. Cuenta" << setw(15) << "Banco" << endl;
         cout << "----------------------------------------------------------------------------------\n";
 
+        reporteFile << "----------------------------- REPORTE DE ACREEDORES -----------------------------\n";
+        reporteFile << left << setw(15) << "ID" << setw(15) << "Nombre"  << setw(15) << "Telefono"
+                    << setw(15) << "Num. Cuenta" << setw(15) << "Banco" << "\n";
+        reporteFile << "----------------------------------------------------------------------------------\n";
+
         file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
         while (!file.eof()) {
             found++;
-            // Mostrar cada fila con formato alineado
             cout << left << setw(15) << id << setw(15) << nombreAcreedor << setw(15)
                  << telefono << setw(15) << numCuenta << setw(15) << banco << endl;
+
+            reporteFile << left << setw(15) << id << setw(15) << nombreAcreedor << setw(15)
+                        << telefono << setw(15) << numCuenta << setw(15) << banco << "\n";
 
             file >> id >> nombreAcreedor >> telefono >> numCuenta >> banco;
         }
 
-        cout << "-----------------------------------------------------------------------------------\n";
+        reporteFile << "----------------------------------------------------------------------------------\n\n";
 
         if(found==0){
             cout<<"\n\t\t\tNo hay Acreedores registrados...\n";
+            reporteFile << "No hay Acreedores registrados...\n\n";
         }
     }
+
     cout << endl;
     file.close();
+    reporteFile.close();
     system("pause");
     bitacora auditoria;
     auditoria.insertar(usuariosrRegistrado.getNombre(), "8035", "RAR"); // Reporte Acreedor

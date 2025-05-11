@@ -117,3 +117,4 @@ usuario        100            LOGS
 Juan           8035           RAR            
 Juan           8040           INA            
 >>>>>>> facturas
+Juan           100            LOGS           05-11-2025 10:19 AM
