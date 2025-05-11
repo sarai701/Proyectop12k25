@@ -18,6 +18,7 @@ usuario        100            LOGS
 usuario1       Transacción    Registro de nueva transacción ID: 8701
 usuario        100            LOGS           
 usuario        100            LOGS           
+<<<<<<< HEAD
 usuario        100            LOGS           
 usuario registrado8011           INC            
 usuario registrado8011           MC             
@@ -36,3 +37,7 @@ Fernanda       100            LOGS
 Luisa          100            LOGS           
 Luisa          100            LOGS           
 Luisa          100            LOGS           
+=======
+usuario        100            LOGS           05-10-2025 10:11 PM
+
+>>>>>>> 8b07566a77f57c3bf4460f4fe62b5eded80e6ab0
