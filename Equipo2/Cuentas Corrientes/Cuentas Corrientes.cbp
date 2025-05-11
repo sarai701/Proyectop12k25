@@ -39,7 +39,11 @@
 		<Unit filename="include/catalogos.h" />
 		<Unit filename="include/cliente.h" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+		<Unit filename="include/factura.h" />
+>>>>>>> 7089f74027bc95a7f499a060c93850f247e5f731
 		<Unit filename="include/procesos.h" />
 		<Unit filename="include/proveedor.h" />
 		<Unit filename="include/transaccion.h" />
@@ -51,7 +55,11 @@
 		<Unit filename="src/catalogos.cpp" />
 		<Unit filename="src/cliente.cpp" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+		<Unit filename="src/factura.cpp" />
+>>>>>>> 7089f74027bc95a7f499a060c93850f247e5f731
 		<Unit filename="src/procesos.cpp" />
 		<Unit filename="src/proveedor.cpp" />
 		<Unit filename="src/transaccion.cpp" />
