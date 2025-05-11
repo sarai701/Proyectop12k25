@@ -15,9 +15,16 @@ usuario        100            LOGS
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS           
+<<<<<<< HEAD
+usuario        100            LOGS           
+=======
 usuario1       Transacción    Registro de nueva transacción ID: 8701
+<<<<<<< HEAD
+>>>>>>> 6ad56619e7b5284eab0880eb50fa314d941501a1
+=======
 usuario        100            LOGS           
 usuario        100            LOGS           
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 usuario        100            LOGS           
@@ -118,3 +125,11 @@ Juan           8035           RAR
 Juan           8040           INA            
 >>>>>>> facturas
 Juan           100            LOGS           05-11-2025 10:19 AM
+=======
+>>>>>>> 7089f74027bc95a7f499a060c93850f247e5f731
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+Juan           8011           INS            
+Juan           8011           INS            
+>>>>>>> 5146112496d9c8d6b92a3fa298b46a4da780ddb1
