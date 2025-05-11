@@ -25,3 +25,8 @@ usuario1       Transacción    Registro de nueva transacción ID: 8701
 usuario        100            LOGS           
 usuario        100            LOGS           
 >>>>>>> 7089f74027bc95a7f499a060c93850f247e5f731
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+Juan           8011           INS            
+Juan           8011           INS            
