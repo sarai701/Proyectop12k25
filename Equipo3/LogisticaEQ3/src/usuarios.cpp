@@ -153,8 +153,8 @@ void usuarios::menuUsuarios() {
         switch (opcion) {
             case 1: registrarUsuario(); break;
             case 2: consultarUsuarios(); break;
-            case 3: /* modificarUsuario() */ break;
-            case 4: /* eliminarUsuario() */ break;
+            //case 3:  modificarUsuario();  break;
+            //case 4:  eliminarUsuario();  break;
             case 5: break;
             default: cout << "\n\t\tOpcion invalida!"; system("pause");
         }

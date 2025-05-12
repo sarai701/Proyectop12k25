@@ -110,15 +110,15 @@
 	"bitacora.h"
 	"usuarios.h"
 
-1746506938 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\inventario.cpp
+1746507165 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\inventario.cpp
 	"inventario.h"
 	<iostream>
 
-1746505594 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\inventario.h
+1746507212 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\inventario.h
 	"bitacora.h"
 	"usuarios.h"
 
-1746506853 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\usuarios.cpp
+1746507526 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\usuarios.cpp
 	"usuarios.h"
 	<iostream>
 	<fstream>
