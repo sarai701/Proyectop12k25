@@ -37,6 +37,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<Unit filename="include/MenuClientes.h" />
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/clientes.h" />
@@ -57,9 +58,13 @@
 		<Unit filename="src/provedor.cpp" />
 >>>>>>> 2aadaa68be5096fb36079cea72d88cbca3362f2a
 =======
+=======
+		<Unit filename="include/Reportes.h" />
+>>>>>>> 9f8241c64aecba9e3cf9ff250d74fa2645ca03d8
 		<Unit filename="include/almacen.h" />
 		<Unit filename="include/menualmacenes.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Reportes.cpp" />
 		<Unit filename="src/almacen.cpp" />
 		<Unit filename="src/menualmacenes.cpp" />
 >>>>>>> 9f633e634a31d8160a3d7cf632663e2b75098cef
