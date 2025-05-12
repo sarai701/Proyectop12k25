@@ -56,6 +56,7 @@ kevin          LOGS           Inicio exitoso Sun May 11 12:32:50 2025 12:32:50
 kevin          Catálogo      Acceso al módulo de inventarioSun May 11 12:33:48 2025 12:33:48  
 kevin          Informes       Revisión de bitácoraSun May 11 12:34:54 2025 12:34:54  
 
+<<<<<<< HEAD
 kevin          LOGS           Inicio exitoso Sun May 11 22:11:58 2025 22:11:58  
 kevin          LOGS           Inicio exitoso Sun May 11 22:13:11 2025 22:13:11  
 kevin          Catálogo      Acceso al módulo de inventarioSun May 11 22:13:16 2025 22:13:16  
@@ -69,3 +70,7 @@ kevin          Procesos       Acceso a gestión de usuariosSun May 11 22:41:31 2
 kevin          Informes       Revisión de bitácoraSun May 11 22:42:06 2025 22:42:06  
 kevin          Ver Inventario VentasVisualizaci�n de inventario de ventasSun May 11 22:42:21 2025 22:42:21  
 kevin          Catálogo      Acceso al módulo de inventarioSun May 11 22:42:30 2025 22:42:30  
+=======
+kevin          LOGS           Inicio exitoso Sun May 11 17:31:31 2025 17:31:31  
+kevin          LOGS           Inicio exitoso Sun May 11 17:55:22 2025 17:55:22  
+>>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794

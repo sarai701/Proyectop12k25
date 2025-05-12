@@ -151,7 +151,15 @@
 	"Menu.h"
 	"Bitacora.h"
 
+<<<<<<< HEAD
 1747013450 h"
+=======
+
+
+1746246778 am>
+
+1746984765 "
+>>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794
 
 1743661292 c:\users\usuario\desktop\kevin\programación 1\juegos\sistemainventarios\include\menu.h
 
@@ -195,7 +203,62 @@
 
 1746246778 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
 
+HEAD
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\main.cpp
+	<iostream>
+	"Usuario.h"
+	"Menu.h"
+	"Inventario.h"
+	"Facturacion.h"
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+	<iostream>
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+	<iostream>
+	"Inventario.h"
+	"Facturacion.h"
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+	<vector>
+	"Producto.h"
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+	<string>
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+	<iostream>
+	<vector>
+	<iomanip>
+	"Inventario.h"
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+	"Facturacion.h"
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+	"Producto.h"
+
+
 1746246778 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+HEAD
+    "Bitacora.h"
+    <iostream>
+    <fstream>
+    <stdlib.h>
+    <cstdlib>
+    <conio.h>
+    <iomanip>
+    <cstring>
+    <ctime>
+3e7e19998b1cfe11f9c17f1baeeb14eb2f019514
+
 
 1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\main.cpp
 	<iostream>
@@ -259,6 +322,7 @@
 
 1746241791 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
 	"Producto.h"
+<<<<<<< HEAD
 
 1747024388 source:c:\users\usuario\documents\progra\programaci�n 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
 	<iostream>
@@ -332,3 +396,6 @@
 	<cstring>
 	<ctime>
 
+=======
+b810232ddfec8c78a09cfede2ec27dc91d75b4c2
+>>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794

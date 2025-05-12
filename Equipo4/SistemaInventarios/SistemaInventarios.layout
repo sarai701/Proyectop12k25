@@ -2,19 +2,44 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+<<<<<<< HEAD
 	<File name="main.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2843" topLine="0" />
+=======
+<HEAD
+	<File name="include\Bitacora.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="400" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\Bitacora.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2368" topLine="60" />
+
+	<File name="src\Bitacora.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1973" topLine="30" />
+>b810232ddfec8c78a09cfede2ec27dc91d75b4c2
+>>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794
 		</Cursor>
 	</File>
 	<File name="src\Inventario.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
+<<<<<<< HEAD
 			<Cursor1 position="651" topLine="6" />
+=======
+<HEAD
+			<Cursor1 position="0" topLine="68" />
+
+			<Cursor1 position="563" topLine="0" />
+>>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794
 		</Cursor>
 	</File>
 	<File name="src\Usuario.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3243" topLine="87" />
+<<<<<<< HEAD
 		</Cursor>
 	</File>
 	<File name="src\Bitacora.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
@@ -25,6 +50,10 @@
 	<File name="src\Menu.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="338" topLine="39" />
+=======
+
+>b810232ddfec8c78a09cfede2ec27dc91d75b4c2
+>>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
