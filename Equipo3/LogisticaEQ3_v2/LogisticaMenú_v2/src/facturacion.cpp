@@ -3,8 +3,8 @@
 using namespace std;
 
 // Variables externas definidas en otro lugar del programa
-extern Usuarios usuarioRegistrado; // Objeto global para el usuario registrado
-extern Bitacora auditoria; // Objeto global para el registro de auditorías
+//extern Usuarios usuarioRegistrado; // Objeto global para el usuario registrado
+//extern Bitacora auditoria; // Objeto global para el registro de auditorías
 
 // Método principal que gestiona el menú de facturación
 void Facturacion::mostrarMenuFacturacion() {
@@ -40,27 +40,27 @@ void Facturacion::mostrarMenuFacturacion() {
 // Función que simula la generación de una factura
 void Facturacion::generarFactura() {
     cout << "\n\t\t[Generando factura...]" << endl;
-    auditoria.insertar(usuarioRegistrado.getNombre(), "400", "FACT"); // Registro en la bitácora
+    //auditoria.insertar(usuarioRegistrado.getNombre(), "400", "FACT"); // Registro en la bitácora
     system("pause"); // Pausa para visualizar el mensaje
 }
 
 // Función que simula la consulta del estado de pago
 void Facturacion::consultarEstadoPago() {
     cout << "\n\t\t[Consultando estado de pago...]" << endl;
-    auditoria.insertar(usuarioRegistrado.getNombre(), "400", "CONSPAG"); // Registro en la bitácora
+   // auditoria.insertar(usuarioRegistrado.getNombre(), "400", "CONSPAG"); // Registro en la bitácora
     system("pause");
 }
 
 // Función que simula el registro de un pago
 void Facturacion::registrarPago() {
     cout << "\n\t\t[Registrando pago...]" << endl;
-    auditoria.insertar(usuarioRegistrado.getNombre(), "400", "REGPAG"); // Registro en la bitácora
+    //auditoria.insertar(usuarioRegistrado.getNombre(), "400", "REGPAG"); // Registro en la bitácora
     system("pause");
 }
 
 // Función que simula la visualización de reportes financieros
 void Facturacion::verReportesFinancieros() {
     cout << "\n\t\t[Mostrando reportes financieros...]" << endl;
-    auditoria.insertar(usuarioRegistrado.getNombre(), "400", "REPFIN"); // Registro en la bitácora
+   // auditoria.insertar(usuarioRegistrado.getNombre(), "400", "REPFIN"); // Registro en la bitácora
     system("pause");
 }
