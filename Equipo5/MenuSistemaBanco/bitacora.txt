@@ -154,3 +154,9 @@ Prisci         1000      Sistema             Inicio de sesión exitoso      Sun M
 123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:45:18 2025 
 123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:47:28 2025 
 >>>>>>> 883a5443c7cd0fb4ad4aa847ae9a4f0972ec9fda
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 21:12:27 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 11 21:12:28 2025 
+Admin          4611      Bancos              Tipo de cuenta seleccionado: Cuenta de AhorroSun May 11 21:12:30 2025 
+Admin          4603      Bancos              Moneda cambiada a EUR         Sun May 11 21:12:31 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sun May 11 21:12:38 2025 
+admin          4901      Sistema             Usuario cerró sesión          Sun May 11 21:12:41 2025 

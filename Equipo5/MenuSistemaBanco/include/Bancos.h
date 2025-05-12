@@ -3,29 +3,36 @@
 #define BANCOS_H
 
 #include <string>
+#include "Bitacora.h"
+#include "Moneda.h"
 
 class Bancos {
-public:
-    Bancos();
-    void menuConfiguracion(); // Menú de configuración inicial
-    void mostrarConfiguracion(); // Muestra la configuración actual
-
-    // Getters para acceder a las selecciones
-    std::string getBanco() const;
-    std::string getCuenta() const;
-    std::string getMoneda() const;
-
 private:
-    void menuSeleccionBanco();
-    void menuTipoCuenta();
-    void menuTipoMoneda();
-    void limpiarPantalla();
-    void pausar();
+    static Bitacora bitacoraBancos; // Instancia de bitácora para Bancos
 
     std::string bancoSeleccionado;
     std::string tipoCuentaSeleccionada;
     std::string monedaSeleccionada;
+
+    void menuSeleccionBanco();
+    void menuTipoCuenta();
+    void menuTipoMoneda();
+
+public:
+    Bancos();
+
+    // Configuración y visualización
+    void menuConfiguracion();
+    void mostrarConfiguracion();
+
+    // Funciones auxiliares
+    static void limpiarPantalla();
+    static void pausar();
+
+    // Getters
+    std::string getBanco() const;
+    std::string getCuenta() const;
+    std::string getMoneda() const;
 };
 
 #endif
-

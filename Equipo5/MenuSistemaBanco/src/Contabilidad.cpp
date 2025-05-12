@@ -81,7 +81,8 @@ void Contabilidad::registroNomina() {
             cout << "\nEmpleado encontrado:";
             cout << "\nNombre: " << nombre;
             cout << "\nCódigo: " << codigoArchivo;
-            cout << "\nSalario: " << Moneda::getSimbolo() << salario;
+            cout << "\nSalario: " << Moneda::getSimbolo()
+         << Moneda::convertirDesdeGtq(stod(salario));
 
             // Registrar pago
             char respuesta;

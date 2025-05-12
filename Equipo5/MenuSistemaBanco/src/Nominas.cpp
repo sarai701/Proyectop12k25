@@ -245,7 +245,8 @@ void Nominas::desplegarEmpleados() {
             cout << "\nTeléfono  : " << e.telefono;
             cout << "\nCódigo    : " << e.codigo;
             cout << "\nDirección : " << e.direccion;
-            cout << "\nSalario   : " << Moneda::getSimbolo() << e.salario;
+            cout << "\nSalario   : " << Moneda::getSimbolo()
+         << Moneda::convertirDesdeGtq(e.salario);
         }
         cout << "\n-----------------------------";
         bitacoralog3.insertar("Admin", 4005, "Nominas", "Ver empleados");
