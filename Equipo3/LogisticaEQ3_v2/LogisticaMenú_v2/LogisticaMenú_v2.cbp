@@ -34,11 +34,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/facturacion.h" />
 		<Unit filename="include/menuproveedores.h" />
-		<Unit filename="include/provedor.h" />
+		<Unit filename="include/proveedor.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/facturacion.cpp" />
 		<Unit filename="src/menuproveedores.cpp" />
-		<Unit filename="src/provedor.cpp" />
+		<Unit filename="src/proveedor.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
