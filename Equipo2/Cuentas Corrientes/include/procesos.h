@@ -3,6 +3,7 @@
 #define PROCESOS_H
 
 void menuProcesos();
+void menuFactura();
 void menuTransacciones(); //Mi menu d transacciones
 
 #endif
