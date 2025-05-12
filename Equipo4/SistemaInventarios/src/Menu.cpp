@@ -45,10 +45,10 @@ void Menu::mostrarOpciones(Inventario& inventario, Facturacion& factura, const s
                     cout << "\n=====================================\n";
                     cout << "      --- SUBMENU INVENTARIO ---\n";
                     cout << "=====================================\n";
-                    cout << "1. Inventario General\n"; //kardex
-                    cout << "2. Inventario para Ventas\n"; //reporte ventas
-                    cout << "3. Inventario para Stock\n"; //reporte existencias
-                    cout << "4. Inventario para Compras\n"; //reporte compras
+                    cout << "1. Kardex\n";
+                    cout << "2. Reporte ventas\n";
+                    cout << "3. Reporte existencias\n";
+                    cout << "4. Reporte compras\n";
                     cout << "5. Regresar al menu principal\n";
                     cout << "-------------------------------------\n";
                     cout << "Seleccione una opcion: ";
