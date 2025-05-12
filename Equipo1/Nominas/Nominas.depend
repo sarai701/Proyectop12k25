@@ -79,3 +79,139 @@
 	"sistema.h"
 	"Opciones.h"
 
+1746458798 source:c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\main.cpp
+	<iostream>
+	<fstream>
+	"Opciones.h"
+	"usuarios.h"
+	"bitacora.h"
+	"sistema.h"
+
+1746458798 c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\include\opciones.h
+	<iostream>
+
+1746458798 c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\include\usuarios.h
+	<iostream>
+
+1746459294 c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\include\bitacora.h
+	<string>
+
+1746458798 c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\include\sistema.h
+	<fstream>
+	<vector>
+	"usuarios.h"
+
+1746459257 source:c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<iomanip>
+	<ctime>
+	<limits>
+
+1746458798 source:c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\src\opciones.cpp
+	"Opciones.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+
+1746458798 source:c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\src\sistema.cpp
+	"sistema.h"
+	"Opciones.h"
+
+1746458798 source:c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<bitacora.h>
+	<iostream>
+
+1747014723 source:c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\main.cpp
+	<iostream>
+	<fstream>
+	"Opciones.h"
+	"usuarios.h"
+	"bitacora.h"
+	"sistema.h"
+
+1747008756 c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\include\opciones.h
+	<iostream>
+
+1747007819 c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\include\usuarios.h
+	<iostream>
+
+1747007819 c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\include\bitacora.h
+	<string>
+
+1747007819 c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\include\sistema.h
+	<fstream>
+	<vector>
+	"usuarios.h"
+
+1747007819 source:c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<iomanip>
+	<ctime>
+	<limits>
+
+1747010919 source:c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\src\prestaciones.cpp
+	<iostream>
+	"Prestaciones.h"
+
+1747010529 c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\include\prestaciones.h
+	<string>
+
+1747014328 source:c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\src\sistema.cpp
+	"sistema.h"
+	"Opciones.h"
+	<conio.h>
+
+1747007819 source:c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<bitacora.h>
+	<iostream>
+
+1747014723 source:c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\src\opciones.cpp
+	"Opciones.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+	"Prestaciones.h"
+	"Empleados.h"
+
+1747012344 source:c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1747011329 c:\users\angel r\documents\progra\proyectop12k25\equipo1\nominas\include\empleados.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	<limits>
+

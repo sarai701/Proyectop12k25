@@ -10,12 +10,6 @@ class Opciones//Clase la cual muestra el menú-ANGEL ROQUEL
 		string id, nombre, estatus;
 	public:
 		void menu();
-		void insertar();
-		void desplegar();
-		void modificar();
-		void buscar();
-		void borrar();
-
     protected:
 
     private:
