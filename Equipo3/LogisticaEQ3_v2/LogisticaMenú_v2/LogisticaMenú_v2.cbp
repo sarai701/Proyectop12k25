@@ -34,6 +34,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+<<<<<<< HEAD
 		<Unit filename="include/globals.h" />
 		<Unit filename="include/pedidos.h" />
 		<Unit filename="include/producto.h" />
@@ -41,6 +42,23 @@
 		<Unit filename="src/globals.cpp" />
 		<Unit filename="src/pedidos.cpp" />
 		<Unit filename="src/producto.cpp" />
+=======
+<<<<<<< HEAD
+		<Unit filename="include/MenuClientes.h" />
+		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/clientes.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/MenuClientes.cpp" />
+		<Unit filename="src/bitacora.cpp" />
+		<Unit filename="src/clientes.cpp" />
+=======
+		<Unit filename="include/menuproveedores.h" />
+		<Unit filename="include/provedor.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/menuproveedores.cpp" />
+		<Unit filename="src/provedor.cpp" />
+>>>>>>> 2aadaa68be5096fb36079cea72d88cbca3362f2a
+>>>>>>> 1f05c824e5f73cd9d5d8a48a13ae1dca32db3b97
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
