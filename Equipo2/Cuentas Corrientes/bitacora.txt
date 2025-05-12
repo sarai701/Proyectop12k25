@@ -19,6 +19,7 @@ usuario1       Transacción    Registro de nueva transacción ID: 8701
 usuario        100            LOGS           
 usuario        100            LOGS           
 <<<<<<< HEAD
+<<<<<<< HEAD
 usuario        100            LOGS           
 usuario registrado8011           INC            
 usuario registrado8011           MC             
@@ -110,3 +111,10 @@ Emily          100            SRCH           05-11-2025 04:07 AM
 Emily          100            LOGS           05-11-2025 04:08 AM
 Emily          100            LOGS           05-11-2025 04:12 AM
 Emily          100            BACK           05-11-2025 04:12 AM
+=======
+usuario        100            LOGS           
+usuario        100            LOGS           
+Juan           8035           RAR            
+Juan           8040           INA            
+>>>>>>> facturas
+Juan           100            LOGS           05-11-2025 10:19 AM
