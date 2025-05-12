@@ -35,6 +35,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<Unit filename="include/MenuClientes.h" />
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/clientes.h" />
@@ -49,6 +50,13 @@
 		<Unit filename="src/menuproveedores.cpp" />
 		<Unit filename="src/provedor.cpp" />
 >>>>>>> 2aadaa68be5096fb36079cea72d88cbca3362f2a
+=======
+		<Unit filename="include/almacen.h" />
+		<Unit filename="include/menualmacenes.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/almacen.cpp" />
+		<Unit filename="src/menualmacenes.cpp" />
+>>>>>>> 9f633e634a31d8160a3d7cf632663e2b75098cef
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
