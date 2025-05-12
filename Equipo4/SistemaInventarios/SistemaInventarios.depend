@@ -77,7 +77,7 @@
 
 1746246778 g>
 
-1746246778 
+1747023056 
 
 1746234647 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
 	"Producto.h"
@@ -151,15 +151,11 @@
 	"Menu.h"
 	"Bitacora.h"
 
-<<<<<<< HEAD
+1746241791 D
+
 1747013450 h"
-=======
 
-
-1746246778 am>
-
-1746984765 "
->>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794
+1747023056 1bf792a663f1b56d9a6e9060c9a14568a6794
 
 1743661292 c:\users\usuario\desktop\kevin\programaci√≥n 1\juegos\sistemainventarios\include\menu.h
 
@@ -203,7 +199,6 @@
 
 1746246778 c:\users\usuario\documents\progra\programaci√≥n 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
 
-HEAD
 1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\main.cpp
 	<iostream>
 	"Usuario.h"
@@ -245,20 +240,9 @@ HEAD
 1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
 	"Producto.h"
 
-
 1746246778 source:c:\users\usuario\documents\progra\programaci√≥n 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
-HEAD
-    "Bitacora.h"
-    <iostream>
-    <fstream>
-    <stdlib.h>
-    <cstdlib>
-    <conio.h>
-    <iomanip>
-    <cstring>
-    <ctime>
-3e7e19998b1cfe11f9c17f1baeeb14eb2f019514
 
+3 e7e19998b1cfe11f9c17f1baeeb14eb2f019514
 
 1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\main.cpp
 	<iostream>
@@ -322,7 +306,6 @@ HEAD
 
 1746241791 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
 	"Producto.h"
-<<<<<<< HEAD
 
 1747024388 source:c:\users\usuario\documents\progra\programaciÛn 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
 	<iostream>
@@ -385,7 +368,7 @@ HEAD
 	<sstream>
 	"Bitacora.h"
 
-1747023056 source:c:\users\usuario\documents\progra\programaciÛn 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+1747034121 source:c:\users\usuario\documents\progra\programaciÛn 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
 	"Bitacora.h"
 	<iostream>
 	<fstream>
@@ -393,9 +376,8 @@ HEAD
 	<cstdlib>
 	<conio.h>
 	<iomanip>
-	<cstring>
+	<algorithm>
 	<ctime>
 
-=======
-b810232ddfec8c78a09cfede2ec27dc91d75b4c2
->>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794
+1747023056 c8c78a09cfede2ec27dc91d75b4c2
+
