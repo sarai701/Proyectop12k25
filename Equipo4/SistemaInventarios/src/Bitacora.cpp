@@ -5,9 +5,13 @@
 #include<cstdlib>
 #include<conio.h>
 #include<iomanip>
+#include <cstring>
+
+
 #include <ctime>
-//bitacaora es un hist�rico
+//bitacora es un histórico
 //Ferdynand Monroy 9959-24-14049 Mayo 2025
+
 using namespace std;
 
 void bitacora::menu()
@@ -46,55 +50,99 @@ void bitacora::menu()
 void bitacora::insertar(string nombre, int codigo, string aplicacion, string accion)
 {
     fstream file;
+    fstream readFile;
+
+    int ultimoCodigo = 1999;
+    string line;
+
+    readFile.open("bitacora.txt", ios::in);
+    if (readFile)
+    {
+        while (getline(readFile, line))
+        {
+            if (line.length() >= 4)
+            {
+                int cod = stoi(line.substr(0, 4));
+                if (cod > ultimoCodigo)
+                    ultimoCodigo = cod;
+            }
+        }
+    }
+    readFile.close();
+
+    int nuevoCodigo = ultimoCodigo + 1;
+    if (nuevoCodigo > 2999)
+    {
+        cout << "❌ Límite de bitácoras alcanzado (2999)" << endl; //hay un limite asignado en clase
+        return;
+    }
+
     file.open("bitacora.txt", ios::app | ios::out);
 
-    time_t now = time(0); // obtener la fecha y hora actual Ferdynand Monroy
+    time_t now = time(0);
     char* dt = ctime(&now);
+    dt[strcspn(dt, "\n")] = 0;
 
-    dt[strcspn(dt, "\n")] = 0; // salto de linea Ferdynand Monroy
+    struct tm * timeinfo;
+    timeinfo = localtime(&now);
+    char timeBuffer[9];
+    strftime(timeBuffer, sizeof(timeBuffer), "%H:%M:%S", timeinfo);
 
-    file << std::left << std::setw(15) << nombre
+    file << std::setw(4) << std::setfill('0') << nuevoCodigo << " "
+         << std::left << std::setw(15) << nombre
          << std::left << std::setw(15) << aplicacion
          << std::left << std::setw(15) << accion
-         << std::left << std::setw(25) << dt << "\n";
-         << _TIME_ << "\n";
+         << std::left << std::setw(25) << dt
+         << std::left << std::setw(10) << timeBuffer << "\n";
 
     file.close();
 }
+
 
 void bitacora::desplegar()
 {
 	system("cls");
 	fstream file;
-	int total=0;
+	string linea;
+	int total = 0;
+
 	cout<<"\n-------------------------Tabla de Detalles de Bitacora -------------------------"<<endl;
 	file.open("bitacora.txt",ios::in);
 	if(!file)
 	{
-		cout<<"\n\t\t\tNo hay informaci�n...";
-		file.close();
+		cout<<"\n\t\t\tNo hay información...";
 	}
 	else
 	{
-		file >> nombre >> aplicacion >> accion;
-		getline(file, fecha); // Lee la hora restante Ferdynand Monroy
-		while(!file.eof())
+		while (getline(file, linea))
 		{
-			total++;
-			cout<<"\n\n\t\t\t Nombre Usuario: "<<nombre<<endl;
-			cout<<"\t\t\t No. Aplicacion: "<<aplicacion<<endl;
-            cout<<"\t\t\t Fecha y hora: "<<fecha<<endl; // se muestra la fecha y hora actualizada en bitacora.txt Ferdynand Monroy
+			if (linea.length() > 0)
+			{
+				string codigo = linea.substr(0, 4);
+				string nombre = linea.substr(5, 15);
+				string aplicacion = linea.substr(21, 15);
+				string accion = linea.substr(37, 15);
+				string fecha = linea.substr(53);
 
+				cout<<"\n\t\t\t Codigo Bitacora: " << codigo << endl;
+				cout<<"\t\t\t Nombre Usuario:  " << nombre << endl;
+				cout<<"\t\t\t Aplicacion:      " << aplicacion << endl;
+				cout<<"\t\t\t Accion:          " << accion << endl;
+				cout<<"\t\t\t Fecha y Hora:    " << fecha << endl;
+				cout<<"-------------------------------------------------------------------------------\n";
 
-			file >> nombre >> aplicacion >> accion;
-			getline(file, fecha);
+				total++;
+			}
 		}
-		if(total==0)
+		if(total == 0)
 		{
 			cout<<"\n\t\t\tNo hay informacion...";
 		}
-		system("pause");
 	}
+	file.close();
+	system("pause");
+}
+
 	file.close();
 }
 
