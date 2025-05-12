@@ -44,3 +44,7 @@ kevin          Informes       RevisiÃ³n de bitÃ¡coraSun May 11 11:37:18 2025
 kevin          CatÃ¡logo      Acceso al mÃ³dulo de inventarioSun May 11 11:37:28 2025 11:37:28  
 kevin          Procesos       Acceso a gestiÃ³n de usuariosSun May 11 11:37:53 2025 11:37:53  
 
+kevin          LOGS           Inicio exitoso Sun May 11 12:32:02 2025 12:32:02  
+kevin          LOGS           Inicio exitoso Sun May 11 12:32:50 2025 12:32:50  
+kevin          Catálogo      Acceso al módulo de inventarioSun May 11 12:33:48 2025 12:33:48  
+kevin          Informes       Revisión de bitácoraSun May 11 12:34:54 2025 12:34:54  
