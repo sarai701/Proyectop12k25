@@ -9,7 +9,6 @@
 Empleados::Empleados()
 {
 }
-
 void Empleados::menuEmpleados()
 {
     int eleccion = 0;
@@ -55,13 +54,13 @@ void Empleados::menuEmpleados()
                 borrarEmpleados();
                 break;
             case 5:
-                exit(0);
+                cout <<"Regresando...."<<endl;
                 break;
             default:
                 cout << "Opcion no valida" << endl;
                 break;
         }
-        getch();
+        system("pause");
     } while(eleccion != 5);
 }
 
@@ -145,88 +144,85 @@ void Empleados::listaEmpleados()
 
     file.close();
 }
-void Empleados::cambioEmpleados()
-{
+void Empleados::cambioEmpleados() {
     // Limpiar pantalla
     system("cls");
-    fstream file, file1;
+    fstream file;
     string tipoEmpleadoCambio, NombreCambio;
     float sueldoCambio;
     int found = 0;
 
     cout << "\n-------------------------Cambios laborales (no despidos)-------------------------" << endl;
 
-    // Abrir archivo original para lectura
-    file.open("Empleados.txt", ios::in);
-    if (!file.is_open())
-    {
-        cout << "\n\t\t\tNo hay información o no se pudo abrir el archivo..." << endl;
-        return;
-    }
-
-    // Solicitar datos del empleado a modificar
+    // Solicitar nombre del empleado a modificar
     cout << "\n Ingrese el nombre de la persona a modificar: ";
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar buffer
     getline(cin, NombreCambio);
 
+    // Abrir archivo original para lectura
+    file.open("Empleados.txt", ios::in);
+    if (!file.is_open()) {
+        cout << "\n\t\t\tNo hay información o no se pudo abrir el archivo..." << endl;
+        return;
+    }
+
+    string linea;
+    while (getline(file, linea)) {
+        size_t pos1 = linea.find("|");
+        size_t pos2 = linea.find("|", pos1 + 1);
+        if (pos1 != string::npos && pos2 != string::npos) {
+            string nombreTemp = linea.substr(pos1 + 1, pos2 - pos1 - 1);
+            if (nombreTemp == NombreCambio) {
+                found++;
+                break;
+            }
+        }
+    }
+    file.close();
+
+    if (found == 0) {
+        cout << "\n\t\t\tUsuario no encontrado..." << endl;
+        return;
+    }
+
     // Solicitar los nuevos datos
     cout << "\n Ingrese el nuevo tipo de empleado (contrato/sueldo): ";
     getline(cin, tipoEmpleadoCambio);
-
     cout << "\n Ingrese el nuevo sueldo: ";
     cin >> sueldoCambio;
 
     // Crear archivo temporal para escribir los datos actualizados
+    fstream file1;
+    file.open("Empleados.txt", ios::in);
     file1.open("Record.txt", ios::out);
-    if (!file1.is_open())
-    {
+    if (!file1.is_open()) {
         cout << "\n\t\t\tError al crear archivo temporal." << endl;
         file.close();
         return;
     }
 
-    string linea;
-    while (getline(file, linea)) // Leer línea por línea
-    {
+    while (getline(file, linea)) {
         size_t pos1 = linea.find("|");
         size_t pos2 = linea.find("|", pos1 + 1);
-
-        if (pos1 != string::npos && pos2 != string::npos)
-        {
+        if (pos1 != string::npos && pos2 != string::npos) {
             string tipoTemp = linea.substr(0, pos1);
             string nombreTemp = linea.substr(pos1 + 1, pos2 - pos1 - 1);
             float sueldoTemp = stof(linea.substr(pos2 + 1));
-
-            // Si el nombre coincide, escribir los datos modificados
-            if (nombreTemp == NombreCambio)
-            {
+            if (nombreTemp == NombreCambio) {
                 file1 << tipoEmpleadoCambio << "|" << NombreCambio << "|" << sueldoCambio << "\n";
-                found++;
                 cout << "\n\t\t\tEmpleado actualizado con exito." << endl;
-            }
-            else
-            {
-                // Si no es el empleado a modificar, se copia igual
+            } else {
                 file1 << tipoTemp << "|" << nombreTemp << "|" << sueldoTemp << "\n";
             }
         }
     }
-
     file.close();
     file1.close();
 
-    // Si se encontró al empleado, reemplazar archivo original
-    if (found == 0)
-    {
-        cout << "\n\t\t\tEmpleado no encontrado..." << endl;
-        remove("Record.txt");
-    }
-    else
-    {
-        remove("Empleados.txt");
-        rename("Record.txt", "Empleados.txt");
-    }
+    remove("Empleados.txt");
+    rename("Record.txt", "Empleados.txt");
 }
+
 
 
 void Empleados::borrarEmpleados()
@@ -305,5 +301,3 @@ void Empleados::borrarEmpleados()
         rename("Record.txt", "Empleados.txt"); // Renombrar archivo temporal como definitivo
     }
 }
-
-
