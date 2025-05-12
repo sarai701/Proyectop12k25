@@ -1,27 +1,23 @@
-#ifndef USUARIOS_H
-#define USUARIOS_H
-#include<iostream>
+#ifndef USUARIO_H
+#define USUARIO_H
 
-using std::string;
+#include <string>
 
-class usuarios
-{
-    public:
-        usuarios();
-        virtual ~usuarios();//DESTRUYE LA INFORMACION DEL OBJETO EN MEMORIA
-        bool loginUsuarios();
-        void menuUsuarios();
-        bool buscar(string user, string passw);
-        string getNombre();
-        void setNombre(string nombre);//parametro por valor(IMPORTANTE)
+class usuarios {
+public:
+    usuarios();
+    ~usuarios();
+    bool loginUsuarios();
+    void menuUsuarios();
+    bool buscar(std::string user, std::string passw);
+    std::string getNombre();
+    void setNombre(std::string nombre);
+    void consultarUsuarios(); // Nueva declaración
 
-    protected:
-
-    private:
-		string id;
-		string name;
-		string pass;
-
+private:
+    int id;
+    std::string name;
+    std::string pass;
 };
 
-#endif // USUARIOS_H
+#endif
