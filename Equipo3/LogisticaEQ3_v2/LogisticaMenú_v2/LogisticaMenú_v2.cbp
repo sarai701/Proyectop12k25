@@ -35,6 +35,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<Unit filename="include/globals.h" />
 		<Unit filename="include/pedidos.h" />
 		<Unit filename="include/producto.h" />
@@ -43,6 +44,10 @@
 		<Unit filename="src/pedidos.cpp" />
 		<Unit filename="src/producto.cpp" />
 =======
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> b2cbddbe8128821155a51742549900d1a63df08c
 <<<<<<< HEAD
 		<Unit filename="include/MenuClientes.h" />
 		<Unit filename="include/bitacora.h" />
@@ -52,13 +57,35 @@
 		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/clientes.cpp" />
 =======
+=======
+		<Unit filename="include/facturacion.h" />
+>>>>>>> 6b35c58ecc32f90b91e63e97331727ec2a994c57
 		<Unit filename="include/menuproveedores.h" />
-		<Unit filename="include/provedor.h" />
+		<Unit filename="include/proveedor.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/facturacion.cpp" />
 		<Unit filename="src/menuproveedores.cpp" />
+<<<<<<< HEAD
 		<Unit filename="src/provedor.cpp" />
 >>>>>>> 2aadaa68be5096fb36079cea72d88cbca3362f2a
+<<<<<<< HEAD
 >>>>>>> 1f05c824e5f73cd9d5d8a48a13ae1dca32db3b97
+=======
+=======
+=======
+		<Unit filename="include/Reportes.h" />
+>>>>>>> 9f8241c64aecba9e3cf9ff250d74fa2645ca03d8
+		<Unit filename="include/almacen.h" />
+		<Unit filename="include/menualmacenes.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Reportes.cpp" />
+		<Unit filename="src/almacen.cpp" />
+		<Unit filename="src/menualmacenes.cpp" />
+>>>>>>> 9f633e634a31d8160a3d7cf632663e2b75098cef
+=======
+		<Unit filename="src/proveedor.cpp" />
+>>>>>>> 6b35c58ecc32f90b91e63e97331727ec2a994c57
+>>>>>>> b2cbddbe8128821155a51742549900d1a63df08c
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

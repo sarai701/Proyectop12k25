@@ -1,23 +1,47 @@
+// Autor: Jennifer Barrios - Coordinadora Equipo 3
+// Carnet: 9959-24-10016
+// Fecha: Mayo 2025
+// Descripción: Encabezado para la gestión de pedidos del sistema
+
+// Protección para evitar múltiples inclusiones
 #ifndef PEDIDOS_H
 #define PEDIDOS_H
 
-#include "bitacora.h"
-#include "usuarios.h"
+// Bibliotecas necesarias
+#include "bitacora.h"  // Para el registro de actividades del sistema
+#include "usuarios.h"  // Para manejar información de usuarios
 
-//JENNIFER BARRIOS COORD EQ 3
-//9959-24-10016
-//MAYO 2025
+// Clase principal para manejo de pedidos
+class Pedidos {
+public:
+    // Métodos básicos de acceso a datos
 
- class Pedidos {
- public:
-     std::string getId() const;
-     std::string getDetalles() const;
-     void gestionPedidos();
-     void crearPedido();
-     void consultarPedidos();
-     void modificarPedido();
-     void cancelarPedido();
-     void verHistorial();
- };
+    // Obtiene el identificador único del pedido
+    std::string getId() const;
 
+    // Obtiene la descripción detallada del pedido
+    std::string getDetalles() const;
+
+    // Métodos de operaciones con pedidos
+
+    // Muestra el menú principal de gestión de pedidos
+    void gestionPedidos();
+
+    // Crea un nuevo pedido en el sistema
+    void crearPedido();
+
+    // Muestra la lista de pedidos existentes
+    void consultarPedidos();
+
+    // Permite editar un pedido existente
+    void modificarPedido();
+
+    // Cancela/elimina un pedido del sistema
+    void cancelarPedido();
+
+    // Muestra el historial completo de pedidos
+    void verHistorial();
+};
+
+// Fin del archivo de encabezado
 #endif // PEDIDOS_H
