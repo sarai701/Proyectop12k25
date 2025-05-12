@@ -4,6 +4,8 @@
 #include <fstream>
 #include <conio.h> // Para getch()
 #include <iomanip>
+#include "globals.h"
+
 using namespace std;
 
 extern bitacora auditoria;
@@ -13,6 +15,7 @@ usuarios::usuarios() {
     id = "";
     nombre = "";
     contrasena = "";
+    nivelAcceso = 1; // Valor por defecto (1 = usuario básico)
 }
 
 // Destructor
@@ -68,7 +71,7 @@ bool usuarios::loginUsuarios() {
                 system("pause");
             }
         } else if (opcion == 2) {
-            registrarUsuario(); // Llama al registro directamente
+            registrarUsuario();
             cout << "\n\t\tAhora puede iniciar sesion con sus nuevas credenciales";
             system("pause");
         }
@@ -81,7 +84,7 @@ void usuarios::registrarUsuario() {
     system("cls");
     ofstream archivo("usuarios.txt", ios::app);
     if (!archivo.is_open()) {
-        cerr << "\n\t\tError al abrir archivo de usuarios!";
+        cerr << "\n\t\tError al abrir archivo de usuarios!\n";
         return;
     }
 
@@ -91,10 +94,18 @@ void usuarios::registrarUsuario() {
 
     cout << "\t\tID (ej: 1001): ";
     getline(cin, id);
-    cout << "\t\tNombre de usuario: ";
-    getline(cin, nombre);
-    cout << "\t\tContrasena: ";
 
+    cout << "\t\tNombre de usuario (sin espacios): ";
+    getline(cin, nombre);
+
+    // Validar que no contenga espacios
+    while (nombre.find(' ') != string::npos) {
+        cout << "\t\tEl nombre de usuario no puede contener espacios!\n";
+        cout << "\t\tNombre de usuario: ";
+        getline(cin, nombre);
+    }
+
+    cout << "\t\tContraseña: ";
     char ch;
     contrasena = "";
     while ((ch = _getch()) != 13) {
@@ -107,10 +118,16 @@ void usuarios::registrarUsuario() {
         }
     }
 
-    archivo << id << " " << nombre << " " << contrasena << endl;
+    cout << "\n\t\tNivel de acceso (1-5): ";
+    cin >> nivelAcceso;
+    cin.ignore();
+
+    // Escribir en el archivo
+    archivo << id << " " << nombre << " " << contrasena << " " << nivelAcceso << "\n";
     archivo.close();
+
     auditoria.insertar(nombre, "000", "REG-USER");
-    cout << "\n\n\t\tUsuario registrado con exito!";
+    cout << "\n\n\t\tUsuario registrado con éxito!\n";
     system("pause");
 }
 
@@ -118,22 +135,31 @@ void usuarios::registrarUsuario() {
 bool usuarios::buscarUsuario(const string& user, const string& pass) {
     ifstream archivo("usuarios.txt");
     if (!archivo.is_open()) {
-        cerr << "\n\t\tError al abrir archivo de usuarios!";
+        cerr << "\n\t\tError al abrir archivo de usuarios!\n";
         return false;
     }
 
-    string idArchivo, nombreArchivo, passArchivo;
-    while (archivo >> idArchivo >> nombreArchivo >> passArchivo) {
-        if (nombreArchivo == user && passArchivo == pass) {
-            archivo.close();
-            return true;
+    string linea;
+    while (getline(archivo, linea)) {
+        istringstream ss(linea);
+        string idArchivo, nombreArchivo, passArchivo;
+        int nivelArchivo;
+
+        if (ss >> idArchivo >> nombreArchivo >> passArchivo >> nivelArchivo) {
+            if (nombreArchivo == user && passArchivo == pass) {
+                id = idArchivo;
+                nombre = nombreArchivo;
+                nivelAcceso = nivelArchivo;
+                archivo.close();
+                return true;
+            }
         }
     }
     archivo.close();
     return false;
 }
 
-// Men� de administraci�n de usuarios
+// Menú de administración de usuarios
 void usuarios::menuUsuarios() {
     int opcion;
     do {
@@ -153,14 +179,13 @@ void usuarios::menuUsuarios() {
         switch (opcion) {
             case 1: registrarUsuario(); break;
             case 2: consultarUsuarios(); break;
-            case 3: /* modificarUsuario() */ break;
-            case 4: /* eliminarUsuario() */ break;
+            //case 3: modificarUsuario(); break;
+            //case 4: eliminarUsuario(); break;
             case 5: break;
             default: cout << "\n\t\tOpcion invalida!"; system("pause");
         }
     } while (opcion != 5);
 }
-
 
 // Consultar usuarios
 void usuarios::consultarUsuarios() {
@@ -174,9 +199,10 @@ void usuarios::consultarUsuarios() {
         cout << "\t\tNo hay usuarios registrados." << endl;
     } else {
         string id, nombre, pass;
-        cout << "\t\t" << left << setw(10) << "ID" << setw(20) << "NOMBRE" << endl;
-        while (archivo >> id >> nombre >> pass) {
-            cout << "\t\t" << setw(10) << id << setw(20) << nombre << endl;
+        int nivel;
+        cout << "\t\t" << left << setw(10) << "ID" << setw(20) << "NOMBRE" << setw(10) << "NIVEL" << endl;
+        while (archivo >> id >> nombre >> pass >> nivel) {
+            cout << "\t\t" << setw(10) << id << setw(20) << nombre << setw(10) << nivel << endl;
         }
         archivo.close();
     }
@@ -185,11 +211,18 @@ void usuarios::consultarUsuarios() {
     system("pause");
 }
 
-// Getters y setters
-string usuarios::getNombre() {
+std::string usuarios::getNombre() const {
     return nombre;
 }
 
-void usuarios::setNombre(const string& nombre) {
-    this->nombre = nombre;
+std::string usuarios::getId() const {
+    return id;
+}
+
+int usuarios::getNivelAcceso() const {
+    return nivelAcceso;
+}
+
+void usuarios::setNivelAcceso(int nivel) {
+    nivelAcceso = nivel;
 }
