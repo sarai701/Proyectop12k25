@@ -979,3 +979,502 @@
 	<conio.h>
 	<cstdlib>
 
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+	"Bitacora.h"
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\empleados.h
+	<vector>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
+	<string>
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\proveedores.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\contabilidad.h
+	<iostream>
+	<fstream>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\auditoria.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\usuario.h
+	"Bitacora.h"
+	<string>
+
+1746506711 c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
+	"Bitacora.h"
+	<string>
+	<vector>
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+	<iostream>
+	<fstream>
+	"Bitacora.h"
+	<cstdlib>
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
+	"Bitacora.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstring>
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+	<vector>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"Bitacora.h"
+	<cstdlib>
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746506711 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\nueva carpeta\proyectop12k25\equipo5\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
+1746925670 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+	"Bitacora.h"
+	"Bancos.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\empleados.h
+	<vector>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\bitacora.h
+	<string>
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\cliente.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\proveedores.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\contabilidad.h
+	<iostream>
+	<fstream>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\auditoria.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\usuario.h
+	"Bitacora.h"
+	<string>
+
+1746506711 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\nominas.h
+	"Bitacora.h"
+	<string>
+	<vector>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+	<iostream>
+	<fstream>
+	"Bitacora.h"
+	<cstdlib>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\bitacora.cpp
+	"Bitacora.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstring>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1746917090 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+	<vector>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+	<cstdlib>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+
+1746917090 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
+1746924434 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\bancos.cpp
+	"Bancos.h"
+	"Moneda.h"
+	<iostream>
+	"Bitacora.h"
+
+1746925787 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\bancos.h
+	<string>
+
+1746925787 c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\include\moneda.h
+	<string>
+
+1746917769 source:c:\users\pc\documents\menusistemabanco(actualizacion0507)\menusistemabanco\src\moneda.cpp
+	"Moneda.h"
+	"Bitacora.h"
+
+1746925670 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+	"Bitacora.h"
+	"Bancos.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\empleados.h
+	<vector>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\bitacora.h
+	<string>
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\cliente.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\proveedores.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\contabilidad.h
+	<iostream>
+	<fstream>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\auditoria.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\usuario.h
+	"Bitacora.h"
+	<string>
+
+1746506711 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\nominas.h
+	"Bitacora.h"
+	<string>
+	<vector>
+
+1746925787 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\bancos.h
+	<string>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+	<iostream>
+	<fstream>
+	"Bitacora.h"
+	<cstdlib>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\bitacora.cpp
+	"Bitacora.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstring>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1746917090 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+	<vector>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+	<cstdlib>
+
+1746925787 c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\include\moneda.h
+	<string>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+
+1746925787 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\moneda.cpp
+	"Moneda.h"
+	"Bitacora.h"
+
+1746917090 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746506711 source:c:\users\pc\documents\menusistemabanco(para subir a github)\menusistemabanco(modificaciones en el menu de bancos)\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
+1746925670 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+	"Bitacora.h"
+	"Bancos.h"
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\empleados.h
+	<vector>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
+	<string>
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\proveedores.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\contabilidad.h
+	<iostream>
+	<fstream>
+	<string>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\auditoria.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\usuario.h
+	"Bitacora.h"
+	<string>
+
+1746506711 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
+	"Bitacora.h"
+	<string>
+	<vector>
+
+1746925787 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\bancos.h
+	<string>
+
+1746506711 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\auditoria.cpp
+	"Auditoria.h"
+	<iostream>
+	<fstream>
+	"Bitacora.h"
+	<cstdlib>
+
+1747009086 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\bancos.cpp
+	"Bancos.h"
+	"Moneda.h"
+	<iostream>
+	"Bitacora.h"
+
+1746925787 c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\include\moneda.h
+	<string>
+
+1746506711 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
+	"Bitacora.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstring>
+
+1746506711 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
+	"Cliente.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1746917090 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
+	"Contabilidad.h"
+	<vector>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+	<cstdlib>
+
+1746506711 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+
+1746925787 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\moneda.cpp
+	"Moneda.h"
+	"Bitacora.h"
+
+1746917090 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+
+1746506711 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\proveedores.cpp
+	"Proveedores.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746506711 source:c:\users\pc\documents\programacion1\progra1\proyectofinal(equipo5)\proyectop12k25\equipo5\menusistemabanco\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
