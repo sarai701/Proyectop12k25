@@ -1,4 +1,5 @@
 //Jonathan Samuel Gonzalez
+//Karla Ruiz se agrego menu tipo de cuenta
 #include "Bancos.h"
 #include "Moneda.h"
 #include <iostream>
@@ -12,23 +13,24 @@ Bancos::Bancos() {
     monedaSeleccionada = "GTQ";
 }
 
-// Men˙ principal de configuraciÛn bancaria
+// Men√∫ principal de configuraci√≥n bancaria
 void Bancos::menuConfiguracion() {
     menuSeleccionBanco();
+    menuTipoCuenta(); //C√≥digo a√±adido
     menuTipoMoneda();
 }
 
-// Muestra la configuraciÛn actual
+// Muestra la configuraci√≥n actual
 void Bancos::mostrarConfiguracion() {
     limpiarPantalla();
-    cout << "\n===== CONFIGURACI”N ACTUAL =====";
+    cout << "\n===== CONFIGURACI√ìN ACTUAL =====";
     cout << "\nBanco: " << bancoSeleccionado;
     cout << "\nTipo de cuenta: " << tipoCuentaSeleccionada;
     cout << "\nMoneda: " << monedaSeleccionada << " (" << Moneda::getSimbolo() << ")";
     pausar();
 }
 
-// --- Men˙s internos ---
+// --- Men√∫s internos ---
 void Bancos::menuSeleccionBanco() {
     int opcion;
     do {
@@ -39,7 +41,7 @@ void Bancos::menuSeleccionBanco() {
         cout << "\n3. Banco Banrural";
         cout << "\n4. Bac Credomatic";
         cout << "\n5. Bantrab";
-        cout << "\nSeleccione una opciÛn: ";
+        cout << "\nSeleccione una opci√≥n: ";
         cin >> opcion;
         cin.ignore();
 
@@ -49,13 +51,36 @@ void Bancos::menuSeleccionBanco() {
             case 3: bancoSeleccionado = "Banco Banrural"; break;
             case 4: bancoSeleccionado = "Bac Credomatic"; break;
             case 5: bancoSeleccionado = "Bantrab"; break;
-            default: cout << "OpciÛn inv·lida."; pausar();
+            default: cout << "Opci√≥n inv√°lida."; pausar();
         }
 
         if (opcion >= 1 && opcion <= 5) return;
     } while (true);
 }
 
+void Bancos::menuTipoCuenta() {
+    int opcion;
+    do {
+        limpiarPantalla();
+        cout << "\n===== TIPO DE CUENTA =====";
+        cout << "\nBanco seleccionado: " << bancoSeleccionado;
+        cout << "\n1. Cuenta Monetaria";
+        cout << "\n2. Cuenta de Ahorro";
+        cout << "\n3. Volver al men√∫ anterior";
+        cout << "\nSeleccione una opci√≥n: ";
+        cin >> opcion;
+        cin.ignore();
+
+        switch (opcion) {
+            case 1: tipoCuentaSeleccionada = "Monetaria"; break;
+            case 2: tipoCuentaSeleccionada = "Ahorro"; break;
+            case 3: menuSeleccionBanco(); // Vuelve al men√∫ de bancos
+            default: cout << "Opci√≥n inv√°lida."; pausar();
+        }
+
+        if (opcion >= 1 && opcion <= 3) return;
+    } while (true);
+}
 
 void Bancos::menuTipoMoneda() {
     int opcion;
@@ -65,10 +90,10 @@ void Bancos::menuTipoMoneda() {
         cout << "\nBanco: " << bancoSeleccionado;
         cout << "\nCuenta: " << tipoCuentaSeleccionada;
         cout << "\n1. Quetzales (GTQ)";
-        cout << "\n2. DÛlares (USD)";
+        cout << "\n2. D√≥lares (USD)";
         cout << "\n3. Euros (EUR)";
-        cout << "\n4. Volver al men˙ anterior";
-        cout << "\nSeleccione una opciÛn: ";
+        cout << "\n4. Volver al men√∫ de tipo de cuenta";
+        cout << "\nSeleccione una opci√≥n: ";
         cin >> opcion;
         cin.ignore();
 
@@ -88,11 +113,12 @@ void Bancos::menuTipoMoneda() {
                 Moneda::moneda = "EUR";
                 limpiarPantalla(); // Limpia pantalla antes de salir
                 return;
-            case 4: menuSeleccionBanco(); break;
-            default: cout << "OpciÛn inv·lida."; pausar();
+            case 4: menuTipoCuenta(); break; // Ahora llama a menuTipoCuenta()
+            default: cout << "Opci√≥n inv√°lida."; pausar();
         }
     } while (true);
 }
+
 // --- Funciones auxiliares ---
 void Bancos::limpiarPantalla() {
 #ifdef _WIN32

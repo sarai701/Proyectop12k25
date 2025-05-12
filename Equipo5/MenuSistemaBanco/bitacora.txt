@@ -123,3 +123,15 @@ admin          1000      Sistema             Inicio de sesión exitoso      Sun M
 admin          4500      Sistema             Usuario revisó la bancos      Sun May 11 18:56:36 2025 
 admin          4000      Nominas             Ingresó al módulo de Nóminas  Sun May 11 18:56:51 2025 
 admin          4901      Sistema             Usuario cerró sesión          Sun May 11 18:56:57 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:23:45 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:29:27 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:36:08 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:37:32 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:40:11 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:41:57 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:14:06 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:29:14 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:37:31 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 11 20:37:41 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:40:49 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:42:33 2025 
