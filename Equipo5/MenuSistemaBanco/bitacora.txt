@@ -123,6 +123,7 @@ admin          1000      Sistema             Inicio de sesión exitoso      Sun M
 admin          4500      Sistema             Usuario revisó la bancos      Sun May 11 18:56:36 2025 
 admin          4000      Nominas             Ingresó al módulo de Nóminas  Sun May 11 18:56:51 2025 
 admin          4901      Sistema             Usuario cerró sesión          Sun May 11 18:56:57 2025 
+<<<<<<< HEAD
 Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:23:45 2025 
 Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:29:27 2025 
 Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:36:08 2025 
@@ -135,3 +136,21 @@ Prisci         1000      Sistema             Inicio de sesión exitoso      Sun M
 Prisci         4901      Sistema             Usuario cerró sesión          Sun May 11 20:37:41 2025 
 Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:40:49 2025 
 Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:42:33 2025 
+=======
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:23:45 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:24:46 2025 
+123            4901      Sistema             Usuario cerró sesión          Sun May 11 20:24:49 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:25:20 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:26:59 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:27:45 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:27:56 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:29:40 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:29:52 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:32:42 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:33:54 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:37:55 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:38:17 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:45:03 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:45:18 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:47:28 2025 
+>>>>>>> 883a5443c7cd0fb4ad4aa847ae9a4f0972ec9fda

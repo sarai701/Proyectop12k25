@@ -16,7 +16,11 @@ Bancos::Bancos() {
 // Menú principal de configuración bancaria
 void Bancos::menuConfiguracion() {
     menuSeleccionBanco();
+<<<<<<< HEAD
     menuTipoCuenta(); //Código añadido
+=======
+    menuTipoCuenta(); // 🠖 Código añadido
+>>>>>>> 883a5443c7cd0fb4ad4aa847ae9a4f0972ec9fda
     menuTipoMoneda();
 }
 
@@ -92,7 +96,11 @@ void Bancos::menuTipoMoneda() {
         cout << "\n1. Quetzales (GTQ)";
         cout << "\n2. Dólares (USD)";
         cout << "\n3. Euros (EUR)";
+<<<<<<< HEAD
         cout << "\n4. Volver al menú de tipo de cuenta";
+=======
+        cout << "\n4. Volver al menú de tipo de cuenta"; // 🠖 Corregido el mensaje
+>>>>>>> 883a5443c7cd0fb4ad4aa847ae9a4f0972ec9fda
         cout << "\nSeleccione una opción: ";
         cin >> opcion;
         cin.ignore();
@@ -113,7 +121,11 @@ void Bancos::menuTipoMoneda() {
                 Moneda::moneda = "EUR";
                 limpiarPantalla(); // Limpia pantalla antes de salir
                 return;
+<<<<<<< HEAD
             case 4: menuTipoCuenta(); break; // Ahora llama a menuTipoCuenta()
+=======
+            case 4: menuTipoCuenta(); break; // 🠖 Ahora llama a menuTipoCuenta()
+>>>>>>> 883a5443c7cd0fb4ad4aa847ae9a4f0972ec9fda
             default: cout << "Opción inválida."; pausar();
         }
     } while (true);
