@@ -10,6 +10,7 @@
 #include <conio.h> // para getch()
 #include "Nominas.h"
 #include "Bitacora.h"
+#include "Bancos.h"
 
 using namespace std;
 
@@ -21,7 +22,7 @@ void pausar() {
 }
 
 // Mostrar el menú principal, ahora recibe el nombre del usuario
-void mostrarMenu(const string& usuario) {
+void mostrarMenu(const string& usuario, Bancos& bancos) {
     Empleados empleados;
     Cliente cliente;
     Proveedor proveedor;
@@ -42,7 +43,8 @@ void mostrarMenu(const string& usuario) {
         cout << "\n 5. Auditoria";
         cout << "\n 6. Proveedores";
         cout << "\n 7. Bitacora";
-        cout << "\n 8. Salir";
+        cout << "\n 8. Bancos";
+        cout << "\n 9. Salir";
         cout << "\n------------------------------------";
         cout << "\nSeleccione una opcion: ";
         cin >> opcion;
@@ -83,9 +85,14 @@ void mostrarMenu(const string& usuario) {
                 bitacora.insertar(usuario, 4402, "Sistema", "Usuario revisó la bitácora");
                 break;
             case 8:
+                bancos.mostrarConfiguracion();  // Usa la instancia configurada
+                bitacora.insertar(usuario, 4500, "Sistema", "Usuario revisó la bancos");
+                break;
+            case 9:
                 bitacora.insertar(usuario, 4901, "Sistema", "Usuario cerró sesión");
                 cout << "\nSaliendo del sistema... Gracias!\n";
                 break;
+
             default:
                 cout << "\nOpción inválida. Intente de nuevo.\n";
                 bitacora.insertar(usuario, 4902, "Sistema", "Intento de opción inválida");
@@ -95,31 +102,26 @@ void mostrarMenu(const string& usuario) {
         pausar();
         Usuario::limpiarPantalla();
 
-    } while (opcion != 8);
+    } while (opcion != 9);
 }
 
 // Función principal
 int main() {
     while (true) {
         string usuarioLogueado;
-
-        // Autenticación y recuperación del nombre de usuario
         if (Usuario::menuAutenticacion(usuarioLogueado)) {
             Bitacora bitacora;
             bitacora.insertar(usuarioLogueado, 1000, "Sistema", "Inicio de sesión exitoso");
 
-            mostrarMenu(usuarioLogueado);
+            // Configuración inicial obligatoria
+            Bancos configuracion;
+            configuracion.menuConfiguracion();
 
-            pausar();
-            Usuario::limpiarPantalla();
+            mostrarMenu(usuarioLogueado, configuracion);
         } else {
-            cout << "\nAutenticación fallida o el usuario decidió salir.\n";
+            cout << "\nAutenticación fallida.\n";
             break;
         }
     }
-
     return 0;
 }
-
-
-

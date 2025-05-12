@@ -35,19 +35,23 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Auditoria.h" />
+		<Unit filename="include/Bancos.h" />
 		<Unit filename="include/Bitacora.h" />
 		<Unit filename="include/Cliente.h" />
 		<Unit filename="include/Contabilidad.h" />
 		<Unit filename="include/Empleados.h" />
+		<Unit filename="include/Moneda.h" />
 		<Unit filename="include/Nominas.h" />
 		<Unit filename="include/Proveedores.h" />
 		<Unit filename="include/Usuario.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Auditoria.cpp" />
+		<Unit filename="src/Bancos.cpp" />
 		<Unit filename="src/Bitacora.cpp" />
 		<Unit filename="src/Cliente.cpp" />
 		<Unit filename="src/Contabilidad.cpp" />
 		<Unit filename="src/Empleados.cpp" />
+		<Unit filename="src/Moneda.cpp" />
 		<Unit filename="src/Nominas.cpp" />
 		<Unit filename="src/Proveedores.cpp" />
 		<Unit filename="src/Usuario.cpp" />
