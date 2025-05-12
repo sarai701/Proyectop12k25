@@ -1,8 +1,8 @@
 #ifndef USUARIOS_H
 #define USUARIOS_H
 
-#include<iostream>
-using std::string;
+#include <string>
+using namespace std;
 
 class usuarios
 {
@@ -10,11 +10,15 @@ class usuarios
         usuarios();
         virtual ~usuarios();
         bool loginUsuarios();
-        //void menuUsuarios();
-        bool buscar (string user, string passw);
-        string getNombre();
-        void setNombre(string nombre); //cambié a void
         bool registrarUsuario();
+        bool consultarUsuarios();
+        bool modificarUsuario();
+        bool eliminarUsuario();
+        bool backupUsuarios();
+        bool restaurarBackup();
+        bool buscar(string user, string passw);
+        string getNombre();
+        void setNombre(string nombre);
 
     protected:
 
@@ -25,5 +29,4 @@ class usuarios
 };
 
 #endif // USUARIOS_H
-
 //mantenimiento = crud
