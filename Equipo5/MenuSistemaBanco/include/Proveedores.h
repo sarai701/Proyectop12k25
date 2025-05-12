@@ -1,9 +1,10 @@
-//Programaddo por Boris Ivan de Leon Santos 9959-24-6203
+//Boris de León 9959-24-6203
 #ifndef PROVEEDORES_H
 #define PROVEEDORES_H
 
 #include <string>
 #include <vector>
+#include "Bitacora.h"
 
 using namespace std;
 class Proveedor {

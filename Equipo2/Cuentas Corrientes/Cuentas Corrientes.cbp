@@ -38,6 +38,7 @@
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/catalogos.h" />
 		<Unit filename="include/cliente.h" />
+		<Unit filename="include/factura.h" />
 		<Unit filename="include/procesos.h" />
 		<Unit filename="include/proveedor.h" />
 		<Unit filename="include/transaccion.h" />
@@ -47,6 +48,7 @@
 		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/catalogos.cpp" />
 		<Unit filename="src/cliente.cpp" />
+		<Unit filename="src/factura.cpp" />
 		<Unit filename="src/procesos.cpp" />
 		<Unit filename="src/proveedor.cpp" />
 		<Unit filename="src/transaccion.cpp" />
