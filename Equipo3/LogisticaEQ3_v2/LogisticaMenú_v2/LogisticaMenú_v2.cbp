@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="LogisticaMenú_v2" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/LogisticaMenú_v2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/LogisticaMenú_v2" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+<<<<<<< HEAD
+		<Unit filename="include/Inventario.h" />
+		<Unit filename="include/administracion.h" />
+		<Unit filename="include/menuadministracion.h" />
+		<Unit filename="include/menutransportistas.h" />
+		<Unit filename="include/transportistas.h" />
+		<Unit filename="include/usuarios.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Inventario.cpp" />
+		<Unit filename="src/administracion.cpp" />
+		<Unit filename="src/menuadministracion.cpp" />
+		<Unit filename="src/menutransportistas.cpp" />
+		<Unit filename="src/transportistas.cpp" />
+		<Unit filename="src/usuarios.cpp" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+		<Unit filename="include/MenuClientes.h" />
+		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/clientes.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/MenuClientes.cpp" />
+		<Unit filename="src/bitacora.cpp" />
+		<Unit filename="src/clientes.cpp" />
+=======
+=======
+		<Unit filename="include/facturacion.h" />
+>>>>>>> 6b35c58ecc32f90b91e63e97331727ec2a994c57
+		<Unit filename="include/menuproveedores.h" />
+		<Unit filename="include/proveedor.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/facturacion.cpp" />
+		<Unit filename="src/menuproveedores.cpp" />
+<<<<<<< HEAD
+		<Unit filename="src/provedor.cpp" />
+>>>>>>> 2aadaa68be5096fb36079cea72d88cbca3362f2a
+=======
+=======
+		<Unit filename="include/Reportes.h" />
+>>>>>>> 9f8241c64aecba9e3cf9ff250d74fa2645ca03d8
+		<Unit filename="include/almacen.h" />
+		<Unit filename="include/menualmacenes.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Reportes.cpp" />
+		<Unit filename="src/almacen.cpp" />
+		<Unit filename="src/menualmacenes.cpp" />
+>>>>>>> 9f633e634a31d8160a3d7cf632663e2b75098cef
+=======
+		<Unit filename="src/proveedor.cpp" />
+>>>>>>> 6b35c58ecc32f90b91e63e97331727ec2a994c57
+>>>>>>> b2cbddbe8128821155a51742549900d1a63df08c
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

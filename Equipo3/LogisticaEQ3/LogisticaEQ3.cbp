@@ -35,38 +35,29 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 743b2431957846a1194acb9a901eeb71698f67ea
-		<Unit filename="include/Inventario.h" />
 		<Unit filename="include/Reportes.h" />
-		<Unit filename="include/Usuario.h" />
-<<<<<<< HEAD
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/envios.h" />
-		<Unit filename="include/pedidos.h" />
-=======
 		<Unit filename="include/inventario.h" />
+=======
+		<Unit filename="include/Inventario.h" />
+		<Unit filename="include/Reportes.h" />
+		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/envios.h" />
+>>>>>>> c2dd98f6893dcf4e06a25520b6c5b1c536fe86b8
+		<Unit filename="include/pedidos.h" />
 		<Unit filename="include/usuarios.h" />
->>>>>>> 743b2431957846a1194acb9a901eeb71698f67ea
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Inventario.cpp" />
 		<Unit filename="src/Reportes.cpp" />
-		<Unit filename="src/Usuario.cpp" />
-<<<<<<< HEAD
 		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/envios.cpp" />
 		<Unit filename="src/facturacion.cpp" />
-		<Unit filename="src/pedidos.cpp" />
-=======
+<<<<<<< HEAD
 		<Unit filename="src/inventario.cpp" />
-		<Unit filename="src/usuarios.cpp" />
 =======
-		<Unit filename="include/bitacora.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="src/bitacora.cpp" />
->>>>>>> 022c7278e9d5e9217747d5075df0f16e08dfb487
->>>>>>> 743b2431957846a1194acb9a901eeb71698f67ea
+>>>>>>> c2dd98f6893dcf4e06a25520b6c5b1c536fe86b8
+		<Unit filename="src/pedidos.cpp" />
+		<Unit filename="src/usuarios.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
