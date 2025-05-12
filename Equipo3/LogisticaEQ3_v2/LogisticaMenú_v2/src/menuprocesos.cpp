@@ -15,12 +15,17 @@
 using namespace std;
 
 
+// Declaración externa del usuario registrado actual
 extern usuarios usuarioRegistrado;
 
+// Muestra el menú principal de procesos y redirige según la opción elegida
 void MenuProcesos::mostrar() {
     int choice;
     do {
+        // Limpiar pantalla antes de mostrar el menú
         system("cls");
+
+        // Mostrar encabezado del menú y nombre del usuario actual
         cout << "\t\t========================================\n"
              << "\t\t|          MENÚ DE PROCESOS            |\n"
              << "\t\t========================================\n"
@@ -34,18 +39,47 @@ void MenuProcesos::mostrar() {
              << "\t\t 6. Volver\n"
              << "\t\t========================================\n"
              << "\t\tIngresa tu opción: ";
+
+        // Captura la opción del usuario
         cin >> choice;
 
+        // Ejecuta la opción seleccionada
         switch(choice) {
-            case 1: gestorPedidos.gestionPedidos(); break;
-            case 2: gestorInventario.controlInventario(); break;
-            case 3: gestorEnvios.gestionEnvios(); break;
-            case 4: gestorFacturacion.gestionFacturacion(); break;
-            case 5: gestorReportes.generarReportes(); break;
-            case 6: return;
-            default: cout << "\n\t\tOpción inválida...";
+            case 1:
+                // Acceder a la funcionalidad de gestión de pedidos
+                gestorPedidos.gestionPedidos();
+                break;
+
+            case 2:
+                // Acceder a la funcionalidad de control de inventario
+                gestorInventario.controlInventario();
+                break;
+
+            case 3:
+                // Acceder a la funcionalidad de gestión de envíos y transportes
+                gestorEnvios.gestionEnvios();
+                break;
+
+            case 4:
+                // Funcionalidad de facturación (a implementar)
+                break;
+
+            case 5:
+                // Generar reportes disponibles en el sistema
+                gestorReportes.generarReportes();
+                break;
+
+            case 6:
+                // Salir del menú de procesos
+                return;
+
+            default:
+                // Manejar opción inválida
+                cout << "\n\t\tOpción inválida...";
         }
-        cin.ignore();
-        cin.get();
-    } while(choice != 6);
+
+        // Esperar una tecla antes de volver a mostrar el menú
+        cin.ignore(); // Limpiar buffer
+        cin.get();    // Esperar entrada del usuario
+    } while(choice != 6); // Repetir hasta que se seleccione salir
 }

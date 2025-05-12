@@ -34,34 +34,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-<<<<<<< HEAD
-		<Unit filename="include/Reportes.h" />
-		<Unit filename="include/almacen.h" />
-=======
-<<<<<<< HEAD
-		<Unit filename="include/Inventario.h" />
 		<Unit filename="include/administracion.h" />
-		<Unit filename="include/menuadministracion.h" />
-		<Unit filename="include/menutransportistas.h" />
-		<Unit filename="include/transportistas.h" />
-		<Unit filename="include/usuarios.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="src/Inventario.cpp" />
-		<Unit filename="src/administracion.cpp" />
-		<Unit filename="src/menuadministracion.cpp" />
-		<Unit filename="src/menutransportistas.cpp" />
-		<Unit filename="src/transportistas.cpp" />
-		<Unit filename="src/usuarios.cpp" />
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		<Unit filename="include/MenuClientes.h" />
->>>>>>> c6f6f4a894f2c1659cb71f527e61b0141636a336
+		<Unit filename="include/almacen.h" />
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/clientes.h" />
+		<Unit filename="include/envios.h" />
 		<Unit filename="include/facturacion.h" />
+		<Unit filename="include/menuadministracion.h" />
 		<Unit filename="include/menualmacenes.h" />
 		<Unit filename="include/menuarchivo.h" />
 		<Unit filename="include/menucatalogos.h" />
@@ -69,17 +48,24 @@
 		<Unit filename="include/menuprocesos.h" />
 		<Unit filename="include/menuproductos.h" />
 		<Unit filename="include/menuproveedores.h" />
+		<Unit filename="include/menutransportistas.h" />
 		<Unit filename="include/pedidos.h" />
 		<Unit filename="include/producto.h" />
 		<Unit filename="include/proveedor.h" />
+		<Unit filename="include/transportistas.h" />
+		<Unit filename="include/usuarios.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Inventario.cpp" />
 		<Unit filename="src/MenuClientes.cpp" />
 		<Unit filename="src/Reportes.cpp" />
+		<Unit filename="src/administracion.cpp" />
 		<Unit filename="src/almacen.cpp" />
 		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/clientes.cpp" />
+		<Unit filename="src/envios.cpp" />
 		<Unit filename="src/facturacion.cpp" />
 		<Unit filename="src/globals.cpp" />
+		<Unit filename="src/menuadministracion.cpp" />
 		<Unit filename="src/menualmacenes.cpp" />
 		<Unit filename="src/menuarchivo.cpp" />
 		<Unit filename="src/menucatalogos.cpp" />
@@ -87,14 +73,12 @@
 		<Unit filename="src/menuprocesos.cpp" />
 		<Unit filename="src/menuproductos.cpp" />
 		<Unit filename="src/menuproveedores.cpp" />
+		<Unit filename="src/menutransportistas.cpp" />
 		<Unit filename="src/pedidos.cpp" />
 		<Unit filename="src/producto.cpp" />
 		<Unit filename="src/proveedor.cpp" />
-<<<<<<< HEAD
-=======
->>>>>>> 6b35c58ecc32f90b91e63e97331727ec2a994c57
->>>>>>> b2cbddbe8128821155a51742549900d1a63df08c
->>>>>>> c6f6f4a894f2c1659cb71f527e61b0141636a336
+		<Unit filename="src/transportistas.cpp" />
+		<Unit filename="src/usuarios.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

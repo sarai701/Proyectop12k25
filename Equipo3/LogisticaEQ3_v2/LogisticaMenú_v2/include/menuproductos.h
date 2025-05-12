@@ -1,3 +1,6 @@
+#ifndef MENUPRODUCTOS_H
+#define MENUPRODUCTOS_H
+
 // Inclusión de dependencias necesarias
 #include <vector>          // Para usar std::vector
 #include "Producto.h"      // Para la clase Producto
@@ -12,5 +15,4 @@ public:
     static void mostrar(std::vector<Producto>& listaProductos, usuarios& usuarioActual);
 };
 
-// Fin de la definición
-#endif // MENUPRODUCTOS_H
+#endif
