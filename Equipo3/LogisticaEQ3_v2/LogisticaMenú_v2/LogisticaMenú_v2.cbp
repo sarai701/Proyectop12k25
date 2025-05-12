@@ -34,15 +34,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Inventario.h" />
 		<Unit filename="include/administracion.h" />
 		<Unit filename="include/menuadministracion.h" />
 		<Unit filename="include/menutransportistas.h" />
 		<Unit filename="include/transportistas.h" />
+		<Unit filename="include/usuarios.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Inventario.cpp" />
 		<Unit filename="src/administracion.cpp" />
 		<Unit filename="src/menuadministracion.cpp" />
 		<Unit filename="src/menutransportistas.cpp" />
 		<Unit filename="src/transportistas.cpp" />
+		<Unit filename="src/usuarios.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
