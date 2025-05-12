@@ -36,6 +36,7 @@
 		</Compiler>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		<Unit filename="include/MenuClientes.h" />
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/clientes.h" />
@@ -44,10 +45,15 @@
 		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/clientes.cpp" />
 =======
+=======
+		<Unit filename="include/facturacion.h" />
+>>>>>>> 6b35c58ecc32f90b91e63e97331727ec2a994c57
 		<Unit filename="include/menuproveedores.h" />
-		<Unit filename="include/provedor.h" />
+		<Unit filename="include/proveedor.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/facturacion.cpp" />
 		<Unit filename="src/menuproveedores.cpp" />
+<<<<<<< HEAD
 		<Unit filename="src/provedor.cpp" />
 >>>>>>> 2aadaa68be5096fb36079cea72d88cbca3362f2a
 =======
@@ -57,6 +63,9 @@
 		<Unit filename="src/almacen.cpp" />
 		<Unit filename="src/menualmacenes.cpp" />
 >>>>>>> 9f633e634a31d8160a3d7cf632663e2b75098cef
+=======
+		<Unit filename="src/proveedor.cpp" />
+>>>>>>> 6b35c58ecc32f90b91e63e97331727ec2a994c57
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
