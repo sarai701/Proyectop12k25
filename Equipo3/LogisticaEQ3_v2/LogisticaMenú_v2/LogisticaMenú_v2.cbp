@@ -34,9 +34,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Reportes.h" />
 		<Unit filename="include/almacen.h" />
 		<Unit filename="include/menualmacenes.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Reportes.cpp" />
 		<Unit filename="src/almacen.cpp" />
 		<Unit filename="src/menualmacenes.cpp" />
 		<Extensions />
