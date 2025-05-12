@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+Karina              000       REG-USER       
+Karina              000       LOGIN-FAIL     
+Karina              000       LOGIN          
+Karina              000       LOGIN          
+Karina              000       LOGIN          
+Karina              200       STOCK          
+Karina              101       CONSULTA PEDIDO
+Karina              300       GUIA           
+Karina              301       TRANSPORTISTA  
+Karina              500       REPVENT        
+Karina              500       ANALTIME       
+Karina              500       REPINV         
+Karina              500       EVAPROV        
+Karina              400       CONSPAG        
+Karina              400       FACT           
+Karina              300       GUIA           
+=======
 Jennifer            000       REG-USER       
 Jennifer            000       LOGIN          
 Jennifer            100       NUEVO PEDIDO   
@@ -46,3 +64,4 @@ DelAguila           000       LOGIN
 DelAguila           100       NUEVO PEDIDO   
 DelAguila           101       CONSULTA PEDIDO
 Jennifer            000       LOGIN          
+>>>>>>> c2dd98f6893dcf4e06a25520b6c5b1c536fe86b8
