@@ -1,17 +1,32 @@
 #ifndef MENUCATALOGOS_H
 #define MENUCATALOGOS_H
 
-#include <vector>
-#include "Clientes.h"
-#include "Proveedor.h"
-#include "Producto.h"
-#include "Almacen.h"
-#include "Administracion.h"
-#include "transportistas.h"
-#include "usuarios.h"
+//JENNIFER ALBA DAYAMI BARRIOS FLORES
+//9959-24-10016
+//MAYO 2025
 
+// Incluye las bibliotecas necesarias
+#include <vector>            // Para usar contenedores vector
+#include "Clientes.h"        // Manejo de clientes
+#include "Proveedor.h"       // Gestión de proveedores
+#include "Producto.h"        // Administración de productos
+#include "Almacen.h"         // Control de almacenes
+#include "Administracion.h"  // Gestión administrativa
+#include "transportistas.h"  // Manejo de transportistas
+#include "usuarios.h"        // Control de usuarios
+
+// Clase para el menú de catálogos del sistema
 class MenuCatalogos {
 public:
+    // Muestra el menú de gestión de catálogos
+    // Parámetros:
+    // clientes - Lista de clientes registrados
+    // proveedores - Lista de proveedores del sistema
+    // productos - Inventario de productos
+    // almacenes - Lista de almacenes disponibles
+    // administradores - Personal administrativo
+    // transportistas - Lista de transportistas
+    // usuarioActual - Usuario que ha iniciado sesión
     static void mostrar(std::vector<Clientes>& clientes,
                       std::vector<Proveedor>& proveedores,
                       std::vector<Producto>& productos,
@@ -21,4 +36,5 @@ public:
                       usuarios& usuarioActual);
 };
 
+// Fin del archivo de encabezado
 #endif // MENUCATALOGOS_H

@@ -2,6 +2,10 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
+//JENNIFER ALBA DAYAMI BARRIOS FLORES
+//9959-24-10016
+//MAYO 2025
+
 // Inclusión de bibliotecas necesarias
 #include <vector>          // Para usar std::vector
 #include "usuarios.h"      // Manejo de usuarios del sistema
