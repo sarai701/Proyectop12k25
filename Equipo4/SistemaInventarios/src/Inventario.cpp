@@ -35,7 +35,7 @@ void Inventario::agregarProducto(int codigo, string nombre, float precio, int st
 
 void Inventario::mostrarInventarioGeneral() {
     system("cls");
-    cout << "\n--- Inventario General ---\n";
+    cout << "\n--- Kardex ---\n";
     cout << "Codigo\tNombre\tPrecio\tStock\tTipo\n";
     for (const auto& p : productos) {
         cout << p.codigo << "\t" << p.nombre << "\t" << p.precio << "\t" << p.stock << "\t" << p.tipo << endl;
@@ -55,7 +55,7 @@ Producto* Inventario::buscarProducto(int codigo) {
 
 void Inventario::mostrarInventarioPorTipo(string tipo) {
     system("cls");
-    cout << "\n--- Inventario de " << tipo << " ---\n";
+    cout << "\n--- Informe de " << tipo << " ---\n";
     cout << "Codigo\tNombre\tPrecio\tStock\n";
     for (const auto& p : productos) {
         if (p.tipo == tipo) {
