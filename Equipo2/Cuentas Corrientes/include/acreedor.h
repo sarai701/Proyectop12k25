@@ -17,6 +17,7 @@ public:
     void desplegar();
     void modificar();
     void buscar();
+    void reporte();
     void borrar();
 };
 

@@ -1,0 +1,6 @@
+-------------------------- BITÁCORA DEL SISTEMA --------------------------
+ID_ACCION   USUARIO        MODULO              DESCRIPCION                        FECHA_HORA          
+---------------------------------------------------------------------------
+3000        Jennifer       000                 LOGIN-FAIL                         12/05/2025 02:11:24 
+3001        Jennifer       000                 REG-USER                           12/05/2025 02:11:40 
+3002        Jennifer       000                 LOGIN                              12/05/2025 02:11:48 

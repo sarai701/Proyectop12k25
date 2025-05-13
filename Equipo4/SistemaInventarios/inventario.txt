@@ -3,3 +3,4 @@
 3,computadoras,1200,20,ventas
 5,calcetines,20,20,stock
 10,bufandas,0,30,
+
