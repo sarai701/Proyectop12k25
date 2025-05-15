@@ -15,8 +15,12 @@ using namespace std;
 const int CODIGO_INICIAL = 3107;
 const int CODIGO_FINAL = 3157;
 
+/**
+ * Genera un ID único dentro del rango permitido (3107–3157) para un nuevo cliente.
+ * @param lista Lista actual de clientes.
+ * @return ID disponible como string, o cadena vacía si el rango está lleno.
+ */
 std::string Clientes::generarIdUnico(const std::vector<Clientes>& lista) {
-    // Buscar el primer código disponible en el rango
     for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; ++i) {
         std::string id = std::to_string(i);
         if (idDisponible(lista, id)) {
@@ -26,11 +30,22 @@ std::string Clientes::generarIdUnico(const std::vector<Clientes>& lista) {
     return ""; // Retorna cadena vacía si no hay códigos disponibles
 }
 
+/**
+ * Verifica si un ID está disponible (no repetido) en la lista de clientes.
+ * @param lista Lista de clientes.
+ * @param id ID a verificar.
+ * @return true si el ID no está en uso, false si ya está ocupado.
+ */
 bool Clientes::idDisponible(const std::vector<Clientes>& lista, const std::string& id) {
     return std::none_of(lista.begin(), lista.end(),
         [&id](const Clientes& c) { return c.id == id; });
 }
 
+/**
+ * Valida si un ID es un número dentro del rango permitido.
+ * @param id ID a validar.
+ * @return true si es válido, false si no.
+ */
 bool Clientes::esIdValido(const std::string& id) {
     try {
         int num = std::stoi(id);
@@ -40,7 +55,12 @@ bool Clientes::esIdValido(const std::string& id) {
     }
 }
 
-// Implementación de métodos CRUD
+/**
+ * Agrega un nuevo cliente a la lista, solicitando los datos desde la entrada estándar.
+ * Asigna automáticamente un ID único, guarda en archivo y registra en bitácora.
+ * @param lista Lista de clientes (modificable).
+ * @param usuarioActual Nombre del usuario activo (para bitácora).
+ */
 void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioActual) {
     Clientes nuevo;
 
@@ -58,7 +78,7 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::cout << "\t\tNombre completo: ";
-    std::getline(std::cin, nuevo.nombre); // Ahora capturará correctamente "Juan"
+    std::getline(std::cin, nuevo.nombre);
 
     std::cout << "\t\tDirección: ";
     std::getline(std::cin, nuevo.direccion);
@@ -77,18 +97,52 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
     system("pause");
 }
 
+/**
+ * Muestra todos los clientes actualmente almacenados en la lista.
+ * Si la lista está vacía, muestra un mensaje apropiado.
+ * @param lista Lista de clientes a mostrar.
+ */
+/**
+ * Muestra todos los clientes actualmente almacenados en la lista.
+ * Si la lista está vacía, muestra un mensaje apropiado.
+ * @param lista Lista de clientes a mostrar.
+ */
 void Clientes::mostrar(const std::vector<Clientes>& lista) {
-    cout << "\n--- LISTA DE CLIENTES ---\n";
-    for (const auto& cliente : lista) {
-        cout << "ID: " << cliente.id
-        << " | Nombre: " << cliente.nombre
-        << " | Dirección: " << cliente.direccion
-        << " | Teléfono: " << cliente.telefono
-        << " | NIT: " << cliente.nit << "\n";
+    if (lista.empty()) {
+        cout << "\n\t--- NO HAY CLIENTES REGISTRADOS ---\n";
+        cout << "\tEl archivo puede estar vacío o no se cargó correctamente.\n";
+    } else {
+        // Cabecera
+        cout << "\n\t" << string(100, '-') << "\n";
+        cout << "\t" << left
+             << setw(10) << "| ID |"
+             << setw(30) << " NOMBRE COMPLETO |"
+             << setw(25) << " DIRECCIÓN |"
+             << setw(15) << " TELÉFONO |"
+             << setw(15) << " NIT |" << "\n";
+        cout << "\t" << string(100, '-') << "\n";
+
+        // Datos
+        for (const auto& cliente : lista) {
+            cout << "\t" << left
+                 << "| " << setw(6) << cliente.id << "| "
+                 << setw(28) << cliente.nombre << "| "
+                 << setw(23) << cliente.direccion << "| "
+                 << setw(13) << cliente.telefono << "| "
+                 << setw(13) << cliente.nit << "|" << "\n";
+        }
+        cout << "\t" << string(100, '-') << "\n";
     }
     system("pause");
 }
 
+/**
+ * Modifica los datos de un cliente existente según su ID.
+ * Guarda los cambios en el archivo y registra en la bitácora.
+ * @param lista Lista de clientes (modificable).
+ * @param usuarioActual Usuario que realiza la modificación.
+ * @param id ID del cliente a modificar.
+ */
 void Clientes::modificar(std::vector<Clientes>& lista, const std::string& usuarioActual, const std::string& id) {
     auto it = find_if(lista.begin(), lista.end(),
         [&id](const Clientes& c) { return c.id == id; });
@@ -119,18 +173,21 @@ void Clientes::modificar(std::vector<Clientes>& lista, const std::string& usuari
     system("pause");
 }
 
+/**
+ * Elimina un cliente de la lista dado su ID.
+ * Guarda los cambios y registra la acción en bitácora.
+ * @param lista Lista de clientes (modificable).
+ * @param usuarioActual Usuario que realiza la eliminación.
+ * @param id ID del cliente a eliminar.
+ */
 void Clientes::eliminar(std::vector<Clientes>& lista, const std::string& usuarioActual, const std::string& id) {
     auto it = find_if(lista.begin(), lista.end(),
         [&id](const Clientes& c) { return c.id == id; });
 
     if (it != lista.end()) {
         lista.erase(it);
-
-        guardarEnArchivo(lista); // <- Añadir esta línea
-
-        // Registrar en bitácora
+        guardarEnArchivo(lista);
         bitacora::registrar(usuarioActual, "CLIENTES", "Cliente eliminado - ID: " + id);
-
         cout << "Cliente eliminado!\n";
     } else {
         cout << "Cliente no encontrado.\n";
@@ -138,15 +195,19 @@ void Clientes::eliminar(std::vector<Clientes>& lista, const std::string& usuario
     system("pause");
 }
 
+/**
+ * Guarda la lista completa de clientes en formato tabular en el archivo `Clientes.txt`.
+ * Se usa un archivo temporal (`Clientes.tmp`) para evitar errores de escritura parcial.
+ * Si hay fallos, se cancela el guardado para proteger la integridad del archivo.
+ * @param lista Lista actual de clientes.
+ */
 void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
-    // 1. Crear archivo temporal para escritura segura
     ofstream archivo("Clientes.tmp", ios::out);
     if (!archivo.is_open()) {
         cerr << "\n\t\tError crítico: No se pudo crear archivo temporal!\n";
         return;
     }
 
-    // 2. Escribir encabezado
     archivo << "---------------------------------- Lista de Clientes ----------------------------------\n";
     archivo << std::left
             << std::setw(10) << "ID"
@@ -156,7 +217,6 @@ void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
             << std::setw(15) << "NIT" << "\n";
     archivo << std::string(90, '-') << "\n";
 
-    // 3. Escribir cada cliente en formato tabular
     for (const auto& cliente : lista) {
         archivo << std::left
                 << std::setw(10) << cliente.id
@@ -168,7 +228,6 @@ void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
 
     archivo << std::string(90, '-') << "\n";
 
-    // 4. Verificar errores
     archivo.flush();
     if (!archivo) {
         cerr << "\n\t\tError: Fallo al guardar los datos en formato tabular!\n";
@@ -179,7 +238,6 @@ void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
 
     archivo.close();
 
-    // 5. Reemplazar archivo original
     if (remove("Clientes.txt") != 0 && errno != ENOENT) {
         cerr << "\n\t\tAdvertencia: No se pudo eliminar el archivo anterior\n";
     }
@@ -188,69 +246,62 @@ void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
     }
 }
 
-
+/**
+ * Carga los datos de clientes desde el archivo `Clientes.txt`.
+ * Versión mejorada que maneja el formato tabular del archivo.
+ * @param lista Lista de clientes a llenar (se limpia antes).
+ */
 void Clientes::cargarDesdeArchivo(std::vector<Clientes>& lista) {
-    // 1. Limpiar lista existente
     lista.clear();
-
-    // 2. Abrir archivo con verificación
     ifstream archivo("Clientes.txt");
+
     if (!archivo) {
-        // Crear archivo vacío si no existe
+        // Si el archivo no existe, se crea vacío
         ofstream nuevoArchivo("Clientes.txt");
         if (!nuevoArchivo) {
-            cerr << "\n\t\tError crítico: No se pudo crear archivo de clientes!\n";
+            cerr << "\n\t\tError: No se pudo crear archivo de clientes!\n";
         }
         return;
     }
 
-    // 3. Contadores para estadísticas
-    int cargados = 0, omitidos = 0;
     string linea;
+    int lineasValidas = 0;
 
-    // 4. Procesar cada línea
+    // Saltar las primeras 3 líneas (cabecera)
+    for (int i = 0; i < 3; ++i) {
+        getline(archivo, linea);
+    }
+
     while (getline(archivo, linea)) {
-        // Eliminar espacios y saltos de línea
-        linea.erase(remove_if(linea.begin(), linea.end(), ::isspace), linea.end());
-        if (linea.empty()) continue;
+        // Saltar líneas separadoras
+        if (linea.find("---") != string::npos || linea.empty()) {
+            continue;
+        }
 
         istringstream ss(linea);
         Clientes temp;
-        string campo;
 
-        // 5. Parsear campos con verificación
-        try {
-            if (!getline(ss, temp.id, ',') ||
-                !getline(ss, temp.nombre, ',') ||
-                !getline(ss, temp.direccion, ',') ||
-                !getline(ss, temp.telefono, ',') ||
-                !getline(ss, temp.nit)) {
-                throw runtime_error("Formato inválido");
-                    }
+        // Leer campos según el formato de columnas fijas
+        if (linea.length() >= 90) { // Asumiendo el ancho total de la línea
+            temp.id = linea.substr(0, 10);
+            temp.nombre = linea.substr(10, 25);
+            temp.direccion = linea.substr(35, 25);
+            temp.telefono = linea.substr(60, 15);
+            temp.nit = linea.substr(75, 15);
 
-            // 6. Validar ID
-            if (!esIdValido(temp.id)) {
-                throw runtime_error("ID fuera de rango");
+            // Eliminar espacios en blanco sobrantes
+            temp.id.erase(temp.id.find_last_not_of(" \t") + 1);
+            temp.nombre.erase(temp.nombre.find_last_not_of(" \t") + 1);
+            temp.direccion.erase(temp.direccion.find_last_not_of(" \t") + 1);
+            temp.telefono.erase(temp.telefono.find_last_not_of(" \t") + 1);
+            temp.nit.erase(temp.nit.find_last_not_of(" \t") + 1);
+
+            if (!temp.id.empty() && esIdValido(temp.id)) {
+                lista.push_back(temp);
+                lineasValidas++;
             }
-
-            if (!idDisponible(lista, temp.id)) {
-                throw runtime_error("ID duplicado");
-            }
-
-            lista.push_back(temp);
-            cargados++;
-        } catch (const exception& e) {
-            cerr << "\n\t\tAdvertencia: Cliente omitido (" << e.what() << "): " << linea << "\n";
-            omitidos++;
         }
     }
 
-    // 7. Verificar estado final
-    if (archivo.bad()) {
-        cerr << "\n\t\tError: Fallo durante la lectura del archivo!\n";
-    }
-
-    // 8. Mostrar resumen (opcional)
-    cout << "\n\t\tCarga completada. " << cargados << " clientes cargados, "
-         << omitidos << " omitidos.\n";
+    cout << "\n\t\tSe cargaron " << lineasValidas << " clientes desde el archivo.\n";
 }

@@ -52,6 +52,13 @@ public:
 
     // Revisa si un código ya está en uso
     static bool codigoDisponible(const std::vector<Producto>& lista, const std::string& codigo);
+
+    void setStock(int nuevoStock);
+
+    std::string getCodigo() const { return codigo; }
+    std::string getNombre() const { return nombre; }
+    double getPrecio() const { return precio; }
+    int getStock() const { return stock; }
 };
 
 // Fin del encabezado
