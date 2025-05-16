@@ -1,0 +1,181 @@
+Admin          4000      Clientes            Crear Cliente                 Sun May 04 19:57:00 2025 
+Admin          4101      Clientes            Crear Cliente                 Sun May 04 20:12:32 2025 
+Admin          4103      Clientes            Modificar Cliente             Sun May 04 20:12:49 2025 
+Admin          4201      Proveedores         Crear Proveedor               Sun May 04 20:24:57 2025 
+Admin          4001      Nominas             Crear                         Sun May 04 23:46:03 2025 
+Admin          4000      Nominas             Ingresó al módulo de Nóminas  Sun May 04 23:46:07 2025 
+Admin          4901      Sistema             Usuario cerró sesión          Sun May 04 23:46:10 2025 
+Admin          5001      Empleados           Crear                         Mon May 05 01:13:41 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 01:14:01 2025 
+Admin          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 01:14:17 2025 
+Admin          4901      Sistema             Usuario cerró sesión          Mon May 05 01:14:20 2025 
+Admin          4001      Nominas             Crear empleado                Mon May 05 01:29:30 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 01:29:34 2025 
+Admin          4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 01:29:38 2025 
+Admin          4402      Sistema             Usuario cerró sesión          Mon May 05 01:30:10 2025 
+Admin          4901      Sistema             Usuario cerró sesión          Mon May 05 01:30:18 2025 
+Admin          4002      Nominas             Eliminar empleado             Mon May 05 01:31:18 2025 
+Admin          4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 01:31:22 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 02:19:45 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 02:21:38 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 02:21:42 2025 
+Admin          4002      Nominas             Eliminar empleado             Mon May 05 02:22:03 2025 
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 02:22:08 2025 
+Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 02:22:59 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 02:23:02 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 03:24:26 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 03:24:30 2025 
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 03:24:34 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes Mon May 05 03:24:46 2025 
+Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 03:25:00 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 03:25:03 2025 
+Sarai          1000      Sistema             Inicio de sesión exitoso      Mon May 05 04:24:06 2025 
+Admin          4001      Nominas             Crear empleado                Mon May 05 04:24:59 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 04:25:09 2025 
+Admin          4002      Nominas             Eliminar empleado             Mon May 05 04:25:41 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 04:25:52 2025 
+Sarai          4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 04:26:07 2025 
+Sarai          4901      Sistema             Usuario cerró sesión          Mon May 05 04:26:14 2025 
+Guzman         1000      Sistema             Inicio de sesión exitoso      Mon May 05 04:30:54 2025 
+Admin          4001      Nominas             Crear empleado                Mon May 05 04:31:48 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 04:31:53 2025 
+Admin          4002      Nominas             Eliminar empleado             Mon May 05 04:32:17 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 04:32:22 2025 
+Guzman         4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 04:32:28 2025 
+Guzman         4901      Sistema             Usuario cerró sesión          Mon May 05 04:32:32 2025 
+Calgua         1000      Sistema             Inicio de sesión exitoso      Mon May 05 04:38:23 2025 
+Admin          4001      Nominas             Crear empleado                Mon May 05 04:39:20 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 04:39:26 2025 
+Admin          4003      Nominas             Buscar empleado               Mon May 05 04:39:51 2025 
+Admin          4004      Nominas             Modificar empleado            Mon May 05 04:40:45 2025 
+Admin          4005      Nominas             Ver empleados                 Mon May 05 04:40:52 2025 
+Calgua         4000      Nominas             Ingresó al módulo de Nóminas  Mon May 05 04:41:05 2025 
+Calgua         4402      Sistema             Usuario revisó la bitácora    Mon May 05 04:41:34 2025 
+Calgua         4901      Sistema             Usuario cerró sesión          Mon May 05 04:41:37 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 11:03:52 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 11:03:58 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 11:04:03 2025 
+Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 11:04:19 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 11:04:21 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 20:53:47 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 21:06:53 2025 
+admin          4301      Contabilidad        Generar reporte contable      Mon May 05 21:06:57 2025 
+admin          4401      Auditoría           Revisar transacciones         Mon May 05 21:07:02 2025 
+admin          4301      Contabilidad        Generar reporte contable      Mon May 05 21:07:05 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 22:18:39 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 22:18:44 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 22:18:51 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 22:19:09 2025 
+Prisci         4401      Auditoría           Revisar transacciones         Mon May 05 22:19:22 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 22:19:25 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Mon May 05 22:19:35 2025 
+Prisci         4402      Sistema             Usuario revisó la bitácora    Mon May 05 22:19:44 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Mon May 05 22:19:47 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 22:45:49 2025 
+Admin          5005      Empleados           Desplegar                     Mon May 05 22:45:54 2025 
+admin          4001      Empleados           Ingresó al módulo de EmpleadosMon May 05 22:45:57 2025 
+admin          4200      Proveedores         Ingresó al módulo de ProveedoresMon May 05 22:46:07 2025 
+Admin          4402      Contabilidad        Desplegar registro nomina     Mon May 05 22:46:17 2025 
+admin          4301      Contabilidad        Generar reporte contable      Mon May 05 22:46:20 2025 
+Admin          4304      Auditoria           registrosRealizados           Mon May 05 22:46:25 2025 
+admin          4401      Auditoría           Revisar transacciones         Mon May 05 22:46:30 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 22:57:58 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 22:58:46 2025 
+admin          4100      Clientes            Ingresó al módulo de Clientes Mon May 05 22:58:55 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Mon May 05 23:00:17 2025 
+admin          4200      Proveedores         Ingresó al módulo de ProveedoresMon May 05 23:00:24 2025 
+Admin          4303      Auditoria           Desplegar                     Mon May 05 23:00:35 2025 
+Boris          1000      Sistema             Inicio de sesión exitoso      Wed May 07 09:45:05 2025 
+Admin          4101      Clientes            Crear Cliente                 Wed May 07 09:45:19 2025 
+Boris          4100      Clientes            Ingresó al módulo de Clientes Wed May 07 09:45:22 2025 
+Boris          4901      Sistema             Usuario cerró sesión          Wed May 07 09:45:25 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Fri May 09 21:51:33 2025 
+admin          4401      Auditoría           Revisar transacciones         Fri May 09 21:51:56 2025 
+Admin          4401      Contabilidad        Registro Nomina               Fri May 09 21:52:10 2025 
+admin          4301      Contabilidad        Generar reporte contable      Fri May 09 21:52:12 2025 
+admin          4100      Clientes            Ingresó al módulo de Clientes Fri May 09 21:52:27 2025 
+Admin          4005      Nominas             Ver empleados                 Fri May 09 21:52:35 2025 
+admin          4000      Nominas             Ingresó al módulo de Nóminas  Fri May 09 21:52:45 2025 
+admin          4000      Nominas             Ingresó al módulo de Nóminas  Fri May 09 21:53:08 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 16:45:18 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 17:02:20 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sat May 10 17:16:36 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:04:30 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:05:07 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:06:20 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:14:12 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:16:22 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:21:01 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:23:49 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:24:51 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:26:22 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sat May 10 18:26:36 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:35:32 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sat May 10 18:36:00 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:47:53 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sat May 10 18:48:18 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 18:53:56 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sat May 10 18:54:04 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sat May 10 19:08:05 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sat May 10 19:08:16 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 18:19:02 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 18:56:25 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sun May 11 18:56:36 2025 
+admin          4000      Nominas             Ingresó al módulo de Nóminas  Sun May 11 18:56:51 2025 
+admin          4901      Sistema             Usuario cerró sesión          Sun May 11 18:56:57 2025 
+<<<<<<< HEAD
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:23:45 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:29:27 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:36:08 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:37:32 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:40:11 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 19:41:57 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:14:06 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:29:14 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:37:31 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 11 20:37:41 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:40:49 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:42:33 2025 
+=======
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:23:45 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:24:46 2025 
+123            4901      Sistema             Usuario cerró sesión          Sun May 11 20:24:49 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:25:20 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:26:59 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:27:45 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:27:56 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:29:40 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:29:52 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:32:42 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:33:54 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:37:55 2025 
+123            4500      Sistema             Usuario revisó la bancos      Sun May 11 20:38:17 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:45:03 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:45:18 2025 
+123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 20:47:28 2025 
+>>>>>>> 883a5443c7cd0fb4ad4aa847ae9a4f0972ec9fda
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 21:12:27 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 11 21:12:28 2025 
+Admin          4611      Bancos              Tipo de cuenta seleccionado: Cuenta de AhorroSun May 11 21:12:30 2025 
+Admin          4603      Bancos              Moneda cambiada a EUR         Sun May 11 21:12:31 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sun May 11 21:12:38 2025 
+admin          4901      Sistema             Usuario cerró sesión          Sun May 11 21:12:41 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 21:31:32 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 11 21:31:33 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 21:31:51 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 11 21:31:54 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 11 21:31:55 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 11 21:31:56 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 21:38:22 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 11 21:38:24 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 11 21:38:26 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 11 21:38:27 2025 
+Admin          4005      Nominas             Ver empleados                 Sun May 11 21:38:31 2025 
+Admin          4003      Nominas             Buscar empleado               Sun May 11 21:38:49 2025 
+Admin          4004      Nominas             Modificar empleado            Sun May 11 21:39:13 2025 
+Admin          4005      Nominas             Ver empleados                 Sun May 11 21:39:18 2025 
+admin          4000      Nominas             Ingresó al módulo de Nóminas  Sun May 11 21:39:27 2025 
+Admin          5101      Movimientos         Registrar Movimiento          Sun May 11 21:40:06 2025 
+Admin          5201      Préstamos           Registrar Préstamo            Sun May 11 21:40:32 2025 
+admin          4100      Clientes            Ingresó al módulo de Clientes Sun May 11 21:40:48 2025 
+admin          4901      Sistema             Usuario cerró sesión          Sun May 11 21:40:51 2025 
