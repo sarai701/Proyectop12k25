@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <conio.h>
 #include <iostream>
-#include <sstream> // Agregado para procesar cada línea
+#include <sstream>
 #include "Bitacora.h"
 
 using namespace std;
@@ -61,14 +61,14 @@ bool usuarios::loginUsuarios()
             ingresa = true;
             cout << "\n=== Bienvenido al Sistema ===" << endl;
             bitacora auditoria;
-            auditoria.insertar(name, "100", "LOGS");
+            auditoria.insertar(name, 100, "LOGS", "Inicio exitoso");
             cin.get();
         }
         else
         {
             cout << "\nEl usuario y/o contrasena son incorrectos" << endl;
             bitacora auditoria;
-            auditoria.insertar(usuario, "100", "LOGF");
+            auditoria.insertar(usuario, 100, "LOGF", "Intento fallido");
             cin.get();
             contador++;
         }
@@ -82,6 +82,51 @@ bool usuarios::loginUsuarios()
     }
 
     return ingresa;
+}
+
+void usuarios::consultarUsuarios()
+{
+    system("cls");
+    cout << "\t\t\t-------------------------------------------------------" << endl;
+    cout << "\t\t\t |   CONSULTA DE USUARIOS                             |" << endl;
+    cout << "\t\t\t-------------------------------------------------------" << endl;
+
+    fstream file;
+    file.open("Usuarios.txt", ios::in);
+
+    if (!file)
+    {
+        cout << "\n\t\t\t No hay información de usuarios..." << endl;
+        cin.get();
+        return;
+    }
+
+    string linea;
+    bool hayUsuarios = false;
+    cout << "\n\tID\tNombre\t\tContrasena" << endl;
+    cout << "\t-------------------------------------" << endl;
+
+    while (getline(file, linea))
+    {
+        istringstream iss(linea);
+        int tempId;
+        string tempName, tempPass;
+
+        if (iss >> tempId >> tempName >> tempPass)
+        {
+            hayUsuarios = true;
+            cout << "\t" << tempId << "\t" << tempName << "\t\t" << tempPass << endl;
+        }
+    }
+
+    if (!hayUsuarios)
+    {
+        cout << "\n\t\t\t No se encontraron usuarios registrados." << endl;
+    }
+
+    file.close();
+    cout << "\n\t\t\t Presione Enter para continuar...";
+    cin.get();
 }
 
 void usuarios::menuUsuarios()
@@ -103,7 +148,7 @@ void usuarios::menuUsuarios()
         cout << "\t\t\t-------------------------------------------------------" << endl;
         cout << "\t\t\tIngresa tu Opcion: ";
         cin >> choice;
-        cin.ignore(); // <- muy importante: limpiar buffer
+        cin.ignore(); // limpiar buffer
 
         switch (choice)
         {
@@ -111,7 +156,7 @@ void usuarios::menuUsuarios()
             // Aquí iría código para agregar usuarios
             break;
         case 2:
-            // Consultar usuarios
+            consultarUsuarios(); // Llamada a la nueva función
             break;
         case 3:
             // Modificar usuarios
@@ -135,7 +180,7 @@ bool usuarios::buscar(string user, string passw)
 
     if (!file)
     {
-        cout << "\nNo hay informacion de usuarios..." << endl;
+        cout  << "\nNo hay informacion de usuarios..." << endl;
         return false;
     }
 

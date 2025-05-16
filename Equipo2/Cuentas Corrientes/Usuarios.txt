@@ -1,0 +1,12 @@
+001|NombreDos|clave456
+002|NombreTres|654321
+003|Miriam|9090
+004|Mario|4545
+005|Juan|9999
+006|Luisa|2121
+007|Nath|9000
+008|Emily|1313
+009|Luisin|12
+010|Mario|8989
+11|Miriam|1212
+||

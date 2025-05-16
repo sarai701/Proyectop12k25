@@ -14,7 +14,7 @@ class bitacora
     protected:
 
     private:
-		string nombre, aplicacion, accion;
+		string nombre, aplicacion, accion, fecha;
 
 };
 #endif // BITACORA_H

@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+3013 Karina alewi
+=======
+3001 Jennifer 123
+3002 Prueba2 321
+3200 DelAguila 123456
+>>>>>>> c2dd98f6893dcf4e06a25520b6c5b1c536fe86b8
