@@ -1,0 +1,11 @@
+#include "Sistema."
+
+Sistema::Sistema()
+{
+    //ctor
+}
+
+Sistema::~Sistema()
+{
+    //dtor
+}

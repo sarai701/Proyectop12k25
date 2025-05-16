@@ -1,0 +1,2 @@
+001            Proveedor1     12345678       Banco1         123            
+3              Granizadas     45678934       BAM            435698         

@@ -1,0 +1,7 @@
+NOMBRE                        CODIGO         PAGADO    
+Alan                          Supervisor     No        
+Juan                          4321           No        
+Pascual                       987            No        
+Pedro                         222            No        
+Priscila                      1234           No        
+admin                         1234           No        
