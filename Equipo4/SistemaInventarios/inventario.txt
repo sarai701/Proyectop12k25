@@ -1,0 +1,6 @@
+1,zapato,200,200,}
+2,camisa,233,221,ventas
+3,computadoras,1200,20,ventas
+5,calcetines,20,20,stock
+10,bufandas,0,30,
+

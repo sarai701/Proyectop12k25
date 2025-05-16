@@ -1,0 +1,383 @@
+# depslib dependency file v1.0
+1743661323 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\main.cpp
+	<iostream>
+	"Menu.h"
+
+1746246778 am>
+
+1746984765 "
+
+1743661292 c:\users\usuario\desktop\kevin\programaci脙鲁n 1\juegos\sistemainventarios\include\menu.h
+
+1746246778 ario.h"
+
+1746246778 acion.h"
+
+1743662159 c:\users\usuario\desktop\kevin\programaci脙鲁n 1\juegos\sistemainventarios\include\inventario.h
+
+1746246778 >
+
+1743662159 c:\users\usuario\desktop\kevin\programaci脙鲁n 1\juegos\sistemainventarios\include\facturacion.h
+
+1746246778 p>
+
+1743662159 source:c:\users\usuario\desktop\kevin\programaci脙鲁n 1\juegos\sistemainventarios\src\facturacion.cpp
+
+1743661154 source:c:\users\usuario\desktop\kevin\programaci脙鲁n 1\juegos\sistemainventarios\src\menu.cpp
+
+1743662512 source:c:\users\usuario\desktop\kevin\programaci脙鲁n 1\juegos\sistemainventarios\src\inventario.cpp
+
+1746199113 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\sistema-inventario\sistemainventarios\main.cpp
+
+1746246778 o.h"
+
+1745854714 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\sistema-inventario\sistemainventarios\src\bitacora.cpp
+
+1746246778 ra.h"
+
+1746246778 m>
+
+1746246778 .h>
+
+1746246778 b>
+
+1746246778 h>
+
+1745854714 c:\users\usuario\documents\progra\programaci脙鲁n 1\sistema-inventario\sistemainventarios\include\bitacora.h
+
+1745854567 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\sistema-inventario\sistemainventarios\src\usuario.cpp
+
+1745851826 c:\users\usuario\documents\progra\programaci脙鲁n 1\sistema-inventario\sistemainventarios\include\usuario.h
+
+1746246778 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+
+1746246778 c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+
+1746984765 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+
+1746246778 c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+
+1746246778 c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+
+1746246778 to.h"
+
+1746246778 c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+
+1746246778 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+
+1746246778 thm>
+
+1746246778 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+
+1746246778 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+
+1746246778 c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+
+1746246778 source:c:\users\usuario\documents\progra\programaci脙鲁n 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+
+1746246778 g>
+
+1747023056 
+
+1746234647 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+	"Producto.h"
+
+1746458584 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+	"Bitacora.h"
+	<string>
+
+1746458584 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+	<iostream>
+
+1747010242 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+	<iostream>
+	"Usuario.h"
+	"Inventario.h"
+	"Facturacion.h"
+	"Bitacora.h"
+	"Menu.h"
+
+1746233986 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+	<iostream>
+
+1746458584 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+	<vector>
+	<string>
+	"Producto.h"
+
+1746233986 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+	<iostream>
+	<vector>
+	<iomanip>
+	"Inventario.h"
+
+1746234647 c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+	<iostream>
+	"Inventario.h"
+	"Facturacion.h"
+
+1746458584 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	<cstring>
+	<ctime>
+
+1746458584 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+	"Facturacion.h"
+
+1746458584 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<algorithm>
+	<cstdlib>
+
+1746458584 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\usuario.cpp
+	"Usuario.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	<sstream>
+	"Bitacora.h"
+
+1747013450 source:c:\users\antho\onedrive\documents\progra\progra1\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+	"Bitacora.h"
+
+1746241791 D
+
+1747013450 h"
+
+1747023056 1bf792a663f1b56d9a6e9060c9a14568a6794
+
+1743661292 c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\include\menu.h
+
+1743662159 c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\include\inventario.h
+
+1743662159 c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\include\facturacion.h
+
+1743662159 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\src\facturacion.cpp
+
+1743661154 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\src\menu.cpp
+
+1743662512 source:c:\users\usuario\desktop\kevin\programaci贸n 1\juegos\sistemainventarios\src\inventario.cpp
+
+1746199113 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\main.cpp
+
+1745854714 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\bitacora.cpp
+
+1745854714 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\bitacora.h
+
+1745854567 source:c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\src\usuario.cpp
+
+1745851826 c:\users\usuario\documents\progra\programaci贸n 1\sistema-inventario\sistemainventarios\include\usuario.h
+
+1746246778 source:c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+
+1746246778 c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+
+1746984765 source:c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+
+1746246778 c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+
+1746246778 c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+
+1746246778 c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+
+1746246778 source:c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+
+1746246778 source:c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+
+1746246778 source:c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+
+1746246778 c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\main.cpp
+	<iostream>
+	"Usuario.h"
+	"Menu.h"
+	"Inventario.h"
+	"Facturacion.h"
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+	<iostream>
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+	<iostream>
+	"Inventario.h"
+	"Facturacion.h"
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+	<vector>
+	"Producto.h"
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+	<string>
+
+1746201942 c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+	<iostream>
+	<vector>
+	<iomanip>
+	"Inventario.h"
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+	"Facturacion.h"
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+
+1746201942 source:c:\users\ferit\documents\progra1git\progra1works\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+	"Producto.h"
+
+1746246778 source:c:\users\usuario\documents\progra\programaci贸n 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+
+3 e7e19998b1cfe11f9c17f1baeeb14eb2f019514
+
+1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\main.cpp
+	<iostream>
+	"Usuario.h"
+	"Inventario.h"
+	"Facturacion.h"
+	"Bitacora.h"
+	"Menu.h"
+
+1747016071 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+	<string>
+
+1747012532 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+	<vector>
+	<string>
+	"Producto.h"
+
+1747012532 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+	"Bitacora.h"
+	<string>
+
+1747012532 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+	<iostream>
+
+1746241790 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+	<iostream>
+	<vector>
+	<iomanip>
+	"Inventario.h"
+
+1746241790 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+	<iostream>
+	"Inventario.h"
+	"Facturacion.h"
+
+1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	<cstring>
+	<ctime>
+
+1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+	"Facturacion.h"
+
+1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<algorithm>
+	<cstdlib>
+
+1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+	"Bitacora.h"
+
+1746241791 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+	"Producto.h"
+
+1747024388 source:c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\main.cpp
+	<iostream>
+	"Usuario.h"
+	"Inventario.h"
+	"Facturacion.h"
+	"Bitacora.h"
+	"Menu.h"
+
+1747019660 c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+	<string>
+
+1746246778 c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+	<vector>
+	<string>
+	"Producto.h"
+
+1746246778 c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+	"Bitacora.h"
+	<string>
+
+1746246778 c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+	<iostream>
+
+1743741723 c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+	<iostream>
+	<vector>
+	<iomanip>
+	"Inventario.h"
+
+1746246778 c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+	<iostream>
+	"Inventario.h"
+	"Facturacion.h"
+
+1746246778 source:c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+	"Facturacion.h"
+
+1747024331 source:c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<algorithm>
+	<cstdlib>
+
+1747019660 source:c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+	"Menu.h"
+	"Bitacora.h"
+
+1746246778 source:c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+	"Producto.h"
+
+1747019660 source:c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\src\usuario.cpp
+	"Usuario.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	<sstream>
+	"Bitacora.h"
+
+1747034121 source:c:\users\usuario\documents\progra\programaci髇 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	<algorithm>
+	<ctime>
+
+1747023056 c8c78a09cfede2ec27dc91d75b4c2
+

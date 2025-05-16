@@ -1,0 +1,67 @@
+<<<<<<< HEAD
+Karina              000       REG-USER       
+Karina              000       LOGIN-FAIL     
+Karina              000       LOGIN          
+Karina              000       LOGIN          
+Karina              000       LOGIN          
+Karina              200       STOCK          
+Karina              101       CONSULTA PEDIDO
+Karina              300       GUIA           
+Karina              301       TRANSPORTISTA  
+Karina              500       REPVENT        
+Karina              500       ANALTIME       
+Karina              500       REPINV         
+Karina              500       EVAPROV        
+Karina              400       CONSPAG        
+Karina              400       FACT           
+Karina              300       GUIA           
+=======
+Jennifer            000       REG-USER       
+Jennifer            000       LOGIN          
+Jennifer            100       NUEVO PEDIDO   
+Jennifer            101       CONSULTA PEDIDO
+Jennifer            103       PEDIDO CANCELADO
+Jennifer            104       HISTORIAL PEDIDOS
+Jennifer            200       STOCK          
+Jennifer            300       GUIA           
+Jennifer            301       TRANSPORTISTA  
+Jennifer            302       RASTREO ENVIO  
+Jennifer            303       CONFIRMACION DE ENTREGA
+Jennifer            400       FACT           
+Jennifer            400       CONSPAG        
+Jennifer            400       REGPAG         
+Jennifer            400       REPFIN         
+Jennifer            500       REPVENT        
+Jennifer            500       ANALTIME       
+Jennifer            500       REPINV         
+Jennifer            500       EVAPROV        
+Jennifer            000       LOGIN          
+Jennifer            000       LOGIN          
+Prueba2             000       REG-USER       
+Prueba2             000       LOGIN          
+Prueba2             100       NUEVO PEDIDO   
+Prueba2             101       CONSULTA PEDIDO
+Prueba2             102       MODIFICANDO PEDIDO
+Prueba2             103       PEDIDO CANCELADO
+Prueba2             104       HISTORIAL PEDIDOS
+Prueba2             200       STOCK          
+Prueba2             300       GUIA           
+Prueba2             301       TRANSPORTISTA  
+Prueba2             302       RASTREO ENVIO  
+Prueba2             303       CONFIRMACION DE ENTREGA
+Prueba2             400       FACT           
+Prueba2             400       CONSPAG        
+Prueba2             400       REGPAG         
+Prueba2             400       REPFIN         
+Prueba2             500       REPVENT        
+Prueba2             500       ANALTIME       
+Prueba2             500       REPINV         
+Prueba2             500       EVAPROV        
+Jennifer            000       LOGIN          
+Jennifer            100       NUEVO PEDIDO   
+DelAguila           000       REG-USER       
+DelAguila           000       LOGIN          
+DelAguila           100       NUEVO PEDIDO   
+DelAguila           101       CONSULTA PEDIDO
+Jennifer            000       LOGIN          
+>>>>>>> c2dd98f6893dcf4e06a25520b6c5b1c536fe86b8
