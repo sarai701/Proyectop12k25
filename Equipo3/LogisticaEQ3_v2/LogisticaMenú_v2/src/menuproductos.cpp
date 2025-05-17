@@ -3,9 +3,9 @@
 #include <iostream>
 #include <limits>
 
-//JENNIFER ALBA DAYAMI BARRIOS FLORES
-//9959-24-10016
-//MAYO 2025
+// JENNIFER ALBA DAYAMI BARRIOS FLORES
+// 9959-24-10016
+// MAYO 2025
 using namespace std;
 
 std::vector<Producto> listaProductos;
@@ -36,7 +36,7 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar buffer
             cout << "\t\tEntrada inválida. Por favor ingrese un número: ";
         }
-        cin.ignore(); // Limpiar salto de línea pendiente
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar salto de línea pendiente
 
         switch(opcion) {
             case 1:
@@ -60,7 +60,6 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
                     if (Producto::esCodigoValido(input)) {
                         Producto::modificar(listaProductos, usuarioActual.getNombre(), input);
                     } else {
-                        // Mostrar mensaje si el código no es válido
                         cout << "\t\tCódigo no válido. Debe estar entre " << 3209
                              << " y " << 3259 << "\n";
                         system("pause");
@@ -80,7 +79,6 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
                     if (Producto::esCodigoValido(input)) {
                         Producto::eliminar(listaProductos, usuarioActual.getNombre(), input);
                     } else {
-                        // Mostrar mensaje si el código no es válido
                         cout << "\t\tCódigo no válido. Debe estar entre " << 3209
                              << " y " << 3259 << "\n";
                         system("pause");
@@ -95,9 +93,9 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
                 return;
 
             default:
-                // Manejar opción no válida
                 cout << "\t\tOpción no válida. Intente nuevamente.\n";
                 system("pause");
         }
-    } while (true); // Repetir menú hasta que el usuario decida salir
+    } while (true);
 }
+

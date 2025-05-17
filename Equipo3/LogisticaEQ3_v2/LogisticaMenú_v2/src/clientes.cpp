@@ -195,20 +195,22 @@ void Clientes::eliminar(std::vector<Clientes>& lista, const std::string& usuario
  * @param lista Lista actual de clientes.
  */
 void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
-    // Abre el archivo binario para escribir los datos de los clientes
-    std::ofstream archivoBin("clientes.dat", std::ios::binary | std::ios::out | std::ios::trunc);
-    if (!archivoBin) {
-        std::cerr << "\n\tError al abrir clientes.dat para escritura.\n";
+    std::ofstream archivo("clientes.txt");
+    if (!archivo) {
+        std::cerr << "Error al abrir clientes.txt para escritura.\n";
         return;
     }
 
-    // Escribe cada cliente en el archivo binario
     for (const auto& cliente : lista) {
-        archivoBin.write(reinterpret_cast<const char*>(&cliente), sizeof(Clientes));
+        archivo << cliente.getId() << '\t'
+                << cliente.getNombre() << '\t'
+                << cliente.getDireccion() << '\t'
+                << cliente.getTelefono() << '\t'
+                << cliente.getNit() << '\n';
     }
-    archivoBin.close(); // Cierra el archivo binario
 
-    std::cout << "\tDatos guardados correctamente en el archivo clientes.dat.\n";
+    archivo.close();
+    std::cout << "\tDatos guardados correctamente en clientes.txt.\n";
 }
 
 /**
@@ -217,21 +219,33 @@ void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
  * @param lista Lista donde se cargarán los clientes.
  */
 void Clientes::cargarDesdeArchivo(std::vector<Clientes>& lista) {
-    lista.clear(); // Limpia la lista antes de cargar nuevos datos
+    lista.clear();
 
-    // Abre el archivo binario para leer los datos de los clientes
-    std::ifstream archivo("clientes.dat", std::ios::binary);
+    std::ifstream archivo("clientes.txt");
     if (!archivo) {
-        std::cerr << "\n\tError al abrir clientes.dat para lectura.\n";
+        std::cerr << "Error al abrir clientes.txt para lectura.\n";
         return;
     }
 
-    Clientes temp;
-    // Lee los clientes del archivo y los agrega a la lista
-    while (archivo.read(reinterpret_cast<char*>(&temp), sizeof(Clientes))) {
-        lista.push_back(temp);
-    }
-    archivo.close(); // Cierra el archivo binario
+    Clientes cliente;
+    std::string id, nombre, direccion, telefono, nit;
 
-    std::cout << "\tDatos cargados correctamente desde clientes.dat.\n";
+    while (std::getline(archivo, id, '\t') &&
+           std::getline(archivo, nombre, '\t') &&
+           std::getline(archivo, direccion, '\t') &&
+           std::getline(archivo, telefono, '\t') &&
+           std::getline(archivo, nit)) {
+
+        cliente = Clientes(); // Crear uno nuevo
+        // Asignar valores usando setters o constructor (si tienes uno)
+        cliente.id = id;
+        cliente.nombre = nombre;
+        cliente.direccion = direccion;
+        cliente.telefono = telefono;
+        cliente.nit = nit;
+        lista.push_back(cliente);
+    }
+
+    archivo.close();
+    std::cout << "\tDatos cargados correctamente desde clientes.txt.\n";
 }

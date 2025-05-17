@@ -173,8 +173,14 @@ void Producto::eliminar(vector<Producto>& lista, const string& usuarioActual, co
 }
 
 // Guarda la lista de productos en el archivo de texto
+<<<<<<< HEAD
 void Producto::guardarEnArchivoBin(const vector<Producto>& productos) {
     ofstream archivo("productos.bin", ios::binary | ios::out);
+=======
+void Producto::guardarEnArchivoBin(const vector<Producto>& lista) {
+    // Crea archivo temporal para evitar pérdida de datos
+    ofstream archivo("Productos.tmp", ios::out);
+>>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
     if (!archivo.is_open()) {
         cerr << "\n\t\tError crítico: No se pudo abrir archivo de productos!\n";
         return;
@@ -216,9 +222,16 @@ void Producto::guardarEnArchivoBin(const vector<Producto>& productos) {
     archivo.close();
 }
 
+<<<<<<< HEAD
 void Producto::cargarDesdeArchivoBin(vector<Producto>& productos) {
     productos.clear();
     ifstream archivo("productos.bin", ios::binary | ios::in);
+=======
+// Carga los productos desde el archivo a la lista en memoria
+void Producto::cargarDesdeArchivoBin(vector<Producto>& lista) {
+    // Limpia la lista actual
+    lista.clear();
+>>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
 
     if (!archivo) {
         // Si el archivo no existe, no es un error (primera ejecución)

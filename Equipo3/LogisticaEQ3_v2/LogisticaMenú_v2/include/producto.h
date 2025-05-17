@@ -5,7 +5,11 @@
 #include <string>
 #include "bitacora.h"
 
+<<<<<<< HEAD
 // Jennifer Alba Dayami Barrios Flores 9959-24-10016
+=======
+// JENNIFER ALBA DAYAMI BARRIOS FLORES 9959-24-10016
+>>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
 // COORD EQUIPO 3
 // MAYO 2025
 
@@ -22,19 +26,28 @@ public:
     static void modificar(std::vector<Producto>& lista, const std::string& usuarioActual, const std::string& codigo);
     static void eliminar(std::vector<Producto>& lista, const std::string& usuarioActual, const std::string& codigo);
 
+<<<<<<< HEAD
     // Métodos de archivo binario
     static void guardarEnArchivoBin(const std::vector<Producto>& productos);
     static void cargarDesdeArchivoBin(std::vector<Producto>& productos);
     static void guardarEnArchivo(const std::vector<Producto>& lista); // Asegúrate de agregar esta línea
     static void cargarDesdeArchivo(std::vector<Producto>& lista);     // Asegúrate de agregar esta línea
+=======
+    // Métodos para trabajar con archivos
+    static void cargarDesdeArchivoBin(std::vector<Producto>& lista);
+
+    static void guardarEnArchivoBin(const std::vector<Producto>& lista);
+>>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
 
     // Métodos de validación
     static bool esCodigoValido(const std::string& codigo);
     static std::string generarCodigoUnico(const std::vector<Producto>& lista);
     static bool codigoDisponible(const std::vector<Producto>& lista, const std::string& codigo);
 
+    // Setter para stock
     void setStock(int nuevoStock);
 
+    // Getters para atributos
     std::string getCodigo() const { return codigo; }
     std::string getNombre() const { return nombre; }
     double getPrecio() const { return precio; }

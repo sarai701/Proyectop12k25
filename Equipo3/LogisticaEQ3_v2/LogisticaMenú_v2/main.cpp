@@ -13,6 +13,8 @@
 #include "globals.h"
 
 int main() {
+    std::cout << "Inicio del programa..." << std::endl;
+
     // Inicializar todas las listas necesarias para almacenar datos del sistema
     std::vector<Clientes> listaClientes;
     std::vector<Proveedor> listaProveedores;
@@ -22,11 +24,26 @@ int main() {
     std::vector<Transportistas> listaTransportistas;
 
     // Cargar los datos previamente guardados desde archivos a sus respectivas listas
+    std::cout << "Cargando clientes..." << std::endl;
     Clientes::cargarDesdeArchivo(listaClientes);
+
+    std::cout << "Cargando almacenes..." << std::endl;
     Almacen::cargarDesdeArchivo(listaAlmacenes);
+
+    std::cout << "Cargando administradores..." << std::endl;
     Administracion::cargarDesdeArchivo(listaAdministradores);
+
+    std::cout << "Cargando transportistas..." << std::endl;
     Transportistas::cargarDesdeArchivo(listaTransportistas);
+<<<<<<< HEAD
     Producto::cargarDesdeArchivoBin(listaProductos);
+=======
+
+    std::cout << "Cargando productos..." << std::endl;
+    Producto::cargarDesdeArchivoBin(listaProductos);
+
+    std::cout << "Cargando proveedores..." << std::endl;
+>>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
     Proveedor::cargarDesdeArchivo(listaProveedores);
 
     std::cout << "Datos cargados correctamente.\n";
@@ -52,11 +69,26 @@ int main() {
     std::cout << "\n\t\t** Sistema de Logística - Hasta pronto **\n";
 
     // Guardar todos los datos actualizados en sus respectivos archivos antes de finalizar
+    std::cout << "Guardando clientes..." << std::endl;
     Clientes::guardarEnArchivo(listaClientes);
+
+    std::cout << "Guardando almacenes..." << std::endl;
     Almacen::guardarEnArchivo(listaAlmacenes);
+
+    std::cout << "Guardando administradores..." << std::endl;
     Administracion::guardarEnArchivo(listaAdministradores);
+
+    std::cout << "Guardando transportistas..." << std::endl;
     Transportistas::guardarEnArchivo(listaTransportistas);
+<<<<<<< HEAD
     Producto::guardarEnArchivoBin(listaProductos);
+=======
+
+    std::cout << "Guardando productos..." << std::endl;
+    Producto::guardarEnArchivoBin(listaProductos);
+
+    std::cout << "Guardando proveedores..." << std::endl;
+>>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
     Proveedor::guardarEnArchivo(listaProveedores);
 
     // Pausa para ver mensajes antes de cerrar (solo Windows)
