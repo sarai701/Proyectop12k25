@@ -15,6 +15,7 @@ private:
     bool esNumero(const std::string& str);
     bool usuarioExiste(const std::string& nombreUsuario);
     std::string leerPasswordSegura();
+    std::string confirmacion();
 
 public:
     usuarios();

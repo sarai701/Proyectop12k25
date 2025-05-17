@@ -138,6 +138,8 @@ void usuarios::registrarUsuario() {
     } while (nombre.empty() || nombre.find(' ') != string::npos || usuarioExiste(nombre));
 
     // Entrada de contraseña
+    string confirmacion;
+    do{
     cout << "\t\tContrasena (minimo 8 caracteres): ";
     contrasena = leerPasswordSegura();
     while (contrasena.length() < 8) {
@@ -145,6 +147,13 @@ void usuarios::registrarUsuario() {
         cout << "\t\tContrasena: ";
         contrasena = leerPasswordSegura();
     }
+    cout << "\n\t\tConfirmar contrasena: ";
+        confirmacion = leerPasswordSegura();
+
+        if (contrasena != confirmacion) {
+            cout << "\n\t\tLas contrasenas no coinciden. Intente de nuevo.\n";
+        }
+    } while (contrasena != confirmacion);
 
     // Validación de nivel de acceso
     do {
