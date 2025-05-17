@@ -137,16 +137,24 @@ void usuarios::registrarUsuario() {
         }
     } while (nombre.empty() || nombre.find(' ') != string::npos || usuarioExiste(nombre));
 
-    // Entrada de contraseña
-    cout << "\t\tContrasena (minimo 8 caracteres): ";
-    contrasena = leerPasswordSegura();
-    while (contrasena.length() < 8) {
-        cout << "\n\t\tLa contrasena debe tener al menos 8 caracteres!\n";
-        cout << "\t\tContrasena: ";
+string confirmacion; // Declaración la variable
+    do {
+        cout << "\t\tContrasena (minimo 8 caracteres): ";
         contrasena = leerPasswordSegura();
-    }
+        while (contrasena.length() < 8) {
+            cout << "\n\t\tLa contrasena debe tener al menos 8 caracteres!\n";
+            cout << "\t\tContrasena: ";
+            contrasena = leerPasswordSegura();
+        }
 
-    // Validación de nivel de acceso
+        cout << "\n\t\tConfirmar contrasena: ";
+        confirmacion = leerPasswordSegura(); // Usando la variable
+
+        if (contrasena != confirmacion) {
+            cout << "\n\t\tLas contrasenas no coinciden. Intente de nuevo.\n";
+        }
+    } while (contrasena != confirmacion); // Usando la variable de nivel de acceso
+
     do {
         cout << "\n\t\tNivel de acceso (1-3): ";
         cin >> nivelAcceso;

@@ -64,3 +64,4 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        kari           000                 REG-USER                           16/05/2025 18:20:41 
 3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
 3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
+3000        arriaza        000                 REG-USER                           17/05/2025 11:22:52 
