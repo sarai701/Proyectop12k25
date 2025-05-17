@@ -3,6 +3,7 @@
 #include "menucatalogos.h"
 #include "menuprocesos.h"
 #include "usuarios.h"
+#include "bitacora.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -31,7 +32,8 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
              << "\t\t 2. Catálogos\n"
              << "\t\t 3. Procesos\n"
              << "\t\t 4. Informes\n"
-             << "\t\t 5. Salir\n"
+             << "\t\t 5. Bitácora\n"
+             << "\t\t 6. Salir\n"
              << "\t\t========================================\n"
              << "\t\tIngresa tu opción: ";
 
@@ -57,11 +59,18 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
                 // Funcionalidad de informes
                 break;
 
-            case 5:
+            case 5: {
+                bitacora b;
+                b.menuBitacora();
+                break;
+            }
+
+            case 6:
                 return;
 
             default:
                 cout << "\n\t\tOpción inválida... Intenta de nuevo...";
         }
-    } while(choice != 5);
+    } while(choice != 6);
 }
+

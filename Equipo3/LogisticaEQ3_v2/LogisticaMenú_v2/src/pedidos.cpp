@@ -14,8 +14,9 @@
 
 using namespace std;
 
-// Inicialización de la lista estática
-vector<Pedidos> Pedidos::listaPedidos;
+// Definición única de la variable estática
+std::vector<Pedidos> Pedidos::listaPedidos;
+
 
 // Rango de IDs para pedidos
 const int CODIGO_INICIAL = 3400;
@@ -40,8 +41,9 @@ bool Pedidos::idDisponible(const vector<Pedidos>& lista, const string& id) {
 
 bool Pedidos::validarCliente(const string& idCliente, const vector<Clientes>& clientes) {
     return any_of(clientes.begin(), clientes.end(),
-        [&idCliente](const Clientes& c) { return c.id == idCliente; });
+        [&idCliente](const Clientes& c) { return c.getId() == idCliente; });
 }
+
 
 bool Pedidos::validarProducto(const string& codigoProducto, const vector<Producto>& productos) {
     return any_of(productos.begin(), productos.end(),
@@ -195,40 +197,30 @@ void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
         cout << "\n\t\t--- Agregar producto ---" << endl;
 
         // Selección de producto
-        Producto* productoSeleccionado = nullptr;
-        while (true) {
-            cout << "\t\tIngrese código de producto: ";
-            cin >> detalle.codigoProducto;
+Producto* productoSeleccionado = nullptr;
+while (true) {
+    cout << "\t\tIngrese código de producto: ";
+    cin >> detalle.codigoProducto;
 
-           // En la sección de selección de producto:
-        auto it = find_if(productos.begin(), productos.end(),
-            [&detalle](const Producto& p) { return p.getCodigo() == detalle.codigoProducto; });
+    auto it = find_if(productos.begin(), productos.end(),
+        [&detalle](const Producto& p) { return p.getCodigo() == detalle.codigoProducto; });
 
-        if (it != productos.end()) {
-            Producto& productoSeleccionado = const_cast<Producto&>(*it);
-                break;
-            }
-            cerr << "\t\tProducto no válido. Intente nuevamente.\n";
-        }
+    if (it != productos.end()) {
+        productoSeleccionado = const_cast<Producto*>(&(*it));
+        break;
+    } else {
+        cerr << "\t\tProducto no válido. Intente nuevamente.\n";
+    }
+}
 
-        // Cantidad del producto
-        while (true) {
-            cout << "\t\tIngrese cantidad (Stock disponible: "
-                 << productoSeleccionado->getStock() << "): ";
-            if (cin >> detalle.cantidad && detalle.cantidad > 0) {
-                if (detalle.cantidad <= productoSeleccionado->getStock()) {
-                    // Actualizar stock
-                    productoSeleccionado->setStock(productoSeleccionado->getStock() - detalle.cantidad);
-                    break;
-                } else {
-                    cout << "\t\tNo hay suficiente stock. Intente con una cantidad menor.\n";
-                }
-            } else {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cerr << "\t\tCantidad inválida. Ingrese un número positivo: ";
-            }
-        }
+if (productoSeleccionado) {
+    cout << "\t\tIngrese cantidad (Stock disponible: " << productoSeleccionado->getStock() << "): ";
+    cin >> detalle.cantidad;
+    // resto del código...
+} else {
+    cerr << "\t\tError: No se pudo seleccionar producto. Abortando creación de pedido.\n";
+    return;
+}
 
         nuevo.detalles.push_back(detalle);
 

@@ -53,18 +53,22 @@ public:
     // Persistencia
     static void guardarEnArchivo(const std::vector<Pedidos>& lista);
     static void cargarDesdeArchivo(std::vector<Pedidos>& lista);
+    void setEstado(const std::string& nuevoEstado) { estado = nuevoEstado; }
 
     // Getters
     std::string getId() const { return id; }
     std::string getDetalles() const;
+    std::string getEstado() const { return estado; }
+    std::string getIdCliente() const { return idCliente; }
+
 
 private:
     std::string id;
+    std::string estado;
     std::string idCliente;
     std::string idAlmacen;
     std::time_t fechaPedido;
     std::vector<DetallePedido> detalles;
-    std::string estado; // "pendiente", "procesado", "enviado", "completado", "cancelado"
 
     // Generación de IDs
     static std::string generarIdUnico(const std::vector<Pedidos>& lista);
@@ -77,6 +81,7 @@ private:
 
     // Lista estática de pedidos
     static std::vector<Pedidos> listaPedidos;
+
 };
 
 #endif // PEDIDOS_H

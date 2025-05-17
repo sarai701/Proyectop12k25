@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iomanip>
 #include <string>
-#include <limits> // Para numeric_limits
+#include <limits>
 
 using namespace std;
 
@@ -21,13 +21,14 @@ const int CODIGO_FINAL = 3157;
  * @return ID disponible como string, o cadena vacía si el rango está lleno.
  */
 std::string Clientes::generarIdUnico(const std::vector<Clientes>& lista) {
+    // Itera dentro del rango permitido para generar un ID único
     for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; ++i) {
         std::string id = std::to_string(i);
         if (idDisponible(lista, id)) {
             return id;
         }
     }
-    return ""; // Retorna cadena vacía si no hay códigos disponibles
+    return "";
 }
 
 /**
@@ -37,6 +38,7 @@ std::string Clientes::generarIdUnico(const std::vector<Clientes>& lista) {
  * @return true si el ID no está en uso, false si ya está ocupado.
  */
 bool Clientes::idDisponible(const std::vector<Clientes>& lista, const std::string& id) {
+    // Verifica si el ID ya existe en la lista de clientes
     return std::none_of(lista.begin(), lista.end(),
         [&id](const Clientes& c) { return c.id == id; });
 }
@@ -64,7 +66,7 @@ bool Clientes::esIdValido(const std::string& id) {
 void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioActual) {
     Clientes nuevo;
 
-    // Asignar ID automático
+    // Genera un ID único para el nuevo cliente
     nuevo.id = generarIdUnico(lista);
     if (nuevo.id.empty()) {
         std::cerr << "\n\t\tError: No hay códigos disponibles para nuevos clientes (rango lleno)\n";
@@ -74,7 +76,6 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
 
     std::cout << "\n\t\t=== AGREGAR CLIENTE (ID Auto-Asignado: " << nuevo.id << ") ===\n";
 
-    // Limpiar buffer antes de getline()
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::cout << "\t\tNombre completo: ";
@@ -89,9 +90,10 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
     std::cout << "\t\tNIT: ";
     std::getline(std::cin, nuevo.nit);
 
-    lista.push_back(nuevo);
-    guardarEnArchivo(lista);
+    lista.push_back(nuevo); // Agrega el cliente a la lista
+    guardarEnArchivo(lista); // Guarda la lista actualizada de clientes
 
+    // Registra la acción en la bitácora
     bitacora::registrar(usuarioActual, "CLIENTES", "Cliente agregado - ID: " + nuevo.id);
     std::cout << "\n\t\tCliente registrado exitosamente con ID: " << nuevo.id << "\n";
     system("pause");
@@ -102,17 +104,11 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
  * Si la lista está vacía, muestra un mensaje apropiado.
  * @param lista Lista de clientes a mostrar.
  */
-/**
- * Muestra todos los clientes actualmente almacenados en la lista.
- * Si la lista está vacía, muestra un mensaje apropiado.
- * @param lista Lista de clientes a mostrar.
- */
 void Clientes::mostrar(const std::vector<Clientes>& lista) {
     if (lista.empty()) {
         cout << "\n\t--- NO HAY CLIENTES REGISTRADOS ---\n";
         cout << "\tEl archivo puede estar vacío o no se cargó correctamente.\n";
     } else {
-        // Cabecera
         cout << "\n\t" << string(100, '-') << "\n";
         cout << "\t" << left
              << setw(10) << "| ID |"
@@ -122,7 +118,6 @@ void Clientes::mostrar(const std::vector<Clientes>& lista) {
              << setw(15) << " NIT |" << "\n";
         cout << "\t" << string(100, '-') << "\n";
 
-        // Datos
         for (const auto& cliente : lista) {
             cout << "\t" << left
                  << "| " << setw(6) << cliente.id << "| "
@@ -150,7 +145,7 @@ void Clientes::modificar(std::vector<Clientes>& lista, const std::string& usuari
     if (it != lista.end()) {
         cout << "\n--- MODIFICAR CLIENTE (ID: " << id << ") ---\n";
 
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar buffer
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         cout << "Nuevo nombre (" << it->nombre << "): ";
         getline(cin, it->nombre);
@@ -164,7 +159,7 @@ void Clientes::modificar(std::vector<Clientes>& lista, const std::string& usuari
         cout << "Nuevo NIT (" << it->nit << "): ";
         getline(cin, it->nit);
 
-        guardarEnArchivo(lista);
+        guardarEnArchivo(lista); // Guarda los cambios en el archivo
         bitacora::registrar(usuarioActual, "CLIENTES", "Cliente modificado - ID: " + id);
         cout << "Cliente modificado!\n";
     } else {
@@ -185,8 +180,8 @@ void Clientes::eliminar(std::vector<Clientes>& lista, const std::string& usuario
         [&id](const Clientes& c) { return c.id == id; });
 
     if (it != lista.end()) {
-        lista.erase(it);
-        guardarEnArchivo(lista);
+        lista.erase(it); // Elimina el cliente de la lista
+        guardarEnArchivo(lista); // Guarda la lista actualizada
         bitacora::registrar(usuarioActual, "CLIENTES", "Cliente eliminado - ID: " + id);
         cout << "Cliente eliminado!\n";
     } else {
@@ -196,112 +191,47 @@ void Clientes::eliminar(std::vector<Clientes>& lista, const std::string& usuario
 }
 
 /**
- * Guarda la lista completa de clientes en formato tabular en el archivo `Clientes.txt`.
- * Se usa un archivo temporal (`Clientes.tmp`) para evitar errores de escritura parcial.
- * Si hay fallos, se cancela el guardado para proteger la integridad del archivo.
+ * Guarda la lista completa de clientes en un archivo binario.
  * @param lista Lista actual de clientes.
  */
 void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
-    ofstream archivo("Clientes.tmp", ios::out);
-    if (!archivo.is_open()) {
-        cerr << "\n\t\tError crítico: No se pudo crear archivo temporal!\n";
+    // Abre el archivo binario para escribir los datos de los clientes
+    std::ofstream archivoBin("clientes.dat", std::ios::binary | std::ios::out | std::ios::trunc);
+    if (!archivoBin) {
+        std::cerr << "\n\tError al abrir clientes.dat para escritura.\n";
         return;
     }
 
-    archivo << "---------------------------------- Lista de Clientes ----------------------------------\n";
-    archivo << std::left
-            << std::setw(10) << "ID"
-            << std::setw(25) << "Nombre"
-            << std::setw(25) << "Dirección"
-            << std::setw(15) << "Teléfono"
-            << std::setw(15) << "NIT" << "\n";
-    archivo << std::string(90, '-') << "\n";
-
+    // Escribe cada cliente en el archivo binario
     for (const auto& cliente : lista) {
-        archivo << std::left
-                << std::setw(10) << cliente.id
-                << std::setw(25) << cliente.nombre
-                << std::setw(25) << cliente.direccion
-                << std::setw(15) << cliente.telefono
-                << std::setw(15) << cliente.nit << "\n";
+        archivoBin.write(reinterpret_cast<const char*>(&cliente), sizeof(Clientes));
     }
+    archivoBin.close(); // Cierra el archivo binario
 
-    archivo << std::string(90, '-') << "\n";
-
-    archivo.flush();
-    if (!archivo) {
-        cerr << "\n\t\tError: Fallo al guardar los datos en formato tabular!\n";
-        archivo.close();
-        remove("Clientes.tmp");
-        return;
-    }
-
-    archivo.close();
-
-    if (remove("Clientes.txt") != 0 && errno != ENOENT) {
-        cerr << "\n\t\tAdvertencia: No se pudo eliminar el archivo anterior\n";
-    }
-    if (rename("Clientes.tmp", "Clientes.txt") != 0) {
-        cerr << "\n\t\tError crítico: Falló el guardado final!\n";
-    }
+    std::cout << "\tDatos guardados correctamente en el archivo clientes.dat.\n";
 }
 
 /**
- * Carga los datos de clientes desde el archivo `Clientes.txt`.
- * Versión mejorada que maneja el formato tabular del archivo.
- * @param lista Lista de clientes a llenar (se limpia antes).
+ * Carga la lista de clientes desde el archivo binario "clientes.dat".
+ * Si el archivo no existe o está vacío, la lista queda vacía.
+ * @param lista Lista donde se cargarán los clientes.
  */
 void Clientes::cargarDesdeArchivo(std::vector<Clientes>& lista) {
-    lista.clear();
-    ifstream archivo("Clientes.txt");
+    lista.clear(); // Limpia la lista antes de cargar nuevos datos
 
+    // Abre el archivo binario para leer los datos de los clientes
+    std::ifstream archivo("clientes.dat", std::ios::binary);
     if (!archivo) {
-        // Si el archivo no existe, se crea vacío
-        ofstream nuevoArchivo("Clientes.txt");
-        if (!nuevoArchivo) {
-            cerr << "\n\t\tError: No se pudo crear archivo de clientes!\n";
-        }
+        std::cerr << "\n\tError al abrir clientes.dat para lectura.\n";
         return;
     }
 
-    string linea;
-    int lineasValidas = 0;
-
-    // Saltar las primeras 3 líneas (cabecera)
-    for (int i = 0; i < 3; ++i) {
-        getline(archivo, linea);
+    Clientes temp;
+    // Lee los clientes del archivo y los agrega a la lista
+    while (archivo.read(reinterpret_cast<char*>(&temp), sizeof(Clientes))) {
+        lista.push_back(temp);
     }
+    archivo.close(); // Cierra el archivo binario
 
-    while (getline(archivo, linea)) {
-        // Saltar líneas separadoras
-        if (linea.find("---") != string::npos || linea.empty()) {
-            continue;
-        }
-
-        istringstream ss(linea);
-        Clientes temp;
-
-        // Leer campos según el formato de columnas fijas
-        if (linea.length() >= 90) { // Asumiendo el ancho total de la línea
-            temp.id = linea.substr(0, 10);
-            temp.nombre = linea.substr(10, 25);
-            temp.direccion = linea.substr(35, 25);
-            temp.telefono = linea.substr(60, 15);
-            temp.nit = linea.substr(75, 15);
-
-            // Eliminar espacios en blanco sobrantes
-            temp.id.erase(temp.id.find_last_not_of(" \t") + 1);
-            temp.nombre.erase(temp.nombre.find_last_not_of(" \t") + 1);
-            temp.direccion.erase(temp.direccion.find_last_not_of(" \t") + 1);
-            temp.telefono.erase(temp.telefono.find_last_not_of(" \t") + 1);
-            temp.nit.erase(temp.nit.find_last_not_of(" \t") + 1);
-
-            if (!temp.id.empty() && esIdValido(temp.id)) {
-                lista.push_back(temp);
-                lineasValidas++;
-            }
-        }
-    }
-
-    cout << "\n\t\tSe cargaron " << lineasValidas << " clientes desde el archivo.\n";
+    std::cout << "\tDatos cargados correctamente desde clientes.dat.\n";
 }

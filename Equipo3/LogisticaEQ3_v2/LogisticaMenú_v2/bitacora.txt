@@ -71,3 +71,18 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
 3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
 >>>>>>> aa9a3cdd2da258c43d9bd53a505bd4c8e50d3c9f
+3000        Angel          000                 REG-USER                           16/05/2025 21:48:58 
+3001        Angel          000                 LOGIN                              16/05/2025 21:49:05 
+3100        Angel          PEDIDOS             Consulta de pedidos                16/05/2025 21:52:53 
+3101        Angel          PEDIDOS             Pedido modificado - ID: 3400       16/05/2025 21:53:07 
+3102        Angel          PEDIDOS             Salida de gestión de pedidos       16/05/2025 21:53:10 
+3550        Angel          ENVIOS              Creado envío para pedido 3400 con transportista 331116/05/2025 21:53:43 
+3000        Angel          000                 LOGIN                              16/05/2025 21:54:20 
+3000        Angel          000                 LOGIN                              16/05/2025 21:56:32 
+3000        Angel          000                 LOGIN                              16/05/2025 21:59:21 
+3000        Angel          000                 LOGIN                              16/05/2025 22:00:14 
+3000        Angel          000                 LOGIN                              16/05/2025 22:22:53 
+3150        Angel          CLIENTES            Cliente agregado - ID: 3107        16/05/2025 22:23:17 
+3000        Angel          000                 LOGIN                              16/05/2025 22:29:19 
+3150        Angel          CLIENTES            Cliente agregado - ID: 3107        16/05/2025 22:29:47 
+3151        Angel          CLIENTES            Cliente agregado - ID: 3108        16/05/2025 22:29:56 

@@ -1,4 +1,4 @@
-//Karina Alejandra Arriaza Ortiz 9959-24-14190
+// Karina Alejandra Arriaza Ortiz 9959-24-14190
 #include "transportistas.h"
 #include <fstream>
 #include <sstream>
@@ -9,8 +9,6 @@
 #include <cerrno>
 #include <vector>
 #include "globals.h"
-#include <fstream>
-#include <sstream>
 
 using namespace std;
 
@@ -46,7 +44,7 @@ void Transportistas::agregar(std::vector<Transportistas>& lista, const std::stri
     nuevo.id = generarIdUnico(lista);
 
     if (nuevo.id.empty()) {
-        cerr << "\n\t\tError: No hay c�digos disponibles para nuevos transportistas\n";
+        cerr << "\n\t\tError: No hay códigos disponibles para nuevos transportistas\n";
         system("pause");
         return;
     }
@@ -57,13 +55,13 @@ void Transportistas::agregar(std::vector<Transportistas>& lista, const std::stri
     cout << "\t\tNombre: ";
     getline(cin, nuevo.nombre);
 
-    cout << "\t\tTel�fono: ";
+    cout << "\t\tTeléfono: ";
     getline(cin, nuevo.telefono);
 
-    cout << "\t\tVeh�culo: ";
+    cout << "\t\tVehículo: ";
     getline(cin, nuevo.vehiculo);
 
-    cout << "\t\tDisponibilidad (Diurna/Nocturna/24-7): ";
+    cout << "\t\tDisponibilidad (disponible/Diurna/Nocturna/24-7): ";
     getline(cin, nuevo.disponibilidad);
 
     lista.push_back(nuevo);
@@ -78,7 +76,7 @@ void Transportistas::mostrar(const std::vector<Transportistas>& lista) {
         cout << "ID: " << t.id
              << " | Nombre: " << t.nombre
              << " | Tel: " << t.telefono
-             << " | Veh�culo: " << t.vehiculo
+             << " | Vehículo: " << t.vehiculo
              << " | Disponibilidad: " << t.disponibilidad << "\n";
     }
     system("pause");
@@ -95,10 +93,10 @@ void Transportistas::modificar(std::vector<Transportistas>& lista, const std::st
         cout << "Nuevo nombre (" << it->nombre << "): ";
         getline(cin, it->nombre);
 
-        cout << "Nuevo tel�fono (" << it->telefono << "): ";
+        cout << "Nuevo teléfono (" << it->telefono << "): ";
         getline(cin, it->telefono);
 
-        cout << "Nuevo veh�culo (" << it->vehiculo << "): ";
+        cout << "Nuevo vehículo (" << it->vehiculo << "): ";
         getline(cin, it->vehiculo);
 
         cout << "Nueva disponibilidad (" << it->disponibilidad << "): ";
@@ -118,7 +116,7 @@ void Transportistas::eliminar(std::vector<Transportistas>& lista, const std::str
 
     if (it != lista.end()) {
         char confirmar;
-        cout << "�Eliminar transportista " << it->nombre << "? (s/n): ";
+        cout << "¿Eliminar transportista " << it->nombre << "? (s/n): ";
         cin >> confirmar;
 
         if (tolower(confirmar) == 's') {
@@ -126,7 +124,7 @@ void Transportistas::eliminar(std::vector<Transportistas>& lista, const std::str
             guardarEnArchivo(lista);
             cout << "Transportista eliminado!\n";
         } else {
-            cout << "Operaci�n cancelada.\n";
+            cout << "Operación cancelada.\n";
         }
     } else {
         cout << "Transportista no encontrado.\n";
@@ -147,7 +145,6 @@ void Transportistas::cargarDesdeArchivo(std::vector<Transportistas>& lista) {
     while (std::getline(archivo, linea)) {
         std::istringstream ss(linea);
         Transportistas transp;
-
 
         if (std::getline(ss, transp.id, ',') &&
             std::getline(ss, transp.nombre, ',') &&
@@ -171,15 +168,18 @@ void Transportistas::guardarEnArchivo(const std::vector<Transportistas>& lista) 
     }
 }
 
-std::vector<Transportistas> Transportistas::getTransportistasDisponibles() {
-    std::vector<Transportistas> transportistas;
-    cargarDesdeArchivo(transportistas);
+// Método estático para obtener transportistas disponibles
+    std::vector<Transportistas> Transportistas::getTransportistasDisponibles() {
+    std::vector<Transportistas> listaCompleta;
+    cargarDesdeArchivo(listaCompleta);
 
-    // Filtrar solo los disponibles
-    transportistas.erase(
-        std::remove_if(transportistas.begin(), transportistas.end(),
-            [](const Transportistas& t) { return t.disponibilidad != "disponible"; }),
-        transportistas.end());
+    // Filtrar solo los transportistas con disponibilidad "disponible"
+    listaCompleta.erase(
+        std::remove_if(listaCompleta.begin(), listaCompleta.end(),
+            [](const Transportistas& t) {
+                return t.disponibilidad != "disponible";
+            }),
+        listaCompleta.end());
 
-    return transportistas;
+    return listaCompleta;
 }

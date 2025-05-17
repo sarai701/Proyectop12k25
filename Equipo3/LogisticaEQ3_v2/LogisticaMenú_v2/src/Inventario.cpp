@@ -1,6 +1,9 @@
 //Karina Alejandra Arriaza Ortiz
 #include "inventario.h"
 #include <iostream>
+#include <fstream>
+#include <iomanip>
+
 using namespace std;
 
 extern usuarios usuarioRegistrado;

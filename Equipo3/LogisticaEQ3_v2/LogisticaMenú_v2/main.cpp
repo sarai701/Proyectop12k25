@@ -1,4 +1,4 @@
-//9959 24 11603 GE
+// 9959 24 11603 GE
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,9 +26,14 @@ int main() {
     Almacen::cargarDesdeArchivo(listaAlmacenes);
     Administracion::cargarDesdeArchivo(listaAdministradores);
     Transportistas::cargarDesdeArchivo(listaTransportistas);
+    Producto::cargarDesdeArchivo(listaProductos);
+    Proveedor::cargarDesdeArchivo(listaProveedores);
+
+    std::cout << "Datos cargados correctamente.\n";
 
     // Iniciar sistema de login (verifica si el usuario puede ingresar)
     if (usuarioRegistrado.loginUsuarios()) {
+        std::cout << "Login exitoso.\n";
         // Si el login es exitoso, se muestra el menú principal con todas las listas necesarias
         MenuPrincipal::mostrar(
             listaClientes,
@@ -39,6 +44,8 @@ int main() {
             listaTransportistas,
             usuarioRegistrado
         );
+    } else {
+        std::cout << "Login fallido. Saliendo del programa.\n";
     }
 
     // Mensaje de salida cuando el programa termina
@@ -49,7 +56,11 @@ int main() {
     Almacen::guardarEnArchivo(listaAlmacenes);
     Administracion::guardarEnArchivo(listaAdministradores);
     Transportistas::guardarEnArchivo(listaTransportistas);
+    Producto::guardarEnArchivo(listaProductos);
+    Proveedor::guardarEnArchivo(listaProveedores);
 
-    // Fin del programa
+    // Pausa para ver mensajes antes de cerrar (solo Windows)
+    system("pause");
+
     return 0;
 }
