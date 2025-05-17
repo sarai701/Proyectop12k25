@@ -1,187 +1,283 @@
 //9959 24 11603 GE
 #include "Almacen.h"
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <fstream>
 #include "bitacora.h"
-#include <sstream>
-#include <iomanip>
-#include <string>
-#include <limits> // Para numeric_limits
+#include <iostream>
+#include <fstream>
+#include <limits>
+#include <cstring>
 
-// Implementación del constructor
-Almacen::Almacen() : id(""), direccion(""), capacidad(0),
-                    responsable(""), contacto(""), estado("operativo") {}
+using namespace std;
 
-// Constantes para el rango de IDs válidos (idéntico a Clientes)
-const int CODIGO_INICIAL = 3260;
-const int CODIGO_FINAL = 3310;
+// Constantes para validacion de IDs
+// Rango valido: 3260 a 3310
+const int Almacen::CODIGO_INICIAL = 3260;
+const int Almacen::CODIGO_FINAL = 3310;
 
-// Genera un ID único dentro del rango definido
-std::string Almacen::generarID(const std::vector<Almacen>& lista) {
-    for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; ++i) {
-        std::string id_candidato = std::to_string(i);
-        // Verifica si el ID ya existe en la lista
-        bool existe = std::any_of(lista.begin(), lista.end(),
-            [&id_candidato](const Almacen& a) { return a.id == id_candidato; });
-        if (!existe) return id_candidato;
+// Aplica codificacion XOR a un bloque de datos
+// data: Puntero a los datos a codificar
+// len: Longitud de los datos
+void Almacen::codificar(char* data, size_t len) {
+    for (size_t i = 0; i < len; ++i) {
+        data[i] ^= XOR_KEY;
     }
-    // Si no hay ID disponible, retorna cadena vacía
+}
+
+// Decodifica datos codificados con XOR
+// Reutiliza codificar porque XOR es reversible
+void Almacen::decodificar(char* data, size_t len) {
+    codificar(data, len);
+}
+
+// Convierte objeto Almacen a estructura AlmacenRegistro
+// Devuelve estructura con los datos del almacen
+AlmacenRegistro Almacen::toRegistro(const Almacen& a) {
+    AlmacenRegistro reg = {};
+    strncpy(reg.id, a.id.c_str(), sizeof(reg.id) - 1);
+    strncpy(reg.direccion, a.direccion.c_str(), sizeof(reg.direccion) - 1);
+    reg.capacidad = a.capacidad;
+    strncpy(reg.responsable, a.responsable.c_str(), sizeof(reg.responsable) - 1);
+    strncpy(reg.contacto, a.contacto.c_str(), sizeof(reg.contacto) - 1);
+    strncpy(reg.estado, a.estado.c_str(), sizeof(reg.estado) - 1);
+    return reg;
+}
+
+// Convierte estructura AlmacenRegistro a objeto Almacen
+// Devuelve objeto Almacen con los datos
+Almacen Almacen::fromRegistro(const AlmacenRegistro& reg) {
+    Almacen a;
+    a.id = string(reg.id);
+    a.direccion = string(reg.direccion);
+    a.capacidad = reg.capacidad;
+    a.responsable = string(reg.responsable);
+    a.contacto = string(reg.contacto);
+    a.estado = string(reg.estado);
+    return a;
+}
+
+// Genera un ID unico dentro del rango permitido
+// lista: Lista actual de almacenes
+// Devuelve string con ID o vacio si no hay disponibles
+string Almacen::generarIdUnico(const vector<Almacen>& lista) {
+    for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; ++i) {
+        string id = to_string(i);
+        if (idDisponible(lista, id)) {
+            return id;
+        }
+    }
     return "";
 }
 
+// Verifica si un ID no esta en uso
+// lista: Lista de almacenes
+// id: ID a verificar
+// Devuelve true si el ID esta disponible
+bool Almacen::idDisponible(const vector<Almacen>& lista, const string& id) {
+    return none_of(lista.begin(), lista.end(),
+        [&id](const Almacen& a) { return a.id == id; });
+}
+
+// Valida que un ID este dentro del rango numerico permitido
+// id: ID a validar
+// Devuelve true si el ID es valido
+bool Almacen::esIdValido(const string& id) {
+    try {
+        int num = stoi(id);
+        return (num >= CODIGO_INICIAL && num <= CODIGO_FINAL);
+    } catch (...) {
+        return false;
+    }
+}
+
 // Valida que el estado sea "operativo" o "en mantenimiento"
-bool Almacen::validarEstado(const std::string& estado) {
+// estado: Estado a validar
+// Devuelve true si el estado es valido
+bool Almacen::validarEstado(const string& estado) {
     return (estado == "operativo" || estado == "en mantenimiento");
 }
 
-// Función para agregar un nuevo almacén (CREATE)
-void Almacen::agregar(std::vector<Almacen>& lista, const std::string& usuario) {
+// Agrega un nuevo almacen a la lista
+// lista: Referencia a la lista de almacenes
+// usuarioActual: Usuario que realiza la operacion
+void Almacen::agregar(vector<Almacen>& lista, const string& usuarioActual) {
     Almacen nuevo;
-    nuevo.id = generarID(lista); // Genera ID automáticamente
+    nuevo.id = generarIdUnico(lista);
 
     if (nuevo.id.empty()) {
-        std::cerr << "No hay IDs disponibles (rango 3260-3310 lleno)\n";
+        cerr << "\nError: No hay IDs disponibles\n";
+        system("pause");
         return;
     }
 
-    std::cout << "=== AGREGAR ALMACÉN (ID: " << nuevo.id << ") ===\n";
+    cout << "\n=== AGREGAR ALMACEN (ID: " << nuevo.id << ") ===\n";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    // Limpia el buffer antes de leer líneas completas
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cout << "Direccion: ";
+    getline(cin, nuevo.direccion);
 
-    std::cout << "Dirección: ";
-    std::getline(std::cin, nuevo.direccion);
-
-    // Solicita capacidad y valida que sea un número positivo
-    while (true) {
-        std::cout << "Capacidad (m²): ";
-        if (std::cin >> nuevo.capacidad && nuevo.capacidad > 0) break;
-        std::cin.clear();
-        std::cin.ignore(10000, '\n');
-        std::cerr << "Error: Ingrese un número positivo\n";
+    cout << "Capacidad (m²): ";
+    while (!(cin >> nuevo.capacidad) || nuevo.capacidad <= 0) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Error: Ingrese un valor positivo: ";
     }
 
-    std::cin.ignore(); // Limpia el salto de línea
-    std::cout << "Responsable: ";
-    std::getline(std::cin, nuevo.responsable);
+    cin.ignore();
+    cout << "Responsable: ";
+    getline(cin, nuevo.responsable);
 
-    std::cout << "Contacto: ";
-    std::getline(std::cin, nuevo.contacto);
+    cout << "Contacto: ";
+    getline(cin, nuevo.contacto);
 
-    // Solicita estado hasta que sea válido
-    do {
-        std::cout << "Estado (operativo/en mantenimiento): ";
-        std::getline(std::cin, nuevo.estado);
-    } while (!validarEstado(nuevo.estado));
+    cout << "Estado (operativo/en mantenimiento): ";
+    while (getline(cin, nuevo.estado) && !validarEstado(nuevo.estado)) {
+        cout << "Estado invalido. Ingrese 'operativo' o 'en mantenimiento': ";
+    }
 
-    // Agrega el nuevo almacén a la lista
     lista.push_back(nuevo);
-    guardarEnArchivo(lista); // Guarda en archivo persistente
-
-    // Registra la acción en la bitácora
-    bitacora::registrar(usuario, "ALMACEN", "Almacén creado - ID: " + nuevo.id);
+    guardarEnArchivoBinario(lista);
+    bitacora::registrar(usuarioActual, "ALMACEN", "Almacen creado - ID: " + nuevo.id);
+    cout << "\nAlmacen registrado exitosamente!\n";
+    system("pause");
 }
 
-// Muestra la lista de almacenes (READ)
-void Almacen::mostrar(const std::vector<Almacen>& lista) {
-    std::cout << "\n=== LISTA DE ALMACENES ===\n";
+// Muestra todos los almacenes en la lista
+// lista: Lista de almacenes a mostrar
+void Almacen::mostrar(const vector<Almacen>& lista) {
+    cout << "\n=== LISTA DE ALMACENES ===\n";
     for (const auto& a : lista) {
-        std::cout << "ID: " << a.id << "\n"
-                  << "Dirección: " << a.direccion << "\n"
-                  << "Capacidad: " << a.capacidad << " m²\n"
-                  << "Responsable: " << a.responsable << "\n"
-                  << "Contacto: " << a.contacto << "\n"
-                  << "Estado: " << a.estado << "\n"
-                  << "-----------------------\n";
+        cout << "ID: " << a.id << "\n"
+             << "Direccion: " << a.direccion << "\n"
+             << "Capacidad: " << a.capacidad << " m²\n"
+             << "Responsable: " << a.responsable << "\n"
+             << "Contacto: " << a.contacto << "\n"
+             << "Estado: " << a.estado << "\n"
+             << "-----------------------\n";
     }
+    system("pause");
 }
 
-// Modifica los datos de un almacén existente (UPDATE)
-void Almacen::modificar(std::vector<Almacen>& lista, const std::string& usuario, const std::string& id) {
-    // Busca el almacén por ID
-    auto it = std::find_if(lista.begin(), lista.end(),
+// Modifica un almacen existente
+// lista: Referencia a la lista de almacenes
+// usuarioActual: Usuario que realiza la operacion
+// id: ID del almacen a modificar
+void Almacen::modificar(vector<Almacen>& lista, const string& usuarioActual, const string& id) {
+    auto it = find_if(lista.begin(), lista.end(),
         [&id](const Almacen& a) { return a.id == id; });
 
     if (it != lista.end()) {
-        std::cin.ignore();
-        std::cout << "Nueva dirección: ";
-        std::getline(std::cin, it->direccion);
+        cout << "\n=== MODIFICAR ALMACEN (ID: " << id << ") ===\n";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-        // Valida la nueva capacidad
-        while (true) {
-            std::cout << "Nueva capacidad: ";
-            if (std::cin >> it->capacidad && it->capacidad > 0) break;
-            std::cin.clear();
-            std::cin.ignore(10000, '\n');
-            std::cerr << "Error: Valor inválido\n";
+        cout << "Nueva direccion (" << it->direccion << "): ";
+        getline(cin, it->direccion);
+
+        cout << "Nueva capacidad (" << it->capacidad << " m²): ";
+        while (!(cin >> it->capacidad) || it->capacidad <= 0) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Error: Ingrese un valor positivo: ";
         }
 
-        std::cin.ignore();
-        std::cout << "Nuevo responsable: ";
-        std::getline(std::cin, it->responsable);
+        cin.ignore();
+        cout << "Nuevo responsable (" << it->responsable << "): ";
+        getline(cin, it->responsable);
 
-        std::cout << "Nuevo contacto: ";
-        std::getline(std::cin, it->contacto);
+        cout << "Nuevo contacto (" << it->contacto << "): ";
+        getline(cin, it->contacto);
 
-        // Solicita nuevo estado válido
-        do {
-            std::cout << "Nuevo estado: ";
-            std::getline(std::cin, it->estado);
-        } while (!validarEstado(it->estado));
+        cout << "Nuevo estado (" << it->estado << "): ";
+        while (getline(cin, it->estado) && !validarEstado(it->estado)) {
+            cout << "Estado invalido. Ingrese 'operativo' o 'en mantenimiento': ";
+        }
 
-        // Guarda cambios y registra la modificación
-        guardarEnArchivo(lista);
-        bitacora::registrar(usuario, "ALMACEN", "Almacén modificado - ID: " + id);
+        guardarEnArchivoBinario(lista);
+        bitacora::registrar(usuarioActual, "ALMACEN", "Almacen modificado - ID: " + id);
+        cout << "\nAlmacen modificado exitosamente!\n";
     } else {
-        std::cerr << "Almacén no encontrado\n";
+        cerr << "\nError: Almacen no encontrado\n";
     }
+    system("pause");
 }
 
-// Elimina un almacén por ID (DELETE)
-void Almacen::eliminar(std::vector<Almacen>& lista, const std::string& usuario, const std::string& id) {
-    auto it = std::find_if(lista.begin(), lista.end(),
+// Elimina un almacen de la lista
+// lista: Referencia a la lista de almacenes
+// usuarioActual: Usuario que realiza la operacion
+// id: ID del almacen a eliminar
+void Almacen::eliminar(vector<Almacen>& lista, const string& usuarioActual, const string& id) {
+    auto it = find_if(lista.begin(), lista.end(),
         [&id](const Almacen& a) { return a.id == id; });
 
     if (it != lista.end()) {
-        lista.erase(it); // Elimina de la lista
-        guardarEnArchivo(lista); // Guarda cambios en archivo
-        bitacora::registrar(usuario, "ALMACEN", "Almacén eliminado - ID: " + id);
+        lista.erase(it);
+        guardarEnArchivoBinario(lista);
+        bitacora::registrar(usuarioActual, "ALMACEN", "Almacen eliminado - ID: " + id);
+        cout << "\nAlmacen eliminado exitosamente!\n";
     } else {
-        std::cerr << "Almacén no encontrado\n";
+        cerr << "\nError: Almacen no encontrado\n";
     }
+    system("pause");
 }
 
-// Guarda toda la lista de almacenes en un archivo de texto (persistencia)
-void Almacen::guardarEnArchivo(const std::vector<Almacen>& lista) {
-    std::ofstream archivo("almacenes.txt");
+// Guarda todos los almacenes en archivo binario con codificacion XOR
+// lista: Lista de almacenes a guardar
+void Almacen::guardarEnArchivoBinario(const vector<Almacen>& lista) {
+    ofstream archivo("Almacenes.bin", ios::binary | ios::out | ios::trunc);
+    if (!archivo) {
+        cerr << "\nError critico: No se pudo abrir Almacenes.bin\n";
+        return;
+    }
+
     for (const auto& a : lista) {
-        archivo << a.id << "," << a.direccion << "," << a.capacidad << ","
-                << a.responsable << "," << a.contacto << "," << a.estado << "\n";
+        AlmacenRegistro reg = toRegistro(a);
+        codificar(reg.id, sizeof(reg.id));
+        codificar(reg.direccion, sizeof(reg.direccion));
+        codificar(reinterpret_cast<char*>(&reg.capacidad), sizeof(reg.capacidad));
+        codificar(reg.responsable, sizeof(reg.responsable));
+        codificar(reg.contacto, sizeof(reg.contacto));
+        codificar(reg.estado, sizeof(reg.estado));
+
+        archivo.write(reinterpret_cast<const char*>(&reg), sizeof(reg));
+    }
+    archivo.close();
+}
+
+// Carga almacenes desde archivo binario con decodificacion XOR
+// lista: Lista donde se cargaran los almacenes
+void Almacen::cargarDesdeArchivoBinario(vector<Almacen>& lista) {
+    lista.clear();
+    ifstream archivo("Almacenes.bin", ios::binary);
+    if (!archivo) {
+        cerr << "\nArchivo Almacenes.bin no encontrado. Se creara al guardar.\n";
+        return;
+    }
+
+    AlmacenRegistro reg;
+    while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+        decodificar(reg.id, sizeof(reg.id));
+        decodificar(reg.direccion, sizeof(reg.direccion));
+        decodificar(reinterpret_cast<char*>(&reg.capacidad), sizeof(reg.capacidad));
+        decodificar(reg.responsable, sizeof(reg.responsable));
+        decodificar(reg.contacto, sizeof(reg.contacto));
+        decodificar(reg.estado, sizeof(reg.estado));
+
+        Almacen a = fromRegistro(reg);
+
+        if (!esIdValido(a.id)) continue;
+        if (!validarEstado(a.estado)) continue;
+        if (!idDisponible(lista, a.id)) continue;
+
+        lista.push_back(a);
     }
 }
 
-// Carga los almacenes desde el archivo al vector (persistencia)
-void Almacen::cargarDesdeArchivo(std::vector<Almacen>& lista) {
-    std::ifstream archivo("almacenes.txt");
-    std::string linea;
+// Guarda la lista de almacenes en archivo (alias de guardarEnArchivoBinario)
+// lista: Lista de almacenes a guardar
+void Almacen::guardarEnArchivo(vector<Almacen>& lista) {
+    guardarEnArchivoBinario(lista);
+}
 
-    while (std::getline(archivo, linea)) {
-        std::stringstream ss(linea);
-        Almacen a;
-        std::string campo;
-
-        std::getline(ss, a.id, ',');
-        std::getline(ss, a.direccion, ',');
-
-        std::getline(ss, campo, ',');
-        a.capacidad = std::stoi(campo); // Convierte a entero
-
-        std::getline(ss, a.responsable, ',');
-        std::getline(ss, a.contacto, ',');
-        std::getline(ss, a.estado);
-
-        lista.push_back(a); // Agrega a la lista
-    }
+// Carga la lista de almacenes desde archivo (alias de cargarDesdeArchivoBinario)
+// lista: Lista donde se cargaran los almacenes
+void Almacen::cargarDesdeArchivo(vector<Almacen>& lista) {
+    cargarDesdeArchivoBinario(lista);
 }
