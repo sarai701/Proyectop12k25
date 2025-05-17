@@ -7,9 +7,9 @@
 #include <string>
 #include "bitacora.h"
 
-//JENNIFER ALBA DAYAMI BARRIOS FLORES 9959-24-10016
-//COORD EQUIPO 3
-//MAYO 2025
+// JENNIFER ALBA DAYAMI BARRIOS FLORES 9959-24-10016
+// COORD EQUIPO 3
+// MAYO 2025
 
 // Clase que representa un producto en el sistema
 class Producto {
@@ -35,12 +35,9 @@ public:
     static void eliminar(std::vector<Producto>& lista, const std::string& usuarioActual, const std::string& codigo);
 
     // Métodos para trabajar con archivos
+    static void cargarDesdeArchivoBin(std::vector<Producto>& lista);
 
-    // Guarda todos los productos en un archivo
-    static void guardarEnArchivo(const std::vector<Producto>& lista);
-
-    // Carga los productos desde un archivo
-    static void cargarDesdeArchivo(std::vector<Producto>& lista);
+    static void guardarEnArchivoBin(const std::vector<Producto>& lista);
 
     // Métodos de validación
 
@@ -53,8 +50,10 @@ public:
     // Revisa si un código ya está en uso
     static bool codigoDisponible(const std::vector<Producto>& lista, const std::string& codigo);
 
+    // Setter para stock
     void setStock(int nuevoStock);
 
+    // Getters para atributos
     std::string getCodigo() const { return codigo; }
     std::string getNombre() const { return nombre; }
     double getPrecio() const { return precio; }

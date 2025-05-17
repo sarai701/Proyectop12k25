@@ -229,7 +229,7 @@ if (productoSeleccionado) {
     } while (continuar == 's' || continuar == 'S');
 
     // Guardar cambios en productos
-    Producto::guardarEnArchivo(productos);
+    Producto::guardarEnArchivoBin(productos);
 
     // Estado del pedido
     nuevo.estado = "pendiente";
@@ -584,7 +584,7 @@ void Pedidos::completarPedido(const std::string& idPedido,
 
         // Actualizar archivos
         guardarEnArchivo(listaPedidos);
-        Producto::guardarEnArchivo(productos);
+        Producto::guardarEnArchivoBin(productos);
 
         auditoria.registrar(usuarioRegistrado.getNombre(),
                           "PEDIDOS",

@@ -86,7 +86,7 @@ void Producto::agregar(vector<Producto>& lista, const string& usuarioActual) {
 
     // Agrega a la lista y guarda en archivo
     lista.push_back(nuevo);
-    guardarEnArchivo(lista);
+    guardarEnArchivoBin(lista);
 
     // Registra en bitácora
     bitacora::registrar(usuarioActual, "PRODUCTOS", "Agregado: " + nuevo.codigo);
@@ -143,7 +143,7 @@ void Producto::modificar(vector<Producto>& lista, const string& usuarioActual, c
         }
 
         // Guarda cambios y registra modificación
-        guardarEnArchivo(lista);
+        guardarEnArchivoBin(lista);
         bitacora::registrar(usuarioActual, "PRODUCTOS", "Producto modificado - Código: " + codigo);
         cout << "\n\t\tProducto modificado exitosamente!\n";
     } else {
@@ -162,7 +162,7 @@ void Producto::eliminar(vector<Producto>& lista, const string& usuarioActual, co
     // Si lo encuentra, lo elimina
     if (it != lista.end()) {
         lista.erase(it); // Elimina producto
-        guardarEnArchivo(lista); // Guarda cambios
+        guardarEnArchivoBin(lista); // Guarda cambios
         bitacora::registrar(usuarioActual, "PRODUCTOS", "Producto eliminado - Código: " + codigo);
         cout << "\n\t\tProducto eliminado exitosamente!\n";
     } else {
@@ -173,7 +173,7 @@ void Producto::eliminar(vector<Producto>& lista, const string& usuarioActual, co
 }
 
 // Guarda la lista de productos en el archivo de texto
-void Producto::guardarEnArchivo(const vector<Producto>& lista) {
+void Producto::guardarEnArchivoBin(const vector<Producto>& lista) {
     // Crea archivo temporal para evitar pérdida de datos
     ofstream archivo("Productos.tmp", ios::out);
     if (!archivo.is_open()) {
@@ -214,7 +214,7 @@ void Producto::guardarEnArchivo(const vector<Producto>& lista) {
 }
 
 // Carga los productos desde el archivo a la lista en memoria
-void Producto::cargarDesdeArchivo(vector<Producto>& lista) {
+void Producto::cargarDesdeArchivoBin(vector<Producto>& lista) {
     // Limpia la lista actual
     lista.clear();
 
