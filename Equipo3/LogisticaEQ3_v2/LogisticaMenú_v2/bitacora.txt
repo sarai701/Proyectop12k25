@@ -39,3 +39,28 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3101        Jennifer       PEDIDOS             Consulta de pedidos                15/05/2025 14:47:26 
 3102        Jennifer       PEDIDOS             Vista de historial de pedidos - ID: 340015/05/2025 14:47:31 
 3103        Jennifer       PEDIDOS             Vista de historial de pedidos - ID: 340015/05/2025 14:47:43 
+3000        Karina         000                 LOGIN-FAIL                         15/05/2025 17:38:00 
+3001        Karina         000                 LOGIN-FAIL                         15/05/2025 17:38:44 
+3002        karina alewi   000                 LOGIN-FAIL                         15/05/2025 17:39:04 
+3000        Karina         000                 REG-USER                           15/05/2025 17:39:52 
+3001        Karina         000                 LOGIN                              15/05/2025 17:40:10 
+3100        Karina         PEDIDOS             Salida de gestión de pedidos       15/05/2025 17:42:57 
+3101        Karina         PEDIDOS             Salida de gestión de pedidos       15/05/2025 17:43:03 
+3102        Karina         PEDIDOS             Salida de gestión de pedidos       15/05/2025 17:43:20 
+3000        Karina         200                 STOCK                              15/05/2025 17:44:38 
+3000        Karina         000                 LOGIN                              16/05/2025 16:49:01 
+3000        Ale            000                 REG-USER                           16/05/2025 17:39:51 
+3000        Ale            000                 LOGIN                              16/05/2025 17:48:29 
+3000        Ale            200                 STOCK                              16/05/2025 17:48:51 
+3000        Ale            000                 LOGIN                              16/05/2025 17:58:14 
+3001        Ale            000                 LOGOUT                             16/05/2025 17:58:33 
+3002                       000                 LOGOUT                             16/05/2025 17:58:53 
+3000        Ale            000                 LOGIN                              16/05/2025 18:01:32 
+3000        Kari           000                 REG-USER                           16/05/2025 18:02:23 
+3001        Kari           000                 LOGIN                              16/05/2025 18:02:33 
+3000        Kari           000                 LOGIN-FAIL                         16/05/2025 18:15:22 
+3001        Kari           000                 LOGIN                              16/05/2025 18:15:33 
+3002        Kari           000                 LOGOUT                             16/05/2025 18:15:44 
+3000        kari           000                 REG-USER                           16/05/2025 18:20:41 
+3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
+3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
