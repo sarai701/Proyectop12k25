@@ -71,3 +71,13 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
 3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
 >>>>>>> aa9a3cdd2da258c43d9bd53a505bd4c8e50d3c9f
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:02:20 
+3100        Jennifer       PEDIDOS             Salida de gestión de pedidos       16/05/2025 22:02:33 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:28:26 
+3250        Jennifer       PRODUCTOS           Agregado: 3209                     16/05/2025 22:28:54 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:29:27 
+3250        Jennifer       PRODUCTOS           Agregado: 3210                     16/05/2025 22:29:51 
+3100        Jennifer       PEDIDOS             Pedido creado - ID: 3400           16/05/2025 22:30:27 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:33:27 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:37:32 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:49:11 
