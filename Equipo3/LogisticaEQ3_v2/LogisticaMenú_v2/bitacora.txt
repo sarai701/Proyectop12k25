@@ -117,3 +117,5 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3200        Jennifer       PROVEEDORES         Proveedor agregado - ID: 3158      17/05/2025 01:48:51 
 3201        Jennifer       PROVEEDORES         Proveedor agregado - ID: 3159      17/05/2025 01:49:06 
 3000        Jennifer       000                 LOGIN                              17/05/2025 01:49:23 
+3000        Jennifer       000                 LOGIN                              17/05/2025 12:00:55 
+3100        Jennifer       PEDIDOS             Consulta de pedidos                17/05/2025 12:01:17 
