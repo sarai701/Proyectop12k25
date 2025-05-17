@@ -143,7 +143,7 @@
 	"facturacion.h"
 	<iostream>
 
-1746660424 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\main.cpp
+1747407144 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\main.cpp
 	<iostream>
 	"usuarios.h"
 	"pedidos.h"
@@ -153,15 +153,15 @@
 	"reportes.h"
 	"bitacora.h"
 
-1746660424 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\usuarios.h
+1747406271 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\usuarios.h
 	<string>
 	"bitacora.h"
 
-1746660424 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\bitacora.h
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\bitacora.h
 	<string>
 	<fstream>
 
-1746660424 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\pedidos.h
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\pedidos.h
 	"bitacora.h"
 	"usuarios.h"
 
@@ -169,28 +169,28 @@
 	"bitacora.h"
 	"usuarios.h"
 
-1746660424 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\envios.h
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\envios.h
 	"bitacora.h"
 	"usuarios.h"
 
-1746660424 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\facturacion.h
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\facturacion.h
 	"bitacora.h"
 	"usuarios.h"
 
-1746660424 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\reportes.h
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\reportes.h
 	"bitacora.h"
 	"usuarios.h"
 
-1746660424 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\bitacora.cpp
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\bitacora.cpp
 	"bitacora.h"
 	<iostream>
 	<iomanip>
 
-1746507062 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\envios.cpp
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\envios.cpp
 	"envios.h"
 	<iostream>
 
-1746507062 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\facturacion.cpp
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\facturacion.cpp
 	"facturacion.h"
 	<iostream>
 
@@ -198,17 +198,17 @@
 	"inventario.h"
 	<iostream>
 
-1746507062 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\pedidos.cpp
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\pedidos.cpp
 	"pedidos.h"
 	<iostream>
 
-1746660424 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\reportes.cpp
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\reportes.cpp
 	"reportes.h"
 	<iostream>
 	<thread>
 	<chrono>
 
-1746660424 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\usuarios.cpp
+1747181371 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\usuarios.cpp
 	"usuarios.h"
 	<iostream>
 	<fstream>

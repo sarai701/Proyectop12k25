@@ -28,7 +28,7 @@ std::string Administracion::generarIdUnico(const std::vector<Administracion>& li
             return id;
         }
     }
-    return ""; // Retorna cadena vac�a si no hay c�digos disponibles
+    return ""; // Retorna cadena vacia si no hay codigos disponibles
 }
 
 bool Administracion::idDisponible(const std::vector<Administracion>& lista, const std::string& id) {
@@ -48,10 +48,10 @@ bool Administracion::esIdValido(const std::string& id) {
 void Administracion::agregar(std::vector<Administracion>& lista, const std::string& usuarioActual) {
     Administracion nuevo;
 
-    // Asignar ID autom�tico
+    // Asignar ID automatico
     nuevo.id = generarIdUnico(lista);
     if (nuevo.id.empty()) {
-        std::cerr << "\n\t\tError: No hay c�digos disponibles para nuevos administradores (rango lleno)\n";
+        std::cerr << "\n\t\tError: No hay codigos disponibles para nuevos administradores (rango lleno)\n";
         system("pause");
         return;
     }
@@ -70,15 +70,15 @@ void Administracion::agregar(std::vector<Administracion>& lista, const std::stri
     std::cout << "\t\tDepartamento: ";
     std::getline(std::cin, nuevo.departamento);
 
-    std::cout << "\t\tTel�fono: ";
+    std::cout << "\t\tTelefono: ";
     std::getline(std::cin, nuevo.telefono);
 
-    std::cout << "\t\tCorreo electr�nico: ";
+    std::cout << "\t\tCorreo electronico: ";
     std::getline(std::cin, nuevo.email);
 
-    std::cout << "\t\tNivel de acceso (1-5): ";
-    while (!(std::cin >> nuevo.nivelAcceso) || nuevo.nivelAcceso < 1 || nuevo.nivelAcceso > 5) {
-        std::cout << "\t\tPor favor ingrese un nivel v�lido (1-5): ";
+    std::cout << "\t\tNivel de acceso (1-3): ";
+    while (!(std::cin >> nuevo.nivelAcceso) || nuevo.nivelAcceso < 1 || nuevo.nivelAcceso > 3) {
+        std::cout << "\t\tPor favor ingrese un nivel valido (1-3): ";
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
@@ -139,15 +139,15 @@ void Administracion::modificar(std::vector<Administracion>& lista, const std::st
         std::cout << "\t\tNuevo departamento (" << it->departamento << "): ";
         std::getline(std::cin, it->departamento);
 
-        std::cout << "\t\tNuevo tel�fono (" << it->telefono << "): ";
+        std::cout << "\t\tNuevo telofono (" << it->telefono << "): ";
         std::getline(std::cin, it->telefono);
 
         std::cout << "\t\tNuevo email (" << it->email << "): ";
         std::getline(std::cin, it->email);
 
         std::cout << "\t\tNuevo nivel de acceso (" << it->nivelAcceso << "): ";
-        while (!(std::cin >> it->nivelAcceso) || it->nivelAcceso < 1 || it->nivelAcceso > 5) {
-            std::cout << "\t\tPor favor ingrese un nivel v�lido (1-5): ";
+        while (!(std::cin >> it->nivelAcceso) || it->nivelAcceso < 1 || it->nivelAcceso > 3) {
+            std::cout << "\t\tPor favor ingrese un nivel valido (1-3): ";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -167,7 +167,7 @@ void Administracion::eliminar(std::vector<Administracion>& lista, const std::str
 
     if (it != lista.end()) {
         char confirmar;
-        std::cout << "\n\t\t�Est� seguro de eliminar al administrador " << it->nombre << "? (s/n): ";
+        std::cout << "\n\t\t¿Esta seguro de eliminar al administrador ?" << it->nombre << "? (s/n): ";
         std::cin >> confirmar;
 
         if (tolower(confirmar) == 's') {
@@ -176,7 +176,7 @@ void Administracion::eliminar(std::vector<Administracion>& lista, const std::str
             bitacora::registrar(usuarioActual, "ADMINISTRACION", "Administrador eliminado - ID: " + id);
             std::cout << "\n\t\tAdministrador eliminado exitosamente!\n";
         } else {
-            std::cout << "\n\t\tOperaci�n cancelada\n";
+            std::cout << "\n\t\tOperacion cancelada\n";
         }
     } else {
         std::cout << "\n\t\tAdministrador no encontrado!\n";

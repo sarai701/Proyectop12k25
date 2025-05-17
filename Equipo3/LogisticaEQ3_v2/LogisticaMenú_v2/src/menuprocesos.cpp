@@ -1,12 +1,15 @@
 #include "MenuProcesos.h"
 #include "usuarios.h"
-#include <iostream>  // Faltaba en varios archivos
+#include <iostream>
 #include "pedidos.h"
 #include "inventario.h"
 #include "envios.h"
 #include "facturacion.h"
 #include "reportes.h"
 #include "globals.h"
+#include "clientes.h"
+#include "producto.h"
+#include "Almacen.h"
 
 //JENNIFER ALBA DAYAMI BARRIOS FLORES
 //9959-24-10016
@@ -14,12 +17,13 @@
 
 using namespace std;
 
-
 // Declaración externa del usuario registrado actual
 extern usuarios usuarioRegistrado;
 
 // Muestra el menú principal de procesos y redirige según la opción elegida
-void MenuProcesos::mostrar() {
+void MenuProcesos::mostrar(const std::vector<Clientes>& clientes,
+                          const std::vector<Producto>& productos,
+                          const std::vector<Almacen>& almacenes) {
     int choice;
     do {
         // Limpiar pantalla antes de mostrar el menú
@@ -47,7 +51,10 @@ void MenuProcesos::mostrar() {
         switch(choice) {
             case 1:
                 // Acceder a la funcionalidad de gestión de pedidos
-                gestorPedidos.gestionPedidos();
+                {
+                    Pedidos gestorPedidos;
+                    gestorPedidos.gestionPedidos(clientes, productos, almacenes);
+                }
                 break;
 
             case 2:

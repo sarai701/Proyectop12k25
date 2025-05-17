@@ -280,3 +280,7 @@ void Producto::cargarDesdeArchivo(vector<Producto>& lista) {
     cout << "\n\t\tCarga completada. " << cargados << " productos cargados, "
          << omitidos << " omitidos.\n";
 }
+
+void Producto::setStock(int nuevoStock) {
+    stock = nuevoStock;
+}
