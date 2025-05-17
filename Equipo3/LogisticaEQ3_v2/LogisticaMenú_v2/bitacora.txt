@@ -103,3 +103,12 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Jennifer       000                 LOGIN                              16/05/2025 23:02:50 
 3000        Jennifer       000                 LOGIN                              16/05/2025 23:13:04 
 >>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3
+3000        Jennifer       000                 LOGIN                              17/05/2025 01:20:49 
+3100        Jennifer       PEDIDOS             Consulta de pedidos                17/05/2025 01:20:56 
+3101        Jennifer       PEDIDOS             Salida de gestión de pedidos       17/05/2025 01:22:47 
+3150        Jennifer       CLIENTES            Cliente agregado - ID: 3107        17/05/2025 01:23:16 
+3001        Jennifer       000                 LOGOUT                             17/05/2025 01:23:28 
+3000        Jennifer       000                 LOGIN                              17/05/2025 01:23:37 
+3100        Jennifer       PEDIDOS             Pedido creado - ID: 3401           17/05/2025 01:24:14 
+3101        Jennifer       PEDIDOS             Salida de gestión de pedidos       17/05/2025 01:24:31 
+3001        Jennifer       000                 LOGOUT                             17/05/2025 01:24:40 

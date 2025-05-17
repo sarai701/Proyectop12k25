@@ -35,15 +35,14 @@ int main() {
 
     std::cout << "Cargando transportistas..." << std::endl;
     Transportistas::cargarDesdeArchivo(listaTransportistas);
-<<<<<<< HEAD
+
     Producto::cargarDesdeArchivoBin(listaProductos);
-=======
 
     std::cout << "Cargando productos..." << std::endl;
     Producto::cargarDesdeArchivoBin(listaProductos);
 
     std::cout << "Cargando proveedores..." << std::endl;
->>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
+
     Proveedor::cargarDesdeArchivo(listaProveedores);
 
     std::cout << "Datos cargados correctamente.\n";
@@ -80,15 +79,15 @@ int main() {
 
     std::cout << "Guardando transportistas..." << std::endl;
     Transportistas::guardarEnArchivo(listaTransportistas);
-<<<<<<< HEAD
+
     Producto::guardarEnArchivoBin(listaProductos);
-=======
+
 
     std::cout << "Guardando productos..." << std::endl;
     Producto::guardarEnArchivoBin(listaProductos);
 
     std::cout << "Guardando proveedores..." << std::endl;
->>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
+
     Proveedor::guardarEnArchivo(listaProveedores);
 
     // Pausa para ver mensajes antes de cerrar (solo Windows)

@@ -270,15 +270,13 @@ void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
         }
     } while (continuar == 's' || continuar == 'S');
 
-<<<<<<< HEAD
+
     // Solo guardar si el pedido tiene productos
     if (!nuevo.detalles.empty()) {
         // Guardar cambios en productos
-        Producto::guardarEnArchivoBin(productos);
-=======
+
     // Guardar cambios en productos
     Producto::guardarEnArchivoBin(productos);
->>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
 
         // Estado del pedido
         nuevo.estado = "pendiente";
@@ -715,13 +713,10 @@ void Pedidos::completarPedido(std::vector<Producto>& productos) {
         cout << "\n\t\tRegistrando envío para el pedido " << pedidoSeleccionado.id << "..." << endl;
         Envios::crearEnvio(pedidoSeleccionado.id, Transportistas::getTransportistasDisponibles());
 
-<<<<<<< HEAD
+
         // Guardar cambios
         guardarEnArchivoBin(listaPedidos);
-=======
-        // Actualizar archivos
-        guardarEnArchivo(listaPedidos);
->>>>>>> dc83ce10af27a5df6ca8763ad9d0f39604cf6974
+
         Producto::guardarEnArchivoBin(productos);
 
         // Registrar en bitácora
