@@ -52,7 +52,8 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
 
             case 3:
                 // Llamada corregida pasando los vectores necesarios
-                MenuProcesos::mostrar(clientes, productos, almacenes);
+                MenuProcesos menuProcesos;
+                menuProcesos.mostrar(clientes, productos, almacenes);
                 break;
 
             case 4:

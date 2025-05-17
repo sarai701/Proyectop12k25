@@ -71,6 +71,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
 3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
 >>>>>>> aa9a3cdd2da258c43d9bd53a505bd4c8e50d3c9f
+<<<<<<< HEAD
 3000        Angel          000                 REG-USER                           16/05/2025 21:48:58 
 3001        Angel          000                 LOGIN                              16/05/2025 21:49:05 
 3100        Angel          PEDIDOS             Consulta de pedidos                16/05/2025 21:52:53 
@@ -86,3 +87,19 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Angel          000                 LOGIN                              16/05/2025 22:29:19 
 3150        Angel          CLIENTES            Cliente agregado - ID: 3107        16/05/2025 22:29:47 
 3151        Angel          CLIENTES            Cliente agregado - ID: 3108        16/05/2025 22:29:56 
+=======
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:02:20 
+3100        Jennifer       PEDIDOS             Salida de gestión de pedidos       16/05/2025 22:02:33 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:28:26 
+3250        Jennifer       PRODUCTOS           Agregado: 3209                     16/05/2025 22:28:54 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:29:27 
+3250        Jennifer       PRODUCTOS           Agregado: 3210                     16/05/2025 22:29:51 
+3100        Jennifer       PEDIDOS             Pedido creado - ID: 3400           16/05/2025 22:30:27 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:33:27 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:37:32 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:49:11 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:54:47 
+3100        Jennifer       PEDIDOS             Consulta de pedidos                16/05/2025 22:55:00 
+3000        Jennifer       000                 LOGIN                              16/05/2025 23:02:50 
+3000        Jennifer       000                 LOGIN                              16/05/2025 23:13:04 
+>>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3

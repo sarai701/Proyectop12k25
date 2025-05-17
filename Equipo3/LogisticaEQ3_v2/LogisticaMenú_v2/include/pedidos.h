@@ -1,8 +1,8 @@
 #ifndef PEDIDOS_H
 #define PEDIDOS_H
 
-#include <string>
 #include <vector>
+#include <string>
 #include <ctime>
 #include <stdexcept>
 #include "usuarios.h"
@@ -17,7 +17,6 @@ class Clientes;
 class Producto;
 class Almacen;
 
-// Declaraciones externas
 extern usuarios usuarioRegistrado;
 extern bitacora auditoria;
 
@@ -29,15 +28,12 @@ public:
         double precioUnitario;
     };
 
-    // Constructor
     Pedidos();
 
-    // Métodos de gestión
     void gestionPedidos(const std::vector<Clientes>& clientes,
-                      const std::vector<Producto>& productos,
-                      const std::vector<Almacen>& almacenes);
+                       std::vector<Producto>& productos,
+                       const std::vector<Almacen>& almacenes);
 
-    // Métodos CRUD
     void crearPedido(const std::vector<Clientes>& clientes,
                    const std::vector<Producto>& productos,
                    const std::vector<Almacen>& almacenes);
@@ -47,15 +43,19 @@ public:
                         const std::vector<Producto>& productos,
                         const std::vector<Almacen>& almacenes);
     void cancelarPedido();
-    void completarPedido(const std::string& idPedido, std::vector<Producto>& productos);
+    void completarPedido(std::vector<Producto>& productos);
     void verHistorial();
 
+<<<<<<< HEAD
     // Persistencia
     static void guardarEnArchivo(const std::vector<Pedidos>& lista);
     static void cargarDesdeArchivo(std::vector<Pedidos>& lista);
     void setEstado(const std::string& nuevoEstado) { estado = nuevoEstado; }
+=======
+    void guardarEnArchivoBin(const std::vector<Pedidos>& lista);
+    void cargarDesdeArchivoBin(std::vector<Pedidos>& lista);
+>>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3
 
-    // Getters
     std::string getId() const { return id; }
     std::string getDetalles() const;
     std::string getEstado() const { return estado; }
@@ -69,17 +69,17 @@ private:
     std::string idAlmacen;
     std::time_t fechaPedido;
     std::vector<DetallePedido> detalles;
+<<<<<<< HEAD
+=======
+    std::string estado;
+>>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3
 
-    // Generación de IDs
     static std::string generarIdUnico(const std::vector<Pedidos>& lista);
     static bool idDisponible(const std::vector<Pedidos>& lista, const std::string& id);
-
-    // Validaciones
     static bool validarCliente(const std::string& idCliente, const std::vector<Clientes>& clientes);
     static bool validarProducto(const std::string& codigoProducto, const std::vector<Producto>& productos);
     static bool validarAlmacen(const std::string& idAlmacen, const std::vector<Almacen>& almacenes);
 
-    // Lista estática de pedidos
     static std::vector<Pedidos> listaPedidos;
 
 };

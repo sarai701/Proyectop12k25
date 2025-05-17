@@ -62,10 +62,10 @@ string Pedidos::getDetalles() const {
 }
 
 void Pedidos::gestionPedidos(const vector<Clientes>& clientes,
-                           const vector<Producto>& productos,
+                           vector<Producto>& productos,  // Quitamos const aquí
                            const vector<Almacen>& almacenes) {
     // Cargar pedidos al iniciar
-    cargarDesdeArchivo(listaPedidos);
+    cargarDesdeArchivoBin(listaPedidos);
 
     int opcion;
     do {
@@ -82,35 +82,37 @@ void Pedidos::gestionPedidos(const vector<Clientes>& clientes,
         cout << "\t\t========================================" << endl;
         cout << "\t\tOpcion a escoger: ";
 
-        while (!(cin >> opcion) || opcion < 1 || opcion > 7) {
+        while (!(cin >> opcion) || opcion < 1 || opcion > 6) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\t\tEntrada inválida. Ingrese un número del 1 al 7: ";
+            cout << "\t\tEntrada inválida. Ingrese un número del 1 al 6: ";
         }
 
         switch(opcion) {
-            case 1: crearPedido(clientes, productos, almacenes); break;
-            case 2: consultarPedidos(); break;
-            case 3: modificarPedido(clientes, productos, almacenes); break;
-            case 4: cancelarPedido(); break;
-            case 5: {  // Completar pedido
-                string idPedido;
-                cout << "\n\t\tIngrese ID del pedido a completar: ";
-                cin >> idPedido;
-                completarPedido(idPedido, const_cast<vector<Producto>&>(productos));
-                system("pause");
+            case 1:
+                crearPedido(clientes, productos, almacenes);
                 break;
-            }
+            case 2:
+                consultarPedidos();
+                break;
+            case 3:
+                modificarPedido(clientes, productos, almacenes);
+                break;
+            case 4:
+                cancelarPedido();
+                break;
+            case 5:
+                completarPedido(productos);
+                break;
             case 6:
-                guardarEnArchivo(listaPedidos);
+                guardarEnArchivoBin(listaPedidos);
                 auditoria.registrar(usuarioRegistrado.getNombre(),
                                   "PEDIDOS",
                                   "Salida de gestión de pedidos");
                 break;
         }
-    } while(opcion != 7);
+    } while(opcion != 6);
 }
-
 
 void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
                         const std::vector<Producto>& productos,
@@ -187,7 +189,7 @@ void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
     do {
         // Mostrar lista de productos disponibles
         cout << "\n\t\t--- PRODUCTOS DISPONIBLES ---\n";
-        for (auto& producto : productos) {
+        for (const auto& producto : productos) {
             cout << "\t\tCódigo: " << producto.getCodigo()
                  << " | Nombre: " << producto.getNombre()
                  << " | Stock: " << producto.getStock() << endl;
@@ -197,6 +199,7 @@ void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
         cout << "\n\t\t--- Agregar producto ---" << endl;
 
         // Selección de producto
+<<<<<<< HEAD
 Producto* productoSeleccionado = nullptr;
 while (true) {
     cout << "\t\tIngrese código de producto: ";
@@ -221,24 +224,93 @@ if (productoSeleccionado) {
     cerr << "\t\tError: No se pudo seleccionar producto. Abortando creación de pedido.\n";
     return;
 }
+=======
+        const Producto* productoSeleccionado = nullptr;
+        while (true) {
+            cout << "\t\tIngrese código de producto: ";
+            cin >> detalle.codigoProducto;
 
-        nuevo.detalles.push_back(detalle);
+            auto it = find_if(productos.begin(), productos.end(),
+                [&detalle](const Producto& p) { return p.getCodigo() == detalle.codigoProducto; });
 
-        cout << "\n\t\t¿Desea agregar otro producto? (s/n): ";
-        cin >> continuar;
+            if (it != productos.end()) {
+                productoSeleccionado = &(*it);
+                detalle.precioUnitario = productoSeleccionado->getPrecio();
+                break;
+            }
+            cerr << "\t\tProducto no válido. Intente nuevamente.\n";
+        }
+
+        // Cantidad del producto
+        bool productoAgregado = false;
+        while (!productoAgregado) {
+            cout << "\t\tIngrese cantidad (Stock disponible: "
+                 << productoSeleccionado->getStock() << "): ";
+
+            if (cin >> detalle.cantidad && detalle.cantidad > 0) {
+                if (detalle.cantidad <= productoSeleccionado->getStock()) {
+                    // Agregar al pedido
+                    nuevo.detalles.push_back(detalle);
+                    productoAgregado = true;
+
+                    // Actualizar stock (const_cast porque necesitamos modificar)
+                    const_cast<Producto*>(productoSeleccionado)->setStock(
+                        productoSeleccionado->getStock() - detalle.cantidad);
+
+                    cout << "\t\tProducto agregado al pedido.\n";
+                } else {
+                    cout << "\t\tNo hay suficiente stock. Stock disponible: "
+                         << productoSeleccionado->getStock() << "\n";
+                    cout << "\t\t1. Ingresar otra cantidad\n";
+                    cout << "\t\t2. Elegir otro producto\n";
+                    cout << "\t\t3. Cancelar agregar producto\n";
+                    cout << "\t\tOpción: ";
+
+                    int opcion;
+                    while (!(cin >> opcion) || opcion < 1 || opcion > 3) {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        cout << "\t\tOpción inválida. Ingrese 1, 2 o 3: ";
+                    }
+
+                    if (opcion == 2) break; // Salir para elegir otro producto
+                    if (opcion == 3) {
+                        productoAgregado = true; // Salir sin agregar
+                        continuar = 'n'; // No preguntar por más productos
+                    }
+                }
+            } else {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cerr << "\t\tCantidad inválida. Ingrese un número positivo.\n";
+            }
+        }
+>>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3
+
+        if (productoAgregado && !nuevo.detalles.empty()) {
+            cout << "\n\t\t¿Desea agregar otro producto? (s/n): ";
+            cin >> continuar;
+        } else if (!productoAgregado) {
+            continuar = 'n';
+        }
     } while (continuar == 's' || continuar == 'S');
 
-    // Guardar cambios en productos
-    Producto::guardarEnArchivo(productos);
+    // Solo guardar si el pedido tiene productos
+    if (!nuevo.detalles.empty()) {
+        // Guardar cambios en productos
+        Producto::guardarEnArchivoBin(productos);
 
-    // Estado del pedido
-    nuevo.estado = "pendiente";
+        // Estado del pedido
+        nuevo.estado = "pendiente";
 
-    listaPedidos.push_back(nuevo);
-    guardarEnArchivo(listaPedidos);
+        listaPedidos.push_back(nuevo);
+        guardarEnArchivoBin(listaPedidos);
 
-    auditoria.registrar(usuarioRegistrado.getNombre(), "PEDIDOS", "Pedido creado - ID: " + nuevo.id);
-    cout << "\n\t\tPedido registrado exitosamente!" << endl;
+        auditoria.registrar(usuarioRegistrado.getNombre(), "PEDIDOS", "Pedido creado - ID: " + nuevo.id);
+        cout << "\n\t\tPedido registrado exitosamente!" << endl;
+    } else {
+        cout << "\n\t\tNo se creó el pedido porque no contiene productos." << endl;
+    }
     system("pause");
 }
 
@@ -365,7 +437,7 @@ void Pedidos::modificarPedido(const vector<Clientes>& clientes,
             } while (continuar == 's' || continuar == 'S');
         }
 
-        guardarEnArchivo(listaPedidos);
+        guardarEnArchivoBin(listaPedidos);
         auditoria.registrar(usuarioRegistrado.getNombre(), "PEDIDOS", "Pedido modificado - ID: " + id);
         cout << "\n\t\tPedido modificado exitosamente!" << endl;
     } else {
@@ -386,9 +458,30 @@ void Pedidos::cancelarPedido() {
         return;
     }
 
+    // Mostrar lista de pedidos disponibles para cancelar
+    cout << "\n\t\t=== LISTA DE PEDIDOS DISPONIBLES PARA CANCELAR ===" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
+    cout << "\t\t" << left << setw(10) << "ID" << setw(15) << "Cliente"
+         << setw(15) << "Almacén" << setw(20) << "Fecha" << setw(15) << "Estado" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
+
+    for (const auto& pedido : listaPedidos) {
+        char buffer[80];
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localtime(&pedido.fechaPedido));
+
+        cout << "\t\t" << setw(10) << pedido.id
+             << setw(15) << (pedido.idCliente.size() > 10 ? pedido.idCliente.substr(0, 10) + "..." : pedido.idCliente)
+             << setw(15) << (pedido.idAlmacen.size() > 10 ? pedido.idAlmacen.substr(0, 10) + "..." : pedido.idAlmacen)
+             << setw(20) << buffer
+             << setw(15) << pedido.estado << endl;
+    }
+    cout << "\t\t" << string(70, '-') << endl;
+
     string id;
-    cout << "\n\t\tIngrese ID del pedido a cancelar: ";
+    cout << "\n\t\tIngrese ID del pedido a cancelar (o 0 para volver): ";
     cin >> id;
+
+    if (id == "0") return;
 
     auto it = find_if(listaPedidos.begin(), listaPedidos.end(),
         [&id](const Pedidos& p) { return p.id == id; });
@@ -396,7 +489,7 @@ void Pedidos::cancelarPedido() {
     if (it != listaPedidos.end()) {
         // Cambiar estado a cancelado en lugar de eliminar
         it->estado = "cancelado";
-        guardarEnArchivo(listaPedidos);
+        guardarEnArchivoBin(listaPedidos);
         auditoria.registrar(usuarioRegistrado.getNombre(), "PEDIDOS", "Pedido cancelado - ID: " + id);
         cout << "\n\t\tPedido cancelado exitosamente!" << endl;
     } else {
@@ -405,9 +498,8 @@ void Pedidos::cancelarPedido() {
     system("pause");
 }
 
-
-void Pedidos::guardarEnArchivo(const vector<Pedidos>& lista) {
-    ofstream archivo("pedidos.dat", ios::binary | ios::out);
+void Pedidos::guardarEnArchivoBin(const vector<Pedidos>& lista) {
+    ofstream archivo("pedidos.bin", ios::binary | ios::out);
     if (!archivo.is_open()) {
         cerr << "\n\t\tError crítico: No se pudo abrir archivo de pedidos!\n";
         return;
@@ -460,16 +552,16 @@ void Pedidos::guardarEnArchivo(const vector<Pedidos>& lista) {
     } catch (const exception& e) {
         cerr << "\n\t\tError al guardar pedidos: " << e.what() << "\n";
         archivo.close();
-        remove("pedidos.dat");
+        remove("pedidos.bin");
         return;
     }
 
     archivo.close();
 }
 
-void Pedidos::cargarDesdeArchivo(vector<Pedidos>& lista) {
+void Pedidos::cargarDesdeArchivoBin(vector<Pedidos>& lista) {
     lista.clear();
-    ifstream archivo("pedidos.dat", ios::binary | ios::in);
+    ifstream archivo("pedidos.bin", ios::binary | ios::in);
 
     if (!archivo) {
         // Si el archivo no existe, no es un error (primera ejecución)
@@ -539,60 +631,123 @@ void Pedidos::cargarDesdeArchivo(vector<Pedidos>& lista) {
     archivo.close();
 }
 
-void Pedidos::completarPedido(const std::string& idPedido,
-                            std::vector<Producto>& productos) {
+void Pedidos::completarPedido(std::vector<Producto>& productos) {
     system("cls");
-    cout << "\n\t\t[COMPLETANDO PEDIDO...]" << endl;
+    cout << "\n\t\t========================================" << endl;
+    cout << "\t\t|      COMPLETAR PEDIDO (ENVÍO)       |" << endl;
+    cout << "\t\t========================================\n" << endl;
 
+    // 1. Verificar si hay pedidos
     if (listaPedidos.empty()) {
-        cout << "\n\t\tNo hay pedidos para completar." << endl;
+        cout << "\t\tNo hay pedidos registrados en el sistema.\n" << endl;
         system("pause");
         return;
     }
 
-    // Mostrar lista de pedidos que se pueden completar
-    cout << "\n\t\t=== PEDIDOS DISPONIBLES PARA COMPLETAR ===" << endl;
-    for (const auto& pedido : listaPedidos) {
-        if (pedido.estado == "procesado") {
-            cout << "\t\tID: " << pedido.id << endl;
-        }
+    // 2. Mostrar todos los pedidos disponibles (no solo los procesados)
+    cout << "\t\t=== LISTA COMPLETA DE PEDIDOS ===" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
+    cout << "\t\t" << left << setw(5) << "No." << setw(10) << "ID"
+         << setw(15) << "Cliente" << setw(15) << "Almacén"
+         << setw(20) << "Fecha" << setw(15) << "Estado" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
+
+    for (size_t i = 0; i < listaPedidos.size(); i++) {
+        char buffer[80];
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localtime(&listaPedidos[i].fechaPedido));
+
+        cout << "\t\t" << setw(5) << i+1
+             << setw(10) << listaPedidos[i].id
+             << setw(15) << (listaPedidos[i].idCliente.size() > 10 ?
+                            listaPedidos[i].idCliente.substr(0, 10) + "..." : listaPedidos[i].idCliente)
+             << setw(15) << (listaPedidos[i].idAlmacen.size() > 10 ?
+                            listaPedidos[i].idAlmacen.substr(0, 10) + "..." : listaPedidos[i].idAlmacen)
+             << setw(20) << buffer
+             << setw(15) << listaPedidos[i].estado << endl;
+    }
+    cout << "\t\t" << string(70, '-') << endl;
+
+    // 3. Solicitar ID del pedido a completar
+    string idPedido;
+    cout << "\n\t\tIngrese ID del pedido a completar (o 0 para cancelar): ";
+    cin >> idPedido;
+
+    if (idPedido == "0") {
+        cout << "\n\t\tOperación cancelada por el usuario.\n";
+        system("pause");
+        return;
     }
 
-    string id;
-    cout << "\n\t\tIngrese ID del pedido a completar (o 0 para volver): ";
-    cin >> id;
-
-    if (id == "0") return;
-
-    // Find the pedido in the list
+    // Buscar el pedido
     auto it = find_if(listaPedidos.begin(), listaPedidos.end(),
-        [&id](const Pedidos& p) { return p.id == id; });
+        [&idPedido](const Pedidos& p) { return p.id == idPedido; });
 
-    if (it != listaPedidos.end()) {
-        if (it->estado == "cancelado") {
-            cout << "\n\t\tNo se puede completar un pedido cancelado.\n";
-            system("pause");
-            return;
-        }
+    if (it == listaPedidos.end()) {
+        cout << "\t\tPedido no encontrado." << endl;
+        system("pause");
+        return;
+    }
 
-        // Cambiar estado a completado
-        it->estado = "completado";
+    Pedidos& pedidoSeleccionado = *it;
+
+    // Verificar que el pedido esté en estado válido para completar
+    if (pedidoSeleccionado.estado != "pendiente" && pedidoSeleccionado.estado != "procesado") {
+        cout << "\n\t\tEl pedido no puede ser completado. Estado actual: " << pedidoSeleccionado.estado << endl;
+        system("pause");
+        return;
+    }
+
+    // Mostrar detalles del pedido seleccionado
+    system("cls");
+    cout << "\n\t\t=== DETALLES DEL PEDIDO SELECCIONADO ===" << endl;
+    cout << "\t\tID: " << pedidoSeleccionado.id << endl;
+    cout << "\t\tCliente: " << pedidoSeleccionado.idCliente << endl;
+    cout << "\t\tAlmacén: " << pedidoSeleccionado.idAlmacen << endl;
+
+    char buffer[80];
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localtime(&pedidoSeleccionado.fechaPedido));
+    cout << "\t\tFecha: " << buffer << endl;
+    cout << "\t\tEstado actual: " << pedidoSeleccionado.estado << endl;
+
+    // Mostrar productos
+    cout << "\n\t\tPRODUCTOS INCLUIDOS:" << endl;
+    cout << "\t\t" << string(40, '-') << endl;
+    double total = 0.0;
+    for (const auto& detalle : pedidoSeleccionado.detalles) {
+        cout << "\t\t- Código: " << detalle.codigoProducto
+             << " | Cantidad: " << detalle.cantidad
+             << " | Precio unitario: $" << fixed << setprecision(2) << detalle.precioUnitario << endl;
+        total += detalle.cantidad * detalle.precioUnitario;
+    }
+    cout << "\t\t" << string(40, '-') << endl;
+    cout << "\t\tTOTAL DEL PEDIDO: $" << fixed << setprecision(2) << total << endl;
+
+    // Confirmación final
+    cout << "\n\t\t¿Desea completar y enviar este pedido? (s/n): ";
+    char confirmacion;
+    cin >> confirmacion;
+
+    if (tolower(confirmacion) == 's') {
+        // Actualizar estado
+        pedidoSeleccionado.estado = "completado";
 
         // Registrar envío
-        cout << "\n\t\tRegistrando envío para el pedido " << id << "...\n";
-        Envios::crearEnvio(id, Transportistas::getTransportistasDisponibles());
+        cout << "\n\t\tRegistrando envío para el pedido " << pedidoSeleccionado.id << "..." << endl;
+        Envios::crearEnvio(pedidoSeleccionado.id, Transportistas::getTransportistasDisponibles());
 
-        // Actualizar archivos
-        guardarEnArchivo(listaPedidos);
-        Producto::guardarEnArchivo(productos);
+        // Guardar cambios
+        guardarEnArchivoBin(listaPedidos);
+        Producto::guardarEnArchivoBin(productos);
 
+        // Registrar en bitácora
         auditoria.registrar(usuarioRegistrado.getNombre(),
                           "PEDIDOS",
-                          "Pedido completado - ID: " + id);
+                          "Pedido completado - ID: " + pedidoSeleccionado.id);
 
-        cout << "\n\t\tPedido completado exitosamente!\n";
+        cout << "\n\t\t¡Pedido completado y enviado exitosamente!\n";
     } else {
-        cout << "\n\t\tPedido no encontrado.\n";
+        cout << "\n\t\tOperación cancelada. El pedido no fue completado.\n";
     }
+
     system("pause");
 }

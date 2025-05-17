@@ -8,13 +8,15 @@
 //MAYO 2025
 using namespace std;
 
+std::vector<Producto> listaProductos;
+
 // Muestra el menú de productos y permite al usuario realizar operaciones sobre el inventario
 void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioActual) {
     int opcion;
     string input;
 
     // Cargar productos desde archivo al iniciar el menú
-    Producto::cargarDesdeArchivo(listaProductos);
+    Producto::cargarDesdeArchivoBin(listaProductos);
 
     do {
         system("cls"); // Limpiar pantalla
@@ -89,7 +91,7 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
 
             case 5:
                 // Guardar productos antes de salir del menú
-                Producto::guardarEnArchivo(listaProductos);
+                Producto::guardarEnArchivoBin(listaProductos);
                 return;
 
             default:
