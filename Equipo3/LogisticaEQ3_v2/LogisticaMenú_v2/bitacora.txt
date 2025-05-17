@@ -119,3 +119,13 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Jennifer       000                 LOGIN                              17/05/2025 01:49:23 
 3000        Karina         000                 LOGIN                              17/05/2025 10:23:59 
 3000        arriaza        000                 REG-USER                           17/05/2025 10:43:24 
+3000        Karina         000                 LOGIN                              17/05/2025 11:44:29 
+3001        Karina         000                 LOGOUT                             17/05/2025 11:45:08 
+3000        Karina         000                 LOGIN                              17/05/2025 11:51:55 
+3000        Karina         000                 LOGIN                              17/05/2025 11:59:04 
+3001        Karina         000                 LOGOUT                             17/05/2025 11:59:14 
+3000        Karina         000                 LOGIN                              17/05/2025 12:03:51 
+3001        Karina         000                 LOGOUT                             17/05/2025 12:03:59 
+3000        Karina         000                 LOGIN                              17/05/2025 12:54:20 
+3001        Karina         000                 LOGOUT                             17/05/2025 12:54:57 
+3000        Karina         000                 LOGIN                              17/05/2025 16:29:49 

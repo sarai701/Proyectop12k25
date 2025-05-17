@@ -34,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Inventario.h" />
+		<Unit filename="include/Reportes.h" />
 		<Unit filename="include/administracion.h" />
 		<Unit filename="include/almacen.h" />
 		<Unit filename="include/bitacora.h" />

@@ -15,7 +15,7 @@ class usuarios;
 class MenuProcesos
 {
 public:
-    // Método para mostrar el menú principal
+    // Mï¿½todo para mostrar el menï¿½ principal
     void mostrar(std::vector<Clientes>& clientes,
             std::vector<Producto>& productos,
             std::vector<Almacen>& almacenes);

@@ -18,30 +18,30 @@ void MenuAdministracion::mostrar(vector<Administracion>& listaAdministradores, u
 
     do {
         system("cls");
-        cout << "\t\t=== MEN� ADMINISTRACI�N ===\n"
+        cout << "\t\t=== MENU ADMINISTRACION ===\n"
              << "\t\t| Usuario: " << usuarioActual.getNombre() << "\n"
              << "\t\t| Nivel de acceso: " << usuarioActual.getNivelAcceso() << "\n"
              << "\t\t1. Agregar administrador\n"
              << "\t\t2. Mostrar administradores\n"
              << "\t\t3. Modificar administrador\n"
              << "\t\t4. Eliminar administrador\n"
-             << "\t\t5. Volver al men� principal\n"
+             << "\t\t5. Volver al menu principal\n"
              << "\t\t===========================\n"
-             << "\t\tSeleccione una opci�n: ";
+             << "\t\tSeleccione una opcion: ";
 
         while (!(cin >> opcion)) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\t\tEntrada inv�lida. Por favor ingrese un n�mero: ";
+            cout << "\t\tEntrada invalida. Por favor ingrese un numero: ";
         }
         cin.ignore();
 
         switch(opcion) {
             case 1:
-                if (usuarioActual.getNivelAcceso() >= 4) {
+                if (usuarioActual.getNivelAcceso() >= 3) {
                     Administracion::agregar(listaAdministradores, usuarioActual.getNombre());
                 } else {
-                    cout << "\n\t\tAcceso denegado. Se requiere nivel 4 o superior.\n";
+                    cout << "\n\t\tAcceso denegado. Se requiere nivel 3 o superior.\n";
                     system("pause");
                 }
                 break;
@@ -51,7 +51,7 @@ void MenuAdministracion::mostrar(vector<Administracion>& listaAdministradores, u
                 break;
 
             case 3:
-                if (usuarioActual.getNivelAcceso() >= 3) {
+                if (usuarioActual.getNivelAcceso() >= 2) {
                     Administracion::mostrar(listaAdministradores);
                     if (!listaAdministradores.empty()) {
                         cout << "\n\t\tIngrese ID del administrador a modificar: ";
@@ -68,19 +68,19 @@ void MenuAdministracion::mostrar(vector<Administracion>& listaAdministradores, u
                                 system("pause");
                             }
                         } else {
-                            cout << "\t\tID no v�lido. Debe estar entre " << CODIGO_INICIAL_ADMIN
+                            cout << "\t\tID no valido. Debe estar entre " << CODIGO_INICIAL_ADMIN
                                  << " y " << CODIGO_FINAL_ADMIN << "\n";
                             system("pause");
                         }
                     }
                 } else {
-                    cout << "\n\t\tAcceso denegado. Se requiere nivel 3 o superior.\n";
+                    cout << "\n\t\tAcceso denegado. Se requiere nivel 2 o superior.\n";
                     system("pause");
                 }
                 break;
 
             case 4:
-                if (usuarioActual.getNivelAcceso() >= 5) {
+                if (usuarioActual.getNivelAcceso() >= 3) {
                     Administracion::mostrar(listaAdministradores);
                     if (!listaAdministradores.empty()) {
                         cout << "\n\t\tIngrese ID del administrador a eliminar: ";
@@ -102,13 +102,13 @@ void MenuAdministracion::mostrar(vector<Administracion>& listaAdministradores, u
                                 system("pause");
                             }
                         } else {
-                            cout << "\t\tID no v�lido. Debe estar entre " << CODIGO_INICIAL_ADMIN
+                            cout << "\t\tID no valido. Debe estar entre " << CODIGO_INICIAL_ADMIN
                                  << " y " << CODIGO_FINAL_ADMIN << "\n";
                             system("pause");
                         }
                     }
                 } else {
-                    cout << "\n\t\tAcceso denegado. Se requiere nivel 5 (Administrador Superior).\n";
+                    cout << "\n\t\tAcceso denegado. Se requiere nivel 3 (Administrador Superior).\n";
                     system("pause");
                 }
                 break;
@@ -118,7 +118,7 @@ void MenuAdministracion::mostrar(vector<Administracion>& listaAdministradores, u
                 return;
 
             default:
-                cout << "\t\tOpci�n no v�lida. Intente nuevamente.\n";
+                cout << "\t\tOpcion no valida. Intente nuevamente.\n";
                 system("pause");
         }
     } while (true);

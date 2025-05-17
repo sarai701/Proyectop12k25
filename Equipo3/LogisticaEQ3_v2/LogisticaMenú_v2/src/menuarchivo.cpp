@@ -26,8 +26,12 @@ void MenuArchivo::mostrar() {
 
         switch(opcion) {
             case 1:
-                cerrarSesion();
-                return;
+                if(cerrarSesion()) {
+                    usuarios user;
+                    user.loginUsuarios();
+                    return;
+                }
+                break;
             case 2: /* ... */ break;
             case 3:
                 return;
@@ -38,22 +42,23 @@ void MenuArchivo::mostrar() {
     } while(true);
 }
 
-void MenuArchivo::cerrarSesion() {
+bool MenuArchivo::cerrarSesion() {
     char confirmacion;
-    cout << "\n\t\t¿Esta seguro que desea cerrar sesion y salir del programa? (S/N): ";
+    cout << "\n\t\t¿Esta seguro que desea cerrar sesion? (S/N): ";
     cin >> confirmacion;
 
     if(toupper(confirmacion) == 'S') {
-        // Registrar en bitácora
         auditoria.insertar(usuarioRegistrado.getNombre(), "000", "LOGOUT");
 
-        cout << "\n\t\tSesion cerrada correctamente. Saliendo del programa...\n";
+        cout << "\n\t\tSesion cerrada correctamente.\n";
         system("pause");
 
-        // Terminar el programa completamente
-        exit(0);
+        usuarioRegistrado = usuarios();
+
+        return true;
     } else {
         cout << "\n\t\tOperacion cancelada.\n";
         system("pause");
+        return false;
     }
 }
