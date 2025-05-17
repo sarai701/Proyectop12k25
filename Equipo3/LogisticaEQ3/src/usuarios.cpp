@@ -133,7 +133,7 @@ bool usuarios::buscarUsuario(const string& user, const string& pass) {
     return false;
 }
 
-// Menú de administración de usuarios
+// Menï¿½ de administraciï¿½n de usuarios
 void usuarios::menuUsuarios() {
     int opcion;
     do {
