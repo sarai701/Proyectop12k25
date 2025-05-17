@@ -2,15 +2,17 @@
 #include "menuarchivo.h"
 #include "menucatalogos.h"
 #include "menuprocesos.h"
+#include "menuinformes.h"
 #include "usuarios.h"
 #include "bitacora.h"
 #include <vector>
 #include <iostream>
 using namespace std;
 
-//JENNIFER ALBA DAYAMI BARRIOS FLORES
+//Creado JENNIFER ALBA DAYAMI BARRIOS FLORES
 //9959-24-10016
 //MAYO 2025
+// Modificado por Camila Araujo
 
 void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
                           std::vector<Proveedor>& proveedores,
@@ -57,7 +59,7 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
                 break;
 
             case 4:
-                // Funcionalidad de informes
+                MenuInformes::mostrar();
                 break;
 
             case 5: {

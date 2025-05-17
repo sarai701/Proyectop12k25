@@ -112,3 +112,8 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3100        Jennifer       PEDIDOS             Pedido creado - ID: 3401           17/05/2025 01:24:14 
 3101        Jennifer       PEDIDOS             Salida de gestión de pedidos       17/05/2025 01:24:31 
 3001        Jennifer       000                 LOGOUT                             17/05/2025 01:24:40 
+3000        Jennifer       000                 LOGIN                              17/05/2025 01:34:16 
+3000        Jennifer       000                 LOGIN                              17/05/2025 01:48:37 
+3200        Jennifer       PROVEEDORES         Proveedor agregado - ID: 3158      17/05/2025 01:48:51 
+3201        Jennifer       PROVEEDORES         Proveedor agregado - ID: 3159      17/05/2025 01:49:06 
+3000        Jennifer       000                 LOGIN                              17/05/2025 01:49:23 

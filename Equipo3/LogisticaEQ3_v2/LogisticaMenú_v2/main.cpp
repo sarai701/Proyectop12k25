@@ -5,7 +5,7 @@
 #include "usuarios.h"
 #include "MenuPrincipal.h"
 #include "Clientes.h"
-#include "Proveedor.h"
+#include "proveedor.h"
 #include "Producto.h"
 #include "Almacen.h"
 #include "Administracion.h"

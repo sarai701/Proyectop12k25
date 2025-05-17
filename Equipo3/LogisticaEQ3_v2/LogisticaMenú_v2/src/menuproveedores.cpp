@@ -10,6 +10,9 @@ using namespace std;          // Permite evitar el uso del prefijo std::
  * modificar y eliminar proveedores.
  */
 void MenuProveedores::mostrar(vector<Proveedor>& lista, usuarios& usuarioActual) {
+    // Se agregan los datos guardados previamente
+    Proveedor::cargarDesdeArchivoBinario(lista);
+
     int opcion; // Variable para almacenar la opción del menú elegida por el usuario
 
     do {
@@ -29,37 +32,29 @@ void MenuProveedores::mostrar(vector<Proveedor>& lista, usuarios& usuarioActual)
         string id; // Variable para capturar el ID del proveedor cuando se requiere
         switch(opcion) {
             case 1:
-                // Llama a la función para agregar un nuevo proveedor
                 Proveedor::agregar(lista, usuarioActual.getNombre());
                 break;
             case 2:
-                // Llama a la función para mostrar todos los proveedores
                 Proveedor::mostrar(lista);
                 break;
             case 3:
-                // Solicita el ID del proveedor a modificar
                 cout << "\t\tIngrese ID del proveedor a modificar: ";
                 cin >> id;
                 Proveedor::modificar(lista, usuarioActual.getNombre(), id);
                 break;
             case 4:
-                // Solicita el ID del proveedor a eliminar
                 cout << "\t\tIngrese ID del proveedor a eliminar: ";
                 cin >> id;
                 Proveedor::eliminar(lista, usuarioActual.getNombre(), id);
                 break;
             case 5:
-                // Sale del menú de proveedores
                 return;
             default:
-                // En caso de opción inválida
                 cout << "\t\tOpción inválida\n";
         }
 
-        // Pausa para que el usuario lea el mensaje antes de continuar
         cout << "\n\t\tPresione Enter para continuar...";
         cin.ignore(); // Limpia el buffer de entrada
         cin.get();    // Espera a que el usuario presione Enter
     } while(opcion != 5); // Se repite hasta que el usuario elija volver
 }
-

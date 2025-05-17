@@ -11,9 +11,10 @@
 #include "producto.h"
 #include "Almacen.h"
 
-//JENNIFER ALBA DAYAMI BARRIOS FLORES
+// Creado JENNIFER ALBA DAYAMI BARRIOS FLORES
 //9959-24-10016
 //MAYO 2025
+//Modificado por Camila Araujo
 
 using namespace std;
 
@@ -68,7 +69,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
                 break;
 
             case 4:
-                // Funcionalidad de facturación (a implementar)
+                gestorFacturacion.mostrarMenuFacturacion();
                 break;
 
             case 5:
