@@ -1,13 +1,63 @@
 //Karina Alejandra Arriaza Ortiz
-#include "inventario.h"
 #include <iostream>
+<<<<<<< HEAD
 #include <fstream>
 #include <iomanip>
+=======
+#include <vector>
+#include <iomanip>
+#include <algorithm>
+>>>>>>> 41bb3a00910ca4696bd03c7869804716f8c396f2
 
 using namespace std;
 
-extern usuarios usuarioRegistrado;
-extern bitacora auditoria;
+// Clase para representar un producto
+class Producto {
+private:
+    string id;
+    string nombre;
+    int cantidad;
+
+public:
+    Producto(string id, string nombre, int cantidad)
+        : id(id), nombre(nombre), cantidad(cantidad) {}
+
+    // Getters
+    string getId() const { return id; }
+    string getNombre() const { return nombre; }
+    int getCantidad() const { return cantidad; }
+
+    // Setters
+    void setCantidad(int nuevaCantidad) { cantidad = nuevaCantidad; }
+    void setNombre(string nuevoNombre) { nombre = nuevoNombre; }
+};
+
+// Clase para manejar el inventario
+class Inventario {
+private:
+    vector<Producto> productos;
+
+public:
+    void controlInventario();
+    void consultarStock();
+    void registrarMercancia();
+    void ajustarInventario();
+    void reporteExistencias();
+
+private:
+    Producto* buscarProductoPorId(const string& id);
+};
+
+// Implementación de los métodos
+
+Producto* Inventario::buscarProductoPorId(const string& id) {
+    for (auto& producto : productos) {
+        if (producto.getId() == id) {
+            return &producto;
+        }
+    }
+    return nullptr;
+}
 
 void Inventario::controlInventario() {
     int opcion;
@@ -36,18 +86,11 @@ void Inventario::controlInventario() {
     } while(opcion != 5);
 }
 
-// Registrar nueva mercancía
 void Inventario::registrarMercancia() {
     system("cls");
     cout << "\t\t========================================" << endl;
     cout << "\t\t| REGISTRAR MERCANCIA NUEVA            |" << endl;
     cout << "\t\t========================================" << endl;
-
-    ofstream archivo("inventario.txt", ios::app);
-    if (!archivo.is_open()) {
-        cerr << "\n\t\tError al abrir archivo de inventario!" << endl;
-        return;
-    }
 
     string id, nombre;
     int cantidad;
@@ -55,64 +98,63 @@ void Inventario::registrarMercancia() {
     cout << "\t\tID del producto: ";
     cin >> id;
     cout << "\t\tNombre del producto: ";
-    cin >> nombre;
+    cin.ignore();
+    getline(cin, nombre);
     cout << "\t\tCantidad: ";
     cin >> cantidad;
 
-    archivo << id << " " << nombre << " " << cantidad << endl;
-    archivo.close();
+    // Verificar si el producto ya existe
+    if (buscarProductoPorId(id) != nullptr) {
+        cout << "\n\t\tError: Producto con este ID ya existe!" << endl;
+    } else {
+        productos.emplace_back(id, nombre, cantidad);
+        cout << "\n\t\tMercancia registrada correctamente." << endl;
+    }
 
-    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "REG-MERC");
-    cout << "\n\t\tMercancia registrada correctamente.";
     system("pause");
 }
 
 void Inventario::consultarStock() {
-    cout << "\n\t\t[Consultando stock...]" << endl;
-    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "STOCK");
+    system("cls");
+    cout << "\t\t========================================" << endl;
+    cout << "\t\t| CONSULTAR STOCK DE PRODUCTO          |" << endl;
+    cout << "\t\t========================================" << endl;
+
+    string id;
+    cout << "\t\tIngrese ID del producto: ";
+    cin >> id;
+
+    Producto* producto = buscarProductoPorId(id);
+    if (producto != nullptr) {
+        cout << "\n\t\tProducto encontrado:" << endl;
+        cout << "\t\tID: " << producto->getId() << endl;
+        cout << "\t\tNombre: " << producto->getNombre() << endl;
+        cout << "\t\tCantidad en stock: " << producto->getCantidad() << endl;
+    } else {
+        cout << "\n\t\tProducto no encontrado." << endl;
+    }
+
     system("pause");
 }
+
 void Inventario::ajustarInventario() {
     system("cls");
     cout << "\t\t========================================" << endl;
     cout << "\t\t| AJUSTAR INVENTARIO EXISTENTE         |" << endl;
     cout << "\t\t========================================" << endl;
 
-    string idBuscado;
+    string id;
     cout << "\t\tIngrese ID del producto a ajustar: ";
-    cin >> idBuscado;
+    cin >> id;
 
-    ifstream archivoIn("inventario.txt");
-    ofstream archivoTemp("temp.txt");
-    if (!archivoIn.is_open() || !archivoTemp.is_open()) {
-        cerr << "\n\t\tError al abrir archivos!" << endl;
-        return;
-    }
+    Producto* producto = buscarProductoPorId(id);
+    if (producto != nullptr) {
+        int nuevaCantidad;
+        cout << "\t\tCantidad actual: " << producto->getCantidad() << endl;
+        cout << "\t\tNueva cantidad: ";
+        cin >> nuevaCantidad;
 
-    string id, nombre;
-    int cantidad, nuevaCantidad;
-    bool encontrado = false;
-
-    while (archivoIn >> id >> nombre >> cantidad) {
-        if (id == idBuscado) {
-            encontrado = true;
-            cout << "\t\tCantidad actual: " << cantidad << endl;
-            cout << "\t\tNueva cantidad: ";
-            cin >> nuevaCantidad;
-            archivoTemp << id << " " << nombre << " " << nuevaCantidad << endl;
-        } else {
-            archivoTemp << id << " " << nombre << " " << cantidad << endl;
-        }
-    }
-
-    archivoIn.close();
-    archivoTemp.close();
-
-    remove("inventario.txt");
-    rename("temp.txt", "inventario.txt");
-
-    if (encontrado) {
-        auditoria.insertar(usuarioRegistrado.getNombre(), "200", "AJUSTE-MERC");
+        producto->setCantidad(nuevaCantidad);
         cout << "\n\t\tInventario ajustado correctamente." << endl;
     } else {
         cout << "\n\t\tProducto no encontrado." << endl;
@@ -127,30 +169,24 @@ void Inventario::reporteExistencias() {
     cout << "\t\t| REPORTE DE EXISTENCIAS               |" << endl;
     cout << "\t\t========================================" << endl;
 
-    ifstream archivo("inventario.txt");
-    if (!archivo.is_open()) {
+    if (productos.empty()) {
         cout << "\t\tNo hay productos registrados." << endl;
         system("pause");
         return;
     }
 
-    string id, nombre;
-    int cantidad;
-
     // Imprimir encabezados
     cout << "\t\t" << left << setw(10) << "ID"
          << setw(20) << "NOMBRE"
          << setw(10) << "CANTIDAD" << endl;
-    cout << "\t\t" << string(40, '-') << endl; // Línea divisoria
+    cout << "\t\t" << string(40, '-') << endl;
 
-    // Imprimir los datos del inventario
-    while (archivo >> id >> nombre >> cantidad) {
-        cout << "\t\t" << setw(10) << id
-             << setw(20) << nombre
-             << setw(10) << cantidad << endl;
+    // Imprimir todos los productos
+    for (const auto& producto : productos) {
+        cout << "\t\t" << setw(10) << producto.getId()
+             << setw(20) << producto.getNombre()
+             << setw(10) << producto.getCantidad() << endl;
     }
-    archivo.close();
 
-    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "REPORTE");
     system("pause");
 }
