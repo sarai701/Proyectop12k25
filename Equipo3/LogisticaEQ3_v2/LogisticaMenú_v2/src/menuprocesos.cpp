@@ -21,9 +21,9 @@ using namespace std;
 extern usuarios usuarioRegistrado;
 
 // Muestra el menú principal de procesos y redirige según la opción elegida
-void MenuProcesos::mostrar(const std::vector<Clientes>& clientes,
-                          const std::vector<Producto>& productos,
-                          const std::vector<Almacen>& almacenes) {
+void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
+                         std::vector<Producto>& productos,
+                         std::vector<Almacen>& almacenes) {
     int choice;
     do {
         // Limpiar pantalla antes de mostrar el menú

@@ -60,7 +60,7 @@ string Pedidos::getDetalles() const {
 }
 
 void Pedidos::gestionPedidos(const vector<Clientes>& clientes,
-                           const vector<Producto>& productos,
+                           vector<Producto>& productos,  // Quitamos const aquí
                            const vector<Almacen>& almacenes) {
     // Cargar pedidos al iniciar
     cargarDesdeArchivoBin(listaPedidos);
@@ -83,22 +83,25 @@ void Pedidos::gestionPedidos(const vector<Clientes>& clientes,
         while (!(cin >> opcion) || opcion < 1 || opcion > 6) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\t\tEntrada inválida. Ingrese un número del 1 al 7: ";
+            cout << "\t\tEntrada inválida. Ingrese un número del 1 al 6: ";
         }
 
         switch(opcion) {
-            case 1: crearPedido(clientes, productos, almacenes); break;
-            case 2: consultarPedidos(); break;
-            case 3: modificarPedido(clientes, productos, almacenes); break;
-            case 4: cancelarPedido(); break;
-            case 5: {  // Completar pedido
-                string idPedido;
-                cout << "\n\t\tIngrese ID del pedido a completar: ";
-                cin >> idPedido;
-                void completarPedido(std::vector<Producto>& productos);
-                system("pause");
+            case 1:
+                crearPedido(clientes, productos, almacenes);
                 break;
-            }
+            case 2:
+                consultarPedidos();
+                break;
+            case 3:
+                modificarPedido(clientes, productos, almacenes);
+                break;
+            case 4:
+                cancelarPedido();
+                break;
+            case 5:
+                completarPedido(productos);
+                break;
             case 6:
                 guardarEnArchivoBin(listaPedidos);
                 auditoria.registrar(usuarioRegistrado.getNombre(),
@@ -426,9 +429,30 @@ void Pedidos::cancelarPedido() {
         return;
     }
 
+    // Mostrar lista de pedidos disponibles para cancelar
+    cout << "\n\t\t=== LISTA DE PEDIDOS DISPONIBLES PARA CANCELAR ===" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
+    cout << "\t\t" << left << setw(10) << "ID" << setw(15) << "Cliente"
+         << setw(15) << "Almacén" << setw(20) << "Fecha" << setw(15) << "Estado" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
+
+    for (const auto& pedido : listaPedidos) {
+        char buffer[80];
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localtime(&pedido.fechaPedido));
+
+        cout << "\t\t" << setw(10) << pedido.id
+             << setw(15) << (pedido.idCliente.size() > 10 ? pedido.idCliente.substr(0, 10) + "..." : pedido.idCliente)
+             << setw(15) << (pedido.idAlmacen.size() > 10 ? pedido.idAlmacen.substr(0, 10) + "..." : pedido.idAlmacen)
+             << setw(20) << buffer
+             << setw(15) << pedido.estado << endl;
+    }
+    cout << "\t\t" << string(70, '-') << endl;
+
     string id;
-    cout << "\n\t\tIngrese ID del pedido a cancelar: ";
+    cout << "\n\t\tIngrese ID del pedido a cancelar (o 0 para volver): ";
     cin >> id;
+
+    if (id == "0") return;
 
     auto it = find_if(listaPedidos.begin(), listaPedidos.end(),
         [&id](const Pedidos& p) { return p.id == id; });
@@ -444,7 +468,6 @@ void Pedidos::cancelarPedido() {
     }
     system("pause");
 }
-
 
 void Pedidos::guardarEnArchivoBin(const vector<Pedidos>& lista) {
     ofstream archivo("pedidos.bin", ios::binary | ios::out);
@@ -592,72 +615,70 @@ void Pedidos::completarPedido(std::vector<Producto>& productos) {
         return;
     }
 
-    // 2. Filtrar pedidos procesados
-    vector<Pedidos*> pedidosParaCompletar;
-    for (auto& pedido : listaPedidos) {
-        if (pedido.estado == "procesado") {
-            pedidosParaCompletar.push_back(&pedido);
-        }
-    }
+    // 2. Mostrar todos los pedidos disponibles (no solo los procesados)
+    cout << "\t\t=== LISTA COMPLETA DE PEDIDOS ===" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
+    cout << "\t\t" << left << setw(5) << "No." << setw(10) << "ID"
+         << setw(15) << "Cliente" << setw(15) << "Almacén"
+         << setw(20) << "Fecha" << setw(15) << "Estado" << endl;
+    cout << "\t\t" << string(70, '-') << endl;
 
-    if (pedidosParaCompletar.empty()) {
-        cout << "\t\tNo hay pedidos listos para completar.\n";
-        cout << "\t\tDeben estar en estado 'procesado'.\n\n";
+    for (size_t i = 0; i < listaPedidos.size(); i++) {
+        char buffer[80];
+        strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localtime(&listaPedidos[i].fechaPedido));
+
+        cout << "\t\t" << setw(5) << i+1
+             << setw(10) << listaPedidos[i].id
+             << setw(15) << (listaPedidos[i].idCliente.size() > 10 ?
+                            listaPedidos[i].idCliente.substr(0, 10) + "..." : listaPedidos[i].idCliente)
+             << setw(15) << (listaPedidos[i].idAlmacen.size() > 10 ?
+                            listaPedidos[i].idAlmacen.substr(0, 10) + "..." : listaPedidos[i].idAlmacen)
+             << setw(20) << buffer
+             << setw(15) << listaPedidos[i].estado << endl;
+    }
+    cout << "\t\t" << string(70, '-') << endl;
+
+    // 3. Solicitar ID del pedido a completar
+    string idPedido;
+    cout << "\n\t\tIngrese ID del pedido a completar (o 0 para cancelar): ";
+    cin >> idPedido;
+
+    if (idPedido == "0") {
+        cout << "\n\t\tOperación cancelada por el usuario.\n";
         system("pause");
         return;
     }
 
-    // 3. Mostrar lista numerada de pedidos disponibles
-    cout << "\t\tLISTA DE PEDIDOS DISPONIBLES:\n";
-    cout << "\t\t" << string(50, '-') << endl;
-    cout << "\t\t" << left << setw(5) << "No." << setw(12) << "ID Pedido"
-         << setw(20) << "Cliente" << setw(15) << "No. Productos" << endl;
-    cout << "\t\t" << string(50, '-') << endl;
+    // Buscar el pedido
+    auto it = find_if(listaPedidos.begin(), listaPedidos.end(),
+        [&idPedido](const Pedidos& p) { return p.id == idPedido; });
 
-    for (size_t i = 0; i < pedidosParaCompletar.size(); i++) {
-        cout << "\t\t" << setw(5) << i+1
-             << setw(12) << pedidosParaCompletar[i]->id
-             << setw(20) << (pedidosParaCompletar[i]->idCliente.size() > 15 ?
-                             pedidosParaCompletar[i]->idCliente.substr(0, 15) + "..." :
-                             pedidosParaCompletar[i]->idCliente)
-             << setw(15) << pedidosParaCompletar[i]->detalles.size() << endl;
+    if (it == listaPedidos.end()) {
+        cout << "\t\tPedido no encontrado." << endl;
+        system("pause");
+        return;
     }
 
-    cout << "\n\t\t0. Cancelar y volver al menú principal\n";
-    cout << "\t\t" << string(50, '-') << endl;
+    Pedidos& pedidoSeleccionado = *it;
 
-    // 4. Selección del pedido
-    int opcion;
-    while (true) {
-        cout << "\t\tSeleccione un pedido (1-" << pedidosParaCompletar.size() << ") o 0 para cancelar: ";
-        if (!(cin >> opcion)) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\t\tError: Debe ingresar un número válido.\n";
-            continue;
-        }
-
-        if (opcion == 0) {
-            cout << "\n\t\tOperación cancelada por el usuario.\n";
-            system("pause");
-            return;
-        }
-
-        if (opcion > 0 && static_cast<size_t>(opcion) <= pedidosParaCompletar.size()) {
-            break;
-        }
-
-        cout << "\t\tOpción inválida. Por favor ingrese un número entre 1 y "
-             << pedidosParaCompletar.size() << ", o 0 para cancelar.\n";
+    // Verificar que el pedido esté en estado válido para completar
+    if (pedidoSeleccionado.estado != "pendiente" && pedidoSeleccionado.estado != "procesado") {
+        cout << "\n\t\tEl pedido no puede ser completado. Estado actual: " << pedidoSeleccionado.estado << endl;
+        system("pause");
+        return;
     }
 
-    // 5. Mostrar detalles del pedido seleccionado
-    Pedidos& pedidoSeleccionado = *pedidosParaCompletar[opcion-1];
+    // Mostrar detalles del pedido seleccionado
     system("cls");
     cout << "\n\t\t=== DETALLES DEL PEDIDO SELECCIONADO ===" << endl;
     cout << "\t\tID: " << pedidoSeleccionado.id << endl;
     cout << "\t\tCliente: " << pedidoSeleccionado.idCliente << endl;
     cout << "\t\tAlmacén: " << pedidoSeleccionado.idAlmacen << endl;
+
+    char buffer[80];
+    strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", localtime(&pedidoSeleccionado.fechaPedido));
+    cout << "\t\tFecha: " << buffer << endl;
+    cout << "\t\tEstado actual: " << pedidoSeleccionado.estado << endl;
 
     // Mostrar productos
     cout << "\n\t\tPRODUCTOS INCLUIDOS:" << endl;
@@ -672,7 +693,7 @@ void Pedidos::completarPedido(std::vector<Producto>& productos) {
     cout << "\t\t" << string(40, '-') << endl;
     cout << "\t\tTOTAL DEL PEDIDO: $" << fixed << setprecision(2) << total << endl;
 
-    // 6. Confirmación final
+    // Confirmación final
     cout << "\n\t\t¿Desea completar y enviar este pedido? (s/n): ";
     char confirmacion;
     cin >> confirmacion;

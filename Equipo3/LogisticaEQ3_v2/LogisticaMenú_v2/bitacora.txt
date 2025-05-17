@@ -81,3 +81,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Jennifer       000                 LOGIN                              16/05/2025 22:33:27 
 3000        Jennifer       000                 LOGIN                              16/05/2025 22:37:32 
 3000        Jennifer       000                 LOGIN                              16/05/2025 22:49:11 
+3000        Jennifer       000                 LOGIN                              16/05/2025 22:54:47 
+3100        Jennifer       PEDIDOS             Consulta de pedidos                16/05/2025 22:55:00 
+3000        Jennifer       000                 LOGIN                              16/05/2025 23:02:50 
+3000        Jennifer       000                 LOGIN                              16/05/2025 23:13:04 

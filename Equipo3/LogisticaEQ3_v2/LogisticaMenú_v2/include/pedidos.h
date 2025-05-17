@@ -31,8 +31,8 @@ public:
     Pedidos();
 
     void gestionPedidos(const std::vector<Clientes>& clientes,
-                      const std::vector<Producto>& productos,
-                      const std::vector<Almacen>& almacenes);
+                       std::vector<Producto>& productos,
+                       const std::vector<Almacen>& almacenes);
 
     void crearPedido(const std::vector<Clientes>& clientes,
                    const std::vector<Producto>& productos,
