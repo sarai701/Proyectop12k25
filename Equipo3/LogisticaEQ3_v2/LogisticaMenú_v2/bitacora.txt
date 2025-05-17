@@ -39,3 +39,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3101        Jennifer       PEDIDOS             Consulta de pedidos                15/05/2025 14:47:26 
 3102        Jennifer       PEDIDOS             Vista de historial de pedidos - ID: 340015/05/2025 14:47:31 
 3103        Jennifer       PEDIDOS             Vista de historial de pedidos - ID: 340015/05/2025 14:47:43 
+3000        Jennifer       000                 LOGIN                              16/05/2025 17:39:51 
+3000        Jennifer       000                 LOGIN                              16/05/2025 17:42:22 
+3000        Jennifer       200                 STOCK                              16/05/2025 17:42:29 
+3001        Jennifer       200                 STOCK                              16/05/2025 17:42:59 
