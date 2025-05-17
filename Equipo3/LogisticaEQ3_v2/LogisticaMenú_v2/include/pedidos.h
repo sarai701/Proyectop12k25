@@ -30,6 +30,10 @@ public:
 
     Pedidos();
 
+    static std::vector<Pedidos> listaPedidos;  // Lista estática
+
+
+
     void gestionPedidos(const std::vector<Clientes>& clientes,
                        std::vector<Producto>& productos,
                        const std::vector<Almacen>& almacenes);
@@ -46,15 +50,10 @@ public:
     void completarPedido(std::vector<Producto>& productos);
     void verHistorial();
 
-<<<<<<< HEAD
-    // Persistencia
-    static void guardarEnArchivo(const std::vector<Pedidos>& lista);
-    static void cargarDesdeArchivo(std::vector<Pedidos>& lista);
     void setEstado(const std::string& nuevoEstado) { estado = nuevoEstado; }
-=======
-    void guardarEnArchivoBin(const std::vector<Pedidos>& lista);
-    void cargarDesdeArchivoBin(std::vector<Pedidos>& lista);
->>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3
+
+    static void guardarEnArchivoBin(const std::vector<Pedidos>& lista);
+    static void cargarDesdeArchivoBin(std::vector<Pedidos>& lista);
 
     std::string getId() const { return id; }
     std::string getDetalles() const;
@@ -69,18 +68,13 @@ private:
     std::string idAlmacen;
     std::time_t fechaPedido;
     std::vector<DetallePedido> detalles;
-<<<<<<< HEAD
-=======
-    std::string estado;
->>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3
+
 
     static std::string generarIdUnico(const std::vector<Pedidos>& lista);
     static bool idDisponible(const std::vector<Pedidos>& lista, const std::string& id);
     static bool validarCliente(const std::string& idCliente, const std::vector<Clientes>& clientes);
     static bool validarProducto(const std::string& codigoProducto, const std::vector<Producto>& productos);
     static bool validarAlmacen(const std::string& idAlmacen, const std::vector<Almacen>& almacenes);
-
-    static std::vector<Pedidos> listaPedidos;
 
 };
 

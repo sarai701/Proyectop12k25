@@ -199,32 +199,7 @@ void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
         cout << "\n\t\t--- Agregar producto ---" << endl;
 
         // Selección de producto
-<<<<<<< HEAD
-Producto* productoSeleccionado = nullptr;
-while (true) {
-    cout << "\t\tIngrese código de producto: ";
-    cin >> detalle.codigoProducto;
 
-    auto it = find_if(productos.begin(), productos.end(),
-        [&detalle](const Producto& p) { return p.getCodigo() == detalle.codigoProducto; });
-
-    if (it != productos.end()) {
-        productoSeleccionado = const_cast<Producto*>(&(*it));
-        break;
-    } else {
-        cerr << "\t\tProducto no válido. Intente nuevamente.\n";
-    }
-}
-
-if (productoSeleccionado) {
-    cout << "\t\tIngrese cantidad (Stock disponible: " << productoSeleccionado->getStock() << "): ";
-    cin >> detalle.cantidad;
-    // resto del código...
-} else {
-    cerr << "\t\tError: No se pudo seleccionar producto. Abortando creación de pedido.\n";
-    return;
-}
-=======
         const Producto* productoSeleccionado = nullptr;
         while (true) {
             cout << "\t\tIngrese código de producto: ";
@@ -285,7 +260,7 @@ if (productoSeleccionado) {
                 cerr << "\t\tCantidad inválida. Ingrese un número positivo.\n";
             }
         }
->>>>>>> 7f81aaee9ffed8c4e12e446808bcf5a8e43037e3
+
 
         if (productoAgregado && !nuevo.detalles.empty()) {
             cout << "\n\t\t¿Desea agregar otro producto? (s/n): ";

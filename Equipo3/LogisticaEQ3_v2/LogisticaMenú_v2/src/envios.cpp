@@ -81,14 +81,16 @@ vector<Transportistas> cargarTransportistasDisponibles() {
 
 vector<Pedidos> cargarPedidos() {
     vector<Pedidos> pedidos;
-    Pedidos::cargarDesdeArchivo(pedidos);
+    // Accede a la lista estática de pedidos
+    pedidos = Pedidos::listaPedidos;
     return pedidos;
 }
 
 void guardarPedidos(const vector<Pedidos>& pedidos) {
-    Pedidos::guardarEnArchivo(pedidos);
+    // Actualiza la lista estática y guarda
+    Pedidos::listaPedidos = pedidos;
+    Pedidos::guardarEnArchivoBin(Pedidos::listaPedidos);
 }
-
 // ----------- Métodos de la clase Envios ------------
 
 void Envios::crearEnvioInteractivo() {

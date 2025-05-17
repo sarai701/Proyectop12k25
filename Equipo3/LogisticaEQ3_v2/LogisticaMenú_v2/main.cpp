@@ -26,7 +26,7 @@ int main() {
     Almacen::cargarDesdeArchivo(listaAlmacenes);
     Administracion::cargarDesdeArchivo(listaAdministradores);
     Transportistas::cargarDesdeArchivo(listaTransportistas);
-    Producto::cargarDesdeArchivo(listaProductos);
+    Producto::cargarDesdeArchivoBin(listaProductos);
     Proveedor::cargarDesdeArchivo(listaProveedores);
 
     std::cout << "Datos cargados correctamente.\n";
@@ -56,7 +56,7 @@ int main() {
     Almacen::guardarEnArchivo(listaAlmacenes);
     Administracion::guardarEnArchivo(listaAdministradores);
     Transportistas::guardarEnArchivo(listaTransportistas);
-    Producto::guardarEnArchivo(listaProductos);
+    Producto::guardarEnArchivoBin(listaProductos);
     Proveedor::guardarEnArchivo(listaProveedores);
 
     // Pausa para ver mensajes antes de cerrar (solo Windows)
