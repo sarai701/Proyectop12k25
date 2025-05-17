@@ -70,6 +70,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        kari           000                 REG-USER                           16/05/2025 18:20:41 
 3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
 3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
+<<<<<<< HEAD
 >>>>>>> aa9a3cdd2da258c43d9bd53a505bd4c8e50d3c9f
 <<<<<<< HEAD
 3000        Angel          000                 REG-USER                           16/05/2025 21:48:58 
@@ -149,3 +150,6 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3550        Jennifer       ENVIOS              Creado envío para pedido 3403 con transportista 331117/05/2025 16:17:21 
 3103        Jennifer       PEDIDOS             Consulta de pedidos                17/05/2025 16:17:43 
 3104        Jennifer       PEDIDOS             Salida de gestión de pedidos       17/05/2025 16:18:01 
+=======
+3000        arriaza        000                 REG-USER                           17/05/2025 11:22:52 
+>>>>>>> 862a41fe662cb937addea89707b9880e9c7dce70
