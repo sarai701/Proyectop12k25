@@ -19,6 +19,7 @@ class cliente
 		void modificar();
 		void buscar();
 		void borrar();
+		void reporte();
 };
 
 #endif // CLIENTE_H

@@ -1,0 +1,209 @@
+# depslib dependency file v1.0
+1745808428 source:c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\src\aut.cpp
+	"aut.h"
+	"storage.h"
+	<string>
+	<functional>
+
+1745812881 c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\include\aut.h
+	<string>
+
+1745808428 c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\include\storage.h
+	<string>
+	<vector>
+	"compras.h"
+
+1745816887 c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\include\compras.h
+	<vector>
+	<string>
+	<iostream>
+
+1745816887 source:c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\src\compras.cpp
+	"compras.h"
+	<iomanip>
+	<limits>
+
+1745808428 source:c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\src\storage.cpp
+	"storage.h"
+	<fstream>
+	<sstream>
+
+1745817708 source:c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\main.cpp
+	<iostream>
+	"usuario.h"
+	"compras.h"
+	<vector>
+	<iomanip>
+	<limits>
+
+1745812881 c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\include\ui.h
+	<string>
+
+1745815579 source:c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\src\bitacora.cpp
+	"bitacora.h"
+	<fstream>
+	<ctime>
+	<iostream>
+
+1745815553 c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\include\bitacora.h
+	<string>
+
+1745816887 source:c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\src\usuario.cpp
+	"usuario.h"
+	<fstream>
+
+1745817736 c:\users\andre\onedrive\documentos\programacion1\programacion 1 prueba 1\programacion1\tarea andre castellanos\compras\include\usuario.h
+	<string>
+	<vector>
+
+1745856299 source:c:\users\usuario\onedrive - universidad mariano gálvez\documentos\programación i\tareas\programacionitareas\programacionitareas\compras\main.cpp
+	<iostream>
+	"usuario.h"
+	"compras.h"
+	<vector>
+	<iomanip>
+	<limits>
+	<windows.h>
+
+1745817736 c:\users\usuario\onedrive - universidad mariano gálvez\documentos\programación i\tareas\programacionitareas\programacionitareas\compras\include\usuario.h
+	<string>
+	<vector>
+
+1745816887 c:\users\usuario\onedrive - universidad mariano gálvez\documentos\programación i\tareas\programacionitareas\programacionitareas\compras\include\compras.h
+	<vector>
+	<string>
+	<iostream>
+
+1745815579 source:c:\users\usuario\onedrive - universidad mariano gálvez\documentos\programación i\tareas\programacionitareas\programacionitareas\compras\src\bitacora.cpp
+	"bitacora.h"
+	<fstream>
+	<ctime>
+	<iostream>
+
+1745815553 c:\users\usuario\onedrive - universidad mariano gálvez\documentos\programación i\tareas\programacionitareas\programacionitareas\compras\include\bitacora.h
+	<string>
+
+1745816887 source:c:\users\usuario\onedrive - universidad mariano gálvez\documentos\programación i\tareas\programacionitareas\programacionitareas\compras\src\compras.cpp
+	"compras.h"
+	<iomanip>
+	<limits>
+
+1745817708 source:c:\users\usuario\onedrive - universidad mariano gálvez\documentos\programación i\tareas\programacionitareas\programacionitareas\compras\src\usuario.cpp
+	"usuario.h"
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+
+1747006206 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\bitacora.cpp
+	"bitacora.h"
+	<map>
+	<fstream>
+	<iostream>
+	<iomanip>
+	<ctime>
+
+1747006206 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\bitacora.h
+	<string>
+	<ctime>
+
+1746990924 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\compras.cpp
+	"compras.h"
+	"producto.h"
+	"cliente.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<sstream>
+	<ctime>
+	<algorithm>
+	<limits>
+
+1746990924 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\compras.h
+	<string>
+	<vector>
+	<ctime>
+	"producto.h"
+
+1746987875 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\producto.h
+	<string>
+	<vector>
+
+1746990924 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\cliente.h
+	<string>
+	<vector>
+
+1747006206 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\menu_archivo.cpp
+	"menu_archivo.h"
+	"bitacora.h"
+	<iostream>
+	<limits>
+
+1747006206 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\menu_archivo.h
+
+1746990924 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\main.cpp
+	<iostream>
+	<limits>
+	<vector>
+	<iomanip>
+	<windows.h>
+	"usuario.h"
+	"menu_general.h"
+
+1746990924 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\usuario.h
+	<string>
+
+1746990924 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\cliente.cpp
+	"cliente.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<sstream>
+	<algorithm>
+
+1746987875 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\menu_cliente.cpp
+	"menu_cliente.h"
+	"cliente.h"
+	<iostream>
+
+1746987875 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\menu_cliente.h
+
+1746990924 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\menu_general.h
+
+1746990924 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\menu_compra.cpp
+	"menu_compra.h"
+	"compras.h"
+	<iostream>
+	<iomanip>
+
+1746990924 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\menu_compra.h
+
+1746990924 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\menu_general.cpp
+	"menu_general.h"
+	"menu_cliente.h"
+	"menu_producto.h"
+	"menu_compra.h"
+	"menu_archivo.h"
+	<iostream>
+
+1746987875 c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\include\menu_producto.h
+
+1746987875 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\menu_producto.cpp
+	"menu_producto.h"
+	"producto.h"
+	<iostream>
+
+1746987875 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\producto.cpp
+	"producto.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<sstream>
+	<algorithm>
+
+1746990924 source:c:\users\andre\onedrive\documentos\proyecto final grupo 6\proyectop12k25\equipo6\compras\src\usuario.cpp
+	"usuario.h"
+	<fstream>
+	<iostream>
+	<string>
+
