@@ -11,7 +11,6 @@
 #include "Nominas.h"
 #include "Bitacora.h"
 #include "Bancos.h"
-
 using namespace std;
 
 // Pausar el programa esperando ENTER
@@ -21,7 +20,7 @@ void pausar() {
     cin.get();
 }
 
-// Mostrar el menú principal, ahora recibe el nombre del usuario
+// Mostrar el menÃº principal, ahora recibe el nombre del usuario
 void mostrarMenu(const string& usuario, Bancos& bancos) {
     Empleados empleados;
     Cliente cliente;
@@ -58,15 +57,15 @@ void mostrarMenu(const string& usuario, Bancos& bancos) {
         switch (opcion) {
             case 1:
                 nominas.menuNominas();
-                bitacora.insertar(usuario, 4000, "Nominas", "Ingresó al módulo de Nóminas");
+                bitacora.insertar(usuario, 4000, "Nominas", "IngresÃ³ al mÃ³dulo de NÃ³minas");
                 break;
             case 2:
                 cliente.menuCliente();
-                bitacora.insertar(usuario, 4100, "Clientes", "Ingresó al módulo de Clientes");
+                bitacora.insertar(usuario, 4100, "Clientes", "IngresÃ³ al mÃ³dulo de Clientes");
                 break;
             case 3:
                 empleados.menuEmpleados();
-                bitacora.insertar(usuario, 4001, "Empleados", "Ingresó al módulo de Empleados");
+                bitacora.insertar(usuario, 4001, "Empleados", "IngresÃ³ al mÃ³dulo de Empleados");
                 break;
             case 4:
                 contabilidad.menuContabilidad();
@@ -74,28 +73,27 @@ void mostrarMenu(const string& usuario, Bancos& bancos) {
                 break;
             case 5:
                 auditoria.menuAuditoria();
-                bitacora.insertar(usuario, 4401, "Auditoría", "Revisar transacciones");
+                bitacora.insertar(usuario, 4401, "AuditorÃ­a", "Revisar transacciones");
                 break;
             case 6:
                 proveedor.menuProveedor();
-                bitacora.insertar(usuario, 4200, "Proveedores", "Ingresó al módulo de Proveedores");
+                bitacora.insertar(usuario, 4200, "Proveedores", "IngresÃ³ al mÃ³dulo de Proveedores");
                 break;
             case 7:
                 bitacora.menuBitacora();
-                bitacora.insertar(usuario, 4402, "Sistema", "Usuario revisó la bitácora");
+                bitacora.insertar(usuario, 4402, "Sistema", "Usuario revisÃ³ la bitÃ¡cora");
                 break;
             case 8:
                 bancos.mostrarConfiguracion();  // Usa la instancia configurada
-                bitacora.insertar(usuario, 4500, "Sistema", "Usuario revisó la bancos");
+                bitacora.insertar(usuario, 4500, "Sistema", "Usuario revisÃ³ la bancos");
                 break;
             case 9:
-                bitacora.insertar(usuario, 4901, "Sistema", "Usuario cerró sesión");
+                bitacora.insertar(usuario, 4901, "Sistema", "Usuario cerrÃ³ sesiÃ³n");
                 cout << "\nSaliendo del sistema... Gracias!\n";
                 break;
-
             default:
-                cout << "\nOpción inválida. Intente de nuevo.\n";
-                bitacora.insertar(usuario, 4902, "Sistema", "Intento de opción inválida");
+                cout << "\nOpciÃ³n invÃ¡lida. Intente de nuevo.\n";
+                bitacora.insertar(usuario, 4902, "Sistema", "Intento de opciÃ³n invÃ¡lida");
                 break;
         }
 
@@ -105,21 +103,21 @@ void mostrarMenu(const string& usuario, Bancos& bancos) {
     } while (opcion != 9);
 }
 
-// Función principal
+// FunciÃ³n principal
 int main() {
     while (true) {
         string usuarioLogueado;
         if (Usuario::menuAutenticacion(usuarioLogueado)) {
             Bitacora bitacora;
-            bitacora.insertar(usuarioLogueado, 1000, "Sistema", "Inicio de sesión exitoso");
+            bitacora.insertar(usuarioLogueado, 1000, "Sistema", "Inicio de sesiÃ³n exitoso");
 
-            // Configuración inicial obligatoria
+            // ConfiguraciÃ³n inicial obligatoria
             Bancos configuracion;
             configuracion.menuConfiguracion();
 
             mostrarMenu(usuarioLogueado, configuracion);
         } else {
-            cout << "\nAutenticación fallida.\n";
+            cout << "\nAutenticaciÃ³n fallida.\n";
             break;
         }
     }
