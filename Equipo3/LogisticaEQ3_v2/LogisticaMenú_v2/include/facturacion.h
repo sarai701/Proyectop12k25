@@ -3,17 +3,35 @@
 #ifndef FACTURACION_H
 #define FACTURACION_H
 
-#include "bitacora.h"
-#include "usuarios.h"
+#include <iostream>
+using namespace std;
 
-class Facturacion {
-public:
-    void mostrarMenuFacturacion();
-    void gestionFacturacion();
-    void generarFactura();
-    void consultarEstadoPago();
-    void registrarPago();
-    void verReportesFinancieros();
+struct Factura {
+    int idFactura;
+    int idCliente;
+    int idPedido;
+    float monto;
+    bool pagada;
+    char cliente[50];
 };
 
-#endif // FACTURACION_H
+class Facturacion {
+private:
+    const char* archivoFacturas = "facturas.bin";
+    const char* archivoBitacora = "bitacora.bin";
+
+    void guardarEnArchivo(Factura factura);
+    void mostrarClientes();
+    void mostrarPedidos();
+    int generarIdFactura();
+    void registrarBitacora(const Factura& factura, const string& accion, const string& usuario = "Camila");
+
+public:
+    void mostrarMenuFacturacion();
+    void crearFactura();
+    void mostrarFacturas();
+    void modificarFactura();
+    void eliminarFactura();
+};
+
+#endif
