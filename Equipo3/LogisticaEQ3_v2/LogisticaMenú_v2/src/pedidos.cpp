@@ -47,7 +47,7 @@ bool Pedidos::validarCliente(const string& idCliente, const vector<Clientes>& cl
 
 bool Pedidos::validarProducto(const string& codigoProducto, const vector<Producto>& productos) {
     return any_of(productos.begin(), productos.end(),
-        [&codigoProducto](const Producto& p) { return p.codigo == codigoProducto; });
+        [&codigoProducto](const Producto& p) { return p.getCodigo() == codigoProducto; });
 }
 
 bool Pedidos::validarAlmacen(const string& idAlmacen, const vector<Almacen>& almacenes) {
@@ -394,8 +394,8 @@ void Pedidos::modificarPedido(const vector<Clientes>& clientes,
                     if (validarProducto(detalle.codigoProducto, productos)) {
                         // Buscar el producto para obtener el precio
                         auto prod = find_if(productos.begin(), productos.end(),
-                            [&detalle](const Producto& p) { return p.codigo == detalle.codigoProducto; });
-                        detalle.precioUnitario = prod->precio;
+                        [&detalle](const Producto& p) { return p.getCodigo() == detalle.codigoProducto; });
+                        detalle.precioUnitario = prod->getPrecio();
                         break;
                     }
                     cerr << "\t\tProducto no válido. Intente nuevamente.\n";

@@ -547,3 +547,13 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3104        Angel          PEDIDOS             Salida de gestión de pedidos       18/05/2025 11:29:19 
 >>>>>>> 06213e2a7593c2c519cf32a6481efe3964f5ffc6
 >>>>>>> 5a65c92ccab82300f344ad48eadc2e2d63e07041
+3000        AJAX           000                 LOGIN-FAIL                         18/05/2025 15:31:39 
+3001        AJAX           000                 LOGIN-FAIL                         18/05/2025 15:31:47 
+3002        Jennifer       000                 LOGIN                              18/05/2025 15:31:56 
+3000        Jennifer       500                 REPVENT                            18/05/2025 15:32:04 
+3000        Jennifer       000                 LOGIN                              18/05/2025 16:04:43 
+3000        Jennifer       000                 LOGIN                              18/05/2025 16:21:35 
+3250        Jennifer       PRODUCTOS           Agregado: 3209                     18/05/2025 16:22:31 
+3000        Jennifer       000                 LOGIN                              18/05/2025 16:24:06 
+3600        SISTEMA        SISTEMA             Backup de bitácora generado: backup_bitacora_20250518_162419.txt18/05/2025 16:24:19 
+3601        SISTEMA        SISTEMA             Backup de bitácora generado: backup_bitacora_20250518_162424.txt18/05/2025 16:24:24 

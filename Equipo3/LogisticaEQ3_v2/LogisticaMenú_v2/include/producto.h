@@ -7,6 +7,8 @@
 
 #include <vector>
 #include <string>
+#include <fstream>  // Para ifstream/ofstream
+#include <iostream> // Para cerr
 #include "bitacora.h"
 
 class Producto {

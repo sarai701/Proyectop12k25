@@ -11,11 +11,6 @@
 #include "producto.h"
 #include "Almacen.h"
 
-// Creado JENNIFER ALBA DAYAMI BARRIOS FLORES
-//9959-24-10016
-//MAYO 2025
-//Modificado por Camila Araujo
-
 using namespace std;
 
 // Declaración externa del usuario registrado actual
@@ -32,7 +27,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
 
         // Mostrar encabezado del menú y nombre del usuario actual
         cout << "\t\t========================================\n"
-             << "\t\t|          MENu DE PROCESOS            |\n"
+             << "\t\t|          MENÚ DE PROCESOS            |\n"
              << "\t\t========================================\n"
              << "\t\t| Usuario: " << usuarioRegistrado.getNombre() << "\n"
              << "\t\t========================================\n"
@@ -56,20 +51,31 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
                 break;
 
             case 2:
-                gestorInventario.mostrarInventario(); // Cambiado a mostrarInventario
+                {
+                    Inventario gestorInventario;
+                    gestorInventario.controlInventario(); // Cambiado a controlInventario
+                }
                 break;
 
             case 3:
-                gestorEnvios.gestionEnvios();
+                {
+                    Envios gestorEnvios;
+                    gestorEnvios.gestionEnvios();
+                }
                 break;
 
             case 4:
-                gestorFacturacion.mostrarMenuFacturacion();
+                {
+                    Facturacion gestorFacturacion;
+                    gestorFacturacion.mostrarMenuFacturacion();
+                }
                 break;
 
             case 5:
-                // Generar reportes disponibles en el sistema
-                gestorReportes.generarReportes();
+                {
+                    Reportes gestorReportes;
+                    gestorReportes.generarReportes();
+                }
                 break;
 
             case 6:

@@ -16,6 +16,8 @@ class bitacora;
 class Inventario {
 public:
 
+    static std::vector<Inventario> listaInventario;
+
     struct ItemInventario {
         std::string idProducto;
         std::string idAlmacen;
@@ -24,6 +26,8 @@ public:
         std::string fechaIngreso;
         std::string lote;
     };
+
+     void consultarStockCompleto();
 
     // Métodos estáticos para gestión de archivos
     static std::vector<Producto> cargarProductosDesdeArchivo();
@@ -35,7 +39,6 @@ public:
 
     // Métodos de la clase
     void controlInventario();
-    void consultarStock();
     void registrarMercancia();
     void ajustarInventario();
     void reporteExistencias();
@@ -52,6 +55,7 @@ public:
     static int obtenerStockTotalProducto(const std::string& idProducto);
 
 private:
+    std::vector<ItemInventario> cargarInventarioDesdeArchivo();
     static std::string generarIdRegistroUnico(const std::vector<ItemInventario>& inventario);
 };
 

@@ -1,4 +1,3 @@
-// Karina Alejandra Arriaza Ortiz
 #include "usuarios.h"
 #include <iostream>
 #include <fstream>
@@ -16,7 +15,10 @@ const int CODIGO_FINAL = 3149;
 
 extern bitacora auditoria;
 
-// Funciones auxiliares privadas
+// Constructor
+usuarios::usuarios() : id(""), nombre(""), contrasena(""), nivelAcceso(0) {}
+
+// Implementación de métodos
 string usuarios::generarCodigoUnico() {
     ifstream archivo("usuarios.txt");
     set<string> codigosExistentes;
@@ -82,7 +84,7 @@ string usuarios::leerPasswordSegura() {
 bool usuarios::loginUsuarios() {
     string user, pass;
     int intentos = 0;
-    bool acceso = false;
+    bool autenticado = false; // Cambiado de 'acceso' a 'autenticado'
 
     do {
         system("cls");
@@ -107,7 +109,7 @@ bool usuarios::loginUsuarios() {
                 pass = leerPasswordSegura();
 
                 if (buscarUsuario(user, pass)) {
-                    acceso = true;
+                    autenticado = true;
                     nombre = user;
                     auditoria.insertar(nombre, "000", "LOGIN");
                     cout << "\n\t\tAutenticacion exitosa. Bienvenido!\n";
@@ -135,9 +137,9 @@ bool usuarios::loginUsuarios() {
                 cout << "\n\t\tOpcion invalida!\n";
                 system("pause");
         }
-    } while (intentos < 3);
+    } while (intentos < 3 && !autenticado);
 
-    return false;
+    return autenticado;
 }
 
 void usuarios::registrarUsuario() {
