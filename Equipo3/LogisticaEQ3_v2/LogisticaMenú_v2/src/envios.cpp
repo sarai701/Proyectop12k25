@@ -291,6 +291,19 @@ void modificarEstadoEnvio() {
             cout << "Ingrese nuevo estado (en camino, entregado): ";
             getline(cin, envio.estado);
             encontrado = true;
+
+            // Si el nuevo estado es "entregado", también actualizar en pedidos
+            if (envio.estado == "entregado") {
+                vector<Pedidos> pedidos = cargarPedidos();
+                for (auto& pedido : pedidos) {
+                    if (pedido.getId() == idPedido) {
+                        pedido.setEstado("entregado");
+                        break;
+                    }
+                }
+                guardarPedidos(pedidos);
+            }
+
             break;
         }
     }
@@ -429,30 +442,23 @@ void Envios::gestionEnvios() {
         switch (opcion) {
         case 1:
             crearEnvioInteractivo();
-            system("pause");
             break;
         case 2:
             mostrarEnvios();
-            system("pause");
             break;
         case 3:
             modificarEstadoEnvio();
-            system("pause");
             break;
         case 4:
-            cancelarEnvio();
-            system("pause");
             break;
         case 5:
             eliminarEnvio();
-            system("pause");
             break;
         case 6:
             cout << "\n\tSaliendo al menu principal...\n";
             break;
         default:
             cout << "\n\tOpcion invalida.\n";
-            system("pause");
             break;
         }
     } while (opcion != 6);
