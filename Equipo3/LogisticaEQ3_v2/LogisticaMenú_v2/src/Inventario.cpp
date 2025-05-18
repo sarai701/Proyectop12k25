@@ -16,7 +16,7 @@ using namespace std;
 
 extern usuarios usuarioRegistrado;
 extern bitacora auditoria;
-std::vector<Inventario> Inventario::Inventario
+std::vector<Inventario> Inventario::listaInventario;
 
 // ----------- Funciones de archivo para Productos ------------
 vector<Producto> cargarProductosDesdeArchivo() {
@@ -195,7 +195,7 @@ vector<Almacen> cargarAlmacenesDesdeArchivo() {
     if (!archivo) return lista;
 
     while (!archivo.eof()) {
-        almacen almacen;
+        Almacen almacen;
         size_t size;
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));

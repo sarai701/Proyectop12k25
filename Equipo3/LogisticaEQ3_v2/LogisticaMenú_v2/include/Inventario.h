@@ -44,6 +44,8 @@ public:
     void generarReporteInventario();
 
     // Métodos auxiliares
+    static std::vector<Producto> cargarProductosDesdeArchivo();
+static void guardarProductosEnArchivo(const std::vector<Producto>&);
     static bool verificarDisponibilidad(const std::string& idProducto, int cantidadRequerida);
     static std::vector<ItemInventario> obtenerProductosBajoStockMinimo();
     static std::vector<ItemInventario> obtenerProductosPorAlmacen(const std::string& idAlmacen);

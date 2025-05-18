@@ -39,6 +39,9 @@ public:
     void setStock(int stock);
     void setStockMinimo(int stockMinimo);
 
+    static void cargarDesdeArchivo(std::vector<Producto>& lista);
+    static void guardarEnArchivo(const std::vector<Producto>& lista);
+
     // Otros métodos
     static bool codigoDisponible(const std::vector<Producto>& productos, const std::string& codigo);
     void modificar(std::vector<Producto>& productos, const std::string& campo, const std::string& nuevoValor);
