@@ -6,31 +6,42 @@
 #include <string>
 #include "Producto.h"
 #include "Almacen.h"
-#include "proveedor.h"
+#include "Proveedor.h"
+
+// Declaración adelantada para resolver dependencias circulares
+class usuarios;
+class bitacora;
 
 class Inventario {
 public:
-    // Estructura para representar un ítem de inventario
     struct ItemInventario {
         std::string idProducto;
         std::string idAlmacen;
         int cantidad;
-        std::string ubicacion;  // Ejemplo: "Pasillo A, Estante 3"
+        std::string ubicacion;
         std::string fechaIngreso;
         std::string lote;
     };
 
-    // Métodos para gestión de archivos
-    static std::vector<ItemInventario> cargarInventarioDesdeArchivo();
-    static void guardarInventarioEnArchivo(const std::vector<ItemInventario>& inventario);
+    // Métodos estáticos para gestión de archivos
+    static std::vector<Producto> cargarProductosDesdeArchivo();
+    static void guardarProductosEnArchivo(const std::vector<Producto>& productos);
+    static std::vector<Almacen> cargarAlmacenesDesdeArchivo();
+    static void guardarAlmacenesEnArchivo(const std::vector<Almacen>& almacenes);
+    static std::vector<Proveedor> cargarProveedoresDesdeArchivo();
+    static void guardarProveedoresEnArchivo(const std::vector<Proveedor>& proveedores);
 
-    // Métodos para gestión de inventario
-    static void agregarProductoAInventario();
-    static void ajustarStock();
-    static void transferirEntreAlmacenes();
-    static void mostrarInventario();
-    static void buscarProductoEnInventario();
-    static void generarReporteInventario();
+    // Métodos de la clase
+    void controlInventario();
+    void consultarStock();
+    void registrarMercancia();
+    void ajustarInventario();
+    void reporteExistencias();
+    void mostrarInventario();
+    void agregarProductoAInventario();
+    void transferirEntreAlmacenes();
+    void buscarProductoEnInventario();
+    void generarReporteInventario();
 
     // Métodos auxiliares
     static bool verificarDisponibilidad(const std::string& idProducto, int cantidadRequerida);
@@ -39,7 +50,6 @@ public:
     static int obtenerStockTotalProducto(const std::string& idProducto);
 
 private:
-    // Métodos internos
     static std::string generarIdRegistroUnico(const std::vector<ItemInventario>& inventario);
 };
 

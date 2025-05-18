@@ -18,9 +18,9 @@ extern bitacora auditoria;
 std::vector<Inventario> Inventario::Inventario
 
 // ----------- Funciones de archivo para Productos ------------
-vector<producto> cargarProductosDesdeArchivo() {
-    ifstream archivo("productos.dat", ios::binary);
-    vector<producto> lista;
+vector<Producto> cargarProductosDesdeArchivo() {
+    ifstream archivo("productos.bin", ios::binary);
+    vector<Producto> lista;
     if (!archivo) return lista;
 
     while (!archivo.eof()) {
@@ -61,8 +61,8 @@ vector<producto> cargarProductosDesdeArchivo() {
     return lista;
 }
 
-void guardarProductosEnArchivo(const vector<producto>& productos) {
-    ofstream archivo("productos.dat", ios::binary | ios::trunc);
+void guardarProductosEnArchivo(const vector<Producto>& productos) {
+    ofstream archivo("productos.bin", ios::binary | ios::trunc);
     for (const auto& producto : productos) {
         size_t size;
 
@@ -98,7 +98,7 @@ void crearProductoInteractivo() {
     cout << "------------------------------------------------------------\n";
 
     Producto nuevo;
-    vector<producto> productos = cargarProductosDesdeArchivo();
+    vector<Producto> productos = cargarProductosDesdeArchivo();
 
     // Generar ID único
     string nuevoId = "PROD";
@@ -161,7 +161,7 @@ void mostrarProductos() {
     cout << "                      LISTA DE PRODUCTOS                        \n";
     cout << "---------------------------------------------------------------\n";
 
-    vector<producto> productos = cargarProductosDesdeArchivo();
+    vector<Producto> productos = cargarProductosDesdeArchivo();
     if (productos.empty()) {
         cout << "\n\tNo hay productos registrados.\n";
         system("pause");
@@ -188,9 +188,9 @@ void mostrarProductos() {
 }
 
 // ----------- Funciones de archivo para Almacenes ------------
-vector<almacen> cargarAlmacenesDesdeArchivo() {
-    ifstream archivo("almacenes.dat", ios::binary);
-    vector<almacen> lista;
+vector<Almacen> cargarAlmacenesDesdeArchivo() {
+    ifstream archivo("Almacenes.bin", ios::binary);
+    vector<Almacen> lista;
     if (!archivo) return lista;
 
     while (!archivo.eof()) {
@@ -227,8 +227,8 @@ vector<almacen> cargarAlmacenesDesdeArchivo() {
     return lista;
 }
 
-void guardarAlmacenesEnArchivo(const vector<almacen>& almacenes) {
-    ofstream archivo("almacenes.dat", ios::binary | ios::trunc);
+void guardarAlmacenesEnArchivo(const vector<Almacen>& almacenes) {
+    ofstream archivo("Almacenes.bin", ios::binary | ios::trunc);
     for (const auto& almacen : almacenes) {
         size_t size;
 
@@ -261,7 +261,7 @@ void crearAlmacenInteractivo() {
     cout << "------------------------------------------------------------\n";
 
     Almacen nuevo;
-    vector<almacen> almacenes = cargarAlmacenesDesdeArchivo();
+    vector<Almacen> almacenes = cargarAlmacenesDesdeArchivo();
 
     // Generar ID único
     string nuevoId = "ALM";
@@ -315,7 +315,7 @@ void mostrarAlmacenes() {
     cout << "                      LISTA DE ALMACENES                       \n";
     cout << "---------------------------------------------------------------\n";
 
-    vector<almacen> almacenes = cargarAlmacenesDesdeArchivo();
+    vector<Almacen> almacenes = cargarAlmacenesDesdeArchivo();
     if (almacenes.empty()) {
         cout << "\n\tNo hay almacenes registrados.\n";
         system("pause");
@@ -341,9 +341,9 @@ void mostrarAlmacenes() {
 }
 
 // ----------- Funciones de archivo para Proveedores ------------
-vector<proveedor> cargarProveedoresDesdeArchivo() {
-    ifstream archivo("proveedores.dat", ios::binary);
-    vector<proveedor> lista;
+vector<Proveedor> cargarProveedoresDesdeArchivo() {
+    ifstream archivo("proveedores.bin", ios::binary);
+    vector<Proveedor> lista;
     if (!archivo) return lista;
 
     while (!archivo.eof()) {
@@ -377,8 +377,8 @@ vector<proveedor> cargarProveedoresDesdeArchivo() {
     return lista;
 }
 
-void guardarProveedoresEnArchivo(const vector<proveedor>& proveedores) {
-    ofstream archivo("proveedores.dat", ios::binary | ios::trunc);
+void guardarProveedoresEnArchivo(const vector<Proveedor>& proveedores) {
+    ofstream archivo("Proveedores.bin", ios::binary | ios::trunc);
     for (const auto& proveedor : proveedores) {
         size_t size;
 
@@ -409,7 +409,7 @@ void crearProveedorInteractivo() {
     cout << "------------------------------------------------------------\n";
 
     Proveedor nuevo;
-    vector<proveedor> proveedores = cargarProveedoresDesdeArchivo();
+    vector<Proveedor> proveedores = cargarProveedoresDesdeArchivo();
 
     // Generar ID único
     string nuevoId = "PROV";
@@ -462,7 +462,7 @@ void mostrarProveedores() {
     cout << "                     LISTA DE PROVEEDORES                      \n";
     cout << "---------------------------------------------------------------\n";
 
-    vector<proveedor> proveedores = cargarProveedoresDesdeArchivo();
+    vector<Proveedor> proveedores = cargarProveedoresDesdeArchivo();
     if (proveedores.empty()) {
         cout << "\n\tNo hay proveedores registrados.\n";
         system("pause");

@@ -58,19 +58,30 @@ public:
     // Valida que el estado sea "operativo" o "en mantenimiento"
     static bool validarEstado(const std::string& estado);
 
+    // --- SETTERS ---
+    void setId(const std::string& id) { this->id = id; }
+    void setNombre(const std::string& nombre) { this->nombre = nombre; }
+    void setDireccion(const std::string& direccion) { this->direccion = direccion; }
+    void setCapacidad(int capacidad) { this->capacidad = capacidad; }
+    void setEspacioDisponible(int espacioDisponible) { this->espacioDisponible = espacioDisponible; }
+
     // --- GETTERS ---
     std::string getId() const { return id; }
+    std::string getNombre() const { return nombre; }
     std::string getDireccion() const { return direccion; }
     int getCapacidad() const { return capacidad; }
     std::string getResponsable() const { return responsable; }
     std::string getContacto() const { return contacto; }
     std::string getEstado() const { return estado; }
+    int getEspacioDisponible() const { return espacioDisponible; }
 
 private:
     // --- ATRIBUTOS ---
     std::string id;          // Codigo identificador
+    std::string nombre;      // Nombre del almacén (nuevo campo)
     std::string direccion;   // Ubicacion fisica
     int capacidad;           // Espacio en m²
+    int espacioDisponible;   // Espacio disponible en m² (nuevo campo)
     std::string responsable; // Persona a cargo
     std::string contacto;    // Telefono/email
     std::string estado;      // Estado actual

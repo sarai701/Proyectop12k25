@@ -33,9 +33,22 @@ public:
     static bool idDisponible(const std::vector<Proveedor>& lista, const std::string& id);
     static bool esIdValido(const std::string& id);
 
+    // Setters
+    void setId(const std::string& id) { this->id = id; }
+    void setNombre(const std::string& nombre) { this->nombre = nombre; }
+    void setContacto(const std::string& contacto) { this->contacto = contacto; }
+    void setTelefono(const std::string& telefono) { this->telefono = telefono; }
+
+    // Getters
+    std::string getId() const { return id; }
+    std::string getNombre() const { return nombre; }
+    std::string getContacto() const { return contacto; }
+    std::string getTelefono() const { return telefono; }
+
 private:
     std::string id;
     std::string nombre;
+    std::string contacto;  // Nuevo campo
     std::string telefono;
 
     // Conversión registro <-> objeto
@@ -50,5 +63,3 @@ private:
 };
 
 #endif // PROVEEDOR_H
-
-
