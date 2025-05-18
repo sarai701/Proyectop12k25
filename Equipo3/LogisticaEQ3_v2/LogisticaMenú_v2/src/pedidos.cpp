@@ -22,7 +22,7 @@ std::vector<Pedidos> Pedidos::listaPedidos;
 const int CODIGO_INICIAL = 3400;
 const int CODIGO_FINAL = 3500;
 
-Pedidos::Pedidos() : fechaPedido(time(nullptr)), estado("pendiente") {}
+Pedidos::Pedidos() : fechaPedido(time(nullptr)), estado("procesado") {}
 
 string Pedidos::generarIdUnico(const vector<Pedidos>& lista) {
     for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; ++i) {
@@ -279,7 +279,7 @@ void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
     Producto::guardarEnArchivoBin(productos);
 
         // Estado del pedido
-        nuevo.estado = "pendiente";
+        nuevo.estado = "procesado";
 
         listaPedidos.push_back(nuevo);
         guardarEnArchivoBin(listaPedidos);

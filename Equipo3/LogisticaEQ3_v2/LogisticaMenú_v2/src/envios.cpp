@@ -9,17 +9,18 @@
 #include <iostream>
 #include <algorithm>
 #include <limits>
+#include <iomanip>
 
 using namespace std;
 
-// Variables externas (declaradas en otro lado)
+// Variables externas
 extern usuarios usuarioRegistrado;
 extern bitacora auditoria;
 
 // ----------- Funciones privadas estáticas ------------
 
 vector<Envio> Envios::cargarEnviosDesdeArchivo() {
-    ifstream archivo("envios.bin", ios::binary);
+    ifstream archivo("envios.dat", ios::binary);  // CAMBIO: unificado el nombre del archivo
     vector<Envio> lista;
     if (!archivo) return lista;
 
@@ -47,7 +48,7 @@ vector<Envio> Envios::cargarEnviosDesdeArchivo() {
 }
 
 void Envios::guardarEnviosEnArchivo(const vector<Envio>& envios) {
-    ofstream archivo("envios.dat", ios::binary | ios::trunc);
+    ofstream archivo("envios.dat", ios::binary | ios::trunc);  // CAMBIO: nombre unificado
     for (const auto& envio : envios) {
         size_t size;
 
@@ -66,7 +67,7 @@ void Envios::guardarEnviosEnArchivo(const vector<Envio>& envios) {
     archivo.close();
 }
 
-// ----------- Funciones auxiliares fuera de la clase ------------
+// ----------- Funciones auxiliares ------------
 
 vector<Transportistas> cargarTransportistasDisponibles() {
     vector<Transportistas> todos;
@@ -80,68 +81,75 @@ vector<Transportistas> cargarTransportistasDisponibles() {
 }
 
 vector<Pedidos> cargarPedidos() {
-    vector<Pedidos> pedidos;
-    // Accede a la lista estática de pedidos
-    pedidos = Pedidos::listaPedidos;
-    return pedidos;
+    Pedidos::cargarDesdeArchivoBin(Pedidos::listaPedidos);  // Asegura carga
+    return Pedidos::listaPedidos;
 }
 
 void guardarPedidos(const vector<Pedidos>& pedidos) {
-    // Actualiza la lista estática y guarda
     Pedidos::listaPedidos = pedidos;
     Pedidos::guardarEnArchivoBin(Pedidos::listaPedidos);
 }
-// ----------- Métodos de la clase Envios ------------
+
+// ----------- Métodos de Envios ------------
 
 void Envios::crearEnvioInteractivo() {
     system("cls");
-    cout << "\n\t=== CREAR NUEVO ENVÍO ===\n";
+    cout << "------------------------------------------------------------\n";
+    cout << "                    CREAR NUEVO ENVIO                        \n";
+    cout << "------------------------------------------------------------\n";
 
     vector<Transportistas> transportistas = cargarTransportistasDisponibles();
     vector<Pedidos> pedidos = cargarPedidos();
 
     if (transportistas.empty()) {
         cout << "\n\tNo hay transportistas disponibles.\n";
+        system("pause");
         return;
     }
 
-    if (pedidos.empty()) {
-        cout << "\n\tNo hay pedidos registrados.\n";
+    vector<Pedidos> procesados;
+    for (const auto& p : pedidos) {
+        if (p.getEstado() == "procesado") {
+            procesados.push_back(p);
+        }
+    }
+
+    if (procesados.empty()) {
+        cout << "\n\tNo hay pedidos en estado 'procesado'.\n";
+        system("pause");
         return;
     }
 
-    // Mostrar tabla de pedidos
-    cout << "\nPedidos disponibles:\n";
+    cout << "\nPedidos disponibles para envio:\n";
     cout << "------------------------------------------------\n";
     cout << "ID Pedido\tCliente\t\tEstado\n";
     cout << "------------------------------------------------\n";
-    for (const auto& p : pedidos) {
+    for (const auto& p : procesados) {
         cout << p.getId() << "\t\t" << p.getIdCliente() << "\t\t" << p.getEstado() << "\n";
     }
     cout << "------------------------------------------------\n";
 
     string idPedido;
-    cout << "Ingrese ID del pedido para envío: ";
+    cout << "Ingrese ID del pedido para envio (0 para salir): ";
     cin >> idPedido;
+    if (idPedido == "0") {
+        system("pause");
+        return;
+    }
 
-    auto itPedido = find_if(pedidos.begin(), pedidos.end(), [&](const Pedidos& p) {
+    auto itPedido = find_if(procesados.begin(), procesados.end(), [&](const Pedidos& p) {
         return p.getId() == idPedido;
     });
 
-    if (itPedido == pedidos.end()) {
-        cout << "\n\tPedido no encontrado.\n";
+    if (itPedido == procesados.end()) {
+        cout << "\n\tPedido no encontrado o no esta en estado 'procesado'.\n";
+        system("pause");
         return;
     }
 
-    if (itPedido->getEstado() != "procesado") {
-        cout << "\n\tEl pedido no está en estado 'procesado'.\n";
-        return;
-    }
-
-    // Mostrar transportistas disponibles para elegir
     cout << "\nTransportistas disponibles:\n";
     cout << "----------------------------------------------\n";
-    cout << "Índice\tID Transportista\tNombre\n";
+    cout << "Indice\tID Transportista\tNombre\n";
     cout << "----------------------------------------------\n";
     for (size_t i = 0; i < transportistas.size(); i++) {
         cout << i + 1 << "\t" << transportistas[i].id << "\t\t" << transportistas[i].nombre << "\n";
@@ -149,15 +157,20 @@ void Envios::crearEnvioInteractivo() {
     cout << "----------------------------------------------\n";
 
     int opcionTransportista;
-    cout << "Seleccione número del transportista a asignar: ";
+    cout << "Seleccione numero del transportista a asignar (0 para salir): ";
     cin >> opcionTransportista;
-    if (opcionTransportista < 1 || opcionTransportista >(int)transportistas.size()) {
-        cout << "\n\tOpción de transportista inválida.\n";
+    if (opcionTransportista == 0) {
+        system("pause");
         return;
     }
+    if (opcionTransportista < 1 || opcionTransportista > (int)transportistas.size()) {
+        cout << "\n\tOpcion de transportista invalida.\n";
+        system("pause");
+        return;
+    }
+
     Transportistas seleccionado = transportistas[opcionTransportista - 1];
 
-    // Crear nuevo envío
     Envio nuevo;
     nuevo.idPedido = idPedido;
     nuevo.idTransportista = seleccionado.id;
@@ -167,11 +180,17 @@ void Envios::crearEnvioInteractivo() {
     envios.push_back(nuevo);
     guardarEnviosEnArchivo(envios);
 
-    itPedido->setEstado("enviado");
+    for (auto& p : pedidos) {
+        if (p.getId() == idPedido) {
+            p.setEstado("enviado");
+        }
+    }
     guardarPedidos(pedidos);
 
-    auditoria.registrar(usuarioRegistrado.getNombre(), "ENVIOS", "Creado envío para pedido " + idPedido + " con transportista " + seleccionado.id);
-    cout << "\n\tEnvío creado exitosamente.\n";
+    auditoria.registrar(usuarioRegistrado.getNombre(), "ENVIOS", "Creado envio para pedido " + idPedido + " con transportista " + seleccionado.id);
+    cout << "\n\tEnvio creado exitosamente.\n";
+
+    system("pause");
 }
 
 void Envios::crearEnvio(const std::string& idPedido, const std::vector<Transportistas>& transportistasDisponibles) {
@@ -193,151 +212,249 @@ void Envios::crearEnvio(const std::string& idPedido, const std::vector<Transport
 }
 
 void Envios::mostrarEnvios() {
+    system("cls");
+    cout << "------------------------------------------------------------\n";
+    cout << "                     LISTA DE ENVIOS                         \n";
+    cout << "------------------------------------------------------------\n";
+
     vector<Envio> envios = cargarEnviosDesdeArchivo();
     if (envios.empty()) {
-        cout << "\n\tNo hay envíos registrados.\n";
+        cout << "\n\tNo hay envios registrados.\n";
+        system("pause");
         return;
     }
 
-    cout << "\n\t===== LISTA DE ENVÍOS =====\n";
+    cout << "------------------------------------------------------------\n";
+    cout << "ID Pedido       | ID Transportista | Estado                  \n";
+    cout << "------------------------------------------------------------\n";
+
     for (const auto& envio : envios) {
-        cout << "\nPedido ID: " << envio.idPedido
-             << "\nTransportista ID: " << envio.idTransportista
-             << "\nEstado: " << envio.estado << "\n--------------------------\n";
+        cout << setw(15) << left << envio.idPedido << "| "
+             << setw(17) << left << envio.idTransportista << "| "
+             << setw(23) << left << envio.estado << "\n";
     }
+    cout << "------------------------------------------------------------\n";
+
+    system("pause");
+}
+
+void mostrarTablaEnvios(const vector<Envio>& envios) {
+    cout << "\n-------------------------------------------------------------\n";
+    cout << "| ID Pedido | ID Cliente | ID Transportista | Estado        |\n";
+    cout << "-------------------------------------------------------------\n";
+
+    for (const auto& envio : envios) {
+        cout << "| "
+             << setw(9) << envio.idPedido << " | "
+             << setw(10) << envio.idCliente << " | "
+             << setw(16) << envio.idTransportista << " | "
+             << setw(13) << envio.estado << " |\n";
+    }
+
+    cout << "-------------------------------------------------------------\n";
 }
 
 void modificarEstadoEnvio() {
+    system("cls");
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
-    string id;
-    cout << "Ingrese ID del pedido a modificar: ";
-    cin >> id;
 
-    auto it = find_if(envios.begin(), envios.end(), [&](const Envio& e) {
-        return e.idPedido == id;
-    });
-
-    if (it == envios.end()) {
-        cout << "\n\tEnvío no encontrado.\n";
+    if (envios.empty()) {
+        cout << "\n\tNo hay envios registrados.\n";
+        system("pause");
         return;
     }
 
-    if (it->estado != "en camino") {
-        cout << "\n\tSolo se puede modificar si está 'en camino'.\n";
-        return;
+    cout << "------------------------------------------------------------\n";
+    cout << "                MODIFICAR ESTADO DE ENVIO                   \n";
+    cout << "------------------------------------------------------------\n";
+
+    cout << "ID Pedido       | Estado\n";
+    cout << "------------------------------------------------------------\n";
+    for (const auto& envio : envios) {
+        cout << setw(15) << left << envio.idPedido << "| "
+             << setw(23) << left << envio.estado << "\n";
+    }
+    cout << "------------------------------------------------------------\n";
+
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // limpiar buffer
+
+    string idPedido;
+    cout << "Ingrese ID del pedido a modificar (0 para salir): ";
+    getline(cin, idPedido);
+
+    if (idPedido == "0") return;
+
+    bool encontrado = false;
+    for (auto& envio : envios) {
+        if (envio.idPedido == idPedido) {
+            cout << "Estado actual  : " << envio.estado << "\n";
+            cout << "Ingrese nuevo estado (en camino, entregado): ";
+            getline(cin, envio.estado);
+            encontrado = true;
+            break;
+        }
     }
 
-    cout << "\nNuevo estado (entregado/demorado/devuelto): ";
-    string nuevoEstado;
-    cin >> nuevoEstado;
-
-    if (nuevoEstado != "entregado" && nuevoEstado != "demorado" && nuevoEstado != "devuelto") {
-        cout << "\n\tEstado inválido.\n";
-        return;
+    if (encontrado) {
+        Envios::guardarEnviosEnArchivo(envios);
+        cout << "\n\tEstado modificado exitosamente.\n";
+    } else {
+        cout << "\n\tNo se encontro el envio con ID de pedido: " << idPedido << "\n";
     }
 
-    it->estado = nuevoEstado;
-    Envios::guardarEnviosEnArchivo(envios);
-    cout << "\n\tEstado actualizado correctamente.\n";
+    system("pause");
 }
 
 void cancelarEnvio() {
+    system("cls");
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
-    string id;
-    cout << "Ingrese ID del envío a cancelar: ";
-    cin >> id;
 
-    auto it = find_if(envios.begin(), envios.end(), [&](const Envio& e) {
-        return e.idPedido == id;
-    });
-
-    if (it == envios.end()) {
-        cout << "\n\tEnvío no encontrado.\n";
+    if (envios.empty()) {
+        cout << "\n\tNo hay envios registrados.\n";
+        system("pause");
         return;
     }
 
-    if (it->estado == "entregado") {
-        cout << "\n\tNo se puede cancelar un envío entregado.\n";
-        return;
+    cout << "------------------------------------------------------------\n";
+    cout << "                      CANCELAR ENVIO                         \n";
+    cout << "------------------------------------------------------------\n";
+
+    cout << "ID Pedido       | Estado\n";
+    cout << "------------------------------------------------------------\n";
+    for (const auto& envio : envios) {
+        cout << setw(15) << left << envio.idPedido << "| "
+             << setw(23) << left << envio.estado << "\n";
+    }
+    cout << "------------------------------------------------------------\n";
+
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // limpiar buffer
+
+    string idPedido;
+    cout << "Ingrese ID del pedido a cancelar (0 para salir): ";
+    getline(cin, idPedido);
+
+    if (idPedido == "0") return;
+
+    bool encontrado = false;
+    for (auto& envio : envios) {
+        if (envio.idPedido == idPedido) {
+            if (envio.estado == "entregado") {
+                cout << "\n\tNo se puede cancelar un envio ya entregado.\n";
+                system("pause");
+                return;
+            }
+            if (envio.estado != "en camino") {
+                cout << "\n\tNo se puede cancelar el envio en estado actual: " << envio.estado << "\n";
+                system("pause");
+                return;
+            }
+            envio.estado = "Cancelado";
+            encontrado = true;
+            break;
+        }
     }
 
-    it->estado = "cancelado";
-    Envios::guardarEnviosEnArchivo(envios);
-    cout << "\n\tEnvío cancelado correctamente.\n";
+    if (encontrado) {
+        Envios::guardarEnviosEnArchivo(envios);
+        cout << "\n\tEnvio cancelado exitosamente.\n";
+    } else {
+        cout << "\n\tNo se encontro el envio con ID de pedido: " << idPedido << "\n";
+    }
+
+    system("pause");
 }
 
 void eliminarEnvio() {
+    system("cls");
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
-    string id;
-    cout << "Ingrese ID del envío a eliminar: ";
-    cin >> id;
 
-    auto it = find_if(envios.begin(), envios.end(), [&](const Envio& e) {
-        return e.idPedido == id;
-    });
-
-    if (it == envios.end()) {
-        cout << "\n\tEnvío no encontrado.\n";
+    if (envios.empty()) {
+        cout << "\n\tNo hay envios registrados.\n";
+        system("pause");
         return;
     }
 
-    char confirm;
-    cout << "¿Confirmar eliminación? (s/n): ";
-    cin >> confirm;
+    cout << "------------------------------------------------------------\n";
+    cout << "                      ELIMINAR ENVIO                         \n";
+    cout << "------------------------------------------------------------\n";
 
-    if (confirm == 's' || confirm == 'S') {
-        envios.erase(it);
-        Envios::guardarEnviosEnArchivo(envios);
-        cout << "\n\tEnvío eliminado exitosamente.\n";
-    } else {
-        cout << "\n\tOperación cancelada.\n";
+    cout << "ID Pedido       | Estado\n";
+    cout << "------------------------------------------------------------\n";
+    for (const auto& envio : envios) {
+        cout << setw(15) << left << envio.idPedido << "| "
+             << setw(23) << left << envio.estado << "\n";
     }
+    cout << "------------------------------------------------------------\n";
+
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // limpiar buffer
+
+    string idPedido;
+    cout << "Ingrese ID del pedido a eliminar (0 para salir): ";
+    getline(cin, idPedido);
+
+    if (idPedido == "0") return;
+
+    auto it = std::remove_if(envios.begin(), envios.end(), [idPedido](const Envio& envio) {
+        return envio.idPedido == idPedido;
+    });
+
+    if (it != envios.end()) {
+        envios.erase(it, envios.end());
+        Envios::guardarEnviosEnArchivo(envios);
+        cout << "\n\tEnvio eliminado exitosamente.\n";
+    } else {
+        cout << "\n\tNo se encontro el envio con ID de pedido: " << idPedido << "\n";
+    }
+
+    system("pause");
 }
 
 void Envios::gestionEnvios() {
     int opcion = 0;
     do {
         system("cls");
-        cout << "\t\t========================================\n";
-        cout << "\t\t|     SISTEMA DE GESTIÓN DE ENVÍOS      |\n";
-        cout << "\t\t========================================\n";
-        cout << "\t\t 1. Crear nuevo envío\n";
-        cout << "\t\t 2. Consultar envíos\n";
-        cout << "\t\t 3. Modificar estado de envío\n";
-        cout << "\t\t 4. Cancelar envío\n";
-        cout << "\t\t 5. Eliminar envío\n";
-        cout << "\t\t 6. Volver al menú principal\n";
-        cout << "\t\t========================================\n";
-        cout << "\t\t Opción: ";
-cin >> opcion;
-    switch (opcion) {
-    case 1:
-        crearEnvioInteractivo();
-        system("pause");
-        break;
-    case 2:
-        mostrarEnvios();
-        system("pause");
-        break;
-    case 3:
-        modificarEstadoEnvio();
-        system("pause");
-        break;
-    case 4:
-        cancelarEnvio();
-        system("pause");
-        break;
-    case 5:
-        eliminarEnvio();
-        system("pause");
-        break;
-    case 6:
-        cout << "\n\tSaliendo al menú principal...\n";
-        break;
-    default:
-        cout << "\n\tOpción inválida.\n";
-        system("pause");
-        break;
-    }
+        cout << "------------------------------------------------------------\n";
+        cout << "                   SISTEMA DE GESTION DE ENVIOS             \n";
+        cout << "------------------------------------------------------------\n";
+        cout << "        [1] Crear nuevo envio\n";
+        cout << "        [2] Consultar envios\n";
+        cout << "        [3] Modificar estado de envio\n";
+        cout << "        [4] Cancelar envio\n";
+        cout << "        [5] Eliminar envio\n";
+        cout << "        [6] Volver al menu principal\n";
+        cout << "------------------------------------------------------------\n";
+        cout << "           Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            crearEnvioInteractivo();
+            system("pause");
+            break;
+        case 2:
+            mostrarEnvios();
+            system("pause");
+            break;
+        case 3:
+            modificarEstadoEnvio();
+            system("pause");
+            break;
+        case 4:
+            cancelarEnvio();
+            system("pause");
+            break;
+        case 5:
+            eliminarEnvio();
+            system("pause");
+            break;
+        case 6:
+            cout << "\n\tSaliendo al menu principal...\n";
+            break;
+        default:
+            cout << "\n\tOpcion invalida.\n";
+            system("pause");
+            break;
+        }
     } while (opcion != 6);
 }
+

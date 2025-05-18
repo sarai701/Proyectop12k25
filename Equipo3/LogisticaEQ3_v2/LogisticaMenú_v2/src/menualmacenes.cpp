@@ -1,70 +1,76 @@
 //9959 24 11603 GE
 #include "MenuAlmacenes.h"
+#include "Almacen.h"
 #include <iostream>
 #include <limits>
 
-// Función que muestra el menú de gestión de almacenes
-void MenuAlmacenes::mostrar(std::vector<Almacen>& lista, usuarios& usuarioActual) {
-    int opcion;          // Variable para almacenar la opción ingresada por el usuario
-    std::string input;   // Para capturar IDs u otros textos desde el teclado
+using namespace std;
+
+// Muestra el menu de gestion de almacenes
+// lista: Referencia al vector de almacenes
+// usuarioActual: Referencia al usuario que esta usando el sistema
+void MenuAlmacenes::mostrar(vector<Almacen>& lista, usuarios& usuarioActual) {
+    // Cargar datos de almacenes desde archivo
+    Almacen::cargarDesdeArchivo(lista);
+
+    int opcion;
+    string input;
 
     do {
-        system("cls"); // Limpia la pantalla (solo en sistemas Windows)
+        system("cls");
+        // Mostrar encabezado del menu
+        cout << "=== MENU ALMACENES ===\n"
+             << "Usuario: " << usuarioActual.getNombre() << "\n\n"
+             << "1. Agregar almacen\n"
+             << "2. Mostrar almacenes\n"
+             << "3. Modificar almacen\n"
+             << "4. Eliminar almacen\n"
+             << "5. Volver\n"
+             << "Seleccione: ";
 
-        // Muestra el menú principal con el nombre del usuario actual
-        std::cout << "=== MENÚ ALMACENES ===\n"
-                  << "\t\t| Usuario: " << usuarioActual.getNombre() << "\n"
-                  << "1. Agregar Almacen\n"
-                  << "2. Mostrar Almacenes\n"
-                  << "3. Modificar Almacen\n"
-                  << "4. Eliminar Almacen\n"
-                  << "5. Volver al menú principal\n"
-                  << "\t\t=====================\n"
-                  << "\t\tSeleccione una opción: ";
-
-        // Validación de entrada para asegurarse de que se ingrese un número
-        while (!(std::cin >> opcion)) {
-            std::cin.clear(); // Limpia el estado de error
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descarta entrada inválida
-            std::cout << "Entrada inválida. Ingrese un número: ";
+        // Validar entrada numerica
+        while (!(cin >> opcion)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Entrada invalida. Ingrese un numero: ";
         }
+        cin.ignore();
 
-        std::cin.ignore(); // Limpia el salto de línea tras ingresar número
-
-        // Lógica del menú según la opción seleccionada
-        switch (opcion) {
-            case 1:
-                // Agrega un nuevo almacén
+        // Procesar opcion seleccionada
+        switch(opcion) {
+            case 1:  // Agregar nuevo almacen
                 Almacen::agregar(lista, usuarioActual.getNombre());
                 break;
-            case 2:
-                // Muestra todos los almacenes registrados
+
+            case 2:  // Mostrar lista de almacenes
                 Almacen::mostrar(lista);
-                system("pause"); // Pausa para que el usuario pueda ver los datos
                 break;
-            case 3: {
-                // Solicita y modifica un almacén existente
-                Almacen::mostrar(lista); // Primero muestra los almacenes
-                std::cout << "ID a modificar: ";
-                std::getline(std::cin, input);
+
+            case 3: {  // Modificar almacen existente
+                Almacen::mostrar(lista);
+                cout << "ID a modificar: ";
+                getline(cin, input);
                 Almacen::modificar(lista, usuarioActual.getNombre(), input);
                 break;
             }
-            case 4: {
-                // Solicita y elimina un almacén existente
-                Almacen::mostrar(lista); // Primero muestra los almacenes
-                std::cout << "ID a eliminar: ";
-                std::getline(std::cin, input);
+
+            case 4: {  // Eliminar almacen
+                Almacen::mostrar(lista);
+                cout << "ID a eliminar: ";
+                getline(cin, input);
                 Almacen::eliminar(lista, usuarioActual.getNombre(), input);
                 break;
             }
-            case 5:
-                // Sale del menú de almacenes y vuelve al menú principal
+
+            case 5:  // Salir del menu
                 return;
-            default:
-                // Opción no válida
-                std::cout << "Opción inválida\n";
-                system("pause"); // Pausa para mostrar el mensaje
+
+            default:  // Opcion no valida
+                cout << "Opcion invalida\n";
         }
-    } while (true); // Bucle infinito hasta que se seleccione la opción de salir
+
+        // Pausa antes de continuar
+        cout << "\nPresione Enter para continuar...";
+        cin.get();
+    } while(true);  // Bucle infinito hasta que se seleccione salir
 }

@@ -16,7 +16,10 @@ private:
     bool usuarioExiste(const std::string& nombreUsuario);
     std::string leerPasswordSegura();
     std::string confirmacion ();
+<<<<<<< HEAD
     std::string generarCodigoUnico();
+=======
+>>>>>>> 296cd50756a892cdc97a9b778a2a348ccc059bd2
 
 public:
     usuarios();

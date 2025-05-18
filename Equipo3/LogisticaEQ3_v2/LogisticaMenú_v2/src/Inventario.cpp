@@ -1,5 +1,6 @@
 //Karina Alejandra Arriaza Ortiz
 #include <iostream>
+<<<<<<< HEAD
 #include <vector>
 #include <iomanip>
 #include <algorithm>
@@ -10,6 +11,66 @@ using namespace std;
 
 const int CODIGO_INICIAL = 3600;
 const int CODIGO_FINAL = 3699;
+=======
+<<<<<<< HEAD
+#include <fstream>
+#include <iomanip>
+=======
+#include <vector>
+#include <iomanip>
+#include <algorithm>
+>>>>>>> 41bb3a00910ca4696bd03c7869804716f8c396f2
+
+using namespace std;
+
+// Clase para representar un producto
+class Producto {
+private:
+    string id;
+    string nombre;
+    int cantidad;
+
+public:
+    Producto(string id, string nombre, int cantidad)
+        : id(id), nombre(nombre), cantidad(cantidad) {}
+
+    // Getters
+    string getId() const { return id; }
+    string getNombre() const { return nombre; }
+    int getCantidad() const { return cantidad; }
+
+    // Setters
+    void setCantidad(int nuevaCantidad) { cantidad = nuevaCantidad; }
+    void setNombre(string nuevoNombre) { nombre = nuevoNombre; }
+};
+
+// Clase para manejar el inventario
+class Inventario {
+private:
+    vector<Producto> productos;
+
+public:
+    void controlInventario();
+    void consultarStock();
+    void registrarMercancia();
+    void ajustarInventario();
+    void reporteExistencias();
+
+private:
+    Producto* buscarProductoPorId(const string& id);
+};
+
+// Implementación de los métodos
+
+Producto* Inventario::buscarProductoPorId(const string& id) {
+    for (auto& producto : productos) {
+        if (producto.getId() == id) {
+            return &producto;
+        }
+    }
+    return nullptr;
+}
+>>>>>>> 296cd50756a892cdc97a9b778a2a348ccc059bd2
 
 // Clase para representar un producto
 class Producto {
@@ -51,6 +112,7 @@ private:
             siguienteCodigo++;
         }
 
+<<<<<<< HEAD
         // Si no hay secuenciales disponibles, buscar cualquier código libre
         for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; i++) {
             string codigo = to_string(i);
@@ -83,12 +145,15 @@ public:
 
 // Implementación de los métodos
 
+=======
+>>>>>>> 296cd50756a892cdc97a9b778a2a348ccc059bd2
 void Inventario::registrarMercancia() {
     system("cls");
     cout << "\t\t========================================" << endl;
     cout << "\t\t| REGISTRAR MERCANCIA NUEVA            |" << endl;
     cout << "\t\t========================================" << endl;
 
+<<<<<<< HEAD
     try {
         string id = generarCodigoUnico();
         string nombre;
@@ -105,6 +170,25 @@ void Inventario::registrarMercancia() {
         cout << "\n\t\tMercancia registrada correctamente con ID: " << id << endl;
     } catch (const runtime_error& e) {
         cerr << "\n\t\tError: " << e.what() << endl;
+=======
+    string id, nombre;
+    int cantidad;
+
+    cout << "\t\tID del producto: ";
+    cin >> id;
+    cout << "\t\tNombre del producto: ";
+    cin.ignore();
+    getline(cin, nombre);
+    cout << "\t\tCantidad: ";
+    cin >> cantidad;
+
+    // Verificar si el producto ya existe
+    if (buscarProductoPorId(id) != nullptr) {
+        cout << "\n\t\tError: Producto con este ID ya existe!" << endl;
+    } else {
+        productos.emplace_back(id, nombre, cantidad);
+        cout << "\n\t\tMercancia registrada correctamente." << endl;
+>>>>>>> 296cd50756a892cdc97a9b778a2a348ccc059bd2
     }
 
     system("pause");
