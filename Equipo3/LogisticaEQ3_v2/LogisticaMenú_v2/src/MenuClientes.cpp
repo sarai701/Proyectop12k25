@@ -25,50 +25,46 @@ void MenuClientes::mostrar(vector<Clientes>& listaClientes, usuarios& usuarioAct
     string input;
 
     do {
-        // Limpiar pantalla y mostrar encabezado del menú
         system("cls");
-        cout << "\t\t=== MENÚ CLIENTES ===\n"
-             << "\t\t| Usuario: " << usuarioActual.getNombre() << "\n"
-             << "\t\t1. Agregar cliente\n"
-             << "\t\t2. Mostrar clientes\n"
-             << "\t\t3. Modificar cliente\n"
-             << "\t\t4. Eliminar cliente\n"
-             << "\t\t5. Volver al menú principal\n"
-             << "\t\t=====================\n"
-             << "\t\tSeleccione una opción: ";
+        cout << "\n--------------------------------------------------------------------------------\n";
+        cout << "                        SISTEMA DE GESTION DE CLIENTES                          \n";
+        cout << "--------------------------------------------------------------------------------\n";
+        cout << "   Usuario actual: " << usuarioActual.getNombre() << "\n";
+        cout << "--------------------------------------------------------------------------------\n";
+        cout << "   [1] Agregar cliente\n";
+        cout << "   [2] Mostrar clientes\n";
+        cout << "   [3] Modificar cliente\n";
+        cout << "   [4] Eliminar cliente\n";
+        cout << "   [5] Volver al menu principal\n";
+        cout << "--------------------------------------------------------------------------------\n";
+        cout << "                     Seleccione una opcion: ";
 
-        // Validación de entrada: solo se aceptan números
+        // Validación de entrada
         while (!(cin >> opcion)) {
-            cin.clear(); // Limpiar estado de error
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descartar entrada inválida
-            cout << "\t\tEntrada inválida. Por favor ingrese un número: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\n   Entrada invalida. Ingrese un numero valido: ";
         }
-        cin.ignore(); // Limpiar el buffer restante
+        cin.ignore();
 
-        // Ejecutar la opción seleccionada por el usuario
-        switch(opcion) {
+        switch (opcion) {
             case 1:
-                // Llamar a la función estática para agregar un cliente
                 Clientes::agregar(listaClientes, usuarioActual.getNombre());
                 break;
 
             case 2:
-                // Mostrar la lista de clientes
                 Clientes::mostrar(listaClientes);
                 break;
 
             case 3: {
-                // Mostrar la lista antes de modificar
                 Clientes::mostrar(listaClientes);
                 if (!listaClientes.empty()) {
-                    cout << "\n\t\tIngrese ID del cliente a modificar: ";
+                    cout << "\n   Ingrese ID del cliente a modificar: ";
                     getline(cin, input);
-
-                    // Verificar si el ID ingresado es válido antes de modificar
                     if (Clientes::esIdValido(input)) {
                         Clientes::modificar(listaClientes, usuarioActual.getNombre(), input);
                     } else {
-                        cout << "\t\tID no válido. Debe estar entre " << CODIGO_INICIAL
+                        cout << "   ID no valido. Debe estar entre " << CODIGO_INICIAL
                              << " y " << CODIGO_FINAL << "\n";
                         system("pause");
                     }
@@ -77,17 +73,14 @@ void MenuClientes::mostrar(vector<Clientes>& listaClientes, usuarios& usuarioAct
             }
 
             case 4: {
-                // Mostrar la lista antes de eliminar
                 Clientes::mostrar(listaClientes);
                 if (!listaClientes.empty()) {
-                    cout << "\n\t\tIngrese ID del cliente a eliminar: ";
+                    cout << "\n   Ingrese ID del cliente a eliminar: ";
                     getline(cin, input);
-
-                    // Verificar si el ID ingresado es válido antes de eliminar
                     if (Clientes::esIdValido(input)) {
                         Clientes::eliminar(listaClientes, usuarioActual.getNombre(), input);
                     } else {
-                        cout << "\t\tID no válido. Debe estar entre " << CODIGO_INICIAL
+                        cout << "   ID no valido. Debe estar entre " << CODIGO_INICIAL
                              << " y " << CODIGO_FINAL << "\n";
                         system("pause");
                     }
@@ -96,14 +89,15 @@ void MenuClientes::mostrar(vector<Clientes>& listaClientes, usuarios& usuarioAct
             }
 
             case 5:
-                // Guardar datos en archivo antes de volver al menú principal
                 Clientes::guardarEnArchivo(listaClientes);
-                return; // Salir del menú de clientes
+                cout << "\n   Regresando al menu principal...\n";
+                break;
 
             default:
-                // Opción inválida
-                cout << "\t\tOpción no válida. Intente nuevamente.\n";
+                cout << "\n   Opcion invalida.\n";
                 system("pause");
+                break;
         }
-    } while (true); // Bucle infinito hasta que el usuario elija salir
+
+    } while (opcion != 5);
 }
