@@ -520,3 +520,46 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3103        Angel          PEDIDOS             Consulta de pedidos                18/05/2025 11:29:11 
 3104        Angel          PEDIDOS             Salida de gestión de pedidos       18/05/2025 11:29:19 
 >>>>>>> 06213e2a7593c2c519cf32a6481efe3964f5ffc6
+3000        Angoly         000                 REG-USER                           18/05/2025 11:54:04 
+3001        Camila         000                 LOGIN-FAIL                         18/05/2025 11:54:13 
+3002        Angoly         000                 LOGIN                              18/05/2025 11:54:22 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 11:54:43 
+3000        Angoly         000                 LOGIN                              18/05/2025 11:56:19 
+3150        Angoly         CLIENTES            Cliente agregado - ID: 3108        18/05/2025 11:56:45 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:13:58 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:14:18 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:16:50 
+3100        Angoly         PEDIDOS             Pedido creado - ID: 3406           18/05/2025 12:17:25 
+3101        Angoly         PEDIDOS             Salida de gestión de pedidos       18/05/2025 12:17:30 
+3102        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:17:43 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:22:34 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:22:53 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:24:30 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:24:48 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:34:49 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:35:07 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:39:39 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:39:54 
+3101        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:40:25 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:42:54 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:48:04 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:48:17 
+3000        Angoly         000                 LOGIN                              18/05/2025 13:34:51 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 13:35:04 
+3000        Angoly         000                 LOGIN                              18/05/2025 13:45:37 
+3000        Angoly         000                 LOGIN                              18/05/2025 13:47:02 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 13:47:17 
+3000        Angoly         000                 LOGIN                              18/05/2025 14:00:35 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 14:00:50 
+3000        Angoly         000                 LOGIN                              18/05/2025 14:27:00 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 14:27:14 
+3000        Angoly         000                 LOGIN                              18/05/2025 14:45:32 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 14:45:41 
+3000        Angoly         000                 LOGIN-FAIL                         18/05/2025 15:13:19 
+3001        Angoly         000                 LOGIN                              18/05/2025 15:13:26 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 15:13:35 
+3000        12345678       000                 LOGIN-FAIL                         18/05/2025 15:18:10 
+3001        Angoly         000                 LOGIN                              18/05/2025 15:18:22 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 15:18:32 
+3000        Angoly         000                 LOGIN                              18/05/2025 15:21:52 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 15:22:10 

@@ -3,6 +3,7 @@
 #ifndef FACTURACION_H
 #define FACTURACION_H
 
+
 #include <iostream>
 using namespace std;
 
@@ -18,13 +19,13 @@ struct Factura {
 class Facturacion {
 private:
     const char* archivoFacturas = "facturas.bin";
-    const char* archivoBitacora = "bitacora.txt";
+    const char* archivoBitacora = "bitacora.bin";
 
     void guardarEnArchivo(Factura factura);
     void mostrarClientes();
     void mostrarPedidos();
     int generarIdFactura();
-    void registrarBitacora(const Factura& factura, const string& accion, const string& usuario = "Camila");
+    void registrarBitacora(const Factura& factura, const string& accion, const string& usuario = "Usuario");
 
 public:
     void mostrarMenuFacturacion();
