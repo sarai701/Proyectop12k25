@@ -10,6 +10,7 @@
 #include <iomanip>
 #include <sstream>
 #include <vector>
+#include "usuarios.h"
 #include "bitacora.h"
 using namespace std;
 
