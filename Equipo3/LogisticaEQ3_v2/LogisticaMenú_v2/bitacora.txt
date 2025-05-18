@@ -230,6 +230,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3103        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 21:54:10 
 3000        Angel          000                 LOGIN                              17/05/2025 21:55:10 
 3000        Angel          000                 LOGIN                              17/05/2025 21:57:58 
+<<<<<<< HEAD
 >>>>>>> 045646afd118a874f0d9691f1b5605904354cb58
 =======
 3000        Sistema        000                 PROGRAMA CERRADO                   17/05/2025 20:19:46 
@@ -465,3 +466,21 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
       3557          Camila          FACTURACION     Factura agregada 17/05/2025 22:39:12
       3557          Camila          FACTURACION    Factura eliminada 17/05/2025 22:39:52
 >>>>>>> 5bbe8afdfb45178f0648659a4a1e6e9e6ac5a8bf
+=======
+3000        Angel          000                 LOGIN                              17/05/2025 22:42:50 
+3000        Angel          000                 LOGIN                              17/05/2025 22:45:16 
+3000        Angel          000                 LOGIN                              17/05/2025 22:45:46 
+3000        Angel          000                 LOGIN                              17/05/2025 22:52:16 
+3000        Angel          000                 LOGIN                              17/05/2025 22:54:28 
+3100        Angel          PEDIDOS             Pedido creado - ID: 3408           17/05/2025 22:55:19 
+3101        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 22:55:21 
+3550        Angel          ENVIOS              Creado envio para pedido 3408 con transportista 331117/05/2025 22:55:31 
+3000        Angel          000                 LOGIN                              17/05/2025 22:57:57 
+3000        Angel          000                 LOGIN                              17/05/2025 22:59:38 
+3000        Angel          000                 LOGIN                              17/05/2025 23:01:41 
+3100        Angel          PEDIDOS             Pedido creado - ID: 3409           17/05/2025 23:03:44 
+3101        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 23:03:46 
+3550        Angel          ENVIOS              Creado envio para pedido 3409 con transportista 331117/05/2025 23:03:53 
+3000        Angel          000                 LOGIN                              17/05/2025 23:55:03 
+3000        Angel          000                 LOGIN                              18/05/2025 00:45:00 
+>>>>>>> 27b7cee60f7cab43935bc70ee832239e9daa0484
