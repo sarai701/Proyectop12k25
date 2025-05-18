@@ -203,3 +203,12 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3550        Angel          ENVIOS              Creado envio para pedido 3409 con transportista 331117/05/2025 23:03:53 
 3000        Angel          000                 LOGIN                              17/05/2025 23:55:03 
 3000        Angel          000                 LOGIN                              18/05/2025 00:45:00 
+3000        Angel          000                 LOGIN                              18/05/2025 11:26:49 
+3150        Angel          CLIENTES            Cliente agregado - ID: 3107        18/05/2025 11:27:08 
+3100        Angel          PEDIDOS             Salida de gestión de pedidos       18/05/2025 11:27:52 
+3250        Angel          PRODUCTOS           Agregado: 3211                     18/05/2025 11:28:16 
+3101        Angel          PEDIDOS             Pedido creado - ID: 3410           18/05/2025 11:28:34 
+3102        Angel          PEDIDOS             Salida de gestión de pedidos       18/05/2025 11:28:36 
+3550        Angel          ENVIOS              Creado envio para pedido 3410 con transportista 331118/05/2025 11:28:43 
+3103        Angel          PEDIDOS             Consulta de pedidos                18/05/2025 11:29:11 
+3104        Angel          PEDIDOS             Salida de gestión de pedidos       18/05/2025 11:29:19 
