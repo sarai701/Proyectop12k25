@@ -1,8 +1,8 @@
 //Jonathan Samuel Gonzalez
 #ifndef MONEDA_H
 #define MONEDA_H
-#include "Bitacora.h"
 
+#include "Bitacora.h"
 #include <string>
 
 class Moneda {
@@ -18,6 +18,7 @@ public:
     static void actualizarTasas(double usd, double eur);
     static double convertirAGtq(double cantidad);
     static double convertirDesdeGtq(double cantidad);
+    static void mostrarMoneda();
 };
 
 #endif

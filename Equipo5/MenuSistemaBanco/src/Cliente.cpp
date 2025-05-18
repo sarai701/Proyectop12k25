@@ -71,6 +71,36 @@ void Cliente::ordenarClientes() {
         return a.nombre < b.nombre;
     });
 }
+void Cliente::menuClienteCRUD() {
+    int opcion;
+    do {
+        cargarClientes(); // cargar clientes
+        limpiarPantalla();
+        cout << "\n===== MENÚ DE CLIENTES =====";
+        cout << "\n1. Crear Cliente";
+        cout << "\n2. Borrar Cliente";
+        cout << "\n3. Buscar Cliente";
+        cout << "\n4. Modificar Cliente";
+        cout << "\n5. Desplegar Clientes";
+        cout << "\n6. Salir";
+        cout << "\nSeleccione una opción: ";
+        cin >> opcion;
+        cin.ignore();
+
+        switch (opcion) {
+            case 1: crearCliente(); break;
+            case 2: borrarCliente(); break;
+            case 3: buscarCliente(); break;
+            case 4: modificarCliente(); break;
+            case 5: desplegarClientes(); break;
+            case 6: limpiarPantalla(); return;
+            default:
+                cout << "\nOpción inválida.";
+                pausar();
+        }
+    } while (true);
+}
+
 
 // Muestra el menú principal
 void Cliente::menuCliente() {
@@ -252,10 +282,13 @@ void Cliente::desplegarClientes() {
 
 void Cliente::registrarMovimiento() {
     limpiarPantalla();
+    cargarClientes();  // Solución agregada
+
     string codigoCliente, descripcion, fecha;
     double monto=0;
     cout << "\n=== Registrar Movimiento ===";
     cout << "\nCódigo del Cliente: ";
+    cin.ignore();
     getline(cin, codigoCliente);
 
     bool encontrado = false;
@@ -288,11 +321,13 @@ void Cliente::registrarMovimiento() {
     pausar();
 }
 
+
 void Cliente::mostrarMovimientos() {
     limpiarPantalla();
     string codigoCliente, linea;
     cout << "\n=== Mostrar Movimientos ===";
     cout << "\nCódigo del Cliente: ";
+    cin.ignore();
     getline(cin, codigoCliente);
 
     ifstream archivo("movimientos.txt");
@@ -338,6 +373,7 @@ void Cliente::registrarPrestamo() {
     double monto;
     cout << "\n=== Registrar Préstamo ===";
     cout << "\nCódigo del Cliente: ";
+    cin.ignore();
     getline(cin, codigoCliente);
 
     bool encontrado = false;
@@ -372,6 +408,7 @@ void Cliente::mostrarPrestamos() {
     string codigoCliente, linea;
     cout << "\n=== Mostrar Préstamos ===";
     cout << "\nCódigo del Cliente: ";
+    cin.ignore();
     getline(cin, codigoCliente);
 
     ifstream archivo("prestamos.txt");

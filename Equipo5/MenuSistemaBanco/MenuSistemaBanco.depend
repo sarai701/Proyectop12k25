@@ -670,7 +670,7 @@
 	<vector>
 	"Bitacora.h"
 
-1746505874 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
+1747021726 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
 	"Cliente.h"
 	"Bitacora.h"
 	<iostream>
@@ -678,15 +678,15 @@
 	<vector>
 	<algorithm>
 
-1746505874 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
+1747021726 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
 	<string>
 	<vector>
 	"Bitacora.h"
 
-1747012039 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
+1747300403 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
 	<string>
 
-1747012472 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
+1747020455 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
 	"Contabilidad.h"
 	<vector>
 	<sstream>
@@ -714,7 +714,7 @@
 	<vector>
 	"Bitacora.h"
 
-1747012472 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\main.cpp
+1747301829 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\main.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -728,6 +728,7 @@
 	"Nominas.h"
 	"Bitacora.h"
 	"Bancos.h"
+	"Moneda.h"
 
 1746505874 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\empleados.h
 	<vector>
@@ -738,12 +739,14 @@
 	"Bitacora.h"
 	<string>
 
-1746505083 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
+1747020455 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
 	"Bitacora.h"
 	<string>
 	<vector>
+	"Bitacora.h"
+	"Moneda.h"
 
-1747012039 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
+1747300327 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
 	"Bitacora.h"
 	<fstream>
 	<iostream>
@@ -758,7 +761,7 @@
 	<algorithm>
 	"Bitacora.h"
 
-1747012472 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
+1747020455 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
 	"Nominas.h"
 	<iostream>
 	<fstream>
@@ -1496,17 +1499,21 @@
 	<conio.h>
 	<cstdlib>
 
-1747012472 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bancos.h
+1747300605 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bancos.h
+	<string>
+	"Bitacora.h"
+	"Moneda.h"
+
+1747301080 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\moneda.h
+	"Bitacora.h"
 	<string>
 
-1747012472 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\moneda.h
-	<string>
-
-1747012472 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\moneda.cpp
+1747300908 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\moneda.cpp
 	"Moneda.h"
 	"Bitacora.h"
+	<iostream>
 
-1747016023 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bancos.cpp
+1747022451 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bancos.cpp
 	"Bancos.h"
 	"Moneda.h"
 	<iostream>
@@ -1647,4 +1654,301 @@
 	<fstream>
 	<conio.h>
 	<cstdlib>
+
+1747287784 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\menucatalogos.cpp
+	"menuCatalogos.h"
+
+1747287784 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\menucatalogos.h
+
+1747596360 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+	"Bitacora.h"
+	"Bancos.h"
+	"Moneda.h"
+	<limits>
+
+1746505874 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\empleados.h
+	<vector>
+	<string>
+	"Bitacora.h"
+
+1747594292 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\bitacora.h
+	<string>
+
+1747568471 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\cliente.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746505874 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\proveedores.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746505083 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\contabilidad.h
+	<iostream>
+	<fstream>
+	<string>
+	"Bitacora.h"
+
+1746505083 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\auditoria.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1747012039 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\usuario.h
+	"Bitacora.h"
+	<string>
+
+1747020455 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\nominas.h
+	"Bitacora.h"
+	<string>
+	<vector>
+	"Bitacora.h"
+	"Moneda.h"
+
+1747569574 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\moneda.h
+	"Bitacora.h"
+	<string>
+
+1747569574 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\bancos.h
+	<string>
+	"Bitacora.h"
+	"Moneda.h"
+
+1746505083 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\auditoria.cpp
+	"Auditoria.h"
+	<iostream>
+	<fstream>
+	"Bitacora.h"
+	<cstdlib>
+
+1747569574 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\bancos.cpp
+	"Bancos.h"
+	"Moneda.h"
+	<iostream>
+
+1747594295 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\bitacora.cpp
+	"Bitacora.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstring>
+
+1747569059 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\cliente.cpp
+	"Cliente.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1747020455 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\contabilidad.cpp
+	"Contabilidad.h"
+	<vector>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+	<cstdlib>
+
+1746505874 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+
+1747569574 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\moneda.cpp
+	"Moneda.h"
+	"Bitacora.h"
+	<iostream>
+
+1747020455 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+
+1746505874 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\proveedores.cpp
+	"Proveedores.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746505083 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
+1747569574 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\src\cuentas.cpp
+	"Cuentas.h"
+	<iostream>
+
+1747569574 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci\include\cuentas.h
+	<string>
+	"Bitacora.h"
+
+1746505083 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\auditoria.cpp
+	"Auditoria.h"
+	<iostream>
+	<fstream>
+	"Bitacora.h"
+	<cstdlib>
+
+1746505083 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\auditoria.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1747594292 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\bitacora.h
+	<string>
+
+1747569574 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\bancos.cpp
+	"Bancos.h"
+	"Moneda.h"
+	<iostream>
+
+1747569574 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\bancos.h
+	<string>
+	"Bitacora.h"
+	"Moneda.h"
+
+1747569574 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\moneda.h
+	"Bitacora.h"
+	<string>
+
+1747597324 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\bitacora.cpp
+	"Bitacora.h"
+	<fstream>
+	<iostream>
+	<iomanip>
+	<ctime>
+	<cstring>
+
+1747601467 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\cliente.cpp
+	"Cliente.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1747568471 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\cliente.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1747020455 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\contabilidad.cpp
+	"Contabilidad.h"
+	<vector>
+	<sstream>
+	<iomanip>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+	<cstdlib>
+
+1746505083 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\contabilidad.h
+	<iostream>
+	<fstream>
+	<string>
+	"Bitacora.h"
+
+1747569574 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\cuentas.cpp
+	"Cuentas.h"
+	<iostream>
+
+1747569574 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\cuentas.h
+	<string>
+	"Bitacora.h"
+
+1746505874 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+
+1746505874 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\empleados.h
+	<vector>
+	<string>
+	"Bitacora.h"
+
+1747569574 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\moneda.cpp
+	"Moneda.h"
+	"Bitacora.h"
+	<iostream>
+
+1747020455 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\nominas.cpp
+	"Nominas.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+	"Bitacora.h"
+	"Moneda.h"
+
+1747020455 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\nominas.h
+	"Bitacora.h"
+	<string>
+	<vector>
+	"Bitacora.h"
+	"Moneda.h"
+
+1746505874 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\proveedores.cpp
+	"Proveedores.h"
+	"Bitacora.h"
+	<iostream>
+	<fstream>
+	<algorithm>
+
+1746505874 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\proveedores.h
+	<string>
+	<vector>
+	"Bitacora.h"
+
+1746505083 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<cstdlib>
+
+1747012039 c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\include\usuario.h
+	"Bitacora.h"
+	<string>
+
+1747598621 source:c:\users\prisc\onedrive\documentos\copias\menusistemabancoprisci2\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"Empleados.h"
+	"Cliente.h"
+	"Proveedores.h"
+	"Contabilidad.h"
+	"Auditoria.h"
+	"Usuario.h"
+	<conio.h>
+	"Nominas.h"
+	"Bitacora.h"
+	"Bancos.h"
+	"Moneda.h"
+	<limits>
 

@@ -8,7 +8,7 @@
 
 class Bancos {
 private:
-    static Bitacora bitacoraBancos; // Instancia de bitácora para Bancos
+    static Bitacora bitacoraBancos;
 
     std::string bancoSeleccionado;
     std::string tipoCuentaSeleccionada;
@@ -21,15 +21,12 @@ private:
 public:
     Bancos();
 
-    // Configuración y visualización
     void menuConfiguracion();
     void mostrarConfiguracion();
 
-    // Funciones auxiliares
     static void limpiarPantalla();
     static void pausar();
 
-    // Getters
     std::string getBanco() const;
     std::string getCuenta() const;
     std::string getMoneda() const;

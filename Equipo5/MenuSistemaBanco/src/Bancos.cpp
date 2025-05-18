@@ -3,9 +3,7 @@
 #include "Bancos.h"
 #include "Moneda.h"
 #include <iostream>
-#include "Bitacora.h"
 
-Bitacora bitacoralog6;
 Bitacora Bancos::bitacoraBancos;
 
 using namespace std;
@@ -16,14 +14,12 @@ Bancos::Bancos() {
     monedaSeleccionada = "GTQ";
 }
 
-// Menú principal de configuración bancaria
 void Bancos::menuConfiguracion() {
     menuSeleccionBanco();
     menuTipoCuenta();
     menuTipoMoneda();
 }
 
-// Muestra la configuración actual
 void Bancos::mostrarConfiguracion() {
     limpiarPantalla();
     cout << "\n===== CONFIGURACIÓN ACTUAL =====";
@@ -33,7 +29,6 @@ void Bancos::mostrarConfiguracion() {
     pausar();
 }
 
-// --- Menús internos ---
 void Bancos::menuSeleccionBanco() {
     int opcion;
     do {
@@ -49,28 +44,34 @@ void Bancos::menuSeleccionBanco() {
         cin.ignore();
 
         switch (opcion) {
-            case 1: bancoSeleccionado = "Banco Industrial";
-            bitacoraBancos.insertar("Admin", 4604, "Bancos", "Banco seleccionado: Industrial");
-            break;
-            case 2: bancoSeleccionado = "Banco GyT Continental";
-            bitacoraBancos.insertar("Admin", 4605, "Bancos", "Banco seleccionado: GyT");
-            break;
-            case 3: bancoSeleccionado = "Banco Banrural";
-            bitacoraBancos.insertar("Admin", 4606, "Bancos", "Banco seleccionado: Banrural");
-            break;
-            case 4: bancoSeleccionado = "Bac Credomatic";
-            bitacoraBancos.insertar("Admin", 4607, "Bancos", "Banco seleccionado: Bac Credomatic");
-            break;
-            case 5: bancoSeleccionado = "Bantrab";
-            bitacoraBancos.insertar("Admin", 4608, "Bancos", "Banco seleccionado: Bantrab");
-            break;
-            default: cout << "Opción inválida."; pausar();
+            case 1:
+                bancoSeleccionado = "Banco Industrial";
+                bitacoraBancos.insertar("Admin", 4604, "Bancos", "Banco seleccionado: Industrial");
+                break;
+            case 2:
+                bancoSeleccionado = "Banco GyT Continental";
+                bitacoraBancos.insertar("Admin", 4605, "Bancos", "Banco seleccionado: GyT");
+                break;
+            case 3:
+                bancoSeleccionado = "Banco Banrural";
+                bitacoraBancos.insertar("Admin", 4606, "Bancos", "Banco seleccionado: Banrural");
+                break;
+            case 4:
+                bancoSeleccionado = "Bac Credomatic";
+                bitacoraBancos.insertar("Admin", 4607, "Bancos", "Banco seleccionado: Bac Credomatic");
+                break;
+            case 5:
+                bancoSeleccionado = "Bantrab";
+                bitacoraBancos.insertar("Admin", 4608, "Bancos", "Banco seleccionado: Bantrab");
+                break;
+            default:
+                cout << "Opción inválida.";
+                pausar();
+                continue;
         }
-
-        if (opcion >= 1 && opcion <= 5) return;
+        break;
     } while (true);
 }
-
 
 void Bancos::menuTipoCuenta() {
     int opcion;
@@ -88,17 +89,23 @@ void Bancos::menuTipoCuenta() {
         cin.ignore();
 
         switch (opcion) {
-            case 1: tipoCuentaSeleccionada = "Corriente";
-            bitacoraBancos.insertar("Admin", 4610, "Bancos", "Tipo de cuenta seleccionado: Cuenta Corriente");
-            break;
-            case 2: tipoCuentaSeleccionada = "Ahorro";
-            bitacoraBancos.insertar("Admin", 4611, "Bancos", "Tipo de cuenta seleccionado: Cuenta de Ahorro");
-            break;
-            case 3: menuSeleccionBanco(); // Vuelve al menú de bancos
-            default: cout << "Opción inválida."; pausar();
+            case 1:
+                tipoCuentaSeleccionada = "Corriente";
+                bitacoraBancos.insertar("Admin", 4610, "Bancos", "Tipo de cuenta seleccionado: Cuenta Corriente");
+                break;
+            case 2:
+                tipoCuentaSeleccionada = "Ahorro";
+                bitacoraBancos.insertar("Admin", 4611, "Bancos", "Tipo de cuenta seleccionado: Cuenta de Ahorro");
+                break;
+            case 3:
+                menuSeleccionBanco();
+                continue;
+            default:
+                cout << "Opción inválida.";
+                pausar();
+                continue;
         }
-
-        if (opcion >= 1 && opcion <= 3) return;
+        break;
     } while (true);
 }
 
@@ -124,26 +131,31 @@ void Bancos::menuTipoMoneda() {
                 monedaSeleccionada = "GTQ";
                 Moneda::moneda = "GTQ";
                 bitacoraBancos.insertar("Admin", 4601, "Bancos", "Moneda cambiada a GTQ");
-                limpiarPantalla(); // Limpia pantalla antes de salir
+                limpiarPantalla();
                 return;
             case 2:
                 monedaSeleccionada = "USD";
                 Moneda::moneda = "USD";
                 bitacoraBancos.insertar("Admin", 4602, "Bancos", "Moneda cambiada a USD");
-                limpiarPantalla(); // Limpia pantalla antes de salir
+                limpiarPantalla();
                 return;
             case 3:
                 monedaSeleccionada = "EUR";
                 Moneda::moneda = "EUR";
                 bitacoraBancos.insertar("Admin", 4603, "Bancos", "Moneda cambiada a EUR");
-                limpiarPantalla(); // Limpia pantalla antes de salir
+                limpiarPantalla();
                 return;
-            case 4: menuTipoCuenta(); break;
-            default: cout << "Opción inválida."; pausar();
+            case 4:
+                menuTipoCuenta();
+                continue;
+            default:
+                cout << "Opción inválida.";
+                pausar();
+                continue;
         }
     } while (true);
 }
-// --- Funciones auxiliares ---
+
 void Bancos::limpiarPantalla() {
 #ifdef _WIN32
     system("cls");
@@ -158,7 +170,6 @@ void Bancos::pausar() {
     cin.get();
 }
 
-// --- Getters ---
 std::string Bancos::getBanco() const { return bancoSeleccionado; }
 std::string Bancos::getCuenta() const { return tipoCuentaSeleccionada; }
 std::string Bancos::getMoneda() const { return monedaSeleccionada; }

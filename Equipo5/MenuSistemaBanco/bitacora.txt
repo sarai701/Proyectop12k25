@@ -179,45 +179,271 @@ Admin          5101      Movimientos         Registrar Movimiento          Sun M
 Admin          5201      Préstamos           Registrar Préstamo            Sun May 11 21:40:32 2025 
 admin          4100      Clientes            Ingresó al módulo de Clientes Sun May 11 21:40:48 2025 
 admin          4901      Sistema             Usuario cerró sesión          Sun May 11 21:40:51 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 21:59:52 2025 
-123            4402      Sistema             Usuario revisó la bitácora    Sun May 11 22:01:16 2025 
-123            4901      Sistema             Usuario cerró sesión          Sun May 11 22:01:22 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 22:28:09 2025 
-Admin          5001      Empleados           Crear                         Sun May 11 22:32:49 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sun May 11 22:38:01 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Fri May 16 18:35:41 2025 
-123            4500      Sistema             Usuario revisó la bancos      Fri May 16 18:36:01 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Fri May 16 23:52:12 2025 
-123            4901      Sistema             Usuario cerró sesión          Fri May 16 23:53:39 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Fri May 16 23:53:56 2025 
-Admin          4001      Nominas             Crear empleado                Sat May 17 00:04:36 2025 
-123            4000      Nominas             Ingresó al módulo de Nóminas  Sat May 17 00:04:41 2025 
-123            4901      Sistema             Usuario cerró sesión          Sat May 17 00:04:44 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 00:05:13 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 05:26:41 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 05:39:45 2025 
-123            4901      Sistema             Usuario cerró sesión          Sat May 17 05:39:51 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 05:39:57 2025 
-123            4500      Sistema             Usuario revisó la bancos      Sat May 17 05:40:04 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 05:41:26 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 11:28:31 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 11:30:40 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 12:57:33 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 20:36:39 2025 
-123            4901      Sistema             Usuario cerró sesión          Sat May 17 22:08:35 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sat May 17 22:08:42 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sun May 18 01:08:36 2025 
-123            1000      Sistema             Inicio de sesión exitoso      Sun May 18 01:16:58 2025 
-123            1000      Sistema             Inicio de sesiÃ³n exitoso     Sun May 18 03:20:07 2025 
-Admin          4605      Bancos              Banco seleccionado: GyT       Sun May 18 03:20:09 2025 
-Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 03:20:10 2025 
-Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 03:20:11 2025 
-123            4901      Sistema             Usuario cerrÃ³ sesiÃ³n        Sun May 18 03:20:13 2025 
-123            1000      Sistema             Inicio de sesiÃ³n exitoso     Sun May 18 03:21:17 2025 
-Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 03:21:19 2025 
-Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 03:21:21 2025 
-Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 03:21:22 2025 
-123            1000      Sistema             Inicio de sesiÃ³n exitoso     Sun May 18 03:45:47 2025 
-Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 03:45:48 2025 
-Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 03:45:49 2025 
-Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 03:45:49 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Sun May 11 21:50:11 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 11 21:50:13 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 11 21:50:18 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 11 21:50:24 2025 
+Prisci         4500      Sistema             Usuario revisó la bancos      Sun May 11 21:50:28 2025 
+admin          1000      Sistema             Inicio de sesión exitoso      Sun May 11 22:26:57 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 11 22:27:07 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 11 22:27:20 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 11 22:27:35 2025 
+Admin          4001      Nominas             Crear empleado                Sun May 11 22:28:13 2025 
+Admin          4002      Nominas             Eliminar empleado             Sun May 11 22:28:23 2025 
+Admin          4005      Nominas             Ver empleados                 Sun May 11 22:28:52 2025 
+admin          4000      Nominas             Ingresó al módulo de Nóminas  Sun May 11 22:29:03 2025 
+Admin          4101      Clientes            Crear Cliente                 Sun May 11 22:29:38 2025 
+Admin          4104      Clientes            Borrar Cliente                Sun May 11 22:29:49 2025 
+Admin          5101      Movimientos         Registrar Movimiento          Sun May 11 22:31:02 2025 
+Admin          5201      Préstamos           Registrar Préstamo            Sun May 11 22:31:57 2025 
+admin          4100      Clientes            Ingresó al módulo de Clientes Sun May 11 22:32:23 2025 
+Admin          5001      Empleados           Crear                         Sun May 11 22:32:52 2025 
+Admin          5002      Empleados           Borrar                        Sun May 11 22:33:08 2025 
+Admin          5005      Empleados           Desplegar                     Sun May 11 22:33:39 2025 
+admin          4001      Empleados           Ingresó al módulo de EmpleadosSun May 11 22:33:49 2025 
+Admin          4401      Contabilidad        Registro Nomina               Sun May 11 22:34:28 2025 
+Admin          4402      Contabilidad        Desplegar registro nomina     Sun May 11 22:34:58 2025 
+admin          4301      Contabilidad        Generar reporte contable      Sun May 11 22:35:02 2025 
+Admin          4301      Auditoria           Registrar                     Sun May 11 22:35:29 2025 
+Admin          4302      Auditoria           Borrar                        Sun May 11 22:35:42 2025 
+Admin          4303      Auditoria           Desplegar                     Sun May 11 22:35:50 2025 
+Admin          4304      Auditoria           registrosRealizados           Sun May 11 22:36:08 2025 
+admin          4401      Auditoría           Revisar transacciones         Sun May 11 22:36:17 2025 
+Admin          4201      Proveedores         Crear Proveedor               Sun May 11 22:36:44 2025 
+Admin          4204      Proveedores         Borrar Proveedor              Sun May 11 22:36:54 2025 
+admin          4200      Proveedores         Ingresó al módulo de ProveedoresSun May 11 22:37:35 2025 
+admin          4402      Sistema             Usuario revisó la bitácora    Sun May 11 22:38:04 2025 
+admin          4500      Sistema             Usuario revisó la bancos      Sun May 11 22:38:31 2025 
+admin          4901      Sistema             Usuario cerró sesión          Sun May 11 22:38:40 2025 
+Prisci         1000      Sistema             Inicio de sesión exitoso      Thu May 15 00:52:29 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialThu May 15 00:52:31 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteThu May 15 00:52:33 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Thu May 15 00:52:35 2025 
+Admin          5101      Movimientos         Registrar Movimiento          Thu May 15 00:54:02 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes Thu May 15 00:56:56 2025 
+Prisci         4301      Contabilidad        Generar reporte contable      Thu May 15 00:57:39 2025 
+Prisci         4401      Auditoría           Revisar transacciones         Thu May 15 00:57:47 2025 
+Prisci         4200      Proveedores         Ingresó al módulo de ProveedoresThu May 15 00:58:30 2025 
+Prisci         4500      Sistema             Usuario revisó la bancos      Thu May 15 00:58:55 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Thu May 15 01:11:51 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialThu May 15 01:11:53 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteThu May 15 01:11:56 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Thu May 15 01:11:57 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Thu May 15 01:11:57 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Thu May 15 01:12:05 2025 
+Desconocido    4902      Sistema             Falló intento de login        Thu May 15 01:12:07 2025 
+Desconocido    4902      Sistema             Falló intento de login        Thu May 15 02:44:39 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Thu May 15 03:37:21 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialThu May 15 03:37:22 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteThu May 15 03:37:24 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Thu May 15 03:37:25 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Thu May 15 03:37:25 2025 
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Thu May 15 03:37:46 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes Thu May 15 03:37:55 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosThu May 15 03:38:03 2025 
+Prisci         4400      Auditoría           Ingresó al módulo de AuditoríaThu May 15 03:38:12 2025 
+Prisci         4200      Proveedores         Ingresó al módulo de ProveedoresThu May 15 03:38:18 2025 
+Codigo: 4300 | Menu de contabilidad accedido | Fecha: Thu May 15 03:38:45 2025
+Codigo: 4301 | Informacion bancaria mostrada | Fecha: Thu May 15 03:38:55 2025
+Codigo: 4990 | Bitacora mostrada | Fecha: Thu May 15 03:39:06 2025
+Prisci         4901      Sistema             Usuario cerró sesión          Thu May 15 03:39:34 2025 
+Desconocido    4902      Sistema             Falló intento de login        Thu May 15 03:39:37 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Fri May 16 08:35:14 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialFri May 16 08:35:19 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteFri May 16 08:35:21 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Fri May 16 08:35:22 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Fri May 16 08:35:22 2025 
+Codigo: 4301 | Informacion bancaria mostrada | Fecha: Fri May 16 08:37:07 2025
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Fri May 16 08:38:33 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Fri May 16 08:38:39 2025 
+Desconocido    4902      Sistema             Falló intento de login        Fri May 16 08:38:41 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 03:50:34 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 03:50:38 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 03:50:39 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 03:50:39 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 03:50:39 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes Sun May 18 03:50:56 2025 
+Codigo: 4100 | Movimiento registrado | Fecha: Sun May 18 03:51:26 2025
+Codigo: 4301 | Informacion bancaria mostrada | Fecha: Sun May 18 03:51:34 2025
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 04:32:45 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 04:32:46 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 04:32:47 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 04:32:48 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 04:32:48 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 04:32:54 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 04:32:55 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 04:36:20 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 04:41:16 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 04:41:38 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 04:41:39 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 04:41:40 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 04:41:40 2025 
+Codigo: 4300 | Menu de contabilidad accedido | Fecha: Sun May 18 04:44:33 2025
+Codigo: 4301 | Informacion bancaria mostrada | Fecha: Sun May 18 04:44:40 2025
+Codigo: 4990 | Bitacora mostrada | Fecha: Sun May 18 04:44:48 2025
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 04:45:22 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 04:45:25 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 04:47:19 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 04:47:22 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 04:47:23 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 04:47:23 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 04:47:23 2025 
+Codigo: 4990 | Bitacora mostrada | Fecha: Sun May 18 04:47:28 2025
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 04:47:35 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 04:47:37 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 04:51:02 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 04:51:03 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 04:51:04 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 04:51:04 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 04:51:04 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes Sun May 18 04:52:27 2025 
+Admin          4402      Contabilidad        Desplegar registro nomina     Sun May 18 04:52:47 2025 
+Codigo: 4300 | Menu de contabilidad accedido | Fecha: Sun May 18 04:52:49 2025
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 05:06:06 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 05:06:07 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 05:06:07 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 05:06:08 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 05:06:08 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 05:35:59 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 05:36:01 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 05:36:01 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 05:36:02 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 05:36:02 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes (CRUD)Sun May 18 05:36:19 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 05:41:32 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 05:41:33 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 05:41:33 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 05:41:34 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 05:41:34 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes (CRUD)Sun May 18 05:41:45 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosSun May 18 05:41:57 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 05:42:03 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 05:42:05 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 05:59:54 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 05:59:55 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 05:59:56 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 05:59:56 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 05:59:56 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 05:59:58 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 05:59:59 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 12:52:44 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 12:52:45 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 12:52:46 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 12:52:46 2025 
+Prisci         4904      Sistema             Accedió al Menú General       Sun May 18 12:52:46 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes (CRUD)Sun May 18 12:52:55 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 13:23:44 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 13:23:50 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 13:23:52 2025 
+Admin          4602      Bancos              Moneda cambiada a USD         Sun May 18 13:23:53 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 13:23:53 2025 
+Prisci         4302      Procesos            Mostró configuración bancaria y monedaSun May 18 13:24:04 2025 
+Prisci         4301      Contabilidad        Ingresó al módulo ContabilidadSun May 18 13:24:25 2025 
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Sun May 18 13:24:35 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes (CRUD)Sun May 18 13:24:40 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosSun May 18 13:24:46 2025 
+Prisci         4400      Auditoría           Ingresó al módulo de AuditoríaSun May 18 13:24:53 2025 
+Prisci         4200      Proveedores         Ingresó al módulo de ProveedoresSun May 18 13:24:58 2025 
+Prisci         4990      Informes            Bitácora mostrada             Sun May 18 13:25:08 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 13:25:35 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 13:25:37 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 13:31:34 2025 
+Admin          4605      Bancos              Banco seleccionado: GyT       Sun May 18 13:31:40 2025 
+Admin          4611      Bancos              Tipo de cuenta seleccionado: Cuenta de AhorroSun May 18 13:31:41 2025 
+Admin          4602      Bancos              Moneda cambiada a USD         Sun May 18 13:31:43 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 13:31:43 2025 
+Prisci         4302      Procesos            Mostró configuración bancaria y monedaSun May 18 13:31:50 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 13:31:54 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 13:32:02 2025 
+Prisci         4990      Informes            Bitácora mostrada             Sun May 18 13:32:07 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 13:42:27 2025 
+Prisci         4990      Informes            Bitácora mostrada             Sun May 18 13:42:32 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 13:44:03 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 13:44:05 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 14:03:57 2025 
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Sun May 18 14:04:07 2025 
+Prisci         4100      Clientes            Ingresó al módulo de Clientes (CRUD)Sun May 18 14:04:11 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosSun May 18 14:04:15 2025 
+Prisci         4400      Auditoría           Ingresó al módulo de AuditoríaSun May 18 14:04:19 2025 
+Prisci         4200      Proveedores         Ingresó al módulo de ProveedoresSun May 18 14:04:23 2025 
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Sun May 18 14:04:32 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 14:04:39 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 14:04:40 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 14:04:41 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 14:04:41 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:04:49 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:05:03 2025 
+Prisci         4101      Clientes            Movimientos mostrados         Sun May 18 14:05:11 2025 
+Prisci         4302      Procesos            Mostró configuración bancaria y monedaSun May 18 14:05:19 2025 
+Prisci         4990      Informes            Bitácora mostrada             Sun May 18 14:05:29 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 14:05:41 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 14:05:48 2025 
+Admin          4605      Bancos              Banco seleccionado: GyT       Sun May 18 14:05:54 2025 
+Admin          4611      Bancos              Tipo de cuenta seleccionado: Cuenta de AhorroSun May 18 14:05:56 2025 
+Admin          4602      Bancos              Moneda cambiada a USD         Sun May 18 14:05:59 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 14:05:59 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 14:08:19 2025 
+Admin          4605      Bancos              Banco seleccionado: GyT       Sun May 18 14:08:27 2025 
+Admin          4605      Bancos              Banco seleccionado: GyT       Sun May 18 14:08:29 2025 
+Admin          4611      Bancos              Tipo de cuenta seleccionado: Cuenta de AhorroSun May 18 14:08:30 2025 
+Admin          4602      Bancos              Moneda cambiada a USD         Sun May 18 14:08:32 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 14:08:32 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:08:40 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 14:40:26 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 14:40:30 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 14:40:30 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 14:40:31 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 14:40:31 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:41:16 2025 
+Prisci         4101      Clientes            Movimientos mostrados         Sun May 18 14:41:40 2025 
+Prisci         4102      Clientes            Mostrar movimientos           Sun May 18 14:41:44 2025 
+Prisci         4103      Clientes            Préstamo registrado           Sun May 18 14:41:56 2025 
+Prisci         4104      Clientes            Préstamos mostrados           Sun May 18 14:43:15 2025 
+Admin          4401      Contabilidad        Registro Nomina               Sun May 18 14:43:23 2025 
+Admin          4402      Contabilidad        Desplegar registro nomina     Sun May 18 14:43:30 2025 
+Admin          4401      Contabilidad        Registro Nomina               Sun May 18 14:43:38 2025 
+Admin          4402      Contabilidad        Desplegar registro nomina     Sun May 18 14:43:43 2025 
+Prisci         4301      Contabilidad        Ingresó al módulo ContabilidadSun May 18 14:43:45 2025 
+Prisci         4302      Procesos            Mostró configuración bancaria y monedaSun May 18 14:43:50 2025 
+Prisci         4302      Procesos            Mostró configuración bancaria y monedaSun May 18 14:43:55 2025 
+Prisci         4990      Informes            Bitácora mostrada             Sun May 18 14:44:04 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 14:44:16 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 14:44:18 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 14:47:23 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 14:47:27 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 14:47:28 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 14:47:29 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 14:47:29 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:47:49 2025 
+Admin          5101      Movimientos         Registrar Movimiento          Sun May 18 14:48:26 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:48:29 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 14:49:24 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 14:49:27 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 14:49:27 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 14:49:28 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 14:49:28 2025 
+Admin          5101      Movimientos         Registrar Movimiento          Sun May 18 14:49:42 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:49:43 2025 
+Prisci         4101      Clientes            Movimientos mostrados         Sun May 18 14:49:54 2025 
+Prisci         4102      Clientes            Mostrar movimientos           Sun May 18 14:50:00 2025 
+Prisci         4103      Clientes            Préstamo registrado           Sun May 18 14:50:59 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 14:51:21 2025 
+Admin          4605      Bancos              Banco seleccionado: GyT       Sun May 18 14:51:29 2025 
+Admin          4611      Bancos              Tipo de cuenta seleccionado: Cuenta de AhorroSun May 18 14:51:29 2025 
+Admin          4602      Bancos              Moneda cambiada a USD         Sun May 18 14:51:31 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 14:51:31 2025 
+Prisci         4100      Clientes            Movimiento registrado         Sun May 18 14:51:38 2025 
+Prisci         4101      Clientes            Movimientos mostrados         Sun May 18 14:51:45 2025 
+Prisci         4103      Clientes            Préstamo registrado           Sun May 18 14:51:51 2025 
+Prisci         4104      Clientes            Préstamos mostrados           Sun May 18 14:51:57 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 14:52:08 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 14:52:10 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 15:17:03 2025 
+Admin          4604      Bancos              Banco seleccionado: IndustrialSun May 18 15:17:08 2025 
+Admin          4610      Bancos              Tipo de cuenta seleccionado: Cuenta CorrienteSun May 18 15:17:09 2025 
+Admin          4601      Bancos              Moneda cambiada a GTQ         Sun May 18 15:17:10 2025 
+Prisci         4300      Procesos            Configuración bancaria y moneda seleccionadaSun May 18 15:17:10 2025 
+Prisci         4302      Procesos            Mostró configuración bancaria y monedaSun May 18 15:17:16 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 15:17:21 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 15:17:22 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 15:22:55 2025 

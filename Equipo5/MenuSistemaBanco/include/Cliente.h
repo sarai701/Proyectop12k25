@@ -40,7 +40,7 @@ public:
 
     void registrarPrestamo();           // Registra un préstamo activo
     void mostrarPrestamos();            // Muestra préstamos de un cliente
-
+    void menuClienteCRUD();
 };
 
 #endif
