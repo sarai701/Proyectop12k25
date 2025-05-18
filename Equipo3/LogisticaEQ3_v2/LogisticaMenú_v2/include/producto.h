@@ -1,17 +1,18 @@
+// JENNIFER ALBA DAYAMI BARRIOS FLORES 9959-24-10016
+// COORD EQUIPO 3
+// MAYO 2025
+// modificado por // 9959-24-11603 GE
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
+
 #include <vector>
 #include <string>
 #include "bitacora.h"
 
-// JENNIFER ALBA DAYAMI BARRIOS FLORES 9959-24-10016
-// COORD EQUIPO 3
-// MAYO 2025
-
 class Producto {
 private:
     std::string id;
-    std::string codigo;  // Añadido
+    std::string codigo;
     std::string nombre;
     std::string descripcion;
     double precio;
@@ -23,7 +24,7 @@ public:
 
     // Getters
     std::string getId() const;
-    std::string getCodigo() const;  // Añadido
+    std::string getCodigo() const;
     std::string getNombre() const;
     std::string getDescripcion() const;
     double getPrecio() const;
@@ -32,20 +33,25 @@ public:
 
     // Setters
     void setId(const std::string& id);
-    void setCodigo(const std::string& codigo);  // Añadido
+    void setCodigo(const std::string& codigo);
     void setNombre(const std::string& nombre);
     void setDescripcion(const std::string& descripcion);
     void setPrecio(double precio);
     void setStock(int stock);
     void setStockMinimo(int stockMinimo);
 
-    static void cargarDesdeArchivo(std::vector<Producto>& lista);
-    static void guardarEnArchivo(const std::vector<Producto>& lista);
+    // Métodos estáticos para gestión de archivos
+    static void cargarDesdeArchivoBin(std::vector<Producto>& lista);
+    static void guardarEnArchivoBin(const std::vector<Producto>& lista);
 
-    // Otros métodos
+    // Métodos estáticos para operaciones
+    static std::string generarCodigoUnico(const std::vector<Producto>& lista);
+    static bool esCodigoValido(const std::string& codigo);
     static bool codigoDisponible(const std::vector<Producto>& productos, const std::string& codigo);
-    void modificar(std::vector<Producto>& productos, const std::string& campo, const std::string& nuevoValor);
-    void eliminar(std::vector<Producto>& productos, const std::string& campo, const std::string& valor);
+    static void agregar(std::vector<Producto>& productos, const std::string& usuario);
+    static void mostrar(const std::vector<Producto>& productos);
+    static void modificar(std::vector<Producto>& productos, const std::string& usuario, const std::string& codigo);
+    static void eliminar(std::vector<Producto>& productos, const std::string& usuario, const std::string& codigo);
 };
 
 #endif // PRODUCTO_H

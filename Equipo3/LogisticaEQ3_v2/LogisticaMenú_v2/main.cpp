@@ -11,11 +11,12 @@
 #include "Administracion.h"
 #include "transportistas.h"
 #include "globals.h"
+#include "Inventario.h"
 
 int main() {
     std::cout << "Inicio del programa..." << std::endl;
 
-    // Inicializar todas las listas necesarias para almacenar datos del sistema
+    // Inicializar todas las listas necesarias
     std::vector<Clientes> listaClientes;
     std::vector<Proveedor> listaProveedores;
     std::vector<Producto> listaProductos;
@@ -23,7 +24,7 @@ int main() {
     std::vector<Administracion> listaAdministradores;
     std::vector<Transportistas> listaTransportistas;
 
-    // Cargar los datos previamente guardados desde archivos a sus respectivas listas
+    // Cargar los datos desde archivos
     std::cout << "Cargando clientes..." << std::endl;
     Clientes::cargarDesdeArchivo(listaClientes);
 
@@ -36,21 +37,18 @@ int main() {
     std::cout << "Cargando transportistas..." << std::endl;
     Transportistas::cargarDesdeArchivo(listaTransportistas);
 
-    Producto::cargarDesdeArchivoBin(listaProductos);
-
     std::cout << "Cargando productos..." << std::endl;
+    // Cambiado a cargarDesdeArchivoBin (nombre correcto según Producto.h)
     Producto::cargarDesdeArchivoBin(listaProductos);
 
     std::cout << "Cargando proveedores..." << std::endl;
-
     Proveedor::cargarDesdeArchivo(listaProveedores);
 
     std::cout << "Datos cargados correctamente.\n";
 
-    // Iniciar sistema de login (verifica si el usuario puede ingresar)
+    // Sistema de login
     if (usuarioRegistrado.loginUsuarios()) {
         std::cout << "Login exitoso.\n";
-        // Si el login es exitoso, se muestra el menú principal con todas las listas necesarias
         MenuPrincipal::mostrar(
             listaClientes,
             listaProveedores,
@@ -64,10 +62,9 @@ int main() {
         std::cout << "Login fallido. Saliendo del programa.\n";
     }
 
-    // Mensaje de salida cuando el programa termina
     std::cout << "\n\t\t** Sistema de Logística - Hasta pronto **\n";
 
-    // Guardar todos los datos actualizados en sus respectivos archivos antes de finalizar
+    // Guardar datos actualizados
     std::cout << "Guardando clientes..." << std::endl;
     Clientes::guardarEnArchivo(listaClientes);
 
@@ -80,18 +77,13 @@ int main() {
     std::cout << "Guardando transportistas..." << std::endl;
     Transportistas::guardarEnArchivo(listaTransportistas);
 
-    Producto::guardarEnArchivoBin(listaProductos);
-
-
     std::cout << "Guardando productos..." << std::endl;
+    // Cambiado a guardarEnArchivoBin (nombre correcto según Producto.h)
     Producto::guardarEnArchivoBin(listaProductos);
 
     std::cout << "Guardando proveedores..." << std::endl;
-
     Proveedor::guardarEnArchivo(listaProveedores);
 
-    // Pausa para ver mensajes antes de cerrar (solo Windows)
     system("pause");
-
     return 0;
 }

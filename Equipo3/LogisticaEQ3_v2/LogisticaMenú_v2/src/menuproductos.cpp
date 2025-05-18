@@ -1,25 +1,23 @@
+// JENNIFER ALBA DAYAMI BARRIOS FLORES
+// 9959-24-10016
+// MAYO 2025
+// modificado por // 9959-24-11603 GE
 #include "MenuProductos.h"
 #include "Producto.h"
 #include <iostream>
 #include <limits>
 
-// JENNIFER ALBA DAYAMI BARRIOS FLORES
-// 9959-24-10016
-// MAYO 2025
 using namespace std;
 
-std::vector<Producto> listaProductos;
-
-// Muestra el menú de productos y permite al usuario realizar operaciones sobre el inventario
 void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioActual) {
     int opcion;
     string input;
 
-    // Cargar productos desde archivo al iniciar el menú
+    // Cargar productos desde archivo al iniciar
     Producto::cargarDesdeArchivoBin(listaProductos);
 
     do {
-        system("cls"); // Limpiar pantalla
+        system("cls");
         cout << "\t\t=== MENÚ PRODUCTOS ===\n"
              << "\t\t| Usuario: " << usuarioActual.getNombre() << "\n"
              << "\t\t1. Agregar producto\n"
@@ -30,38 +28,33 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
              << "\t\t======================\n"
              << "\t\tSeleccione una opción: ";
 
-        // Validación de entrada numérica
+        // Validación de entrada
         while (!(cin >> opcion)) {
-            cin.clear(); // Limpiar estado de error
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar buffer
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "\t\tEntrada inválida. Por favor ingrese un número: ";
         }
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar salto de línea pendiente
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         switch(opcion) {
             case 1:
-                // Agregar un nuevo producto al inventario
                 Producto::agregar(listaProductos, usuarioActual.getNombre());
                 break;
 
             case 2:
-                // Mostrar todos los productos disponibles
                 Producto::mostrar(listaProductos);
                 break;
 
             case 3: {
-                // Mostrar productos antes de solicitar código a modificar
                 Producto::mostrar(listaProductos);
                 if (!listaProductos.empty()) {
                     cout << "\n\t\tIngrese Código del producto a modificar: ";
                     getline(cin, input);
 
-                    // Validar que el código esté dentro del rango permitido
                     if (Producto::esCodigoValido(input)) {
                         Producto::modificar(listaProductos, usuarioActual.getNombre(), input);
                     } else {
-                        cout << "\t\tCódigo no válido. Debe estar entre " << 3209
-                             << " y " << 3259 << "\n";
+                        cout << "\t\tCódigo no válido. Debe estar entre 3209 y 3259\n";
                         system("pause");
                     }
                 }
@@ -69,18 +62,15 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
             }
 
             case 4: {
-                // Mostrar productos antes de solicitar código a eliminar
                 Producto::mostrar(listaProductos);
                 if (!listaProductos.empty()) {
                     cout << "\n\t\tIngrese Código del producto a eliminar: ";
                     getline(cin, input);
 
-                    // Validar que el código esté dentro del rango permitido
                     if (Producto::esCodigoValido(input)) {
                         Producto::eliminar(listaProductos, usuarioActual.getNombre(), input);
                     } else {
-                        cout << "\t\tCódigo no válido. Debe estar entre " << 3209
-                             << " y " << 3259 << "\n";
+                        cout << "\t\tCódigo no válido. Debe estar entre 3209 y 3259\n";
                         system("pause");
                     }
                 }
@@ -88,7 +78,6 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
             }
 
             case 5:
-                // Guardar productos antes de salir del menú
                 Producto::guardarEnArchivoBin(listaProductos);
                 return;
 
@@ -98,4 +87,3 @@ void MenuProductos::mostrar(vector<Producto>& listaProductos, usuarios& usuarioA
         }
     } while (true);
 }
-
