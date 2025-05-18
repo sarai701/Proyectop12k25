@@ -294,6 +294,7 @@ void Pedidos::crearPedido(const std::vector<Clientes>& clientes,
 
 void Pedidos::consultarPedidos() {
     system("cls");
+    Pedidos::cargarDesdeArchivoBin(listaPedidos); // <<-- ESTA LÍNEA ES CLAVE
     cout << "\n\t\t[CONSULTANDO PEDIDOS...]" << endl;
 
     if (listaPedidos.empty()) {
