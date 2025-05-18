@@ -139,6 +139,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Angel          000                 LOGIN                              17/05/2025 15:33:04 
 3100        Angel          PEDIDOS             Consulta de pedidos                17/05/2025 15:33:50 
 3101        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 15:34:12 
+<<<<<<< HEAD
 3000        Jennifer       000                 LOGIN                              17/05/2025 16:00:18 
 3001        Jennifer       000                 LOGOUT                             17/05/2025 16:01:59 
 3000        Jennifer       000                 LOGIN                              17/05/2025 16:10:20 
@@ -153,3 +154,23 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 =======
 3000        arriaza        000                 REG-USER                           17/05/2025 11:22:52 
 >>>>>>> 862a41fe662cb937addea89707b9880e9c7dce70
+=======
+3000        Angel          000                 LOGIN                              17/05/2025 17:38:34 
+3000        Angel          000                 LOGIN                              17/05/2025 17:42:32 
+3000        Angel          000                 LOGIN                              17/05/2025 18:02:36 
+3000        Angel          000                 LOGIN-FAIL                         17/05/2025 18:03:41 
+3001        Angel          000                 LOGIN-FAIL                         17/05/2025 18:03:44 
+3000        Angel          000                 LOGIN                              17/05/2025 18:03:57 
+3000        Angel          000                 LOGIN                              17/05/2025 18:08:18 
+3100        Angel          PEDIDOS             Pedido creado - ID: 3403           17/05/2025 18:09:10 
+3101        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 18:09:13 
+3000        Angel          000                 LOGIN                              17/05/2025 18:12:06 
+3000        Angel          000                 LOGIN                              17/05/2025 18:25:36 
+3550        Angel          ENVIOS              Creado envio para pedido 3403 con transportista 331117/05/2025 18:26:05 
+3100        Angel          PEDIDOS             Pedido creado - ID: 3404           17/05/2025 18:26:50 
+3101        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 18:26:54 
+3551        Angel          ENVIOS              Creado envio para pedido 3404 con transportista 331117/05/2025 18:27:16 
+3102        Angel          PEDIDOS             Consulta de pedidos                17/05/2025 18:27:49 
+3103        Angel          PEDIDOS             Pedido modificado - ID: 3404       17/05/2025 18:28:36 
+3104        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 18:28:48 
+>>>>>>> d5100bdb0f5841b2a9a5ce8c27155987ff727e6e
