@@ -714,7 +714,6 @@ void Pedidos::completarPedido(std::vector<Producto>& productos) {
         cout << "\n\t\tRegistrando envío para el pedido " << pedidoSeleccionado.id << "..." << endl;
         Envios::crearEnvio(pedidoSeleccionado.id, Transportistas::getTransportistasDisponibles());
 
-
         // Guardar cambios
         guardarEnArchivoBin(listaPedidos);
 
