@@ -187,3 +187,17 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3550        Angel          ENVIOS              Creado envio para pedido 3405 con transportista 331117/05/2025 20:34:32 
 3103        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 20:35:49 
 >>>>>>> 20f49edd6f110e44afb2740cf074d028f889317d
+3000        AJAX           000                 LOGIN-FAIL                         17/05/2025 20:43:55 
+3001        AJAX           000                 LOGIN-FAIL                         17/05/2025 20:44:05 
+3002        Jennifer       000                 LOGIN                              17/05/2025 20:44:12 
+3003        Jennifer       000                 LOGOUT                             17/05/2025 20:44:24 
+3000        Jennifer       000                 LOGIN                              17/05/2025 20:44:36 
+3100        Jennifer       PEDIDOS             Pedido creado - ID: 3404           17/05/2025 20:45:07 
+3101        Jennifer       PEDIDOS             Salida de gestión de pedidos       17/05/2025 20:45:13 
+3550        Jennifer       ENVIOS              Creado envio para pedido 3404 con transportista 331117/05/2025 20:47:56 
+3102        Jennifer       PEDIDOS             Consulta de pedidos                17/05/2025 20:48:32 
+3103        Jennifer       PEDIDOS             Salida de gestión de pedidos       17/05/2025 20:50:14 
+3000        Jennifer       500                 REPVENT                            17/05/2025 20:57:25 
+3001        Jennifer       500                 ANALTIME                           17/05/2025 20:57:32 
+3002        Jennifer       500                 REPINV                             17/05/2025 20:57:38 
+3003        Jennifer       500                 EVAPROV                            17/05/2025 20:57:45 

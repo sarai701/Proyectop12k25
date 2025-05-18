@@ -1,18 +1,12 @@
 //Karina Alejandra Arriaza Ortiz
 #include <iostream>
-<<<<<<< HEAD
 #include <fstream>
 #include <iomanip>
-=======
 #include <vector>
 #include <iomanip>
 #include <algorithm>
-<<<<<<< HEAD
->>>>>>> 41bb3a00910ca4696bd03c7869804716f8c396f2
-=======
 #include <string>
 #include <stdexcept>
->>>>>>> 85227e0923dcbcb72ba4c91960f0768d804107cc
 
 using namespace std;
 const int CODIGO_INICIAL = 3600;
