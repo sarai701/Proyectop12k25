@@ -56,7 +56,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
                 break;
 
             case 2:
-                gestorInventario.controlInventario();
+                gestorInventario.mostrarInventario(); // Cambiado a mostrarInventario
                 break;
 
             case 3:

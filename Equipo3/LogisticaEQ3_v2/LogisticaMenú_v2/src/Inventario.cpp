@@ -1,29 +1,25 @@
 //Karina Alejandra Arriaza Ortiz
-#include "inventario.h"
+#include "Inventario.h"
+#include "producto.h"
+#include "almacen.h"
+#include "proveedor.h"
 #include <fstream>
 #include <iostream>
 #include <algorithm>
 #include <limits>
 #include <iomanip>
-
-#include "envios.h"
-#include "pedidos.h"
-#include "transportistas.h"
-#include "almacen.h"
-#include "clientes.h"
-#include "bitacora.h"
-#include "producto.h"
-#include "proveedor.h"
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
-extern usuarios usuarioRegistrado;
+extern usuarios usuariosRegistrado;
 extern bitacora auditoria;
 
 // ----------- Funciones de archivo para Productos ------------
-vector<Producto> Productos::cargarProductosDesdeArchivo() {
+vector<producto> cargarProductosDesdeArchivo() {
     ifstream archivo("productos.dat", ios::binary);
-    vector<Producto> lista;
+    vector<producto> lista;
     if (!archivo) return lista;
 
     while (!archivo.eof()) {
@@ -32,20 +28,31 @@ vector<Producto> Productos::cargarProductosDesdeArchivo() {
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
         if (archivo.eof()) break;
-        producto.id.resize(size);
-        archivo.read(&producto.id[0], size);
+        string tempStr(size, '\0');
+        archivo.read(&tempStr[0], size);
+        producto.setId(tempStr);
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        producto.nombre.resize(size);
-        archivo.read(&producto.nombre[0], size);
+        tempStr.resize(size);
+        archivo.read(&tempStr[0], size);
+        producto.setNombre(tempStr);
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        producto.descripcion.resize(size);
-        archivo.read(&producto.descripcion[0], size);
+        tempStr.resize(size);
+        archivo.read(&tempStr[0], size);
+        producto.setDescripcion(tempStr);
 
-        archivo.read(reinterpret_cast<char*>(&producto.precio), sizeof(producto.precio));
-        archivo.read(reinterpret_cast<char*>(&producto.stock), sizeof(producto.stock));
-        archivo.read(reinterpret_cast<char*>(&producto.stockMinimo), sizeof(producto.stockMinimo));
+        double precio;
+        archivo.read(reinterpret_cast<char*>(&precio), sizeof(precio));
+        producto.setPrecio(precio);
+
+        int stock;
+        archivo.read(reinterpret_cast<char*>(&stock), sizeof(stock));
+        producto.setStock(stock);
+
+        int stockMin;
+        archivo.read(reinterpret_cast<char*>(&stockMin), sizeof(stockMin));
+        producto.setStockMinimo(stockMin);
 
         lista.push_back(producto);
     }
@@ -53,72 +60,107 @@ vector<Producto> Productos::cargarProductosDesdeArchivo() {
     return lista;
 }
 
-void Productos::guardarProductosEnArchivo(const vector<Producto>& productos) {
+void guardarProductosEnArchivo(const vector<producto>& productos) {
     ofstream archivo("productos.dat", ios::binary | ios::trunc);
     for (const auto& producto : productos) {
         size_t size;
 
-        size = producto.id.size();
+        size = producto.getId().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(producto.id.c_str(), size);
+        archivo.write(producto.getId().c_str(), size);
 
-        size = producto.nombre.size();
+        size = producto.getNombre().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(producto.nombre.c_str(), size);
+        archivo.write(producto.getNombre().c_str(), size);
 
-        size = producto.descripcion.size();
+        size = producto.getDescripcion().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(producto.descripcion.c_str(), size);
+        archivo.write(producto.getDescripcion().c_str(), size);
 
-        archivo.write(reinterpret_cast<const char*>(&producto.precio), sizeof(producto.precio));
-        archivo.write(reinterpret_cast<const char*>(&producto.stock), sizeof(producto.stock));
-        archivo.write(reinterpret_cast<const char*>(&producto.stockMinimo), sizeof(producto.stockMinimo));
+        double precio = producto.getPrecio();
+        archivo.write(reinterpret_cast<const char*>(&precio), sizeof(precio));
+
+        int stock = producto.getStock();
+        archivo.write(reinterpret_cast<const char*>(&stock), sizeof(stock));
+
+        int stockMin = producto.getStockMinimo();
+        archivo.write(reinterpret_cast<const char*>(&stockMin), sizeof(stockMin));
     }
     archivo.close();
 }
 
 // ----------- Métodos de Productos ------------
-void Productos::crearProductoInteractivo() {
+void crearProductoInteractivo() {
     system("cls");
     cout << "------------------------------------------------------------\n";
     cout << "                    CREAR NUEVO PRODUCTO                     \n";
     cout << "------------------------------------------------------------\n";
 
     Producto nuevo;
-    vector<Producto> productos = cargarProductosDesdeArchivo();
+    vector<producto> productos = cargarProductosDesdeArchivo();
 
-    nuevo.id = generarIdProductoUnico(productos);
+    // Generar ID único
+    string nuevoId = "PROD";
+    if (!productos.empty()) {
+        int maxNum = 0;
+        for (const auto& p : productos) {
+            string numStr = p.getId().substr(4);
+            try {
+                int num = stoi(numStr);
+                if (num > maxNum) maxNum = num;
+            } catch (...) {
+                continue;
+            }
+        }
+        ostringstream oss;
+        oss << setw(3) << setfill('0') << (maxNum + 1);
+        nuevoId += oss.str();
+    } else {
+        nuevoId += "001";
+    }
+    nuevo.setId(nuevoId);
 
     cout << "Ingrese nombre del producto: ";
     cin.ignore();
-    getline(cin, nuevo.nombre);
+    string nombre;
+    getline(cin, nombre);
+    nuevo.setNombre(nombre);
 
     cout << "Ingrese descripción: ";
-    getline(cin, nuevo.descripcion);
+    string descripcion;
+    getline(cin, descripcion);
+    nuevo.setDescripcion(descripcion);
 
     cout << "Ingrese precio: ";
-    cin >> nuevo.precio;
+    double precio;
+    cin >> precio;
+    nuevo.setPrecio(precio);
 
     cout << "Ingrese stock inicial: ";
-    cin >> nuevo.stock;
+    int stock;
+    cin >> stock;
+    nuevo.setStock(stock);
 
     cout << "Ingrese stock mínimo: ";
-    cin >> nuevo.stockMinimo;
+    int stockMin;
+    cin >> stockMin;
+    nuevo.setStockMinimo(stockMin);
 
     productos.push_back(nuevo);
     guardarProductosEnArchivo(productos);
 
-    auditoria.registrar(usuarioRegistrado.getNombre(), "PRODUCTOS", "Creado producto " + nuevo.id);
+    auditoria.registrar(usuarioRegistrado.getNombre(), "PRODUCTOS", "Creado producto " + nuevo.getId());
     cout << "\n\tProducto creado exitosamente.\n";
+    system("pause");
 }
 
-void Productos::mostrarProductos() {
+void mostrarProductos() {
     system("cls");
     cout << "---------------------------------------------------------------\n";
     cout << "                      LISTA DE PRODUCTOS                        \n";
     cout << "---------------------------------------------------------------\n";
 
-    vector<Producto> productos = cargarProductosDesdeArchivo();
+    vector<producto> productos = cargarProductosDesdeArchivo();
     if (productos.empty()) {
         cout << "\n\tNo hay productos registrados.\n";
         system("pause");
@@ -130,43 +172,53 @@ void Productos::mostrarProductos() {
     cout << "----------------------------------------------------------------------------------------\n";
 
     for (const auto& producto : productos) {
-        cout << setw(8) << left << producto.id << " | "
-             << setw(16) << left << producto.nombre << " | "
-             << setw(18) << left << producto.descripcion.substr(0, 16) + (producto.descripcion.length() > 16 ? "..." : "") << " | "
-             << setw(8) << left << fixed << setprecision(2) << producto.precio << " | "
-             << setw(6) << left << producto.stock << " | "
-             << setw(11) << left << producto.stockMinimo << "\n";
+        string descCorta = producto.getDescripcion().substr(0, 16);
+        if (producto.getDescripcion().length() > 16) descCorta += "...";
+
+        cout << setw(8) << left << producto.getId() << " | "
+             << setw(16) << left << producto.getNombre() << " | "
+             << setw(18) << left << descCorta << " | "
+             << setw(8) << left << fixed << setprecision(2) << producto.getPrecio() << " | "
+             << setw(6) << left << producto.getStock() << " | "
+             << setw(11) << left << producto.getStockMinimo() << "\n";
     }
     cout << "----------------------------------------------------------------------------------------\n";
-
     system("pause");
 }
 
 // ----------- Funciones de archivo para Almacenes ------------
-vector<Almacen> Almacenes::cargarAlmacenesDesdeArchivo() {
+vector<almacen> cargarAlmacenesDesdeArchivo() {
     ifstream archivo("almacenes.dat", ios::binary);
-    vector<Almacen> lista;
+    vector<almacen> lista;
     if (!archivo) return lista;
 
     while (!archivo.eof()) {
-        Almacen almacen;
+        almacen almacen;
         size_t size;
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
         if (archivo.eof()) break;
-        almacen.id.resize(size);
-        archivo.read(&almacen.id[0], size);
+        string tempStr(size, '\0');
+        archivo.read(&tempStr[0], size);
+        almacen.setId(tempStr);
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        almacen.nombre.resize(size);
-        archivo.read(&almacen.nombre[0], size);
+        tempStr.resize(size);
+        archivo.read(&tempStr[0], size);
+        almacen.setNombre(tempStr);
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        almacen.direccion.resize(size);
-        archivo.read(&almacen.direccion[0], size);
+        tempStr.resize(size);
+        archivo.read(&tempStr[0], size);
+        almacen.setDireccion(tempStr);
 
-        archivo.read(reinterpret_cast<char*>(&almacen.capacidad), sizeof(almacen.capacidad));
-        archivo.read(reinterpret_cast<char*>(&almacen.espacioDisponible), sizeof(almacen.espacioDisponible));
+        int capacidad;
+        archivo.read(reinterpret_cast<char*>(&capacidad), sizeof(capacidad));
+        almacen.setCapacidad(capacidad);
+
+        int espacioDisp;
+        archivo.read(reinterpret_cast<char*>(&espacioDisp), sizeof(espacioDisp));
+        almacen.setEspacioDisponible(espacioDisp);
 
         lista.push_back(almacen);
     }
@@ -174,67 +226,95 @@ vector<Almacen> Almacenes::cargarAlmacenesDesdeArchivo() {
     return lista;
 }
 
-void Almacenes::guardarAlmacenesEnArchivo(const vector<Almacen>& almacenes) {
+void guardarAlmacenesEnArchivo(const vector<almacen>& almacenes) {
     ofstream archivo("almacenes.dat", ios::binary | ios::trunc);
     for (const auto& almacen : almacenes) {
         size_t size;
 
-        size = almacen.id.size();
+        size = almacen.getId().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(almacen.id.c_str(), size);
+        archivo.write(almacen.getId().c_str(), size);
 
-        size = almacen.nombre.size();
+        size = almacen.getNombre().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(almacen.nombre.c_str(), size);
+        archivo.write(almacen.getNombre().c_str(), size);
 
-        size = almacen.direccion.size();
+        size = almacen.getDireccion().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(almacen.direccion.c_str(), size);
+        archivo.write(almacen.getDireccion().c_str(), size);
 
-        archivo.write(reinterpret_cast<const char*>(&almacen.capacidad), sizeof(almacen.capacidad));
-        archivo.write(reinterpret_cast<const char*>(&almacen.espacioDisponible), sizeof(almacen.espacioDisponible));
+        int capacidad = almacen.getCapacidad();
+        archivo.write(reinterpret_cast<const char*>(&capacidad), sizeof(capacidad));
+
+        int espacioDisp = almacen.getEspacioDisponible();
+        archivo.write(reinterpret_cast<const char*>(&espacioDisp), sizeof(espacioDisp));
     }
     archivo.close();
 }
 
 // ----------- Métodos de Almacenes ------------
-void Almacenes::crearAlmacenInteractivo() {
+void crearAlmacenInteractivo() {
     system("cls");
     cout << "------------------------------------------------------------\n";
     cout << "                    CREAR NUEVO ALMACEN                      \n";
     cout << "------------------------------------------------------------\n";
 
     Almacen nuevo;
-    vector<Almacen> almacenes = cargarAlmacenesDesdeArchivo();
+    vector<almacen> almacenes = cargarAlmacenesDesdeArchivo();
 
-    nuevo.id = generarIdAlmacenUnico(almacenes);
+    // Generar ID único
+    string nuevoId = "ALM";
+    if (!almacenes.empty()) {
+        int maxNum = 0;
+        for (const auto& a : almacenes) {
+            string numStr = a.getId().substr(3);
+            try {
+                int num = stoi(numStr);
+                if (num > maxNum) maxNum = num;
+            } catch (...) {
+                continue;
+            }
+        }
+        ostringstream oss;
+        oss << setw(3) << setfill('0') << (maxNum + 1);
+        nuevoId += oss.str();
+    } else {
+        nuevoId += "001";
+    }
+    nuevo.setId(nuevoId);
 
     cout << "Ingrese nombre del almacén: ";
     cin.ignore();
-    getline(cin, nuevo.nombre);
+    string nombre;
+    getline(cin, nombre);
+    nuevo.setNombre(nombre);
 
     cout << "Ingrese dirección: ";
-    getline(cin, nuevo.direccion);
+    string direccion;
+    getline(cin, direccion);
+    nuevo.setDireccion(direccion);
 
     cout << "Ingrese capacidad total: ";
-    cin >> nuevo.capacidad;
-
-    nuevo.espacioDisponible = nuevo.capacidad;
+    int capacidad;
+    cin >> capacidad;
+    nuevo.setCapacidad(capacidad);
+    nuevo.setEspacioDisponible(capacidad); // Inicialmente todo el espacio está disponible
 
     almacenes.push_back(nuevo);
     guardarAlmacenesEnArchivo(almacenes);
 
-    auditoria.registrar(usuarioRegistrado.getNombre(), "ALMACENES", "Creado almacén " + nuevo.id);
+    auditoria.registrar(usuarioRegistrado.getNombre(), "ALMACENES", "Creado almacén " + nuevo.getId());
     cout << "\n\tAlmacén creado exitosamente.\n";
+    system("pause");
 }
 
-void Almacenes::mostrarAlmacenes() {
+void mostrarAlmacenes() {
     system("cls");
     cout << "---------------------------------------------------------------\n";
     cout << "                      LISTA DE ALMACENES                       \n";
     cout << "---------------------------------------------------------------\n";
 
-    vector<Almacen> almacenes = cargarAlmacenesDesdeArchivo();
+    vector<almacen> almacenes = cargarAlmacenesDesdeArchivo();
     if (almacenes.empty()) {
         cout << "\n\tNo hay almacenes registrados.\n";
         system("pause");
@@ -246,21 +326,23 @@ void Almacenes::mostrarAlmacenes() {
     cout << "---------------------------------------------------------------------\n";
 
     for (const auto& almacen : almacenes) {
-        cout << setw(7) << left << almacen.id << " | "
-             << setw(16) << left << almacen.nombre << " | "
-             << setw(19) << left << almacen.direccion.substr(0, 17) + (almacen.direccion.length() > 17 ? "..." : "") << " | "
-             << setw(9) << left << almacen.capacidad << " | "
-             << setw(10) << left << almacen.espacioDisponible << "\n";
+        string dirCorta = almacen.getDireccion().substr(0, 17);
+        if (almacen.getDireccion().length() > 17) dirCorta += "...";
+
+        cout << setw(7) << left << almacen.getId() << " | "
+             << setw(16) << left << almacen.getNombre() << " | "
+             << setw(19) << left << dirCorta << " | "
+             << setw(9) << left << almacen.getCapacidad() << " | "
+             << setw(10) << left << almacen.getEspacioDisponible() << "\n";
     }
     cout << "---------------------------------------------------------------------\n";
-
     system("pause");
 }
 
 // ----------- Funciones de archivo para Proveedores ------------
-vector<Proveedor> Proveedores::cargarProveedoresDesdeArchivo() {
+vector<proveedor> cargarProveedoresDesdeArchivo() {
     ifstream archivo("proveedores.dat", ios::binary);
-    vector<Proveedor> lista;
+    vector<proveedor> lista;
     if (!archivo) return lista;
 
     while (!archivo.eof()) {
@@ -269,20 +351,24 @@ vector<Proveedor> Proveedores::cargarProveedoresDesdeArchivo() {
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
         if (archivo.eof()) break;
-        proveedor.id.resize(size);
-        archivo.read(&proveedor.id[0], size);
+        string tempStr(size, '\0');
+        archivo.read(&tempStr[0], size);
+        proveedor.setId(tempStr);
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        proveedor.nombre.resize(size);
-        archivo.read(&proveedor.nombre[0], size);
+        tempStr.resize(size);
+        archivo.read(&tempStr[0], size);
+        proveedor.setNombre(tempStr);
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        proveedor.contacto.resize(size);
-        archivo.read(&proveedor.contacto[0], size);
+        tempStr.resize(size);
+        archivo.read(&tempStr[0], size);
+        proveedor.setContacto(tempStr);
 
         archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        proveedor.telefono.resize(size);
-        archivo.read(&proveedor.telefono[0], size);
+        tempStr.resize(size);
+        archivo.read(&tempStr[0], size);
+        proveedor.setTelefono(tempStr);
 
         lista.push_back(proveedor);
     }
@@ -290,66 +376,92 @@ vector<Proveedor> Proveedores::cargarProveedoresDesdeArchivo() {
     return lista;
 }
 
-void Proveedores::guardarProveedoresEnArchivo(const vector<Proveedor>& proveedores) {
+void guardarProveedoresEnArchivo(const vector<proveedor>& proveedores) {
     ofstream archivo("proveedores.dat", ios::binary | ios::trunc);
     for (const auto& proveedor : proveedores) {
         size_t size;
 
-        size = proveedor.id.size();
+        size = proveedor.getId().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(proveedor.id.c_str(), size);
+        archivo.write(proveedor.getId().c_str(), size);
 
-        size = proveedor.nombre.size();
+        size = proveedor.getNombre().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(proveedor.nombre.c_str(), size);
+        archivo.write(proveedor.getNombre().c_str(), size);
 
-        size = proveedor.contacto.size();
+        size = proveedor.getContacto().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(proveedor.contacto.c_str(), size);
+        archivo.write(proveedor.getContacto().c_str(), size);
 
-        size = proveedor.telefono.size();
+        size = proveedor.getTelefono().size();
         archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(proveedor.telefono.c_str(), size);
+        archivo.write(proveedor.getTelefono().c_str(), size);
     }
     archivo.close();
 }
 
 // ----------- Métodos de Proveedores ------------
-void Proveedores::crearProveedorInteractivo() {
+void crearProveedorInteractivo() {
     system("cls");
     cout << "------------------------------------------------------------\n";
     cout << "                   CREAR NUEVO PROVEEDOR                    \n";
     cout << "------------------------------------------------------------\n";
 
     Proveedor nuevo;
-    vector<Proveedor> proveedores = cargarProveedoresDesdeArchivo();
+    vector<proveedor> proveedores = cargarProveedoresDesdeArchivo();
 
-    nuevo.id = generarIdProveedorUnico(proveedores);
+    // Generar ID único
+    string nuevoId = "PROV";
+    if (!proveedores.empty()) {
+        int maxNum = 0;
+        for (const auto& p : proveedores) {
+            string numStr = p.getId().substr(4);
+            try {
+                int num = stoi(numStr);
+                if (num > maxNum) maxNum = num;
+            } catch (...) {
+                continue;
+            }
+        }
+        ostringstream oss;
+        oss << setw(3) << setfill('0') << (maxNum + 1);
+        nuevoId += oss.str();
+    } else {
+        nuevoId += "001";
+    }
+    nuevo.setId(nuevoId);
 
     cout << "Ingrese nombre del proveedor: ";
     cin.ignore();
-    getline(cin, nuevo.nombre);
+    string nombre;
+    getline(cin, nombre);
+    nuevo.setNombre(nombre);
 
     cout << "Ingrese persona de contacto: ";
-    getline(cin, nuevo.contacto);
+    string contacto;
+    getline(cin, contacto);
+    nuevo.setContacto(contacto);
 
-    cout << "Ingrese teléfono: ";
-    getline(cin, nuevo.telefono);
+    cout << "Ingrese telefono: ";
+    string telefono;
+    getline(cin, telefono);
+    nuevo.setTelefono(telefono);
 
     proveedores.push_back(nuevo);
     guardarProveedoresEnArchivo(proveedores);
 
-    auditoria.registrar(usuarioRegistrado.getNombre(), "PROVEEDORES", "Creado proveedor " + nuevo.id);
+    auditoria.registrar(usuarioRegistrado.getNombre(), "PROVEEDORES", "Creado proveedor " + nuevo.getId());
     cout << "\n\tProveedor creado exitosamente.\n";
+    system("pause");
 }
 
-void Proveedores::mostrarProveedores() {
+void mostrarProveedores() {
     system("cls");
     cout << "---------------------------------------------------------------\n";
     cout << "                     LISTA DE PROVEEDORES                      \n";
     cout << "---------------------------------------------------------------\n";
 
-    vector<Proveedor> proveedores = cargarProveedoresDesdeArchivo();
+    vector<proveedor> proveedores = cargarProveedoresDesdeArchivo();
     if (proveedores.empty()) {
         cout << "\n\tNo hay proveedores registrados.\n";
         system("pause");
@@ -361,52 +473,16 @@ void Proveedores::mostrarProveedores() {
     cout << "---------------------------------------------------------------------\n";
 
     for (const auto& proveedor : proveedores) {
-        cout << setw(7) << left << proveedor.id << " | "
-             << setw(16) << left << proveedor.nombre << " | "
-             << setw(18) << left << proveedor.contacto << " | "
-             << setw(10) << left << proveedor.telefono << "\n";
+        cout << setw(7) << left << proveedor.getId() << " | "
+             << setw(16) << left << proveedor.getNombre() << " | "
+             << setw(18) << left << proveedor.getContacto() << " | "
+             << setw(10) << left << proveedor.getTelefono() << "\n";
     }
     cout << "---------------------------------------------------------------------\n";
-
     system("pause");
 }
 
-string generarIdUnico(const vector<Entidad>& lista, const string& prefijo) {
-    if (lista.empty()) {
-        return prefijo + "001";
-    }
-
-    // Encontrar el máximo ID existente
-    int maxId = 0;
-    for (const auto& item : lista) {
-        string numStr = item.id.substr(prefijo.length());
-        try {
-            int num = stoi(numStr);
-            if (num > maxId) maxId = num;
-        } catch (...) {
-            continue;
-        }
-    }
-
-    // Generar nuevo ID
-    ostringstream oss;
-    oss << prefijo << setw(3) << setfill('0') << (maxId + 1);
-    return oss.str();
-}
-
-// Ejemplos de uso:
-string generarIdProductoUnico(const vector<Producto>& productos) {
-    return generarIdUnico(productos, "PROD");
-}
-
-string generarIdAlmacenUnico(const vector<Almacen>& almacenes) {
-    return generarIdUnico(almacenes, "ALM");
-}
-
-string generarIdProveedorUnico(const vector<Proveedor>& proveedores) {
-    return generarIdUnico(proveedores, "PROV");
-}
-
+// ----------- Métodos de Inventario ------------
 void Inventario::controlInventario() {
     int opcion;
     do {
@@ -429,9 +505,42 @@ void Inventario::controlInventario() {
             case 3: ajustarInventario(); break;
             case 4: reporteExistencias(); break;
             case 5: break;
-            default: cout << "\n\t\tOpcion invalida!"; cin.get();
+            default:
+                cout << "\n\t\tOpcion invalida!";
+                cin.ignore();
+                cin.get();
         }
     } while(opcion != 5);
+}
+
+void Inventario::consultarStock() {
+    system("cls");
+    cout << "\t\t========================================" << endl;
+    cout << "\t\t| CONSULTA DE STOCK                    |" << endl;
+    cout << "\t\t========================================" << endl;
+
+    vector<Producto> productos = cargarProductosDesdeArchivo();
+    if (productos.empty()) {
+        cout << "\t\tNo hay productos registrados." << endl;
+        system("pause");
+        return;
+    }
+
+    cout << "\t\t" << left << setw(10) << "ID"
+         << setw(20) << "NOMBRE"
+         << setw(10) << "STOCK"
+         << setw(15) << "STOCK MIN" << endl;
+    cout << "\t\t" << string(55, '-') << endl;
+
+    for (const auto& producto : productos) {
+        cout << "\t\t" << setw(10) << producto.getId()
+             << setw(20) << producto.getNombre()
+             << setw(10) << producto.getStock()
+             << setw(15) << producto.getStockMinimo() << endl;
+    }
+
+    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "CONS-STOCK");
+    system("pause");
 }
 
 void Inventario::registrarMercancia() {
@@ -440,62 +549,76 @@ void Inventario::registrarMercancia() {
     cout << "\t\t| REGISTRAR MERCANCIA NUEVA            |" << endl;
     cout << "\t\t========================================" << endl;
 
-    ofstream archivo("inventario.txt", ios::app);
-    if (!archivo.is_open()) {
-        cerr << "\n\t\tError al abrir archivo de inventario!" << endl;
-        return;
-    }
+    vector<Producto> productos = cargarProductosDesdeArchivo();
+    vector<Almacen> almacenes = cargarAlmacenesDesdeArchivo();
 
-    string id, nombre;
-    int cantidad;
-
-    cout << "\t\tID del producto: ";
-    cin >> id;
-    cout << "\t\tNombre del producto: ";
-    cin >> nombre;
-    cout << "\t\tCantidad: ";
-    cin >> cantidad;
-
-    archivo << id << " " << nombre << " " << cantidad << endl;
-    archivo.close();
-
-    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "REG-MERC");
-    cout << "\n\t\tMercancia registrada correctamente.";
-    system("pause");
-}
-
-void Inventario::consultarProductosDesdeArchivo() {
-    system("cls");
-    cout << "\t\t========================================" << endl;
-    cout << "\t\t| CONSULTA DE PRODUCTOS                |" << endl;
-    cout << "\t\t========================================" << endl;
-
-    ifstream archivo("productos.txt");
-    if (!archivo.is_open()) {
-        cout << "\t\tNo se pudo abrir el archivo de productos." << endl;
+    if (productos.empty() || almacenes.empty()) {
+        cout << "\t\tDebe haber productos y almacenes registrados primero." << endl;
         system("pause");
         return;
     }
 
-    string id, nombre, categoria;
-    float precio;
-
-    // Encabezado
-    cout << "\t\t" << left << setw(10) << "ID"
-         << setw(20) << "NOMBRE"
-         << setw(10) << "PRECIO"
-         << setw(15) << "CATEGORIA" << endl;
-    cout << "\t\t" << string(55, '-') << endl;
-
-    while (archivo >> id >> nombre >> precio >> categoria) {
-        cout << "\t\t" << setw(10) << id
-             << setw(20) << nombre
-             << setw(10) << fixed << setprecision(2) << precio
-             << setw(15) << categoria << endl;
+    // Mostrar productos disponibles
+    cout << "\n\tProductos disponibles:\n";
+    for (const auto& p : productos) {
+        cout << "\t" << p.getId() << " - " << p.getNombre() << endl;
     }
 
-    archivo.close();
-    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "CONS-PROD");
+    string idProducto;
+    cout << "\t\tID del producto: ";
+    cin >> idProducto;
+
+    auto itProducto = find_if(productos.begin(), productos.end(),
+        [&](const Producto& p) { return p.getId() == idProducto; });
+
+    if (itProducto == productos.end()) {
+        cout << "\t\tProducto no encontrado." << endl;
+        system("pause");
+        return;
+    }
+
+    // Mostrar almacenes disponibles
+    cout << "\n\tAlmacenes disponibles:\n";
+    for (const auto& a : almacenes) {
+        cout << "\t" << a.getId() << " - " << a.getNombre()
+             << " (Espacio: " << a.getEspacioDisponible() << ")" << endl;
+    }
+
+    string idAlmacen;
+    cout << "\t\tID del almacén: ";
+    cin >> idAlmacen;
+
+    auto itAlmacen = find_if(almacenes.begin(), almacenes.end(),
+        [&](const Almacen& a) { return a.getId() == idAlmacen; });
+
+    if (itAlmacen == almacenes.end()) {
+        cout << "\t\tAlmacén no encontrado." << endl;
+        system("pause");
+        return;
+    }
+
+    int cantidad;
+    cout << "\t\tCantidad a registrar: ";
+    cin >> cantidad;
+
+    if (cantidad <= 0) {
+        cout << "\t\tCantidad inválida." << endl;
+        system("pause");
+        return;
+    }
+
+    // Actualizar stock del producto
+    itProducto->setStock(itProducto->getStock() + cantidad);
+
+    // Actualizar espacio disponible en almacén (asumiendo 1 unidad = 1 espacio)
+    itAlmacen->setEspacioDisponible(itAlmacen->getEspacioDisponible() - cantidad);
+
+    // Guardar cambios
+    guardarProductosEnArchivo(productos);
+    guardarAlmacenesEnArchivo(almacenes);
+
+    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "REG-MERC");
+    cout << "\n\t\tMercancia registrada correctamente.";
     system("pause");
 }
 
@@ -505,46 +628,47 @@ void Inventario::ajustarInventario() {
     cout << "\t\t| AJUSTAR INVENTARIO EXISTENTE         |" << endl;
     cout << "\t\t========================================" << endl;
 
-    string idBuscado;
-    cout << "\t\tIngrese ID del producto a ajustar: ";
-    cin >> idBuscado;
-
-    ifstream archivoIn("inventario.txt");
-    ofstream archivoTemp("temp.txt");
-    if (!archivoIn.is_open() || !archivoTemp.is_open()) {
-        cerr << "\n\t\tError al abrir archivos!" << endl;
+    vector<Producto> productos = cargarProductosDesdeArchivo();
+    if (productos.empty()) {
+        cout << "\t\tNo hay productos registrados." << endl;
+        system("pause");
         return;
     }
 
-    string id, nombre;
-    int cantidad, nuevaCantidad;
-    bool encontrado = false;
-
-    while (archivoIn >> id >> nombre >> cantidad) {
-        if (id == idBuscado) {
-            encontrado = true;
-            cout << "\t\tCantidad actual: " << cantidad << endl;
-            cout << "\t\tNueva cantidad: ";
-            cin >> nuevaCantidad;
-            archivoTemp << id << " " << nombre << " " << nuevaCantidad << endl;
-        } else {
-            archivoTemp << id << " " << nombre << " " << cantidad << endl;
-        }
+    // Mostrar productos
+    for (const auto& p : productos) {
+        cout << "\t" << p.getId() << " - " << p.getNombre()
+             << " (Stock: " << p.getStock() << ")" << endl;
     }
 
-    archivoIn.close();
-    archivoTemp.close();
+    string idProducto;
+    cout << "\t\tID del producto a ajustar: ";
+    cin >> idProducto;
 
-    remove("inventario.txt");
-    rename("temp.txt", "inventario.txt");
+    auto it = find_if(productos.begin(), productos.end(),
+        [&](const Producto& p) { return p.getId() == idProducto; });
 
-    if (encontrado) {
-        auditoria.insertar(usuarioRegistrado.getNombre(), "200", "AJUSTE-MERC");
-        cout << "\n\t\tInventario ajustado correctamente." << endl;
-    } else {
-        cout << "\n\t\tProducto no encontrado." << endl;
+    if (it == productos.end()) {
+        cout << "\t\tProducto no encontrado." << endl;
+        system("pause");
+        return;
     }
 
+    int nuevaCantidad;
+    cout << "\t\tNueva cantidad: ";
+    cin >> nuevaCantidad;
+
+    if (nuevaCantidad < 0) {
+        cout << "\t\tCantidad inválida." << endl;
+        system("pause");
+        return;
+    }
+
+    it->setStock(nuevaCantidad);
+    guardarProductosEnArchivo(productos);
+
+    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "AJUSTE-INV");
+    cout << "\n\t\tInventario ajustado correctamente." << endl;
     system("pause");
 }
 
@@ -554,29 +678,36 @@ void Inventario::reporteExistencias() {
     cout << "\t\t| REPORTE DE EXISTENCIAS               |" << endl;
     cout << "\t\t========================================" << endl;
 
-    ifstream archivo("inventario.txt");
-    if (!archivo.is_open()) {
+    vector<Producto> productos = cargarProductosDesdeArchivo();
+    if (productos.empty()) {
         cout << "\t\tNo hay productos registrados." << endl;
         system("pause");
         return;
     }
 
-    string id, nombre;
-    int cantidad;
-
-    // Imprimir encabezados
     cout << "\t\t" << left << setw(10) << "ID"
          << setw(20) << "NOMBRE"
-         << setw(10) << "CANTIDAD" << endl;
-    cout << "\t\t" << string(40, '-') << endl;
-    cout << "\t\t" << string(40, '-') << endl;
-    while (archivo >> id >> nombre >> cantidad) {
-        cout << "\t\t" << setw(10) << id
-             << setw(20) << nombre
-             << setw(10) << cantidad << endl;
-    }
-    archivo.close();
+         << setw(10) << "STOCK"
+         << setw(15) << "STOCK MIN" << endl;
+    cout << "\t\t" << string(55, '-') << endl;
 
-    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "REPORTE");
+    for (const auto& producto : productos) {
+        cout << "\t\t" << setw(10) << producto.getId()
+             << setw(20) << producto.getNombre()
+             << setw(10) << producto.getStock()
+             << setw(15) << producto.getStockMinimo() << endl;
+    }
+
+    // Calcular totales
+    int totalStock = 0;
+    for (const auto& p : productos) {
+        totalStock += p.getStock();
+    }
+
+    cout << "\t\t" << string(55, '-') << endl;
+    cout << "\t\t" << setw(30) << "TOTAL STOCK:"
+         << setw(10) << totalStock << endl;
+
+    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "REPORTE-INV");
     system("pause");
 }
