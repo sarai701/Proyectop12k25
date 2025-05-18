@@ -12,6 +12,7 @@ public:
     void registrarMercancia();
     void ajustarInventario();
     void reporteExistencias();
+    void consultarProductosEnAlmacen();
 };
 
 #endif // INVENTARIO_H

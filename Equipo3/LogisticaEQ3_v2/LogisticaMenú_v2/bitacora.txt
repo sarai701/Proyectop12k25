@@ -66,3 +66,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
 3000        arriaza        000                 REG-USER                           17/05/2025 11:22:52 
 3000        Jennifer       000                 LOGIN                              17/05/2025 18:02:42 
+3000        Sistema        000                 PROGRAMA CERRADO                   17/05/2025 20:19:46 
+3000        Karina         000                 REG-USER                           17/05/2025 21:36:16 
+3001        Karina         000                 LOGIN                              17/05/2025 21:36:25 
+3000        Sistema        000                 PROGRAMA CERRADO                   17/05/2025 22:00:29 
