@@ -105,6 +105,7 @@ bool usuarios::loginUsuarios() {
         cout << "\t\t========================================" << endl;
         cout << "\t\t1. Iniciar sesion" << endl;
         cout << "\t\t2. Registrarse (nuevo usuario)" << endl;
+        cout << "\t\t3. Salir del Programa" << endl;
         cout << "\t\t========================================" << endl;
         cout << "\t\tOpcion: ";
 
@@ -133,10 +134,13 @@ bool usuarios::loginUsuarios() {
             }
         } else if (opcion == 2) {
             registrarUsuario();
-        }
-    } while (intentos < 3);
-
-    return acceso;
+        } else if (opcion == 3) {
+        auditoria.insertar("Sistema", "000", "PROGRAMA CERRADO");
+        cout << "\n\t\tSaliendo del programa...\n";
+        system("pause");
+        return false; // O algún otro valor que indique salida
+    }
+     }while (intentos < 3);
 }
 
 string generarCodigoUnico() {
@@ -195,6 +199,7 @@ void usuarios::registrarUsuario() {
         } while (nombre.empty() || nombre.find(' ') != string::npos || usuarioExiste(nombre));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         string confirmacion;
         do {
             cout << "\t\tContrasena (minimo 8 caracteres): ";
@@ -240,33 +245,51 @@ string confirmacion; // Declaración la variable
         while (contrasena.length() < 8) {
             cout << "\n\t\tLa contrasena debe tener al menos 8 caracteres!\n";
             cout << "\t\tContrasena: ";
+=======
+        string confirmacion;
+        do {
+            cout << "\t\tContrasena (minimo 8 caracteres): ";
+>>>>>>> ffd3338976ae7d3d40875f6f300ac94460248d9a
             contrasena = leerPasswordSegura();
-        }
+            while (contrasena.length() < 8) {
+                cout << "\n\t\tLa contrasena debe tener al menos 8 caracteres!\n";
+                cout << "\t\tContrasena: ";
+                contrasena = leerPasswordSegura();
+            }
 
-        cout << "\n\t\tConfirmar contrasena: ";
-        confirmacion = leerPasswordSegura(); // Usando la variable
+            cout << "\n\t\tConfirmar contrasena: ";
+            confirmacion = leerPasswordSegura();
 
-        if (contrasena != confirmacion) {
-            cout << "\n\t\tLas contrasenas no coinciden. Intente de nuevo.\n";
-        }
-    } while (contrasena != confirmacion); // Usando la variable de nivel de acceso
+            if (contrasena != confirmacion) {
+                cout << "\n\t\tLas contrasenas no coinciden. Intente de nuevo.\n";
+            }
+        } while (contrasena != confirmacion);
 
-    do {
-        cout << "\n\t\tNivel de acceso (1-3): ";
-        cin >> nivelAcceso;
-        cin.ignore();
-        if (nivelAcceso < 1 || nivelAcceso > 3) {
-            cout << "\t\tNivel de acceso invalido!\n";
-        }
-    } while (nivelAcceso < 1 || nivelAcceso > 3);
+        do {
+            cout << "\n\t\tNivel de acceso (1-3): ";
+            cin >> nivelAcceso;
+            cin.ignore();
+            if (nivelAcceso < 1 || nivelAcceso > 3) {
+                cout << "\t\tNivel de acceso invalido!\n";
+            }
+        } while (nivelAcceso < 1 || nivelAcceso > 3);
 
-    // Escribir en el archivo
-    archivo << id << " " << nombre << " " << contrasena << " " << nivelAcceso << "\n";
-    archivo.close();
+        // Escribir en el archivo
+        archivo << id << " " << nombre << " " << contrasena << " " << nivelAcceso << "\n";
+        archivo.close();
 
+<<<<<<< HEAD
     auditoria.insertar(nombre, "000", "REG-USER");
     cout << "\n\n\t\tUsuario registrado con exito!\n";
 >>>>>>> 296cd50756a892cdc97a9b778a2a348ccc059bd2
+=======
+        auditoria.insertar(nombre, "000", "REG-USER");
+        cout << "\n\n\t\tUsuario registrado con exito con ID: " << id << "!\n";
+    } catch (const runtime_error& e) {
+        cerr << "\n\t\tError: " << e.what() << endl;
+        archivo.close();
+    }
+>>>>>>> ffd3338976ae7d3d40875f6f300ac94460248d9a
     system("pause");
 }
 bool usuarios::buscarUsuario(const string& user, const string& pass) {

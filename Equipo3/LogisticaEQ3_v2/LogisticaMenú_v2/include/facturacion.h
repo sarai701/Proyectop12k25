@@ -1,19 +1,37 @@
-// Angoly Camila Araujo Mayen Mayo 2025
+// Angoly  Araujo  Mayo 2025
 // 9959-24-17623
 #ifndef FACTURACION_H
 #define FACTURACION_H
 
-#include "bitacora.h"
-#include "usuarios.h"
+#include <iostream>
+using namespace std;
 
-class Facturacion {
-public:
-    void mostrarMenuFacturacion();
-    void gestionFacturacion();
-    void generarFactura();
-    void consultarEstadoPago();
-    void registrarPago();
-    void verReportesFinancieros();
+struct Factura {
+    int idFactura;
+    int idCliente;
+    int idPedido;
+    float monto;
+    bool pagada;
+    char cliente[50]; // No se utiliza activamente, pero mantenido para compatibilidad
 };
 
-#endif // FACTURACION_H
+class Facturacion {
+private:
+    const char* archivoFacturas = "facturas.bin";
+    const char* archivoBitacora = "bitacora.txt";
+
+    void guardarEnArchivo(Factura factura);
+    void mostrarClientes();
+    void mostrarPedidos();
+    int generarIdFactura();
+    void registrarBitacora(const Factura& factura, const string& accion, const string& usuario = "Camila");
+
+public:
+    void mostrarMenuFacturacion();
+    void crearFactura();
+    void mostrarFacturas();
+    void modificarFactura();
+    void eliminarFactura();
+};
+
+#endif

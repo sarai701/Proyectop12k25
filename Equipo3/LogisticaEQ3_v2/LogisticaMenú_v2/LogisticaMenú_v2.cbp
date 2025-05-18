@@ -34,8 +34,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+<<<<<<< HEAD
 		<Unit filename="include/Inventario.h" />
 		<Unit filename="include/Reportes.h" />
+=======
+		<Unit filename="CODIGOS_BITACORA.md" />
+		<Unit filename="include/Inventario.h" />
+>>>>>>> ffd3338976ae7d3d40875f6f300ac94460248d9a
 		<Unit filename="include/administracion.h" />
 		<Unit filename="include/almacen.h" />
 		<Unit filename="include/bitacora.h" />
