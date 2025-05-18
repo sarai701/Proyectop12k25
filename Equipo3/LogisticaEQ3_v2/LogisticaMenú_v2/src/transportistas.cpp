@@ -170,3 +170,16 @@ void Transportistas::guardarEnArchivo(const std::vector<Transportistas>& lista) 
                 << transp.disponibilidad << "\n";
     }
 }
+
+std::vector<Transportistas> Transportistas::getTransportistasDisponibles() {
+    std::vector<Transportistas> transportistas;
+    cargarDesdeArchivo(transportistas);
+
+    // Filtrar solo los disponibles
+    transportistas.erase(
+        std::remove_if(transportistas.begin(), transportistas.end(),
+            [](const Transportistas& t) { return t.disponibilidad != "disponible"; }),
+        transportistas.end());
+
+    return transportistas;
+}

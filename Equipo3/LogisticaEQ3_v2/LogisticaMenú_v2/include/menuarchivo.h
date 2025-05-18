@@ -4,6 +4,9 @@
 class MenuArchivo {
 public:
     static void mostrar();
+
+private:
+    static void cerrarSesion();
 };
 
 #endif // MENUARCHIVO_H

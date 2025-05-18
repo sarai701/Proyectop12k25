@@ -1,5 +1,7 @@
 #include "envios.h"       // Inclusión del archivo de cabecera de la clase Envios
 #include <iostream>       // Para operaciones de entrada y salida
+#include "transportistas.h"
+
 using namespace std;
 
 //JENNIFER BARRIOS COORD EQUIPO 3
@@ -49,4 +51,19 @@ void Envios::generarGuia() {
     cout << "\n\t\t[Generando guia de envio...]" << endl;
     //auditoria.insertar(usuarioRegistrado.getNombre(), "300", "GUIA"); // Código 300 para guía
     system("pause");
+}
+
+void Envios::crearEnvio(const std::string& idPedido,
+                       const std::vector<Transportistas>& transportistas) {
+    // Implementación para crear un envío
+    // Por ejemplo:
+    std::ofstream archivo("envios.dat", std::ios::app);
+    if (archivo.is_open()) {
+        archivo << "Pedido: " << idPedido << " - Transportistas asignados: ";
+        for (const auto& t : transportistas) {
+            archivo << t.id << " ";
+        }
+        archivo << "\n";
+        archivo.close();
+    }
 }

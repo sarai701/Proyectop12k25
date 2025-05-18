@@ -1,47 +1,82 @@
-// Autor: Jennifer Barrios - Coordinadora Equipo 3
-// Carnet: 9959-24-10016
-// Fecha: Mayo 2025
-// Descripción: Encabezado para la gestión de pedidos del sistema
-
-// Protección para evitar múltiples inclusiones
 #ifndef PEDIDOS_H
 #define PEDIDOS_H
 
-// Bibliotecas necesarias
-#include "bitacora.h"  // Para el registro de actividades del sistema
-#include "usuarios.h"  // Para manejar información de usuarios
+#include <string>
+#include <vector>
+#include <ctime>
+#include <stdexcept>
+#include "usuarios.h"
+#include "bitacora.h"
+#include "clientes.h"
+#include "producto.h"
+#include "almacen.h"
+#include "envios.h"
+#include "transportistas.h"
 
-// Clase principal para manejo de pedidos
+class Clientes;
+class Producto;
+class Almacen;
+
+// Declaraciones externas
+extern usuarios usuarioRegistrado;
+extern bitacora auditoria;
+
 class Pedidos {
 public:
-    // Métodos básicos de acceso a datos
+    struct DetallePedido {
+        std::string codigoProducto;
+        int cantidad;
+        double precioUnitario;
+    };
 
-    // Obtiene el identificador único del pedido
-    std::string getId() const;
+    // Constructor
+    Pedidos();
 
-    // Obtiene la descripción detallada del pedido
+    // Métodos de gestión
+    void gestionPedidos(const std::vector<Clientes>& clientes,
+                      const std::vector<Producto>& productos,
+                      const std::vector<Almacen>& almacenes);
+
+    // Métodos CRUD
+    void crearPedido(const std::vector<Clientes>& clientes,
+                   const std::vector<Producto>& productos,
+                   const std::vector<Almacen>& almacenes);
+
+    void consultarPedidos();
+    void modificarPedido(const std::vector<Clientes>& clientes,
+                        const std::vector<Producto>& productos,
+                        const std::vector<Almacen>& almacenes);
+    void cancelarPedido();
+    void completarPedido(const std::string& idPedido, std::vector<Producto>& productos);
+    void verHistorial();
+
+    // Persistencia
+    static void guardarEnArchivo(const std::vector<Pedidos>& lista);
+    static void cargarDesdeArchivo(std::vector<Pedidos>& lista);
+
+    // Getters
+    std::string getId() const { return id; }
     std::string getDetalles() const;
 
-    // Métodos de operaciones con pedidos
+private:
+    std::string id;
+    std::string idCliente;
+    std::string idAlmacen;
+    std::time_t fechaPedido;
+    std::vector<DetallePedido> detalles;
+    std::string estado; // "pendiente", "procesado", "enviado", "completado", "cancelado"
 
-    // Muestra el menú principal de gestión de pedidos
-    void gestionPedidos();
+    // Generación de IDs
+    static std::string generarIdUnico(const std::vector<Pedidos>& lista);
+    static bool idDisponible(const std::vector<Pedidos>& lista, const std::string& id);
 
-    // Crea un nuevo pedido en el sistema
-    void crearPedido();
+    // Validaciones
+    static bool validarCliente(const std::string& idCliente, const std::vector<Clientes>& clientes);
+    static bool validarProducto(const std::string& codigoProducto, const std::vector<Producto>& productos);
+    static bool validarAlmacen(const std::string& idAlmacen, const std::vector<Almacen>& almacenes);
 
-    // Muestra la lista de pedidos existentes
-    void consultarPedidos();
-
-    // Permite editar un pedido existente
-    void modificarPedido();
-
-    // Cancela/elimina un pedido del sistema
-    void cancelarPedido();
-
-    // Muestra el historial completo de pedidos
-    void verHistorial();
+    // Lista estática de pedidos
+    static std::vector<Pedidos> listaPedidos;
 };
 
-// Fin del archivo de encabezado
 #endif // PEDIDOS_H
