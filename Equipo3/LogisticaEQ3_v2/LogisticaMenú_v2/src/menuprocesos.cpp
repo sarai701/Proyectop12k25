@@ -38,7 +38,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
              << "\t\t========================================\n"
              << "\t\t 1. Gestión de Pedidos\n"
              << "\t\t 2. Control de Inventario\n"
-             << "\t\t 3. Envíos y Transportes\n"
+             << "\t\t 3. Envios y Transportes\n"
              << "\t\t 4. Facturación\n"
              << "\t\t 5. Reportes\n"
              << "\t\t 6. Volver\n"
