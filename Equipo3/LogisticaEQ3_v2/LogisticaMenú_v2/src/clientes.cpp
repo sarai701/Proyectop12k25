@@ -1,6 +1,5 @@
 #include "clientes.h"
 #include <iostream>
-#include <vector>
 #include <algorithm>
 #include <fstream>
 #include "bitacora.h"
