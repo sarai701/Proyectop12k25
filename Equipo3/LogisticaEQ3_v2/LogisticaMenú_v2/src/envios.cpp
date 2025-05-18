@@ -40,7 +40,7 @@ string generarIdEnvioUnico(const vector<Envio>& lista) {
 // ----------- Funciones privadas estáticas ------------
 
 vector<Envio> Envios::cargarEnviosDesdeArchivo() {
-    ifstream archivo("envios.dat", ios::binary);
+    ifstream archivo("envios.bin", ios::binary);
     vector<Envio> lista;
     if (!archivo) return lista;
 
@@ -72,7 +72,7 @@ vector<Envio> Envios::cargarEnviosDesdeArchivo() {
 }
 
 void Envios::guardarEnviosEnArchivo(const vector<Envio>& envios) {
-    ofstream archivo("envios.dat", ios::binary | ios::trunc);
+    ofstream archivo("envios.bin", ios::binary | ios::trunc);
     for (const auto& envio : envios) {
         size_t size;
 
@@ -241,12 +241,17 @@ void Envios::crearEnvio(const std::string& idPedido, const std::vector<Transport
 }
 
 void Envios::mostrarEnvios() {
+    system("cls");  // Limpia la pantalla
+
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
 
     cout << "\n----------------------------- Reporte de Envíos -----------------------------\n" << endl;
 
     if (envios.empty()) {
         cout << "\t\t\tNo hay información ...\n";
+        cout << "\nPresione una tecla para continuar...";
+        cin.ignore();
+        cin.get();
         return;
     }
 
@@ -267,6 +272,10 @@ void Envios::mostrarEnvios() {
     }
 
     cout << "---------------------------------------------------------------------------\n";
+
+    cout << "\nPresione una tecla para continuar...";
+    cin.ignore();
+    cin.get();
 }
 
 void mostrarTablaEnvios(const vector<vector<string>>& tabla) {
@@ -541,5 +550,3 @@ void Envios::gestionEnvios() {
         }
     } while (opcion != 6);
 }
-
-

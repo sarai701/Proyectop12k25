@@ -195,22 +195,40 @@ void Clientes::eliminar(std::vector<Clientes>& lista, const std::string& usuario
  * @param lista Lista actual de clientes.
  */
 void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
-    std::ofstream archivo("clientes.txt");
+    std::ofstream archivo("clientes.bin", std::ios::binary | std::ios::trunc);
     if (!archivo) {
-        std::cerr << "Error al abrir clientes.txt para escritura.\n";
+        std::cerr << "Error al abrir clientes.dat para escritura.\n";
         return;
     }
 
     for (const auto& cliente : lista) {
-        archivo << cliente.getId() << '\t'
-                << cliente.getNombre() << '\t'
-                << cliente.getDireccion() << '\t'
-                << cliente.getTelefono() << '\t'
-                << cliente.getNit() << '\n';
-    }
+        // Guardar ID
+        size_t size = cliente.id.size();
+        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+        archivo.write(cliente.id.c_str(), size);
 
+        // Guardar Nombre
+        size = cliente.nombre.size();
+        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+        archivo.write(cliente.nombre.c_str(), size);
+
+        // Guardar Dirección
+        size = cliente.direccion.size();
+        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+        archivo.write(cliente.direccion.c_str(), size);
+
+        // Guardar Teléfono
+        size = cliente.telefono.size();
+        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+        archivo.write(cliente.telefono.c_str(), size);
+
+        // Guardar NIT
+        size = cliente.nit.size();
+        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+        archivo.write(cliente.nit.c_str(), size);
+    }
     archivo.close();
-    std::cout << "\tDatos guardados correctamente en clientes.txt.\n";
+    std::cout << "\tDatos guardados correctamente.\n";
 }
 
 /**
@@ -221,31 +239,43 @@ void Clientes::guardarEnArchivo(const std::vector<Clientes>& lista) {
 void Clientes::cargarDesdeArchivo(std::vector<Clientes>& lista) {
     lista.clear();
 
-    std::ifstream archivo("clientes.txt");
+    std::ifstream archivo("clientes.bin", std::ios::binary);
     if (!archivo) {
-        std::cerr << "Error al abrir clientes.txt para lectura.\n";
+        std::cerr << "Error al abrir clientes.dat para lectura.\n";
         return;
     }
 
-    Clientes cliente;
-    std::string id, nombre, direccion, telefono, nit;
+    while (archivo.peek() != EOF) {
+        Clientes cliente;
+        size_t size;
 
-    while (std::getline(archivo, id, '\t') &&
-           std::getline(archivo, nombre, '\t') &&
-           std::getline(archivo, direccion, '\t') &&
-           std::getline(archivo, telefono, '\t') &&
-           std::getline(archivo, nit)) {
+        // Leer ID
+        if (!archivo.read(reinterpret_cast<char*>(&size), sizeof(size))) break;
+        cliente.id.resize(size);
+        archivo.read(&cliente.id[0], size);
 
-        cliente = Clientes(); // Crear uno nuevo
-        // Asignar valores usando setters o constructor (si tienes uno)
-        cliente.id = id;
-        cliente.nombre = nombre;
-        cliente.direccion = direccion;
-        cliente.telefono = telefono;
-        cliente.nit = nit;
+        // Leer Nombre
+        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+        cliente.nombre.resize(size);
+        archivo.read(&cliente.nombre[0], size);
+
+        // Leer Dirección
+        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+        cliente.direccion.resize(size);
+        archivo.read(&cliente.direccion[0], size);
+
+        // Leer Teléfono
+        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+        cliente.telefono.resize(size);
+        archivo.read(&cliente.telefono[0], size);
+
+        // Leer NIT
+        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+        cliente.nit.resize(size);
+        archivo.read(&cliente.nit[0], size);
+
         lista.push_back(cliente);
     }
-
     archivo.close();
-    std::cout << "\tDatos cargados correctamente desde clientes.txt.\n";
+    std::cout << "\tDatos cargados correctamente.\n";
 }
