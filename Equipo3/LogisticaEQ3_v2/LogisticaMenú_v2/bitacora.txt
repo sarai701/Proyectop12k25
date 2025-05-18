@@ -153,6 +153,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3104        Jennifer       PEDIDOS             Salida de gestión de pedidos       17/05/2025 16:18:01 
 =======
 3000        arriaza        000                 REG-USER                           17/05/2025 11:22:52 
+<<<<<<< HEAD
 >>>>>>> 862a41fe662cb937addea89707b9880e9c7dce70
 =======
 3000        Angel          000                 LOGIN                              17/05/2025 17:38:34 
@@ -174,3 +175,6 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3103        Angel          PEDIDOS             Pedido modificado - ID: 3404       17/05/2025 18:28:36 
 3104        Angel          PEDIDOS             Salida de gestión de pedidos       17/05/2025 18:28:48 
 >>>>>>> d5100bdb0f5841b2a9a5ce8c27155987ff727e6e
+=======
+3000        Jennifer       000                 LOGIN                              17/05/2025 18:02:42 
+>>>>>>> 85227e0923dcbcb72ba4c91960f0768d804107cc

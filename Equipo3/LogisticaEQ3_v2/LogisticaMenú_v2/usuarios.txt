@@ -9,6 +9,7 @@
 =======
 3001 Jennifer 123 5
 >>>>>>> 42bffdfe9f0965f150ef71064bd77ac7f733dd2a
+<<<<<<< HEAD
 3113 Karina alewi 3
 3333 Ale 12345678 3
 3334 Kari 0987654321 2
@@ -18,3 +19,6 @@
 =======
 3370 arriaza alejandra 3
 >>>>>>> 862a41fe662cb937addea89707b9880e9c7dce70
+=======
+
+>>>>>>> 85227e0923dcbcb72ba4c91960f0768d804107cc
