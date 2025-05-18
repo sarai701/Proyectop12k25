@@ -502,3 +502,9 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Karina         000                 LOGIN                              17/05/2025 23:51:57 
 3001        Karina         000                 LOGOUT                             17/05/2025 23:52:01 
 >>>>>>> 8985f6eeb8c73d0b3978067a7bd7297bc29d1fbb
+3000        Jennifer       000                 LOGIN                              18/05/2025 10:37:32 
+3000        Jennifer       200                 STOCK                              18/05/2025 10:37:39 
+3001        Jennifer       200                 REG-MERC                           18/05/2025 10:39:03 
+3002        Jennifer       200                 REPORTE                            18/05/2025 10:39:22 
+3003        Jennifer       200                 AJUSTE-MERC                        18/05/2025 10:39:35 
+3004        Jennifer       200                 REPORTE                            18/05/2025 10:39:38 

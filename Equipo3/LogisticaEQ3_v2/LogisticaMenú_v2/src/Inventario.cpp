@@ -2,17 +2,11 @@
 #include "inventario.h"
 #include <fstream>
 #include <iostream>
-<<<<<<< HEAD
 #include <fstream>
 #include <iomanip>
 #include <vector>
-#include <iomanip>
-=======
->>>>>>> 8985f6eeb8c73d0b3978067a7bd7297bc29d1fbb
 #include <algorithm>
 #include <limits>
-#include <iomanip>
-
 #include "envios.h"
 #include "pedidos.h"
 #include "transportistas.h"
