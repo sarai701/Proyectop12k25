@@ -34,7 +34,7 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
              << "\t\t 2. Catálogos\n"
              << "\t\t 3. Procesos\n"
              << "\t\t 4. Informes\n"
-             << "\t\t 5. Bitácora\n"
+             << "\t\t 5. Bitacora\n"
              << "\t\t 6. Salir\n"
              << "\t\t========================================\n"
              << "\t\tIngresa tu opción: ";
