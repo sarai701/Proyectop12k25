@@ -6,6 +6,7 @@
 #include "transportistas.h"
 
 struct Envio {
+    std::string idEnvio;          // ✅ Nuevo campo para ID único del envío
     std::string idPedido;
     std::string idTransportista;
     std::string idCliente;
@@ -19,10 +20,11 @@ public:
     static void crearEnvio(const std::string& idPedido, const std::vector<Transportistas>& transportistasDisponibles);
     static void mostrarEnvios();
 
-    // ✅ Estas dos funciones deben ser públicas
     static std::vector<Envio> cargarEnviosDesdeArchivo();
     static void guardarEnviosEnArchivo(const std::vector<Envio>& envios);
+
 };
 
 #endif
+
 
