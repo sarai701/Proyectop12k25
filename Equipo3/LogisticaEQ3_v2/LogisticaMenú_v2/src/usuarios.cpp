@@ -104,6 +104,7 @@ bool usuarios::loginUsuarios() {
         cout << "\t\t========================================" << endl;
         cout << "\t\t1. Iniciar sesion" << endl;
         cout << "\t\t2. Registrarse (nuevo usuario)" << endl;
+        cout << "\t\t3. Salir del Programa" << endl;
         cout << "\t\t========================================" << endl;
         cout << "\t\tOpcion: ";
 
@@ -132,10 +133,13 @@ bool usuarios::loginUsuarios() {
             }
         } else if (opcion == 2) {
             registrarUsuario();
-        }
-    } while (intentos < 3);
-
-    return acceso;
+        } else if (opcion == 3) {
+        auditoria.insertar("Sistema", "000", "PROGRAMA CERRADO");
+        cout << "\n\t\tSaliendo del programa...\n";
+        system("pause");
+        return false; // O algún otro valor que indique salida
+    }
+     }while (intentos < 3);
 }
 
 string generarCodigoUnico() {

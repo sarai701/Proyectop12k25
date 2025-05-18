@@ -178,6 +178,7 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 >>>>>>> d5100bdb0f5841b2a9a5ce8c27155987ff727e6e
 =======
 3000        Jennifer       000                 LOGIN                              17/05/2025 18:02:42 
+<<<<<<< HEAD
 >>>>>>> 85227e0923dcbcb72ba4c91960f0768d804107cc
 =======
 3000        Angel          000                 LOGIN                              17/05/2025 20:32:39 
@@ -229,3 +230,9 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Angel          000                 LOGIN                              17/05/2025 21:55:10 
 3000        Angel          000                 LOGIN                              17/05/2025 21:57:58 
 >>>>>>> 045646afd118a874f0d9691f1b5605904354cb58
+=======
+3000        Sistema        000                 PROGRAMA CERRADO                   17/05/2025 20:19:46 
+3000        Karina         000                 REG-USER                           17/05/2025 21:36:16 
+3001        Karina         000                 LOGIN                              17/05/2025 21:36:25 
+3000        Sistema        000                 PROGRAMA CERRADO                   17/05/2025 22:00:29 
+>>>>>>> a1836cfc7a05be1a66acd5eca09aaac9c98ba1b2
