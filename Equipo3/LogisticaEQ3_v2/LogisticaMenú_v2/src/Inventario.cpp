@@ -5,26 +5,12 @@
 #include "proveedor.h"
 #include <fstream>
 #include <iostream>
-<<<<<<< HEAD
 #include <algorithm>
 #include <limits>
 #include <iomanip>
 #include <sstream>
 #include <vector>
-=======
-#include <fstream>
-#include <iomanip>
-#include <vector>
-#include <algorithm>
-#include <limits>
-#include "envios.h"
-#include "pedidos.h"
-#include "transportistas.h"
-#include "almacen.h"
-#include "clientes.h"
 #include "bitacora.h"
->>>>>>> 5a65c92ccab82300f344ad48eadc2e2d63e07041
-
 using namespace std;
 
 extern usuarios usuariosRegistrado;
