@@ -12,13 +12,13 @@ struct Factura {
     int idPedido;
     float monto;
     bool pagada;
-    char cliente[50];
+    char cliente[50]; // No se utiliza activamente, pero mantenido para compatibilidad
 };
 
 class Facturacion {
 private:
     const char* archivoFacturas = "facturas.bin";
-    const char* archivoBitacora = "bitacora.bin";
+    const char* archivoBitacora = "bitacora.txt";
 
     void guardarEnArchivo(Factura factura);
     void mostrarClientes();

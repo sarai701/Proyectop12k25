@@ -201,3 +201,26 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3001        Jennifer       500                 ANALTIME                           17/05/2025 20:57:32 
 3002        Jennifer       500                 REPINV                             17/05/2025 20:57:38 
 3003        Jennifer       500                 EVAPROV                            17/05/2025 20:57:45 
+3000        Camila         000                 LOGIN-FAIL                         17/05/2025 21:37:49 
+3001        Camila         000                 REG-USER                           17/05/2025 21:38:11 
+3002        Camila         000                 LOGIN                              17/05/2025 21:38:25 
+3000        Camila         000                 LOGIN                              17/05/2025 21:41:08 
+3100        Camila         PEDIDOS             Pedido creado - ID: 3405           17/05/2025 21:42:47 
+3101        Camila         PEDIDOS             Salida de gestiÛn de pedidos       17/05/2025 21:42:53 
+3000        Camila         000                 LOGIN                              17/05/2025 21:46:05 
+3000        Camila         000                 LOGIN                              17/05/2025 21:57:26 
+3000        Camila         000                 LOGIN                              17/05/2025 21:58:16 
+3557        Camila         FACTURACION         Factura agregada - ID: 3557      17/05/2025 21:59:08
+3557        Camila         FACTURACION         Factura modificada - ID: 3557      17/05/2025 22:00:02
+3557        Camila         FACTURACION         Factura eliminada - ID: 3557      17/05/2025 22:00:13
+3000        Camila         000                 LOGIN-FAIL                         17/05/2025 22:06:09 
+3001        Camila         000                 LOGIN                              17/05/2025 22:06:21 
+3000        Camila         000                 LOGIN                              17/05/2025 22:07:16 
+3557        Camila          FACTURACION         Factura agregada - ID: 3557      17/05/2025 22:07:45
+   ®ıë     ıë     e'Ào    ê˙9Ù˝  ıë                    ®ıë     ˆñÀo    ∞˜ë     πEÙ˝        3557        Camila          FACTURACION         Factura modificada - ID: 3557      17/05/2025 22:08:22
+                 ‘,ZÒ˝          ¸ú2Ù˝           à–o            à–o    D       πEÙ˝        3557        Camila          FACTURACION         Factura modificada - ID: 3557      17/05/2025 22:08:42
+                 ‘,ZÒ˝          ¸ú2Ù˝           à–o            à–o    D       πEÙ˝        3557        Camila          FACTURACION         Factura eliminada - ID: 3557      17/05/2025 22:08:53
+  –Ûë                     à   ˛ˇˇˇ    ˝  ˇ                     ˆD     É      πEÙ˝        3000        Camila         000                 LOGIN                              17/05/2025 22:24:44 
+3000        Camila         000                 LOGIN                              17/05/2025 22:38:55 
+      3557          Camila          FACTURACION     Factura agregada 17/05/2025 22:39:12
+      3557          Camila          FACTURACION    Factura eliminada 17/05/2025 22:39:52
