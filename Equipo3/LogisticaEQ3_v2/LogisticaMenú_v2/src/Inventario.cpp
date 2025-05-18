@@ -13,8 +13,9 @@
 #include "bitacora.h"
 using namespace std;
 
-extern usuarios usuariosRegistrado;
+extern usuarios usuarioRegistrado;
 extern bitacora auditoria;
+std::vector<Inventario> Inventario::Inventario
 
 // ----------- Funciones de archivo para Productos ------------
 vector<producto> cargarProductosDesdeArchivo() {
