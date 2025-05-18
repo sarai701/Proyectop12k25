@@ -483,3 +483,5 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
       3557          Camila          FACTURACION    Factura eliminada 17/05/2025 22:39:52
 >>>>>>> 5bbe8afdfb45178f0648659a4a1e6e9e6ac5a8bf
 >>>>>>> ffd3338976ae7d3d40875f6f300ac94460248d9a
+3000        Karina         000                 LOGIN                              18/05/2025 08:05:35 
+3000        Karina         200                 STOCK                              18/05/2025 08:06:25 

@@ -1,5 +1,4 @@
-//Karina Alejandra Arriaza Ortiz
-//Karina Alejandra Arriaza Ortiz
+// Karina Alejandra Arriaza Ortiz
 #include "usuarios.h"
 #include <iostream>
 #include <fstream>
@@ -17,19 +16,12 @@ const int CODIGO_FINAL = 3149;
 
 extern bitacora auditoria;
 
-// Constructor
-usuarios::usuarios() : id(""), nombre(""), contrasena(""), nivelAcceso(1) {}
-
-// Destructor
-usuarios::~usuarios() {}
-
 // Funciones auxiliares privadas
 string usuarios::generarCodigoUnico() {
     ifstream archivo("usuarios.txt");
     set<string> codigosExistentes;
     string linea;
 
-    // Leer códigos existentes
     if (archivo.is_open()) {
         while (getline(archivo, linea)) {
             istringstream ss(linea);
@@ -41,16 +33,14 @@ string usuarios::generarCodigoUnico() {
         archivo.close();
     }
 
-    // Buscar un código disponible
-    for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; i++) {
+    for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; ++i) {
         string codigo = to_string(i);
         if (codigosExistentes.find(codigo) == codigosExistentes.end()) {
             return codigo;
         }
     }
 
-    throw runtime_error("No hay codigos disponibles en el rango " +
-                      to_string(CODIGO_INICIAL) + "-" + to_string(CODIGO_FINAL));
+    throw runtime_error("No hay códigos disponibles en el rango.");
 }
 
 bool usuarios::esNumero(const string& str) {
@@ -65,23 +55,20 @@ bool usuarios::usuarioExiste(const string& nombreUsuario) {
         istringstream ss(linea);
         string idArchivo, nombreArchivo, passArchivo;
         int nivelArchivo;
-
         if (ss >> idArchivo >> nombreArchivo >> passArchivo >> nivelArchivo) {
             if (nombreArchivo == nombreUsuario) {
-                archivo.close();
                 return true;
             }
         }
     }
-    archivo.close();
     return false;
 }
 
 string usuarios::leerPasswordSegura() {
     string pass;
     char ch;
-    while ((ch = _getch()) != 13) { // 13 es Enter
-        if (ch == 8 && !pass.empty()) { // 8 es Backspace
+    while ((ch = _getch()) != 13) {
+        if (ch == 8 && !pass.empty()) {
             pass.pop_back();
             cout << "\b \b";
         } else if (ch != 8) {
@@ -92,7 +79,6 @@ string usuarios::leerPasswordSegura() {
     return pass;
 }
 
-// Funciones públicas
 bool usuarios::loginUsuarios() {
     string user, pass;
     int intentos = 0;
@@ -113,63 +99,47 @@ bool usuarios::loginUsuarios() {
         cin >> opcion;
         cin.ignore();
 
-        if (opcion == 1) {
-            cout << "\t\tUsuario: ";
-            getline(cin, user);
-            cout << "\t\tContrasena: ";
-            pass = leerPasswordSegura();
+        switch (opcion) {
+            case 1:
+                cout << "\t\tUsuario: ";
+                getline(cin, user);
+                cout << "\t\tContrasena: ";
+                pass = leerPasswordSegura();
 
-            if (buscarUsuario(user, pass)) {
-                acceso = true;
-                nombre = user;
-                auditoria.insertar(nombre, "000", "LOGIN");
-                cout << "\n\t\tAutenticacion exitosa. Bienvenido!";
-                system("pause");
+                if (buscarUsuario(user, pass)) {
+                    acceso = true;
+                    nombre = user;
+                    auditoria.insertar(nombre, "000", "LOGIN");
+                    cout << "\n\t\tAutenticacion exitosa. Bienvenido!\n";
+                    system("pause");
+                    return true;
+                } else {
+                    intentos++;
+                    auditoria.insertar(user, "000", "LOGIN-FAIL");
+                    cout << "\n\t\tUsuario o contrasena incorrectos. Intentos restantes: " << (3 - intentos);
+                    system("pause");
+                }
                 break;
-            } else {
-                intentos++;
-                auditoria.insertar(user, "000", "LOGIN-FAIL");
-                cout << "\n\t\tUsuario o contrasena incorrectos. Intentos restantes: " << 3 - intentos;
+
+            case 2:
+                registrarUsuario();
+                break;
+
+            case 3:
+                auditoria.insertar("Sistema", "000", "PROGRAMA CERRADO");
+                cout << "\n\t\tSaliendo del programa...\n";
                 system("pause");
-            }
-        } else if (opcion == 2) {
-            registrarUsuario();
-        } else if (opcion == 3) {
-        auditoria.insertar("Sistema", "000", "PROGRAMA CERRADO");
-        cout << "\n\t\tSaliendo del programa...\n";
-        system("pause");
-        return false; // O algún otro valor que indique salida
-    }
-     }while (intentos < 3);
+                return false;
+
+            default:
+                cout << "\n\t\tOpcion invalida!\n";
+                system("pause");
+        }
+    } while (intentos < 3);
+
+    return false;
 }
 
-string generarCodigoUnico() {
-    ifstream archivo("usuarios.txt");
-    set<string> codigosExistentes;
-    string linea;
-
-    // Leer códigos existentes
-    while (getline(archivo, linea)) {
-        istringstream ss(linea);
-        string idArchivo;
-        if (ss >> idArchivo) {
-            codigosExistentes.insert(idArchivo);
-        }
-    }
-    archivo.close();
-
-    // Buscar un código disponible
-    for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; i++) {
-        string codigo = to_string(i);
-        if (codigosExistentes.find(codigo) == codigosExistentes.end()) {
-            return codigo;
-        }
-    }
-
-    throw runtime_error("No hay codigos disponibles en el rango " + to_string(CODIGO_INICIAL) + "-" + to_string(CODIGO_FINAL));
-}
-
-// Modifica el método registrarUsuario() así:
 void usuarios::registrarUsuario() {
     system("cls");
     ofstream archivo("usuarios.txt", ios::app);
@@ -183,11 +153,9 @@ void usuarios::registrarUsuario() {
     cout << "\t\t========================================" << endl;
 
     try {
-        // Generar código automático
         id = generarCodigoUnico();
         cout << "\t\tID generado automaticamente: " << id << endl;
 
-        // Resto del código de registro (validación de nombre, contraseña, etc.)
         do {
             cout << "\t\tNombre de usuario (sin espacios): ";
             getline(cin, nombre);
@@ -198,14 +166,12 @@ void usuarios::registrarUsuario() {
             }
         } while (nombre.empty() || nombre.find(' ') != string::npos || usuarioExiste(nombre));
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         string confirmacion;
         do {
             cout << "\t\tContrasena (minimo 8 caracteres): ";
             contrasena = leerPasswordSegura();
             while (contrasena.length() < 8) {
-                cout << "\n\t\tLa contrasena debe tener al menos 8 caracteres!\n";
+                cout << "\n\t\tDebe tener al menos 8 caracteres. Intente de nuevo.\n";
                 cout << "\t\tContrasena: ";
                 contrasena = leerPasswordSegura();
             }
@@ -227,71 +193,18 @@ void usuarios::registrarUsuario() {
             }
         } while (nivelAcceso < 1 || nivelAcceso > 3);
 
-        // Escribir en el archivo
         archivo << id << " " << nombre << " " << contrasena << " " << nivelAcceso << "\n";
         archivo.close();
 
         auditoria.insertar(nombre, "000", "REG-USER");
-        cout << "\n\n\t\tUsuario registrado con exito con ID: " << id << "!\n";
+        cout << "\n\t\tUsuario registrado con exito con ID: " << id << "!\n";
     } catch (const runtime_error& e) {
         cerr << "\n\t\tError: " << e.what() << endl;
-        archivo.close();
     }
-=======
-string confirmacion; // Declaración la variable
-    do {
-        cout << "\t\tContrasena (minimo 8 caracteres): ";
-        contrasena = leerPasswordSegura();
-        while (contrasena.length() < 8) {
-            cout << "\n\t\tLa contrasena debe tener al menos 8 caracteres!\n";
-            cout << "\t\tContrasena: ";
-=======
-        string confirmacion;
-        do {
-            cout << "\t\tContrasena (minimo 8 caracteres): ";
->>>>>>> ffd3338976ae7d3d40875f6f300ac94460248d9a
-            contrasena = leerPasswordSegura();
-            while (contrasena.length() < 8) {
-                cout << "\n\t\tLa contrasena debe tener al menos 8 caracteres!\n";
-                cout << "\t\tContrasena: ";
-                contrasena = leerPasswordSegura();
-            }
 
-            cout << "\n\t\tConfirmar contrasena: ";
-            confirmacion = leerPasswordSegura();
-
-            if (contrasena != confirmacion) {
-                cout << "\n\t\tLas contrasenas no coinciden. Intente de nuevo.\n";
-            }
-        } while (contrasena != confirmacion);
-
-        do {
-            cout << "\n\t\tNivel de acceso (1-3): ";
-            cin >> nivelAcceso;
-            cin.ignore();
-            if (nivelAcceso < 1 || nivelAcceso > 3) {
-                cout << "\t\tNivel de acceso invalido!\n";
-            }
-        } while (nivelAcceso < 1 || nivelAcceso > 3);
-
-        // Escribir en el archivo
-        archivo << id << " " << nombre << " " << contrasena << " " << nivelAcceso << "\n";
-        archivo.close();
-
-<<<<<<< HEAD
-    auditoria.insertar(nombre, "000", "REG-USER");
-    cout << "\n\n\t\tUsuario registrado con exito!\n";
->>>>>>> 296cd50756a892cdc97a9b778a2a348ccc059bd2
-=======
-        auditoria.insertar(nombre, "000", "REG-USER");
-        cout << "\n\n\t\tUsuario registrado con exito con ID: " << id << "!\n";
-    } catch (const runtime_error& e) {
-        cerr << "\n\t\tError: " << e.what() << endl;
-        archivo.close();
-    }
->>>>>>> ffd3338976ae7d3d40875f6f300ac94460248d9a
     system("pause");
 }
+
 bool usuarios::buscarUsuario(const string& user, const string& pass) {
     ifstream archivo("usuarios.txt");
     if (!archivo.is_open()) {
@@ -311,206 +224,9 @@ bool usuarios::buscarUsuario(const string& user, const string& pass) {
                 nombre = nombreArchivo;
                 contrasena = passArchivo;
                 nivelAcceso = nivelArchivo;
-                archivo.close();
                 return true;
             }
         }
     }
-    archivo.close();
     return false;
 }
-
-void usuarios::menuUsuarios() {
-    int opcion;
-    do {
-        system("cls");
-        cout << "\t\t========================================" << endl;
-        cout << "\t\t| ADMINISTRACION DE USUARIOS - LOGISTICA|" << endl;
-        cout << "\t\t========================================" << endl;
-        cout << "\t\t1. Registrar nuevo usuario" << endl;
-        cout << "\t\t2. Consultar usuarios" << endl;
-        cout << "\t\t3. Modificar usuario" << endl;
-        cout << "\t\t4. Eliminar usuario" << endl;
-        cout << "\t\t5. Volver al menu principal" << endl;
-        cout << "\t\t========================================" << endl;
-        cout << "\t\tOpcion: ";
-        cin >> opcion;
-        cin.ignore();
-
-        switch (opcion) {
-            case 1: registrarUsuario(); break;
-            case 2: consultarUsuarios(); break;
-            case 3: modificarUsuario(); break;
-            case 4: eliminarUsuario(); break;
-            case 5: break;
-            default: cout << "\n\t\tOpcion invalida!"; system("pause");
-        }
-    } while (opcion != 5);
-}
-
-void usuarios::consultarUsuarios() {
-    system("cls");
-    ifstream archivo("usuarios.txt");
-    cout << "\t\t========================================" << endl;
-    cout << "\t\t| LISTADO DE USUARIOS - LOGISTICA      |" << endl;
-    cout << "\t\t========================================" << endl;
-    cout << "\t\t" << left << setw(10) << "ID" << setw(20) << "NOMBRE"
-         << setw(15) << "NIVEL" << endl;
-
-    if (!archivo.is_open()) {
-        cout << "\t\tNo hay usuarios registrados." << endl;
-    } else {
-        string linea;
-        while (getline(archivo, linea)) {
-            istringstream ss(linea);
-            string idArchivo, nombreArchivo, passArchivo;
-            int nivelArchivo;
-
-            if (ss >> idArchivo >> nombreArchivo >> passArchivo >> nivelArchivo) {
-                cout << "\t\t" << setw(10) << idArchivo
-                     << setw(20) << nombreArchivo
-                     << setw(15) << nivelArchivo << endl;
-            }
-        }
-        archivo.close();
-    }
-    cout << "\t\t========================================" << endl;
-    auditoria.insertar(this->nombre, "000", "CONS-USER");
-    system("pause");
-}
-
-void usuarios::modificarUsuario() {
-    system("cls");
-    string idBuscar;
-    cout << "\t\tIngrese ID del usuario a modificar: ";
-    getline(cin, idBuscar);
-
-    ifstream archivoEntrada("usuarios.txt");
-    ofstream archivoTemp("temp.txt");
-
-    if (!archivoEntrada.is_open() || !archivoTemp.is_open()) {
-        cerr << "\t\tError al abrir archivos!\n";
-        return;
-    }
-
-    string linea;
-    bool encontrado = false;
-    usuarios usuarioModificar;
-
-    while (getline(archivoEntrada, linea)) {
-        istringstream ss(linea);
-        string idArchivo, nombreArchivo, passArchivo;
-        int nivelArchivo;
-
-        if (ss >> idArchivo >> nombreArchivo >> passArchivo >> nivelArchivo) {
-            if (idArchivo == idBuscar) {
-                encontrado = true;
-                usuarioModificar.id = idArchivo;
-                usuarioModificar.nombre = nombreArchivo;
-                usuarioModificar.contrasena = passArchivo;
-                usuarioModificar.nivelAcceso = nivelArchivo;
-
-                // Mostrar datos actuales
-                cout << "\n\t\tDatos actuales del usuario:\n";
-                cout << "\t\tID: " << usuarioModificar.id << endl;
-                cout << "\t\tNombre: " << usuarioModificar.nombre << endl;
-                cout << "\t\tNivel acceso: " << usuarioModificar.nivelAcceso << endl;
-
-                // Solicitar nuevos datos
-                cout << "\n\t\tIngrese nuevos datos (deje en blanco para no modificar):\n";
-
-                string nuevoNombre;
-                cout << "\t\tNuevo nombre: ";
-                getline(cin, nuevoNombre);
-                if (!nuevoNombre.empty()) usuarioModificar.nombre = nuevoNombre;
-
-                cout << "\t\tNueva contraseña: ";
-                string nuevaPass = leerPasswordSegura();
-                if (!nuevaPass.empty()) usuarioModificar.contrasena = nuevaPass;
-
-                string nuevoNivel;
-                cout << "\t\tNuevo nivel (1-3): ";
-                getline(cin, nuevoNivel);
-                if (!nuevoNivel.empty()) {
-                    usuarioModificar.nivelAcceso = stoi(nuevoNivel);
-                }
-
-                // Escribir usuario modificado
-                archivoTemp << usuarioModificar.id << " " << usuarioModificar.nombre << " "
-                           << usuarioModificar.contrasena << " " << usuarioModificar.nivelAcceso << endl;
-                continue;
-            }
-        }
-        // Escribir línea original si no es el usuario a modificar
-        archivoTemp << linea << endl;
-    }
-
-    archivoEntrada.close();
-    archivoTemp.close();
-
-    if (encontrado) {
-        remove("usuarios.txt");
-        rename("temp.txt", "usuarios.txt");
-        auditoria.insertar(this->nombre, idBuscar, "MOD-USER");
-        cout << "\t\tUsuario modificado con exito!\n";
-    } else {
-        remove("temp.txt");
-        cout << "\t\tUsuario no encontrado!\n";
-    }
-    system("pause");
-}
-
-void usuarios::eliminarUsuario() {
-    system("cls");
-    string idEliminar;
-    cout << "\t\tIngrese ID del usuario a eliminar: ";
-    getline(cin, idEliminar);
-
-    ifstream archivoEntrada("usuarios.txt");
-    ofstream archivoTemp("temp.txt");
-
-    if (!archivoEntrada.is_open() || !archivoTemp.is_open()) {
-        cerr << "\t\tError al abrir archivos!\n";
-        return;
-    }
-
-    string linea;
-    bool encontrado = false;
-
-    while (getline(archivoEntrada, linea)) {
-        istringstream ss(linea);
-        string idArchivo, nombreArchivo, passArchivo;
-        int nivelArchivo;
-
-        if (ss >> idArchivo >> nombreArchivo >> passArchivo >> nivelArchivo) {
-            if (idArchivo == idEliminar) {
-                encontrado = true;
-                continue; // No escribimos este registro
-            }
-        }
-        // Escribir línea original si no es el usuario a eliminar
-        archivoTemp << linea << endl;
-    }
-
-    archivoEntrada.close();
-    archivoTemp.close();
-
-    if (encontrado) {
-        remove("usuarios.txt");
-        rename("temp.txt", "usuarios.txt");
-        auditoria.insertar(this->nombre, idEliminar, "DEL-USER");
-        cout << "\t\tUsuario eliminado con exito!\n";
-    } else {
-        remove("temp.txt");
-        cout << "\t\tUsuario no encontrado!\n";
-    }
-    system("pause");
-}
-
-// Getters
-string usuarios::getNombre() const { return nombre; }
-string usuarios::getId() const { return id; }
-int usuarios::getNivelAcceso() const { return nivelAcceso; }
-
-// Setters
-void usuarios::setNivelAcceso(int nivel) { nivelAcceso = nivel; }

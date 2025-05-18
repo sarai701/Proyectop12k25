@@ -228,7 +228,7 @@ void Envios::crearEnvio(const std::string& idPedido, const std::vector<Transport
     std::vector<Envio> envios = cargarEnviosDesdeArchivo();
 
     Envio nuevo;
-    nuevo.idEnvio = generarIdEnvioUnico(envios); // ✅ si estás usando ID automático
+    nuevo.idEnvio = generarIdEnvioUnico(envios);
     nuevo.idPedido = idPedido;
     nuevo.idTransportista = transportistasDisponibles.front().id;
     nuevo.estado = "en camino";

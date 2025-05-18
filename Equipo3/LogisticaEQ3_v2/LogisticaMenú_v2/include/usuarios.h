@@ -16,19 +16,10 @@ private:
     bool usuarioExiste(const std::string& nombreUsuario);
     std::string leerPasswordSegura();
     std::string confirmacion ();
-<<<<<<< HEAD
-<<<<<<< HEAD
     std::string generarCodigoUnico();
-=======
->>>>>>> 296cd50756a892cdc97a9b778a2a348ccc059bd2
-=======
-    std::string generarCodigoUnico();
->>>>>>> ffd3338976ae7d3d40875f6f300ac94460248d9a
 
 public:
     usuarios();
-    ~usuarios();
-
     bool loginUsuarios();
     void registrarUsuario();
     bool buscarUsuario(const std::string& user, const std::string& pass);
