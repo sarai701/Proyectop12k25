@@ -603,3 +603,20 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        Angoly         000                 LOGIN                              18/05/2025 15:21:52 
 3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 15:22:10 
 >>>>>>> 48272b46800959aae78e9d62f3c7b8e6938a3564
+3000        Karina         000                 LOGIN                              18/05/2025 16:32:37 
+3000        Karina         000                 LOGIN                              18/05/2025 16:38:01 
+3000        Karina         200                 REPORTE-INV                        18/05/2025 16:38:31 
+3001        Karina         000                 LOGOUT                             18/05/2025 16:39:27 
+3002        Sistema        000                 PROGRAMA CERRADO                   18/05/2025 16:39:39 
+3000        Karina         000                 LOGIN                              18/05/2025 17:12:40 
+3000        Alejandra      000                 REG-USER                           18/05/2025 17:15:05 
+3001        Alejandra      000                 LOGIN                              18/05/2025 17:15:21 
+3000        Alejandra      200                 REPORTE-INV                        18/05/2025 17:16:46 
+3000        Karina         000                 LOGIN                              18/05/2025 17:20:47 
+3000        Karina         000                 LOGIN                              18/05/2025 17:21:25 
+3000        Karina         200                 REPORTE-INV                        18/05/2025 17:21:45 
+3001        Karina         000                 LOGOUT                             18/05/2025 17:22:05 
+3002        Sistema        000                 PROGRAMA CERRADO                   18/05/2025 17:22:08 
+3000        Karina         000                 LOGIN                              18/05/2025 17:39:14 
+3001        Karina         000                 LOGOUT                             18/05/2025 17:39:21 
+3002        Sistema        000                 PROGRAMA CERRADO                   18/05/2025 17:39:25 
