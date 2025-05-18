@@ -26,10 +26,15 @@ void MenuArchivo::mostrar() {
 
         switch(opcion) {
             case 1:
+<<<<<<< HEAD
                 if(cerrarSesion()) {
                     usuarios user;
                     user.loginUsuarios();
                     return;
+=======
+                if(cerrarSesion()) {  // Si cierra sesión exitosamente
+                    return;  // Esto hará que regrese al menú de login
+>>>>>>> ramaale
                 }
                 break;
             case 2: /* ... */ break;
@@ -53,6 +58,7 @@ bool MenuArchivo::cerrarSesion() {
         cout << "\n\t\tSesion cerrada correctamente.\n";
         system("pause");
 
+<<<<<<< HEAD
         usuarioRegistrado = usuarios();
 
         return true;
@@ -60,5 +66,12 @@ bool MenuArchivo::cerrarSesion() {
         cout << "\n\t\tOperacion cancelada.\n";
         system("pause");
         return false;
+=======
+        return true;  // Indica que se cerró sesión exitosamente
+    } else {
+        cout << "\n\t\tOperacion cancelada.\n";
+        system("pause");
+        return false;  // Indica que no se cerró sesión
+>>>>>>> ramaale
     }
 }

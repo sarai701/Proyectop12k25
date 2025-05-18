@@ -1,9 +1,25 @@
 //Karina Alejandra Arriaza Ortiz
+<<<<<<< HEAD
 //Karina Alejandra Arriaza Ortiz
 #include "inventario.h"
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+=======
+#include "inventario.h"
+#include <fstream>
+#include <iostream>
+#include <algorithm>
+#include <limits>
+#include <iomanip>
+
+#include "envios.h"
+#include "pedidos.h"
+#include "transportistas.h"
+#include "almacen.h"
+#include "clientes.h"
+#include "bitacora.h"
+>>>>>>> ramaale
 
 using namespace std;
 
@@ -37,7 +53,11 @@ void Inventario::controlInventario() {
     } while(opcion != 5);
 }
 
+<<<<<<< HEAD
 // Registrar nueva mercancía
+=======
+// Registrar nueva mercancia
+>>>>>>> ramaale
 void Inventario::registrarMercancia() {
     system("cls");
     cout << "\t\t========================================" << endl;
@@ -142,7 +162,11 @@ void Inventario::reporteExistencias() {
     cout << "\t\t" << left << setw(10) << "ID"
          << setw(20) << "NOMBRE"
          << setw(10) << "CANTIDAD" << endl;
+<<<<<<< HEAD
     cout << "\t\t" << string(40, '-') << endl; // Línea divisoria
+=======
+    cout << "\t\t" << string(40, '-') << endl; // L�nea divisoria
+>>>>>>> ramaale
 
     // Imprimir los datos del inventario
     while (archivo >> id >> nombre >> cantidad) {
