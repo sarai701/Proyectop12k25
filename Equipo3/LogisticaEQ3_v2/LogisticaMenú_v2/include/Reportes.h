@@ -1,30 +1,66 @@
 // 9959-24-11603 GE
-// Declaración de la clase Reportes, que se encarga de generar distintos
-// informes y análisis para el sistema logístico.
-
 #ifndef REPORTES_H
 #define REPORTES_H
 
-#include "bitacora.h"   // Para registrar acciones en la bitácora
-#include "usuarios.h"   // Para acceder a información del usuario actual
+#include <vector>
+#include <string>
+#include <ctime>
+#include "bitacora.h"
+#include "usuarios.h"
 
-// Clase que encapsula las funcionalidades relacionadas con reportes y análisis
+// Declaraciones externas para mantener compatibilidad
+extern bitacora auditoria;
+extern usuarios usuarioRegistrado;
+
 class Reportes {
 public:
-    // Método principal para generar reportes desde el menú
+    // Estructura que representa un reporte
+    struct DatosReporte {
+        std::string id;                // ID unico del reporte
+        std::string tipo;              // Tipo de reporte (ventas, inventario, etc.)
+        std::time_t fechaGeneracion;   // Fecha de creacion del reporte
+        std::string contenido;         // Contenido textual del reporte
+    };
+
+    // Lista estatica que almacena todos los reportes generados
+    static std::vector<DatosReporte> listaReportes;
+
+    // Constructor: carga los reportes desde archivo binario al iniciar
+    Reportes();
+
+    // Metodo publico para generar reportes, version sin parametros (usa globales)
     void generarReportes();
 
-    // Genera un informe de ventas
-    void informeVentas();
+    // Metodo publico para generar reportes, version con parametros
+    void generarReportes(bitacora& auditoria, const usuarios& usuario);
 
-    // Realiza un análisis de los tiempos de entrega
-    void analisisTiemposEntrega();
+    // Genera un informe de ventas simulado
+    void informeVentas(bitacora& auditoria, const usuarios& usuario);
 
-    // Muestra un reporte del estado actual del inventario
-    void reporteInventarios();
+    // Genera un analisis de tiempos de entrega
+    void analisisTiemposEntrega(bitacora& auditoria, const usuarios& usuario);
 
-    // Evalúa el desempeño de los proveedores
-    void evaluacionProveedores();
+    // Genera un reporte de inventarios
+    void reporteInventarios(bitacora& auditoria, const usuarios& usuario);
+
+    // Genera una evaluacion de proveedores
+    void evaluacionProveedores(bitacora& auditoria, const usuarios& usuario);
+
+    // Guarda los reportes en un archivo binario
+    static void guardarEnArchivoBin(const std::vector<DatosReporte>& lista);
+
+    // Carga los reportes desde un archivo binario
+    static void cargarDesdeArchivoBin(std::vector<DatosReporte>& lista);
+
+private:
+    // Genera un ID unico dentro de un rango fijo (3800-3850)
+    static std::string generarIdUnico(const std::vector<DatosReporte>& lista);
+
+    // Verifica si un ID esta disponible en la lista
+    static bool idDisponible(const std::vector<DatosReporte>& lista, const std::string& id);
+
+    // Muestra mensaje de "procesando..." con retardo visual
+    void mostrarProcesando(const std::string& mensaje);
 };
 
 #endif // REPORTES_H
