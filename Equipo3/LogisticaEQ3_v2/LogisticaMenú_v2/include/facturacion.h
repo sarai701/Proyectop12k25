@@ -1,4 +1,4 @@
-// Angoly Camila Araujo Mayen Mayo 2025
+// Angoly  Araujo  Mayo 2025
 // 9959-24-17623
 #ifndef FACTURACION_H
 #define FACTURACION_H
