@@ -3,8 +3,13 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <set>
+#include <stdexcept>
 
 using namespace std;
+
+const int CODIGO_INICIAL = 3600;
+const int CODIGO_FINAL = 3699;
 
 // Clase para representar un producto
 class Producto {
@@ -31,6 +36,42 @@ public:
 class Inventario {
 private:
     vector<Producto> productos;
+    set<string> codigosUtilizados; // Para llevar registro de códigos usados
+    int siguienteCodigo = CODIGO_INICIAL;
+
+    string generarCodigoUnico() {
+        // Primero intentamos con el siguiente código secuencial disponible
+        while (siguienteCodigo <= CODIGO_FINAL) {
+            string codigo = to_string(siguienteCodigo);
+            if (codigosUtilizados.find(codigo) == codigosUtilizados.end()) {
+                codigosUtilizados.insert(codigo);
+                siguienteCodigo++;
+                return codigo;
+            }
+            siguienteCodigo++;
+        }
+
+        // Si no hay secuenciales disponibles, buscar cualquier código libre
+        for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; i++) {
+            string codigo = to_string(i);
+            if (codigosUtilizados.find(codigo) == codigosUtilizados.end()) {
+                codigosUtilizados.insert(codigo);
+                return codigo;
+            }
+        }
+
+        throw runtime_error("No hay códigos disponibles en el rango " +
+                          to_string(CODIGO_INICIAL) + "-" + to_string(CODIGO_FINAL));
+    }
+
+    Producto* buscarProductoPorId(const string& id) {
+        for (auto& producto : productos) {
+            if (producto.getId() == id) {
+                return &producto;
+            }
+        }
+        return nullptr;
+    }
 
 public:
     void controlInventario();
@@ -38,48 +79,9 @@ public:
     void registrarMercancia();
     void ajustarInventario();
     void reporteExistencias();
-
-private:
-    Producto* buscarProductoPorId(const string& id);
 };
 
 // Implementación de los métodos
-
-Producto* Inventario::buscarProductoPorId(const string& id) {
-    for (auto& producto : productos) {
-        if (producto.getId() == id) {
-            return &producto;
-        }
-    }
-    return nullptr;
-}
-
-void Inventario::controlInventario() {
-    int opcion;
-    do {
-        system("cls");
-        cout << "\t\t========================================" << endl;
-        cout << "\t\t| CONTROL DE INVENTARIO - LOGISTICA     |" << endl;
-        cout << "\t\t========================================" << endl;
-        cout << "\t\t 1. Consultar stock" << endl;
-        cout << "\t\t 2. Registrar mercancia" << endl;
-        cout << "\t\t 3. Ajustar inventario" << endl;
-        cout << "\t\t 4. Reporte de existencias" << endl;
-        cout << "\t\t 5. Volver al menu anterior" << endl;
-        cout << "\t\t========================================" << endl;
-        cout << "\t\tOpcion a escoger: ";
-        cin >> opcion;
-
-        switch(opcion) {
-            case 1: consultarStock(); break;
-            case 2: registrarMercancia(); break;
-            case 3: ajustarInventario(); break;
-            case 4: reporteExistencias(); break;
-            case 5: break;
-            default: cout << "\n\t\tOpcion invalida!"; cin.get();
-        }
-    } while(opcion != 5);
-}
 
 void Inventario::registrarMercancia() {
     system("cls");
@@ -87,23 +89,22 @@ void Inventario::registrarMercancia() {
     cout << "\t\t| REGISTRAR MERCANCIA NUEVA            |" << endl;
     cout << "\t\t========================================" << endl;
 
-    string id, nombre;
-    int cantidad;
+    try {
+        string id = generarCodigoUnico();
+        string nombre;
+        int cantidad;
 
-    cout << "\t\tID del producto: ";
-    cin >> id;
-    cout << "\t\tNombre del producto: ";
-    cin.ignore();
-    getline(cin, nombre);
-    cout << "\t\tCantidad: ";
-    cin >> cantidad;
+        cout << "\t\tID generado automaticamente: " << id << endl;
+        cout << "\t\tNombre del producto: ";
+        cin.ignore();
+        getline(cin, nombre);
+        cout << "\t\tCantidad: ";
+        cin >> cantidad;
 
-    // Verificar si el producto ya existe
-    if (buscarProductoPorId(id) != nullptr) {
-        cout << "\n\t\tError: Producto con este ID ya existe!" << endl;
-    } else {
         productos.emplace_back(id, nombre, cantidad);
-        cout << "\n\t\tMercancia registrada correctamente." << endl;
+        cout << "\n\t\tMercancia registrada correctamente con ID: " << id << endl;
+    } catch (const runtime_error& e) {
+        cerr << "\n\t\tError: " << e.what() << endl;
     }
 
     system("pause");

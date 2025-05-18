@@ -11,10 +11,9 @@
 #include "producto.h"
 #include "Almacen.h"
 
-// Creado JENNIFER ALBA DAYAMI BARRIOS FLORES
+//JENNIFER ALBA DAYAMI BARRIOS FLORES
 //9959-24-10016
 //MAYO 2025
-//Modificado por Camila Araujo
 
 using namespace std;
 
@@ -22,9 +21,9 @@ using namespace std;
 extern usuarios usuarioRegistrado;
 
 // Muestra el menú principal de procesos y redirige según la opción elegida
-void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
-                         std::vector<Producto>& productos,
-                         std::vector<Almacen>& almacenes) {
+void MenuProcesos::mostrar(const std::vector<Clientes>& clientes,
+                          const std::vector<Producto>& productos,
+                          const std::vector<Almacen>& almacenes) {
     int choice;
     do {
         // Limpiar pantalla antes de mostrar el menú
@@ -69,7 +68,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
                 break;
 
             case 4:
-                gestorFacturacion.mostrarMenuFacturacion();
+                // Funcionalidad de facturación (a implementar)
                 break;
 
             case 5:
