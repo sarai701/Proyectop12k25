@@ -3,18 +3,22 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <string>
+#include <stdexcept>
 
 using namespace std;
+const int CODIGO_INICIAL = 3600;
+const int CODIGO_FINAL = 3699;
 
 // Clase para representar un producto
-class Producto {
+class producto {
 private:
     string id;
     string nombre;
     int cantidad;
 
 public:
-    Producto(string id, string nombre, int cantidad)
+    producto(string id, string nombre, int cantidad)
         : id(id), nombre(nombre), cantidad(cantidad) {}
 
     // Getters
@@ -30,7 +34,31 @@ public:
 // Clase para manejar el inventario
 class Inventario {
 private:
-    vector<Producto> productos;
+    vector<producto> productos;
+    int siguienteCodigo = 3600;
+
+    producto* buscarProductoPorId(const string& id) {
+        for (auto& producto : productos) {
+            if (producto.getId() == id) {
+                return &producto;
+            }
+        }
+        return nullptr;
+    }
+
+    string generarCodigoUnico() {
+        if (siguienteCodigo > 3699) {
+            // Buscar códigos no utilizados dentro del rango
+            for (int i = 3600; i <= 3699; i++) {
+                string codigo = to_string(i);
+                if (buscarProductoPorId(codigo) == nullptr) {
+                    return codigo;
+                }
+            }
+            throw runtime_error("No hay codigos disponibles en el rango 3600-3699");
+        }
+        return to_string(siguienteCodigo++);
+    }
 
 public:
     void controlInventario();
@@ -38,21 +66,9 @@ public:
     void registrarMercancia();
     void ajustarInventario();
     void reporteExistencias();
-
-private:
-    Producto* buscarProductoPorId(const string& id);
 };
 
 // Implementación de los métodos
-
-Producto* Inventario::buscarProductoPorId(const string& id) {
-    for (auto& producto : productos) {
-        if (producto.getId() == id) {
-            return &producto;
-        }
-    }
-    return nullptr;
-}
 
 void Inventario::controlInventario() {
     int opcion;
@@ -87,24 +103,19 @@ void Inventario::registrarMercancia() {
     cout << "\t\t| REGISTRAR MERCANCIA NUEVA            |" << endl;
     cout << "\t\t========================================" << endl;
 
-    string id, nombre;
+    string id = generarCodigoUnico();
+    string nombre;
     int cantidad;
 
-    cout << "\t\tID del producto: ";
-    cin >> id;
+    cout << "\t\tID generado automaticamente: " << id << endl;
     cout << "\t\tNombre del producto: ";
     cin.ignore();
     getline(cin, nombre);
     cout << "\t\tCantidad: ";
     cin >> cantidad;
 
-    // Verificar si el producto ya existe
-    if (buscarProductoPorId(id) != nullptr) {
-        cout << "\n\t\tError: Producto con este ID ya existe!" << endl;
-    } else {
-        productos.emplace_back(id, nombre, cantidad);
-        cout << "\n\t\tMercancia registrada correctamente." << endl;
-    }
+    productos.emplace_back(id, nombre, cantidad);
+    cout << "\n\t\tMercancia registrada correctamente con ID: " << id << endl;
 
     system("pause");
 }
@@ -119,7 +130,7 @@ void Inventario::consultarStock() {
     cout << "\t\tIngrese ID del producto: ";
     cin >> id;
 
-    Producto* producto = buscarProductoPorId(id);
+    producto* producto = buscarProductoPorId(id);
     if (producto != nullptr) {
         cout << "\n\t\tProducto encontrado:" << endl;
         cout << "\t\tID: " << producto->getId() << endl;
@@ -142,7 +153,7 @@ void Inventario::ajustarInventario() {
     cout << "\t\tIngrese ID del producto a ajustar: ";
     cin >> id;
 
-    Producto* producto = buscarProductoPorId(id);
+    producto* producto = buscarProductoPorId(id);
     if (producto != nullptr) {
         int nuevaCantidad;
         cout << "\t\tCantidad actual: " << producto->getCantidad() << endl;
