@@ -1,8 +1,8 @@
 //Programado por Priscila Sarai Guzmán Calgua 9959-23-450
 #include "Nominas.h"
-#include <iostream>
-#include <fstream>   // Para manejo de archivos
-#include <algorithm> // Para la función sort
+#include <iostream> //Entrada y salida de datos
+#include <fstream>   // Para manejo de archivos lectura y escritura
+#include <algorithm> // Para la función sort (orden)
 #include "Bitacora.h"
 #include "Moneda.h"
 
@@ -23,18 +23,21 @@ void Nominas::limpiarPantalla() {
 // Pausa hasta que el usuario presione ENTER
 void Nominas::pausar() {
     cout << "\nPresione ENTER para continuar...";
-    cin.ignore();
+    cin.ignore();//Limpia el buffer de entrada
     cin.get();
 }
 
 // Carga los empleados desde el archivo "nominas.txt"
 void Nominas::cargarEmpleados() {
     empleados.clear();
-    ifstream archivo("nominas.txt");
+    ifstream archivo("empleados.txt");
 
     try {
-        if (!archivo.is_open()) {
-            throw runtime_error("No se pudo abrir el archivo nominas.txt");
+       //verifica si el aarchivo no se puede abrir
+       if (!archivo.is_open()) {
+       //lanza una excepción del tipo runtime_error con el mensaje especifico
+       //Si es así el flujo se lanza a catch
+            throw runtime_error("No se pudo abrir el archivo empleados.txt");
         }
 
         EmpleadoNomina e;
@@ -56,15 +59,18 @@ void Nominas::cargarEmpleados() {
             e.telefono = datos[1];
             e.codigo = datos[2];
             e.direccion = datos[3];
+            //stod()convierte de string a double
+            //Si datos[4] tiene letras en lugar de números este fallará
             e.salario = stod(datos[4]); // Convierte salario a double
 
-            empleados.push_back(e);
+            empleados.push_back(e);//agrega el empleado al vector
         }
 
         archivo.close();
         ordenarEmpleados();
-
+//captura cualquier excepción derivada de exception
     } catch (const exception& ex) {
+    //imprime el mensaje del error lanzado con throw
         cout << "\nError al cargar empleados: " << ex.what() << endl;
     }
 }
@@ -72,7 +78,7 @@ void Nominas::cargarEmpleados() {
 // Guarda los empleados actuales en "nominas.txt"
 void Nominas::guardarEmpleados() {
     try {
-        ofstream archivo("nominas.txt");
+        ofstream archivo("empleados.txt");
         if (!archivo.is_open()) {
             throw runtime_error("No se pudo abrir el archivo nominas.txt para escritura.");
         }
@@ -138,9 +144,9 @@ void Nominas::crearEmpleado() {
     cout << "Salario (GTQ): Q"; cin >> e.salario;
     cin.ignore();
 
-    empleados.push_back(e);
-    ordenarEmpleados();
-    guardarEmpleados();
+    empleados.push_back(e);//agrega el nuevo empleado
+    ordenarEmpleados();//Ordena la lista
+    guardarEmpleados();//Guarda en archivo
 
     bitacoralog3.insertar("Admin", 4001, "Nominas", "Crear empleado");
     cout << "\nEmpleado agregado correctamente.";

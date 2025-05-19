@@ -714,7 +714,7 @@
 	<vector>
 	"Bitacora.h"
 
-1747604361 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\main.cpp
+1747623241 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\main.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -754,14 +754,14 @@
 	<ctime>
 	<cstring>
 
-1746505874 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
+1747625558 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
 	"Empleados.h"
 	<iostream>
 	<fstream>
 	<algorithm>
 	"Bitacora.h"
 
-1747020455 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
+1747624530 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
 	"Nominas.h"
 	<iostream>
 	<fstream>
@@ -1951,11 +1951,11 @@
 	"Moneda.h"
 	<limits>
 
-1747604362 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cuentas.cpp
+1747625558 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cuentas.cpp
 	"Cuentas.h"
 	<iostream>
 
-1747569574 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cuentas.h
+1747625558 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cuentas.h
 	<string>
 	"Bitacora.h"
 

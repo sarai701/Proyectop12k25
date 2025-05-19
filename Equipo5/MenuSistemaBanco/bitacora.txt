@@ -465,3 +465,13 @@ Prisci         4900      Sistema             Inicio de sesión exitoso      Sun M
 Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 17:06:28 2025 
 Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 17:18:29 2025 
 Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Sun May 18 17:18:37 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 21:15:58 2025 
+Prisci         4000      Nominas             Ingresó al módulo de Nóminas  Sun May 18 21:16:05 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 21:16:10 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 21:16:12 2025 
+Prisci         4900      Sistema             Inicio de sesión exitoso      Sun May 18 21:35:29 2025 
+Admin          4006      Empleados           Crear empleado                Sun May 18 21:35:42 2025 
+Prisci         4001      Empleados           Ingresó al módulo de EmpleadosSun May 18 21:35:45 2025 
+Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 21:35:51 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 21:35:53 2025 
+Desconocido    4902      Sistema             Falló intento de login        Sun May 18 22:02:50 2025 
