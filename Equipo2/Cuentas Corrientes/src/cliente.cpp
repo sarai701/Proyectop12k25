@@ -82,201 +82,154 @@ void cliente::insertar()
 	system("cls");
 	fstream file;
 	char confirmar; //Variable para guardar la respuesta de la confirmacion
-	cout<<"\n------------------------------------------------------------------------------------------------------------------------";
-	cout<<"\n-------------------------------------------------Agregar detalles Cliente ---------------------------------------------"<<endl;
-	cout<<"\t\t\tIngresa Id Cliente         : ";
-	cin>>id;
-	cout<<"\t\t\tIngresa Nombre Cliente     : ";
-	cin>>nombre;
-	cout<<"\t\t\tIngresa Telefono Cliente   : ";
-	cin>>telefono;
-	cout<<"\t\t\tIngresa Nit Cliente   : ";
-	cin>>nit;
+	cout << "\n------------------------------------------------------------------------------------------------------------------------";
+    cout << "\n-------------------------------------------------Agregar detalles Cliente ---------------------------------------------" << endl;
+    cout << "\t\t\tIngresa Id Cliente         : ";
+    cin >> id;
+    cout << "\t\t\tIngresa Nombre Cliente     : ";
+    cin >> nombre;
+    cout << "\t\t\tIngresa Telefono Cliente   : ";
+    cin >> telefono;
+    cout << "\t\t\tIngresa Nit Cliente   : ";
+    cin >> nit;
 
-	cout << "\n\t\t\t¿Deseas guardar los datos? (s/n): ";
+    cout << "\n\t\t\t¿Deseas guardar los datos? (s/n): ";
     cin >> confirmar;
 
-    if (confirmar == 's' || confirmar == 'S')
+    if (confirmar == 's' || confirmar == 'S') {
+        file.open("cliente.bin", ios::binary | ios::app | ios::out);
+        file.write((char*)this, sizeof(cliente)); // Guarda el objeto actual
+        file.close();
 
-	file.open("cliente.txt", ios::app | ios::out);
-	file<<left<<setw(15)<< id <<left<<setw(15)<< nombre <<left<<setw(15)<< telefono <<left<< setw(15) << nit <<"\n";
-	file.close();
+        // El reportes siempre en texto
+        ofstream reporteFile;
+        reporteFile.open("reportesClientes.txt", ios::app);
+        reporteFile << left << setw(15) << id << left << setw(15) << nombre
+                    << left << setw(15) << telefono << left << setw(15) << nit << "\n";
+        reporteFile.close();
 
-	// Guardar en reportes.txt
-	ofstream reporteFile;
-    reporteFile.open("reportesClientes.txt", ios::app | ios::out);
-    reporteFile << left << setw(15) << id << left << setw(15) << nombre<< left << setw(15) << telefono << left << setw(15) << nit << "\n";
-    reporteFile.close();
+        bitacora auditoria;
+        auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "INS");
+    }
+}
 
+void cliente::desplegar() {
+    system("cls");
+    ifstream file;
+    cout << "\n-------------------------Tabla de Detalles de Cliente -------------------------" << endl;
+    file.open("cliente.bin", ios::binary | ios::in);
+    if (!file) {
+        cout << "\n\t\t\tNo hay informacion..." << endl;
+    } else {
+        while (file.read((char*)this, sizeof(cliente))) {
+            cout << "\n\n\t\t\t Id Cliente: " << id << endl;
+            cout << "\t\t\t Nombre Cliente: " << nombre << endl;
+            cout << "\t\t\t Telefono Cliente: " << telefono << endl;
+            cout << "\t\t\t Nit Cliente: " << nit << endl;
+        }
+        file.close();
+    }
+    system("pause");
     bitacora auditoria;
-    auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "INS"); //ingreso a las bitácoras
+    auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "MC");
 }
-void cliente::desplegar()
-{
-	system("cls");
-	fstream file;
-	int total=0;
-	cout<<"\n-------------------------Tabla de Detalles de Cliente -------------------------"<<endl;
-	file.open("cliente.txt",ios::in);
-	if(!file)
-	{
-		cout<<"\n\t\t\tNo hay informacion...";
-		file.close();
-	}
-	else
-	{
-		file >> id >> nombre >> telefono >> nit;
-		while(!file.eof())
-		{
-			total++;
-			cout<<"\n\n\t\t\t Id Cliente: "<<id<<endl;
-			cout<<"\t\t\t Nombre Cliente: "<<nombre<<endl;
-            cout<<"\t\t\t Telefono Cliente: "<<telefono<<endl;
-            cout<<"\t\t\t Nit Cliente: "<<nit<<endl;
 
-			file >> id >> nombre >> telefono >>nit;
-		}
-		if(total==0)
-		{
-			cout<<"\n\t\t\tNo hay informacion...";
-		}
-		system("pause");
-	}
-	file.close();
+void cliente::modificar() {
+    system("cls");
+    fstream file, tempFile;
+    string participant_id;
+    int found = 0;
+    cout << "\n-------------------------Modificacion Detalles Cliente-------------------------" << endl;
+    file.open("cliente.bin", ios::binary | ios::in);
+    if (!file) {
+        cout << "\n\t\t\tNo hay informacion..." << endl;
+    } else {
+        cout << "\n Ingrese Id del cliente que quiere modificar: ";
+        cin >> participant_id;
+        tempFile.open("temporal.bin", ios::binary | ios::out);
+        while (file.read((char*)this, sizeof(cliente))) {
+            if (participant_id != id) {
+                tempFile.write((char*)this, sizeof(cliente));
+            } else {
+                cout << "\t\t\tIngrese Id Cliente: ";
+                cin >> id;
+                cout << "\t\t\tIngrese Nombre Cliente: ";
+                cin >> nombre;
+                cout << "\t\t\tIngrese Telefono Cliente: ";
+                cin >> telefono;
+                cout << "\t\t\tIngrese Nit Cliente: ";
+                cin >> nit;
+                tempFile.write((char*)this, sizeof(cliente));
+                found++;
+            }
+        }
+        file.close();
+        tempFile.close();
+        remove("cliente.bin");
+        rename("temporal.bin", "cliente.bin");
+        bitacora auditoria;
+        auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "UPD");
+    }
+}
+
+void cliente::buscar() {
+    system("cls");
+    ifstream file;
+    int found = 0;
+    cout << "\n-------------------------Datos del Cliente Buscado------------------------" << endl;
+    file.open("cliente.bin", ios::binary | ios::in);
+    if (!file) {
+        cout << "\n\t\t\tNo hay informacion..." << endl;
+    } else {
+        string participant_id;
+        cout << "\nIngrese Id del cliente que quiere buscar: ";
+        cin >> participant_id;
+        while (file.read((char*)this, sizeof(cliente))) {
+            if (participant_id == id) {
+                cout << "\n\n\t\t\t Id Cliente: " << id << endl;
+                cout << "\t\t\t Nombre Cliente: " << nombre << endl;
+                cout << "\t\t\t Telefono Cliente: " << telefono << endl;
+                cout << "\t\t\t Nit Cliente: " << nit << endl;
+                found++;
+            }
+        }
+        if (found == 0) {
+            cout << "\n\t\t\t Cliente no encontrado..." << endl;
+        }
+        file.close();
+    }
     bitacora auditoria;
-    auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "MC");//Muestra el cliente de la bitacora
+    auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "BC");
 }
-void cliente::modificar()
-{
-	system("cls");
-	fstream file,file1;
-	string participant_id;
-	int found=0;
-	cout<<"\n-------------------------Modificacion Detalles Cliente-------------------------"<<endl;
-	file.open("cliente.txt",ios::in);
-	if(!file)
-	{
-		cout<<"\n\t\t\tNo hay informacion..,";
-		file.close();
-	}
-	else
-	{
-		cout<<"\n Ingrese Id del cliente que quiere modificar: ";
-		cin>>participant_id;
-		file1.open("temporal.txt",ios::app | ios::out); //Archivo para modificaciones
-		file >> id >> nombre >> telefono >> nit;
-		while(!file.eof())
-		{
-			if(participant_id!=id)
-			{
-			 file1<<left<<setw(15)<< id <<left<<setw(15)<< nombre <<left<<setw(15)<< telefono <<left<<setw(15)<< nit <<"\n";
-			}
-			else
-			{
-				cout<<"\t\t\tIngrese Id Cliente: ";
-				cin>>id;
-				cout<<"\t\t\tIngrese Nombre Cliente: ";
-				cin>>nombre;
-				cout<<"\t\t\tIngrese Telefono Cliente: ";
-				cin>>telefono;
-				cout<<"\t\t\tIngrese Nit Cliente: ";
-				cin>>nit;
-				file1<<left<<setw(15)<< id <<left<<setw(15)<< nombre <<left<<setw(15)<< telefono <<left<<setw(15)<< nit <<"\n";
-				found++;
-			}
-			file >> id >> nombre >> telefono >> nit;
 
-		}
-		file1.close();
-		file.close();
-		remove("cliente.txt");
-		rename("temporal.txt","cliente.txt");
+void cliente::borrar() {
+    system("cls");
+    fstream file, tempFile;
+    string participant_id;
+    int found = 0;
+    cout << "\n-------------------------Detalles Cliente a Borrar-------------------------" << endl;
+    file.open("cliente.bin", ios::binary | ios::in);
+    if (!file) {
+        cout << "\n\t\t\tNo hay informacion..." << endl;
+    } else {
+        cout << "\n Ingrese el Id del cliente que quiere borrar: ";
+        cin >> participant_id;
+        tempFile.open("temporal.bin", ios::binary | ios::out);
+        while (file.read((char*)this, sizeof(cliente))) {
+            if (participant_id != id) {
+                tempFile.write((char*)this, sizeof(cliente));
+            } else {
+                found++;
+                cout << "\n\t\t\tBorrado exitoso." << endl;
+            }
+        }
+        file.close();
+        tempFile.close();
+        remove("cliente.bin");
+        rename("temporal.bin", "cliente.bin");
         bitacora auditoria;
-        auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "UPD"); //Actualizacion datos cliente
-	}
-}
-void cliente::buscar()
-{
-	system("cls");
-	fstream file;
-	int found=0;
-	file.open("cliente.txt",ios::in);
-	if(!file)
-	{
-		cout<<"\n-------------------------Datos del Cliente Buscado------------------------"<<endl;
-		cout<<"\n\t\t\tNo hay informacion...";
-	}
-	else
-	{
-		string participant_id;
-		cout<<"\n-------------------------Datos del Cliente Buscado------------------------"<<endl;
-		cout<<"\nIngrese Id del cliente que quiere buscar: ";
-		cin>>participant_id;
-		file >> id >> nombre >> telefono >> nit;
-		while(!file.eof())
-		{
-			if(participant_id==id)
-			{
-				cout<<"\n\n\t\t\t Id Cliente: "<<id<<endl;
-				cout<<"\t\t\t Nombre Cliente: "<<nombre<<endl;
-				cout<<"\t\t\t Telefono Cliente: "<<telefono<<endl;
-				cout<<"\t\t\t Nit Cliente: "<<nit<<endl;
-				found++;
-			}
-			file >> id >> nombre >> telefono >> nit;
-		}
-		if(found==0)
-		{
-			cout<<"\n\t\t\t Persona no encontrada...";
-		}
-		file.close();
-        bitacora auditoria;
-        auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "BC"); //Busqueda cliente en bitacora
-	}
-}
-void cliente::borrar()
-{
-	system("cls");
-	fstream file,file1;
-	string participant_id;
-	int found=0;
-	cout<<"\n-------------------------Detalles CLiente a Borrar-------------------------"<<endl;
-	file.open("cliente.txt",ios::in);
-	if(!file)
-	{
-		cout<<"\n\t\t\tNo hay informacion...";
-		file.close();
-	}
-	else
-	{
-		cout<<"\n Ingrese el Id del cliente que quiere borrar: ";
-		cin>>participant_id;
-		file1.open("temporal.txt",ios::app | ios::out);
-		file >> id >> nombre >> telefono >> nit;
-		while(!file.eof())
-		{
-			if(participant_id!= id)
-			{
-				file1<<left<<setw(15)<< id <<left<<setw(15)<< nombre <<left<<setw(15)<< telefono << left<<setw(15)<< nit <<"\n";
-			}
-			else
-			{
-				found++;
-				cout << "\n\t\t\tBorrado de informacion exitoso";
-			}
-			file >> id >> nombre >> telefono >> nit;
-		}
-		if(found==0)
-		{
-			cout<<"\n\t\t\t Id Persona no encontrado...";
-		}
-		file1.close();
-		file.close();
-		remove("cliente.txt");
-		rename("temporal.txt","cliente.txt");
-        bitacora auditoria;
-        auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "DEL"); //Eliminar cliente de bitacora
-	}
+        auditoria.insertar(usuariosrRegistrado.getNombre(), "8011", "DEL");
+    }
 }
 
 void cliente::reporte(){
