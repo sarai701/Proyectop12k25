@@ -1,6 +1,6 @@
 #ifndef BITACORA_H
 #define BITACORA_H
-
+//CREADO POR: JENNIFER BARRIOS MAYO 2025
 #include <string>
 #include <unordered_map>
 
