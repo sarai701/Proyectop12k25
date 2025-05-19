@@ -79,9 +79,7 @@ void menuGeneral() {
             case 5:
                 gestorReportes.generarReportes();
                 break;
-            case 6:
-                // Salida del menú
-                break;
+            case 6: break;
             default:
                 cout << "\n\t\tOpción inválida... Intenta de nuevo...";
                 cin.get();

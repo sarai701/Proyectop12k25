@@ -5,11 +5,20 @@
 //9959-24-10016
 //MAYO 2025
 
+#include <vector>
+// Forward declarations
+class Clientes;
+class Producto;
+class Almacen;
+class usuarios;
+
 class MenuProcesos
 {
-    public:
-    //Muestra el menu
-     static void mostrar();
+public:
+    // Método para mostrar el menú principal
+    static void mostrar(const std::vector<Clientes>& clientes,
+                      const std::vector<Producto>& productos,
+                      const std::vector<Almacen>& almacenes);
 };
 
 #endif // MENUPROCESOS_H
