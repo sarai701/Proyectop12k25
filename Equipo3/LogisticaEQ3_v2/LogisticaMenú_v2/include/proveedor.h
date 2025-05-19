@@ -43,20 +43,12 @@ public:
     void setId(const std::string& id) { this->id = id; }
     void setNombre(const std::string& nombre) { this->nombre = nombre; }
     void setContacto(const std::string& contacto) { this->contacto = contacto; }
-<<<<<<< HEAD
-=======
-
->>>>>>> 1a0dff55747d165ad6ee5a79f539fb66c506b21d
     void setTelefono(const std::string& telefono) { this->telefono = telefono; }
 
     // Getters
     std::string getId() const { return id; }
     std::string getNombre() const { return nombre; }
     std::string getContacto() const { return contacto; }
-<<<<<<< HEAD
-=======
-
->>>>>>> 1a0dff55747d165ad6ee5a79f539fb66c506b21d
     std::string getTelefono() const { return telefono; }
 
 private:
@@ -75,13 +67,6 @@ private:
     static Proveedor fromRegistro(const ProveedorRegistro& reg);
 
     static void guardarEnBitacora(const std::string& usuario, const std::string& accion, const Proveedor& proveedor);
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 1a0dff55747d165ad6ee5a79f539fb66c506b21d
     static constexpr char XOR_KEY = 0xAA;
 };
 
