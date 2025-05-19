@@ -1,3 +1,5 @@
+//Boris de León 9959-24-6203
+//Priscila Guzmán 9959-23-450
 #include "Bitacora.h"
 #include <fstream>
 #include <iostream>

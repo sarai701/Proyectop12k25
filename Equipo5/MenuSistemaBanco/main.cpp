@@ -1,6 +1,6 @@
 //Programado por Priscila Sarai Guzmán Calgua 9959-23-450
-#include <iostream>
-#include <fstream>
+#include <iostream>      // Biblioteca para entrada y salida estándar (cin, cout)
+#include <fstream>       // Biblioteca para manejo de archivos (ifstream, ofstream)
 #include <string>
 #include "Empleados.h"
 #include "Cliente.h"
@@ -8,29 +8,35 @@
 #include "Contabilidad.h"
 #include "Auditoria.h"
 #include "Usuario.h"
-#include <conio.h>
+#include <conio.h>       // Biblioteca para funciones de consola (como getch)
 #include "Nominas.h"
 #include "Bitacora.h"
 #include "Bancos.h"
 #include "Moneda.h"
-#include <limits>
+#include <limits>        // Biblioteca para usar limits, como numeric_limits (para manejar buffers)
+
 using namespace std;
+
 // Función para pausar el sistema hasta que el usuario presione ENTER
 void pausar() {
     cout << "\nPresione ENTER para continuar...";
+    // Ignorar cualquier entrada pendiente en el buffer hasta encontrar salto de línea
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    // Esperar a que el usuario presione ENTER
     cin.get();
 }
-// Función para limpiar errores de entrada en caso de que el usuario ingrese datos no válidos
+
+// Función para limpiar errores de entrada y vaciar el buffer
 void limpiarBufferEntrada() {
-    cin.clear();// Limpia errores de entrada
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora lo que quede en el buffer
+    cin.clear(); // Limpia cualquier error previo de cin (como entrada no numérica cuando se esperaba un número)
+    // Ignora todo lo que quede en el buffer de entrada para evitar problemas en lecturas siguientes
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-void realizarBackup() {
+void realizarBackup() { //Crea un carpeta llamado "backup" si no existe
     // Crear directorio si no existe (Windows)
-    system("mkdir backup 2> nul");
-
+    system("mkdir backup 2> nul");  //El "2> nul" redirige cualquier mensaje de error (por ejemplo, si ya existe) para no mostrarlo.
+    //Si los archivos de respaldo ya existen, se sobrescriben automáticamente.
     // Lista de archivos a respaldar
     const char* archivos[] = {
         "clientes.txt", "proveedores.txt", "empleados.txt",
@@ -40,26 +46,32 @@ void realizarBackup() {
 
     // Copiar cada archivo sobrescribiendo el anterior
     for (const char* archivo : archivos) {
-        string comando = "copy /Y " + string(archivo) + // /Y para sobrescribir en Windows
-                        " backup\\" + string(archivo) + ".bak > nul";
-        system(comando.c_str());
+        string comando = "copy /Y " + string(archivo) + // - copy /Y: copia el archivo y sobrescribe el existente sin preguntar
+                        " backup\\" + string(archivo) + ".bak > nul"; //archivo.bak: destino del archivo, con extensión .bak
+        system(comando.c_str());                                      //// - > nul: redirige la salida estándar para evitar mostrar mensajes
     }
 }
 
+
+// Función que muestra el menú Archivo, recibe el usuario actual y un objeto bitácora para registrar acciones
 void menuArchivo(const string& usuario, Bitacora& bitacora) {
-    Usuario::limpiarPantalla();
-    int opcion;
+    Usuario::limpiarPantalla(); // Llama a método para limpiar la pantalla (generalmente usando sistema operativo)
+    int opcion;                 // Variable para guardar la opción seleccionada por el usuario
+
     do {
+        // Mostrar las opciones disponibles en el menú Archivo
         cout << "\n--- MENÚ ARCHIVO ---";
         cout << "\n1. Backup";
         cout << "\n2. Volver al Menú General";
         cout << "\nSeleccione una opción: ";
-        cin >> opcion;
-        // Validación de entrada
+
+        cin >> opcion;// Leer la opción ingresada
+
+        // Validar que la entrada sea correcta y no haya fallado la lectura
         if(cin.fail()) {
-            limpiarBufferEntrada();
+            limpiarBufferEntrada();  // Limpiar buffer y errores si la entrada fue inválida
             cout << "\nEntrada inválida. Intente de nuevo.\n";
-            continue;
+            continue; // Volver a mostrar el menú
         }
 
         switch (opcion) {
@@ -68,20 +80,27 @@ void menuArchivo(const string& usuario, Bitacora& bitacora) {
                 cout << "\nBackup realizado exitosamente!\n";
                 bitacora.insertar(usuario, 4905, "Sistema", "Backup realizado");
                 break;
+
             case 2:
+                // Opción para regresar al menú general, salir de este menú
                 return;
+
             default:
                 cout << "\nOpción inválida.\n";
                 break;
         }
+
         pausar();
         Usuario::limpiarPantalla();
+
     } while (true);
 }
-// Muestra el menú Catálogos, que permite acceder a diferentes módulos del sistema
+
+// Función que muestra el menú Catálogos con varias opciones para gestionar diferentes módulos del sistema
 void menuCatalogos(const string& usuario, Bitacora& bitacora, Empleados& empleados, Cliente& cliente, Proveedor& proveedor, Auditoria& auditoria, Nominas& nominas) {
     Usuario::limpiarPantalla();
-    int opcion;
+    int opcion;// Variable para almacenar la opción del usuario
+
     do {
         cout << "\n--- MENÚ CATÁLOGOS ---";
         cout << "\n1. Nóminas";
@@ -91,52 +110,67 @@ void menuCatalogos(const string& usuario, Bitacora& bitacora, Empleados& emplead
         cout << "\n5. Proveedores";
         cout << "\n6. Volver al Menú General";
         cout << "\nSeleccione una opción: ";
+
         cin >> opcion;
+
+        // Validar entrada, asegurándose que sea correcta y sin errores
         if(cin.fail()) {
-            limpiarBufferEntrada();
+            limpiarBufferEntrada();  // Limpiar buffer y errores si la entrada fue inválida
             cout << "\nEntrada inválida. Intente de nuevo.\n";
-            continue;
+            continue;// Volver a mostrar el menú
         }
-// Cada caso accede a un módulo del sistema y registra la acción en la bitácora
+
+        // Según la opción, se accede al módulo correspondiente y se registra la acción en bitácora
         switch (opcion) {
             case 1:
+                // Acceder al menú de nóminas
                 nominas.menuNominas();
                 bitacora.insertar(usuario, 4000, "Nominas", "Ingresó al módulo de Nóminas");
                 break;
+
             case 2:
                 cliente.menuClienteCRUD();
                 bitacora.insertar(usuario, 4100, "Clientes", "Ingresó al módulo de Clientes (CRUD)");
                 break;
+
             case 3:
                 empleados.menuEmpleados();
                 bitacora.insertar(usuario, 4001, "Empleados", "Ingresó al módulo de Empleados");
                 break;
+
             case 4:
                 auditoria.menuAuditoria();
                 bitacora.insertar(usuario, 4400, "Auditoría", "Ingresó al módulo de Auditoría");
                 break;
+
             case 5:
                 proveedor.menuProveedor();
                 bitacora.insertar(usuario, 4200, "Proveedores", "Ingresó al módulo de Proveedores");
                 break;
+
             case 6:
                 return;
+
             default:
                 cout << "\nOpción inválida.\n";
                 break;
         }
+
         pausar();
         Usuario::limpiarPantalla();
-    } while (true);
+    } while (true); // Ciclo hasta que se salga con la opción 6
 }
-// Muestra el menú Procesos, que incluye movimientos, préstamos, contabilidad y configuración bancaria
+
+// Menú de Procesos que incluye movimientos de clientes, contabilidad y configuración bancaria
 void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, Contabilidad& contabilidad) {
     Usuario::limpiarPantalla();
-    Bancos bancos;
-    Moneda moneda;
-// Configuración bancaria al inicio del menú Procesos
+
+    Bancos bancos; // Objeto para manejar configuración bancaria
+    Moneda moneda; // Objeto para manejar tipo de moneda
+
+    // Al iniciar el menú de procesos, solicita configuración bancaria
     cout << "\nSeleccione configuración bancaria y moneda para Procesos:\n";
-    bancos.menuConfiguracion();
+    bancos.menuConfiguracion(); // Muestra opciones para configurar banco y moneda
     bitacora.insertar(usuario, 4300, "Procesos", "Configuración bancaria y moneda seleccionada");
 
     int opcionProcesos;
@@ -148,17 +182,20 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
         cout << "4. Volver al Menú General" << endl;
         cout << "Seleccione una opción: ";
         cin >> opcionProcesos;
+
         if(cin.fail()) {
             limpiarBufferEntrada();
             cout << "Entrada inválida. Intente de nuevo.\n";
             continue;
         }
-// Acciones para cada opción de clientes
+
+        // Según la opción elegida en el menú de procesos
         switch (opcionProcesos) {
             case 1: {
                 Usuario::limpiarPantalla();
                 int opcionClientes;
                 do {
+                    // Submenú para procesos relacionados con clientes
                     cout << "\n--- PROCESOS - CLIENTES ---" << endl;
                     cout << "1. Registrar movimiento" << endl;
                     cout << "2. Mostrar movimientos" << endl;
@@ -168,35 +205,37 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
                     cout << "6. Volver" << endl;
                     cout << "Seleccione una opción: ";
                     cin >> opcionClientes;
+
                     if(cin.fail()) {
                         limpiarBufferEntrada();
                         cout << "Entrada inválida. Intente de nuevo.\n";
                         continue;
                     }
 
+                    // Acciones específicas para clientes según opción
                     switch (opcionClientes) {
                         case 1:
-                            cliente.registrarMovimiento();
+                            cliente.registrarMovimiento(); // Registra un movimiento bancario
                             bitacora.insertar(usuario, 4100, "Clientes", "Movimiento registrado");
                             break;
                         case 2:
-                            cliente.mostrarMovimientos();
+                            cliente.mostrarMovimientos(); // Muestra los movimientos registrados
                             bitacora.insertar(usuario, 4101, "Clientes", "Movimientos mostrados");
                             break;
                         case 3:
-                            cliente.abrirArchivoMovimientos();
+                            cliente.abrirArchivoMovimientos(); // Abre archivo externo con movimientos
                             bitacora.insertar(usuario, 4102, "Clientes", "Mostrar movimientos");
                             break;
                         case 4:
-                            cliente.registrarPrestamo();
+                            cliente.registrarPrestamo(); // Registra un préstamo para el cliente
                             bitacora.insertar(usuario, 4103, "Clientes", "Préstamo registrado");
                             break;
                         case 5:
-                            cliente.mostrarPrestamos();
+                            cliente.mostrarPrestamos(); // Muestra préstamos registrados
                             bitacora.insertar(usuario, 4104, "Clientes", "Préstamos mostrados");
                             break;
                         case 6:
-                            break;
+                            break; // Sale del submenú clientes
                         default:
                             cout << "Opción no válida.\n";
                     }
@@ -206,12 +245,14 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
                 break;
             }
             case 2:
+                // Menú para módulo de Contabilidad
                 contabilidad.menuContabilidad();
                 bitacora.insertar(usuario, 4301, "Contabilidad", "Ingresó al módulo Contabilidad");
                 pausar();
                 Usuario::limpiarPantalla();
                 break;
             case 3:
+                // Muestra configuración actual del banco y moneda
                 cout << "\n--- Configuración bancaria actual ---\n";
                 bancos.mostrarConfiguracion();
                 moneda.mostrarMoneda();
@@ -220,14 +261,15 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
                 Usuario::limpiarPantalla();
                 break;
             case 4:
-                cout << "Volviendo al menú general...\n";
+                cout << "Volviendo al menú general...\n"; // Opción para regresar al menú general
                 break;
             default:
-                cout << "Opción no válida.\n";
+                cout << "Opción no válida.\n"; // Mensaje si la opción no existe
         }
-    } while (opcionProcesos != 4);
+    } while (opcionProcesos != 4); // Se repite hasta que el usuario decida salir
 }
-// Muestra el menú Informes
+
+// Menú para mostrar informe (bitacora)
 void menuInformes(const string& usuario, Bitacora& bitacora) {
     Usuario::limpiarPantalla();
     int opcionInformes;
@@ -237,6 +279,7 @@ void menuInformes(const string& usuario, Bitacora& bitacora) {
         cout << "2. Volver al menú principal" << endl;
         cout << "Seleccione una opción: ";
         cin >> opcionInformes;
+
         if(cin.fail()) {
             limpiarBufferEntrada();
             cout << "Entrada inválida. Intente de nuevo.\n";
@@ -245,8 +288,8 @@ void menuInformes(const string& usuario, Bitacora& bitacora) {
 
         switch (opcionInformes) {
             case 1:
-                bitacora.mostrar();// Muestra las acciones realizadas
-                bitacora.insertar(usuario, 4990, "Informes", "Bitácora mostrada");
+                bitacora.mostrar(); // Muestra todas las acciones registradas en la bitácora
+                bitacora.insertar(usuario, 4990, "Informes", "Bitácora mostrada"); // Registra la acción
                 break;
             case 2:
                 cout << "Volviendo al menú principal...\n";
@@ -258,9 +301,10 @@ void menuInformes(const string& usuario, Bitacora& bitacora) {
         Usuario::limpiarPantalla();
     } while (opcionInformes != 2);
 }
-// Menú principal del sistema, se accede luego de iniciar sesión
+
+// Menú principal
 void menuGeneral(const string& usuario) {
-     // Objetos que usarán los menús
+    // Crea los objetos necesarios para los diferentes módulos del sistema
     Bitacora bitacora;
     Empleados empleados;
     Cliente cliente;
@@ -279,12 +323,14 @@ void menuGeneral(const string& usuario) {
         cout << "\n5. Cerrar Sesión";
         cout << "\nSeleccione una opción: ";
         cin >> opcion;
+
         if(cin.fail()) {
             limpiarBufferEntrada();
             cout << "\nEntrada inválida. Intente de nuevo.\n";
             continue;
         }
- // Acciones según la opción seleccionada
+
+        // Ejecuta la función correspondiente al módulo seleccionado
         switch (opcion) {
             case 1:
                 menuArchivo(usuario, bitacora);
@@ -299,6 +345,7 @@ void menuGeneral(const string& usuario) {
                 menuInformes(usuario, bitacora);
                 break;
             case 5:
+                // Registra en bitácora que el usuario cerró sesión y termina el programa
                 bitacora.insertar(usuario, 4901, "Sistema", "Usuario cerró sesión");
                 cout << "\nCerrando sesión...\n";
                 return;

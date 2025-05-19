@@ -8,12 +8,15 @@
 #include "Moneda.h"
 
 #ifdef _WIN32
-#include <cstdlib>
+#include <cstdlib> // Para system("cls") en Windows
 #endif
 
+// Instancia de bitácora para registrar actividades de Contabilidad
 Bitacora bitacoralog5;
+
 using namespace std;
 
+// Limpia la pantalla según el sistema operativo
 void Contabilidad::limpiarPantalla() {
 #ifdef _WIN32
     system("cls");
@@ -22,13 +25,14 @@ void Contabilidad::limpiarPantalla() {
 #endif
 }
 
+// Pausa la ejecución hasta que el usuario presione ENTER
 void Contabilidad::pausar() {
     cout << "\nPresione ENTER para continuar...";
     cin.ignore();
     cin.get();
 }
 
-// Menú principal de Contabilidad
+// Menú principal del módulo de contabilidad
 void Contabilidad::menuContabilidad() {
     int opcion;
     do {
@@ -42,10 +46,9 @@ void Contabilidad::menuContabilidad() {
         cin.ignore();
 
         switch (opcion) {
-            case 1: registroNomina(); break;
-            case 2: desplegarRegistroSalarios(); break;
-            case 3: limpiarPantalla();  // Limpia pantalla antes de regresar al menú principal
-                return;
+            case 1: registroNomina(); break;               // Ir a registro de nómina
+            case 2: desplegarRegistroSalarios(); break;    // Ir a visualización de salarios
+            case 3: limpiarPantalla(); return;             // Salir del menú
             default:
                 cout << "\n¡Opción inválida!";
                 pausar();
@@ -53,7 +56,7 @@ void Contabilidad::menuContabilidad() {
     } while (true);
 }
 
-// Opción 1: Buscar empleado y registrar pago
+// Registra el pago de nómina de un empleado
 void Contabilidad::registroNomina() {
     limpiarPantalla();
     string codigo;
@@ -65,7 +68,7 @@ void Contabilidad::registroNomina() {
     string linea;
     bool encontrado = false;
 
-    // Buscar empleado en empleados.txt
+    // Buscar al empleado por código en el archivo empleados.txt
     while (getline(archivo, linea)) {
         stringstream ss(linea);
         string nombre, telefono, codigoArchivo, direccion, salario;
@@ -82,15 +85,15 @@ void Contabilidad::registroNomina() {
             cout << "\nNombre: " << nombre;
             cout << "\nCódigo: " << codigoArchivo;
             cout << "\nSalario: " << Moneda::getSimbolo()
-         << Moneda::convertirDesdeGtq(stod(salario));
+                 << Moneda::convertirDesdeGtq(stod(salario));
 
-            // Registrar pago
+            // Confirmar si el pago fue realizado
             char respuesta;
             cout << "\n¿Se ha realizado el pago? (Y/N): ";
             cin >> respuesta;
             cin.ignore();
 
-            // Guardar en pagos.txt
+            // Guardar el resultado en pagos.txt
             ofstream archivoPagos("pagos.txt", ios::app);
             archivoPagos << codigoArchivo << "," << (toupper(respuesta) == 'Y' ? "Sí" : "No") << "\n";
             archivoPagos.close();
@@ -100,19 +103,21 @@ void Contabilidad::registroNomina() {
         }
     }
 
+    // Mostrar mensaje si no se encontró al empleado
     if (!encontrado) {
         cout << "\n¡Empleado no encontrado!";
     }
-     bitacoralog5.insertar("Admin", 4401, "Contabilidad", "Registro Nomina");
+
+    // Registrar acción en la bitácora
+    bitacoralog5.insertar("Admin", 4401, "Contabilidad", "Registro Nomina");
 
     pausar();
 }
 
-// Opción 2: Generar salarios.txt y mostrar registros
+// Muestra el registro completo de salarios
 void Contabilidad::desplegarRegistroSalarios() {
     limpiarPantalla();
 
-    // Leer empleados.txt y pagos.txt
     ifstream empleados("empleados.txt");
     ifstream pagos("pagos.txt");
     ofstream salarios("salarios.txt");
@@ -120,7 +125,7 @@ void Contabilidad::desplegarRegistroSalarios() {
     vector<string> codigosPagados;
     string lineaPago;
 
-    // Procesar pagos.txt
+    // Leer pagos y guardar los códigos pagados
     while (getline(pagos, lineaPago)) {
         stringstream ss(lineaPago);
         string codigo, estado;
@@ -129,13 +134,14 @@ void Contabilidad::desplegarRegistroSalarios() {
         codigosPagados.push_back(codigo);
     }
 
-    // Encabezados con formato
+    // Escribir encabezados en el archivo salarios.txt
     salarios << left << setw(30) << "NOMBRE"
              << setw(15) << "CODIGO"
              << setw(10) << "PAGADO" << "\n";
 
-    // Procesar empleados.txt
     string lineaEmpleado;
+
+    // Leer empleados y verificar si han sido pagados
     while (getline(empleados, lineaEmpleado)) {
         stringstream ss(lineaEmpleado);
         string nombre, telefono, codigo, direccion, salario;
@@ -146,13 +152,12 @@ void Contabilidad::desplegarRegistroSalarios() {
         getline(ss, direccion, ',');
         getline(ss, salario);
 
-        // Verificar pago
         string estado = "No";
         if (find(codigosPagados.begin(), codigosPagados.end(), codigo) != codigosPagados.end()) {
             estado = "Si";
         }
 
-        // Escribir en salarios.txt con formato
+        // Escribir el registro con alineación
         salarios << left << setw(30) << nombre
                  << setw(15) << codigo
                  << setw(10) << estado << "\n";
@@ -160,7 +165,7 @@ void Contabilidad::desplegarRegistroSalarios() {
 
     salarios.close();
 
-    // Mostrar salarios.txt con alineación
+    // Mostrar el contenido de salarios.txt en pantalla
     ifstream archivoSalarios("salarios.txt");
     cout << "\n=== REGISTRO DE SALARIOS ===\n";
 
@@ -170,5 +175,7 @@ void Contabilidad::desplegarRegistroSalarios() {
     }
 
     pausar();
+
+    // Registrar acción en la bitácora
     bitacoralog5.insertar("Admin", 4402, "Contabilidad", "Desplegar registro nomina");
 }

@@ -7,8 +7,6 @@
 using namespace std;
 
 // Limpia la pantalla según el sistema operativo
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::limpiarPantalla() {
 #ifdef _WIN32
     system("cls");
@@ -18,8 +16,6 @@ void Proveedor::limpiarPantalla() {
 }
 
 // Pausa el programa hasta que el usuario presione ENTER
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::pausar() {
     cout << "\nPresione ENTER para continuar...";
     cin.ignore();
@@ -27,8 +23,6 @@ void Proveedor::pausar() {
 }
 
 // Carga los proveedores desde el archivo binario "proveedores.dat"
-// Parámetros: ninguno
-// Retorna: vector<Proveedor> con los proveedores cargados, ordenados alfabéticamente por nombre
 vector<Proveedor> Proveedor::cargarProveedores() {
     vector<Proveedor> proveedores;
     ifstream archivo("proveedores.dat", ios::binary);
@@ -70,9 +64,6 @@ vector<Proveedor> Proveedor::cargarProveedores() {
 }
 
 // Guarda todos los proveedores en el archivo binario "proveedores.dat"
-// Parámetros:
-//   - proveedores: vector de proveedores a guardar
-// Retorna: void
 void Proveedor::guardarProveedores(const vector<Proveedor>& proveedores) {
     ofstream archivo("proveedores.dat", ios::binary | ios::trunc);
     for (const auto& p : proveedores) {
@@ -102,9 +93,6 @@ void Proveedor::guardarProveedores(const vector<Proveedor>& proveedores) {
 }
 
 // Ordena el vector de proveedores alfabéticamente por nombre
-// Parámetros:
-//   - proveedores: vector de proveedores a ordenar (por referencia)
-// Retorna: void
 void Proveedor::ordenarProveedores(vector<Proveedor>& proveedores) {
     sort(proveedores.begin(), proveedores.end(), [](const Proveedor& a, const Proveedor& b) {
         return a.nombre < b.nombre;
@@ -112,8 +100,6 @@ void Proveedor::ordenarProveedores(vector<Proveedor>& proveedores) {
 }
 
 // Muestra el menú principal para la gestión de proveedores
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::menuProveedor() {
     int opcion;
     do {
@@ -146,8 +132,6 @@ void Proveedor::menuProveedor() {
 }
 
 // Crea un nuevo proveedor solicitando datos al usuario y lo guarda
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::crearProveedor() {
     limpiarPantalla();
     Proveedor p;
@@ -168,8 +152,6 @@ void Proveedor::crearProveedor() {
 }
 
 // Borra un proveedor buscándolo por código
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::borrarProveedor() {
     limpiarPantalla();
     string codigo;
@@ -197,8 +179,6 @@ void Proveedor::borrarProveedor() {
 }
 
 // Busca un proveedor por código y muestra su información
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::buscarProveedor() {
     limpiarPantalla();
     string codigo;
@@ -228,8 +208,6 @@ void Proveedor::buscarProveedor() {
 }
 
 // Modifica un proveedor existente buscando por código y pidiendo nuevos datos
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::modificarProveedor() {
     limpiarPantalla();
     string codigo;
@@ -262,8 +240,6 @@ void Proveedor::modificarProveedor() {
 }
 
 // Muestra todos los proveedores registrados
-// Parámetros: ninguno
-// Retorna: void
 void Proveedor::desplegarProveedores() {
     limpiarPantalla();
     cout << "\n=== Proveedores Registrados ===\n";

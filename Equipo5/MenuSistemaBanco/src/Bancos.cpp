@@ -1,38 +1,42 @@
 //Jonathan Samuel Gonzalez
 //Modificaciones 11/05/25
-#include "Bancos.h"
-#include "Moneda.h"
-#include <iostream>
+#include "Bancos.h"             // Incluye la definición de la clase Bancos
+#include "Moneda.h"             // Incluye la clase para gestionar el tipo de moneda
+#include <iostream>             // Librería para entrada y salida estándar
 
-Bitacora Bancos::bitacoraBancos;
+Bitacora Bancos::bitacoraBancos; // Inicializa el objeto bitácora para registrar acciones
 
-using namespace std;
+using namespace std;            // Permite usar std:: sin anteponer el prefijo
 
+// Constructor de la clase Bancos
 Bancos::Bancos() {
-    bancoSeleccionado = "No configurado";
-    tipoCuentaSeleccionada = "No configurada";
-    monedaSeleccionada = "GTQ";
+    bancoSeleccionado = "No configurado";             // Valor por defecto para el banco
+    tipoCuentaSeleccionada = "No configurada";         // Valor por defecto para el tipo de cuenta
+    monedaSeleccionada = "GTQ";                        // Valor por defecto para la moneda
 }
 
+// Muestra el menú completo de configuración
 void Bancos::menuConfiguracion() {
-    menuSeleccionBanco();
-    menuTipoCuenta();
-    menuTipoMoneda();
+    menuSeleccionBanco();       // Primero selecciona el banco
+    menuTipoCuenta();           // Luego el tipo de cuenta
+    menuTipoMoneda();           // Finalmente la moneda
 }
 
+// Muestra la configuración actual seleccionada
 void Bancos::mostrarConfiguracion() {
-    limpiarPantalla();
+    limpiarPantalla();          // Limpia la pantalla
     cout << "\n===== CONFIGURACIÓN ACTUAL =====";
-    cout << "\nBanco: " << bancoSeleccionado;
-    cout << "\nTipo de cuenta: " << tipoCuentaSeleccionada;
-    cout << "\nMoneda: " << monedaSeleccionada << " (" << Moneda::getSimbolo() << ")";
-    pausar();
+    cout << "\nBanco: " << bancoSeleccionado;             // Muestra el banco actual
+    cout << "\nTipo de cuenta: " << tipoCuentaSeleccionada; // Muestra el tipo de cuenta actual
+    cout << "\nMoneda: " << monedaSeleccionada << " (" << Moneda::getSimbolo() << ")"; // Muestra moneda y su símbolo
+    pausar();                   // Pausa para que el usuario vea la información
 }
 
+// Menú para seleccionar el banco
 void Bancos::menuSeleccionBanco() {
     int opcion;
     do {
-        limpiarPantalla();
+        limpiarPantalla();      // Limpia pantalla antes de mostrar opciones
         cout << "\n===== SELECCIONE SU BANCO =====";
         cout << "\n1. Banco Industrial";
         cout << "\n2. Banco GyT Continental";
@@ -41,12 +45,12 @@ void Bancos::menuSeleccionBanco() {
         cout << "\n5. Bantrab";
         cout << "\nSeleccione una opción: ";
         cin >> opcion;
-        cin.ignore();
+        cin.ignore();           // Limpia buffer de entrada
 
         switch (opcion) {
             case 1:
-                bancoSeleccionado = "Banco Industrial";
-                bitacoraBancos.insertar("Admin", 4604, "Bancos", "Banco seleccionado: Industrial");
+                bancoSeleccionado = "Banco Industrial"; // Asigna banco
+                bitacoraBancos.insertar("Admin", 4604, "Bancos", "Banco seleccionado: Industrial"); // Registra en bitácora
                 break;
             case 2:
                 bancoSeleccionado = "Banco GyT Continental";
@@ -65,18 +69,19 @@ void Bancos::menuSeleccionBanco() {
                 bitacoraBancos.insertar("Admin", 4608, "Bancos", "Banco seleccionado: Bantrab");
                 break;
             default:
-                cout << "Opción inválida.";
+                cout << "Opción inválida."; // Manejo de opción inválida
                 pausar();
                 continue;
         }
-        break;
+        break; // Sale del bucle después de una opción válida
     } while (true);
 }
 
+// Menú para seleccionar el tipo de cuenta
 void Bancos::menuTipoCuenta() {
     int opcion;
     do {
-        limpiarPantalla();
+        limpiarPantalla();      // Limpia pantalla
         cout << "\n===== TIPO DE CUENTA =====\n";
         cout << "--------------------------------------\n";
         cout << " Banco:    " << bancoSeleccionado << "\n";
@@ -90,7 +95,7 @@ void Bancos::menuTipoCuenta() {
 
         switch (opcion) {
             case 1:
-                tipoCuentaSeleccionada = "Corriente";
+                tipoCuentaSeleccionada = "Corriente"; // Asigna tipo de cuenta
                 bitacoraBancos.insertar("Admin", 4610, "Bancos", "Tipo de cuenta seleccionado: Cuenta Corriente");
                 break;
             case 2:
@@ -98,21 +103,22 @@ void Bancos::menuTipoCuenta() {
                 bitacoraBancos.insertar("Admin", 4611, "Bancos", "Tipo de cuenta seleccionado: Cuenta de Ahorro");
                 break;
             case 3:
-                menuSeleccionBanco();
+                menuSeleccionBanco(); // Regresa al menú de selección de banco
                 continue;
             default:
                 cout << "Opción inválida.";
                 pausar();
                 continue;
         }
-        break;
+        break; // Sale del bucle después de selección válida
     } while (true);
 }
 
+// Menú para seleccionar el tipo de moneda
 void Bancos::menuTipoMoneda() {
     int opcion;
     do {
-        limpiarPantalla();
+        limpiarPantalla(); // Limpia pantalla
         cout << "\n===== TIPO DE MONEDA =====\n";
         cout << "-------------------------------------------\n";
         cout << " Banco:    " << bancoSeleccionado << "\n";
@@ -128,8 +134,8 @@ void Bancos::menuTipoMoneda() {
 
         switch (opcion) {
             case 1:
-                monedaSeleccionada = "GTQ";
-                Moneda::moneda = "GTQ";
+                monedaSeleccionada = "GTQ";            // Asigna GTQ como moneda
+                Moneda::moneda = "GTQ";                // Asigna en clase Moneda también
                 bitacoraBancos.insertar("Admin", 4601, "Bancos", "Moneda cambiada a GTQ");
                 limpiarPantalla();
                 return;
@@ -146,7 +152,7 @@ void Bancos::menuTipoMoneda() {
                 limpiarPantalla();
                 return;
             case 4:
-                menuTipoCuenta();
+                menuTipoCuenta(); // Regresa al menú anterior
                 continue;
             default:
                 cout << "Opción inválida.";
@@ -156,20 +162,27 @@ void Bancos::menuTipoMoneda() {
     } while (true);
 }
 
+// Limpia la pantalla según el sistema operativo
 void Bancos::limpiarPantalla() {
 #ifdef _WIN32
-    system("cls");
+    system("cls"); // Comando para Windows
 #else
-    system("clear");
+    system("clear"); // Comando para Linux/Mac
 #endif
 }
 
+// Pausa el programa hasta que el usuario presione ENTER
 void Bancos::pausar() {
     cout << "\nPresione ENTER para continuar...";
-    cin.ignore();
-    cin.get();
+    cin.ignore(); // Limpia buffer
+    cin.get();    // Espera ENTER
 }
 
+// Devuelve el banco seleccionado
 std::string Bancos::getBanco() const { return bancoSeleccionado; }
+
+// Devuelve el tipo de cuenta seleccionado
 std::string Bancos::getCuenta() const { return tipoCuentaSeleccionada; }
+
+// Devuelve la moneda seleccionada
 std::string Bancos::getMoneda() const { return monedaSeleccionada; }
