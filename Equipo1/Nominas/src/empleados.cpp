@@ -6,10 +6,41 @@
 #include<conio.h>
 #include<iomanip>
 #include "bitacora.h"
+Empleados empleados;//objeto creado de la clase Empleados
+
 //Creado y documentado Por Isaias Cedillo (9959-24-1672) "IsaC8-bit"
 Empleados::Empleados()
 {
 }
+void Empleados::mostrarMenuNomina()
+{
+        do{
+    system ("cls");
+    cout << "\n -----MENU DE PRESTACIONES LABORALES -----\n";
+    cout << "\n -----------------------------------------\n";
+    cout << "1. Mostrar nomina general"<<endl;
+    cout << "2. Mostrar nomina en especifico"<<endl;
+    cout << "3. Salir del sistema\n";
+    cout << "Seleccione una opcion: ";
+    cout << "\n -----------------------------------------\n";
+    cout << "\n -----------------NOMIREG-----------------\n";
+    cin >> opcion;
+    switch (opcion)
+    {
+    case 1:
+        cout<<"Proceso en desarollo...."<<endl;
+        break;
+    case 2:
+        empleados.buscarEmpleado();
+        break;
+    default:
+        cout<<"Saliendo del sistema..."<<endl;
+
+    }
+    system("pause");
+    }while (opcion!=3);
+}
+
 bitacora bitacoraempleado;
 void Empleados::menuEmpleados()
 {
@@ -86,7 +117,7 @@ void Empleados::registroEmpleados()
     cin >> sueldo;
     //Creacion de archivo
     file.open("Empleados.txt", ios::app | ios::out);
-    //Limitador nuevo y eficiente (Gracias a DeepSeek, Revisa que el archivo exista o este abierto
+    //Limitador nuevo y eficiente, Revisa que el archivo exista o este abierto
     if (tipoEmpleado.empty() || Nombre.empty() || sueldo <= 0)
         {
         cout << "Error: campos inválidos.\n";
@@ -332,3 +363,83 @@ void Empleados::borrarEmpleados()
     string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
     bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
 }
+void Empleados::buscarEmpleado() {
+    system("cls");
+    fstream file;
+    string nombreBuscar;
+    cout << "\n==================== BUSCAR EMPLEADO ====================" << endl;
+    cout << "Ingrese el nombre del empleado: ";
+    cin.ignore(); //limpiar el buffer de entrada
+    getline(cin, nombreBuscar);
+    file.open("Empleados.txt", ios::in);
+    if (!file.is_open()) {
+        cout << "\nNo hay empleados registrados o el archivo no existe.\n";
+        return;
+    }
+    string linea;
+    bool encontrado = false;
+    while (getline(file, linea)) {
+        size_t pos1 = linea.find("|");
+        size_t pos2 = linea.find("|", pos1 + 1);
+        if (pos1 != string::npos && pos2 != string::npos) {
+            string Nombre = linea.substr(pos1 + 1, pos2 - pos1 - 1);
+            double sueldo = stof(linea.substr(pos2 + 1));
+            if (Nombre == nombreBuscar) {
+                cout << "\nEmpleado encontrado:\n";
+                cout << "Nombre: " << Nombre << endl;
+                cout << "Sueldo: Q" << fixed << setprecision(2) << sueldo << endl;
+                salarioBruto=sueldo;
+                salarioNeto=sueldo;
+                int nomina;
+                cout<<"Desea mostrar: "<<endl;
+                cout<<"1. Nomina anual de a o anterior"<<endl;
+                cout<<"2. Nomina mensual del a o actual"<<endl;
+                cin>>nomina;
+                switch (nomina)
+                {
+                    case 1:
+                        empleados.calcularNominaAnual();
+                 break;
+                    case 2:
+                         empleados.calcularNominaMensual();
+                    break;
+
+                }
+                encontrado = true;
+                break;
+            }
+        }
+    }
+    if (!encontrado) {
+        cout << "\nEmpleado no encontrado.\n";
+    } else {
+        cout<<""<<endl;
+    }
+    file.close();
+}
+
+
+void Empleados::calcularNominaMensual()
+{
+    int mesActual;
+    cout<<"Ingrese el numero del mes 1-12"<<endl;
+    cin>>mesActual;
+    switch (mesActual)
+    {
+    case 1:
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+     system("pause");
+      break;
+    }
+}
+void Empleados::calcularNominaAnual()
+{
+
+}
+

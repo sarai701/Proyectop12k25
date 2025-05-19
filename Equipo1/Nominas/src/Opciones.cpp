@@ -11,7 +11,6 @@
 #include "Empleados.h"
 using namespace std;
 bitacora Bitacora;
-Prestaciones show;//objeto para llamar metodo menú general sobre prestaciones
 Empleados mantenimiento;
 
 
@@ -46,7 +45,7 @@ void Opciones::menu()//Metodo de despliegue del menu-ANGEL ROQUEL
             break;
         case 3:
             {
-            show.MostrarMenu();
+            mantenimiento.mostrarMenuNomina();
             }
             break;
         case 4:
