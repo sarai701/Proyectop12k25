@@ -133,3 +133,5 @@ usuario        100            LOGS
 Juan           8011           INS            
 Juan           8011           INS            
 >>>>>>> 5146112496d9c8d6b92a3fa298b46a4da780ddb1
+Juan           100            LOGS           05-11-2025 01:38 PM
+Juan           100            LOGS           05-11-2025 01:38 PM
