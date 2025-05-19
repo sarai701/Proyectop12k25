@@ -447,3 +447,7 @@ Prisci         4302      Procesos            Mostró configuración bancaria y mon
 Prisci         4901      Sistema             Usuario cerró sesión          Sun May 18 15:17:21 2025 
 Desconocido    4902      Sistema             Falló intento de login        Sun May 18 15:17:22 2025 
 Desconocido    4902      Sistema             Falló intento de login        Sun May 18 15:22:55 2025 
+123            4900      Sistema             Inicio de sesión exitoso      Sun May 18 18:05:58 2025 
+123            4905      Sistema             Realizó backup del sistema    Sun May 18 18:06:13 2025 
+123            4990      Informes            Bitácora mostrada             Sun May 18 18:06:27 2025 
+123            4900      Sistema             Inicio de sesión exitoso      Sun May 18 18:37:38 2025 
