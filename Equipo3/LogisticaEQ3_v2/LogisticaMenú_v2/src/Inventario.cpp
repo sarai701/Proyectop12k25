@@ -27,233 +27,240 @@ std::vector<Inventario> Inventario::listaInventario;
 // ----------- Funciones de archivo para Productos ------------
 vector<Producto> Inventario::cargarProductosDesdeArchivo() {
     vector<Producto> productos;
-    ifstream archivo("productos.bin", ios::binary);
 
-    if (!archivo) {
-        cerr << "Error al abrir el archivo de productos." << endl;
-        return productos;
+    try {
+        ifstream archivo("productos.bin", ios::binary);
+        if (!archivo) {
+            throw runtime_error("Error al abrir el archivo de productos.");
+        }
+
+        size_t cantidad;
+        archivo.read(reinterpret_cast<char*>(&cantidad), sizeof(cantidad));
+
+        for (size_t i = 0; i < cantidad; ++i) {
+            Producto p;
+            size_t size;
+
+            archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+            if (archivo.fail()) throw runtime_error("Error al leer tamaño del ID.");
+            char* idBuffer = new char[size + 1];
+            archivo.read(idBuffer, size);
+            idBuffer[size] = '\0';
+            p.setId(idBuffer);
+            delete[] idBuffer;
+
+            archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+            if (archivo.fail()) throw runtime_error("Error al leer tamaño del nombre.");
+            char* nombreBuffer = new char[size + 1];
+            archivo.read(nombreBuffer, size);
+            nombreBuffer[size] = '\0';
+            p.setNombre(nombreBuffer);
+            delete[] nombreBuffer;
+
+            int stock, stockMin;
+            archivo.read(reinterpret_cast<char*>(&stock), sizeof(stock));
+            archivo.read(reinterpret_cast<char*>(&stockMin), sizeof(stockMin));
+            if (archivo.fail()) throw runtime_error("Error al leer stock o stock mínimo.");
+
+            p.setStock(stock);
+            p.setStockMinimo(stockMin);
+
+            productos.push_back(p);
+        }
+
+        archivo.close();
+    } catch (const exception& e) {
+        cerr << "Excepción al cargar productos: " << e.what() << endl;
     }
 
-    // Leer la cantidad de productos
-    size_t cantidad;
-    archivo.read(reinterpret_cast<char*>(&cantidad), sizeof(cantidad));
-
-    // Leer cada producto
-    for (size_t i = 0; i < cantidad; ++i) {
-        Producto p;
-        size_t size;
-
-        // Leer ID
-        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        char* idBuffer = new char[size + 1];
-        archivo.read(idBuffer, size);
-        idBuffer[size] = '\0';
-        p.setId(idBuffer);
-        delete[] idBuffer;
-
-        // Leer nombre
-        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        char* nombreBuffer = new char[size + 1];
-        archivo.read(nombreBuffer, size);
-        nombreBuffer[size] = '\0';
-        p.setNombre(nombreBuffer);
-        delete[] nombreBuffer;
-
-        // Leer stock y stock mínimo
-        int stock, stockMin;
-        archivo.read(reinterpret_cast<char*>(&stock), sizeof(stock));
-        archivo.read(reinterpret_cast<char*>(&stockMin), sizeof(stockMin));
-        p.setStock(stock);
-        p.setStockMinimo(stockMin);
-
-        productos.push_back(p);
-    }
-
-    archivo.close();
     return productos;
 }
 
 void Inventario::guardarProductosEnArchivo(const vector<Producto>& productos) {
-    ofstream archivo("productos.bin", ios::binary | ios::trunc);
+    try {
+        ofstream archivo("productos.bin", ios::binary | ios::trunc);
+        if (!archivo) {
+            throw runtime_error("Error al abrir el archivo de productos para escritura.");
+        }
 
-    if (!archivo) {
-        cerr << "Error al abrir el archivo de productos para escritura." << endl;
-        return;
+        size_t cantidad = productos.size();
+        archivo.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
+
+        for (const auto& p : productos) {
+            string id = p.getId();
+            size_t size = id.size();
+            archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+            archivo.write(id.c_str(), size);
+
+            string nombre = p.getNombre();
+            size = nombre.size();
+            archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+            archivo.write(nombre.c_str(), size);
+
+            int stock = p.getStock();
+            int stockMin = p.getStockMinimo();
+            archivo.write(reinterpret_cast<const char*>(&stock), sizeof(stock));
+            archivo.write(reinterpret_cast<const char*>(&stockMin), sizeof(stockMin));
+        }
+
+        archivo.close();
+    } catch (const exception& e) {
+        cerr << "Excepción al guardar productos: " << e.what() << endl;
     }
-
-    // Escribir la cantidad de productos
-    size_t cantidad = productos.size();
-    archivo.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
-
-    // Escribir cada producto
-    for (const auto& p : productos) {
-        // Escribir ID
-        string id = p.getId();
-        size_t size = id.size();
-        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(id.c_str(), size);
-
-        // Escribir nombre
-        string nombre = p.getNombre();
-        size = nombre.size();
-        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(nombre.c_str(), size);
-
-        // Escribir stock y stock mínimo
-        int stock = p.getStock();
-        int stockMin = p.getStockMinimo();
-        archivo.write(reinterpret_cast<const char*>(&stock), sizeof(stock));
-        archivo.write(reinterpret_cast<const char*>(&stockMin), sizeof(stockMin));
-    }
-
-    archivo.close();
 }
 
 vector<Almacen> Inventario::cargarAlmacenesDesdeArchivo() {
     vector<Almacen> almacenes;
-    ifstream archivo("Almacenes.bin", ios::binary);
 
-    if (!archivo) {
-        cerr << "Error al abrir el archivo de almacenes." << endl;
-        return almacenes;
+    try {
+        ifstream archivo("Almacenes.bin", ios::binary);
+        if (!archivo) {
+            throw runtime_error("Error al abrir el archivo de almacenes.");
+        }
+
+        // Leer la cantidad de almacenes
+        size_t cantidad;
+        archivo.read(reinterpret_cast<char*>(&cantidad), sizeof(cantidad));
+        if (archivo.fail()) throw runtime_error("Error al leer la cantidad de almacenes.");
+
+        // Leer cada almacén
+        for (size_t i = 0; i < cantidad; ++i) {
+            Almacen a;
+            size_t size;
+
+            // Leer ID
+            archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+            if (archivo.fail()) throw runtime_error("Error al leer tamaño del ID.");
+            char* idBuffer = new char[size + 1];
+            archivo.read(idBuffer, size);
+            idBuffer[size] = '\0';
+            a.setId(idBuffer);
+            delete[] idBuffer;
+
+            // Leer nombre
+            archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
+            if (archivo.fail()) throw runtime_error("Error al leer tamaño del nombre.");
+            char* nombreBuffer = new char[size + 1];
+            archivo.read(nombreBuffer, size);
+            nombreBuffer[size] = '\0';
+            a.setNombre(nombreBuffer);
+            delete[] nombreBuffer;
+
+            // Leer capacidad y espacio disponible
+            int capacidad, espacio;
+            archivo.read(reinterpret_cast<char*>(&capacidad), sizeof(capacidad));
+            archivo.read(reinterpret_cast<char*>(&espacio), sizeof(espacio));
+            if (archivo.fail()) throw runtime_error("Error al leer capacidad o espacio disponible.");
+
+            a.setCapacidad(capacidad);
+            a.setEspacioDisponible(espacio);
+
+            almacenes.push_back(a);
+        }
+
+        archivo.close();
+
+    } catch (const exception& e) {
+        cerr << "Excepción al cargar almacenes: " << e.what() << endl;
     }
 
-    // Leer la cantidad de almacenes
-    size_t cantidad;
-    archivo.read(reinterpret_cast<char*>(&cantidad), sizeof(cantidad));
-
-    // Leer cada almacén
-    for (size_t i = 0; i < cantidad; ++i) {
-        Almacen a;
-        size_t size;
-
-        // Leer ID
-        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        char* idBuffer = new char[size + 1];
-        archivo.read(idBuffer, size);
-        idBuffer[size] = '\0';
-        a.setId(idBuffer);
-        delete[] idBuffer;
-
-        // Leer nombre
-        archivo.read(reinterpret_cast<char*>(&size), sizeof(size));
-        char* nombreBuffer = new char[size + 1];
-        archivo.read(nombreBuffer, size);
-        nombreBuffer[size] = '\0';
-        a.setNombre(nombreBuffer);
-        delete[] nombreBuffer;
-
-        // Leer capacidad y espacio disponible
-        int capacidad, espacio;
-        archivo.read(reinterpret_cast<char*>(&capacidad), sizeof(capacidad));
-        archivo.read(reinterpret_cast<char*>(&espacio), sizeof(espacio));
-        a.setCapacidad(capacidad);
-        a.setEspacioDisponible(espacio);
-
-        almacenes.push_back(a);
-    }
-
-    archivo.close();
     return almacenes;
 }
 
 void Inventario::guardarAlmacenesEnArchivo(const vector<Almacen>& almacenes) {
-    ofstream archivo("Almacenes.bin", ios::binary | ios::trunc);
+    try {
+        ofstream archivo("Almacenes.bin", ios::binary | ios::trunc);
+        if (!archivo) {
+            throw runtime_error("Error al abrir el archivo de almacenes para escritura.");
+        }
 
-    if (!archivo) {
-        cerr << "Error al abrir el archivo de almacenes para escritura." << endl;
-        return;
+        size_t cantidad = almacenes.size();
+        archivo.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
+
+        for (const auto& a : almacenes) {
+            string id = a.getId();
+            size_t size = id.size();
+            archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+            archivo.write(id.c_str(), size);
+
+            string nombre = a.getNombre();
+            size = nombre.size();
+            archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
+            archivo.write(nombre.c_str(), size);
+
+            int capacidad = a.getCapacidad();
+            int espacio = a.getEspacioDisponible();
+            archivo.write(reinterpret_cast<const char*>(&capacidad), sizeof(capacidad));
+            archivo.write(reinterpret_cast<const char*>(&espacio), sizeof(espacio));
+        }
+
+        archivo.close();
+    } catch (const exception& e) {
+        cerr << "Excepción al guardar almacenes: " << e.what() << endl;
     }
-
-    // Escribir la cantidad de almacenes
-    size_t cantidad = almacenes.size();
-    archivo.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
-
-    // Escribir cada almacén
-    for (const auto& a : almacenes) {
-        // Escribir ID
-        string id = a.getId();
-        size_t size = id.size();
-        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(id.c_str(), size);
-
-        // Escribir nombre
-        string nombre = a.getNombre();
-        size = nombre.size();
-        archivo.write(reinterpret_cast<const char*>(&size), sizeof(size));
-        archivo.write(nombre.c_str(), size);
-
-        // Escribir capacidad y espacio disponible
-        int capacidad = a.getCapacidad();
-        int espacio = a.getEspacioDisponible();
-        archivo.write(reinterpret_cast<const char*>(&capacidad), sizeof(capacidad));
-        archivo.write(reinterpret_cast<const char*>(&espacio), sizeof(espacio));
-    }
-
-    archivo.close();
 }
 
 vector<Proveedor> Inventario::cargarProveedoresDesdeArchivo() {
     vector<Proveedor> proveedores;
-    ifstream archivo("Proveedores.bin", ios::binary);
 
-    if (!archivo) {
-        cerr << "Error al abrir el archivo de proveedores." << endl;
-        return proveedores;
+    try {
+        ifstream archivo("Proveedores.bin", ios::binary);
+        if (!archivo) {
+            throw runtime_error("Error al abrir el archivo de proveedores.");
+        }
+
+        ProveedorRegistro reg;
+        while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+            Proveedor::decodificar(reg.id, sizeof(reg.id));
+            Proveedor::decodificar(reg.nombre, sizeof(reg.nombre));
+            Proveedor::decodificar(reg.telefono, sizeof(reg.telefono));
+
+            Proveedor p;
+            p.setId(reg.id);
+            p.setNombre(reg.nombre);
+            p.setTelefono(reg.telefono);
+
+            proveedores.push_back(p);
+        }
+
+        archivo.close();
+    } catch (const exception& e) {
+        cerr << "Excepción al cargar proveedores: " << e.what() << endl;
     }
 
-    ProveedorRegistro reg;
-    while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
-        // Decodificar los datos
-        Proveedor::decodificar(reg.id, sizeof(reg.id));
-        Proveedor::decodificar(reg.nombre, sizeof(reg.nombre));
-        Proveedor::decodificar(reg.telefono, sizeof(reg.telefono));
-
-        // Crear objeto Proveedor
-        Proveedor p;
-        p.setId(reg.id);
-        p.setNombre(reg.nombre);
-        p.setTelefono(reg.telefono);
-
-        proveedores.push_back(p);
-    }
-
-    archivo.close();
     return proveedores;
 }
 
 void Inventario::guardarProveedoresEnArchivo(const vector<Proveedor>& proveedores) {
-    ofstream archivo("Proveedores.bin", ios::binary | ios::trunc);
+    try {
+        ofstream archivo("Proveedores.bin", ios::binary | ios::trunc);
+        if (!archivo) {
+            throw runtime_error("Error al abrir el archivo de proveedores para escritura.");
+        }
 
-    if (!archivo) {
-        cerr << "Error al abrir el archivo de proveedores para escritura." << endl;
-        return;
+        for (const auto& p : proveedores) {
+            ProveedorRegistro reg;
+
+            strncpy(reg.id, p.getId().c_str(), sizeof(reg.id) - 1);
+            reg.id[sizeof(reg.id) - 1] = '\0';
+
+            strncpy(reg.nombre, p.getNombre().c_str(), sizeof(reg.nombre) - 1);
+            reg.nombre[sizeof(reg.nombre) - 1] = '\0';
+
+            strncpy(reg.telefono, p.getTelefono().c_str(), sizeof(reg.telefono) - 1);
+            reg.telefono[sizeof(reg.telefono) - 1] = '\0';
+
+            Proveedor::codificar(reg.id, sizeof(reg.id));
+            Proveedor::codificar(reg.nombre, sizeof(reg.nombre));
+            Proveedor::codificar(reg.telefono, sizeof(reg.telefono));
+
+            archivo.write(reinterpret_cast<const char*>(&reg), sizeof(reg));
+        }
+
+        archivo.close();
+    } catch (const exception& e) {
+        cerr << "Excepción al guardar proveedores: " << e.what() << endl;
     }
-
-    // Escribir cada proveedor en el archivo binario
-    for (const auto& p : proveedores) {
-        ProveedorRegistro reg;
-
-
-        // Copiar datos asegurando terminación nula
-        strncpy(reg.id, p.getId().c_str(), sizeof(reg.id) - 1);
-        reg.id[sizeof(reg.id) - 1] = '\0';
-
-        strncpy(reg.nombre, p.getNombre().c_str(), sizeof(reg.nombre) - 1);
-        reg.nombre[sizeof(reg.nombre) - 1] = '\0';
-
-        strncpy(reg.telefono, p.getTelefono().c_str(), sizeof(reg.telefono) - 1);
-        reg.telefono[sizeof(reg.telefono) - 1] = '\0';
-
-        // Codificar los datos antes de guardar
-        Proveedor::codificar(reg.id, sizeof(reg.id));
-        Proveedor::codificar(reg.nombre, sizeof(reg.nombre));
-        Proveedor::codificar(reg.telefono, sizeof(reg.telefono));
-
-        archivo.write(reinterpret_cast<const char*>(&reg), sizeof(reg));
-    }
-
-    archivo.close();
 }
 
 // ----------- Métodos de Productos ------------
@@ -264,60 +271,89 @@ void crearProductoInteractivo() {
     cout << "------------------------------------------------------------\n";
 
     Producto nuevo;
-    vector<Producto> productos = Inventario::cargarProductosDesdeArchivo();
+    vector<Producto> productos;
+
+    try {
+        productos = Inventario::cargarProductosDesdeArchivo();
+    } catch (const exception& e) {
+        cerr << "Error al cargar productos: " << e.what() << endl;
+        system("pause");
+        return;
+    }
 
     // Generar ID único
     string nuevoId = "PROD";
-    if (!productos.empty()) {
-        int maxNum = 0;
-        for (const auto& p : productos) {
-            string numStr = p.getId().substr(4);
-            try {
-                int num = stoi(numStr);
-                if (num > maxNum) maxNum = num;
-            } catch (...) {
-                continue;
-            }
+    int maxNum = 0;
+    for (const auto& p : productos) {
+        string numStr = p.getId().substr(4);
+        try {
+            int num = stoi(numStr);
+            if (num > maxNum) maxNum = num;
+        } catch (...) {
+            continue;
         }
-        ostringstream oss;
-        oss << setw(3) << setfill('0') << (maxNum + 1);
-        nuevoId += oss.str();
-    } else {
-        nuevoId += "001";
     }
+    ostringstream oss;
+    oss << setw(3) << setfill('0') << (maxNum + 1);
+    nuevoId += oss.str();
     nuevo.setId(nuevoId);
 
+    // Nombre
     cout << "Ingrese nombre del producto: ";
-    cin.ignore();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     string nombre;
     getline(cin, nombre);
     nuevo.setNombre(nombre);
 
+    // Descripción
     cout << "Ingrese descripcion: ";
     string descripcion;
     getline(cin, descripcion);
     nuevo.setDescripcion(descripcion);
 
-    cout << "Ingrese precio: ";
+    // Precio
     double precio;
-    cin >> precio;
+    while (true) {
+        cout << "Ingrese precio: ";
+        if (cin >> precio && precio >= 0) break;
+        cout << "Entrada inválida. Ingrese un número válido.\n";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
     nuevo.setPrecio(precio);
 
-    cout << "Ingrese stock inicial: ";
+    // Stock
     int stock;
-    cin >> stock;
+    while (true) {
+        cout << "Ingrese stock inicial: ";
+        if (cin >> stock && stock >= 0) break;
+        cout << "Entrada inválida. Ingrese un entero positivo.\n";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
     nuevo.setStock(stock);
 
-    cout << "Ingrese stock minimo: ";
+    // Stock mínimo
     int stockMin;
-    cin >> stockMin;
+    while (true) {
+        cout << "Ingrese stock minimo: ";
+        if (cin >> stockMin && stockMin >= 0) break;
+        cout << "Entrada inválida. Ingrese un entero positivo.\n";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
     nuevo.setStockMinimo(stockMin);
 
+    // Guardar y registrar
     productos.push_back(nuevo);
-    Inventario::guardarProductosEnArchivo(productos);
+    try {
+        Inventario::guardarProductosEnArchivo(productos);
+        auditoria.registrar(usuarioRegistrado.getNombre(), "PRODUCTOS", "Creado producto " + nuevo.getId());
+        cout << "\n\tProducto creado exitosamente.\n";
+    } catch (const exception& e) {
+        cerr << "Error al guardar producto: " << e.what() << endl;
+    }
 
-    auditoria.registrar(usuarioRegistrado.getNombre(), "PRODUCTOS", "Creado producto " + nuevo.getId());
-    cout << "\n\tProducto creado exitosamente.\n";
     system("pause");
 }
 
@@ -327,7 +363,15 @@ void mostrarProductos() {
     cout << "                      LISTA DE PRODUCTOS                        \n";
     cout << "---------------------------------------------------------------\n";
 
-    vector<Producto> productos = Inventario::cargarProductosDesdeArchivo();
+    vector<Producto> productos;
+    try {
+        productos = Inventario::cargarProductosDesdeArchivo();
+    } catch (const exception& e) {
+        cerr << "Error al cargar productos: " << e.what() << endl;
+        system("pause");
+        return;
+    }
+
     if (productos.empty()) {
         cout << "\n\tNo hay productos registrados.\n";
         system("pause");
