@@ -41,11 +41,11 @@ Opciones opciones;//Objeto creado de clases Opciones-ANGEL ROQUEL
         // Verificar si la opción está dentro del rango válido
         if (opcion < 1 || opcion > 4) {
             // Lanzar una excepción si la opción no es válida
-            throw runtime_error("Opción inválida");
+            throw runtime_error("Opción invalida");
         }
     } catch (const exception& e) {
         // Manejar la excepción y mostrar un mensaje de error
-        cerr << "Ingrese datos válidos.." << endl;
+        cerr << "Ingrese datos validos.." << endl;
 
         // Limpiar el flag de error y ignorar la entrada inválida
         cin.clear();

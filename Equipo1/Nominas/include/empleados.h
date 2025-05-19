@@ -28,6 +28,7 @@ class Empleados
         void calcularNominaAnual();
         void calcularNominaMensual();
     private:
+        //Se declararon las variables ISR, IGSS, IRTRA, BONO INCENTIVO
         double salarioSinISR, salarioSinIGSS, salarioSinIRTRA, salarioConBI;
         double salarioNeto;
         double IGSS=0.0483;
