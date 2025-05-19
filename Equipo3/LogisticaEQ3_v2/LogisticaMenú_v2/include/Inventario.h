@@ -16,7 +16,16 @@ class bitacora;
 class Inventario {
 public:
 
+    struct ProveedorRegistro {
+        char id[10];
+        char nombre[50];
+        char telefono[15];
+    };
+
     static std::vector<Inventario> listaInventario;
+
+    static void codificar(char* data, size_t len);
+    static void decodificar(char* data, size_t len);
 
     struct ItemInventario {
         std::string idProducto;

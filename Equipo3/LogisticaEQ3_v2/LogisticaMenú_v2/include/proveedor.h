@@ -9,11 +9,17 @@
 struct ProveedorRegistro {
     char id[10];
     char nombre[50];
+    char contacto[50];  // Añadir este campo
     char telefono[20];
 };
 
+
 class Proveedor {
 public:
+    // Métodos...
+    static void codificar(char* texto, size_t tam);
+    static void decodificar(char* texto, size_t tam);
+
     // Métodos CRUD
     static void agregar(std::vector<Proveedor>& lista, const std::string& usuarioActual);
     static void modificar(std::vector<Proveedor>& lista, const std::string& usuarioActual, const std::string& id);
@@ -55,11 +61,8 @@ private:
     static ProveedorRegistro toRegistro(const Proveedor& p);
     static Proveedor fromRegistro(const ProveedorRegistro& reg);
 
-    // Codificación y decodificación de campos
-    static void codificar(char* data, size_t len);
-    static void decodificar(char* data, size_t len);
-
     static constexpr char XOR_KEY = 0xAA;
 };
 
 #endif // PROVEEDOR_H
+

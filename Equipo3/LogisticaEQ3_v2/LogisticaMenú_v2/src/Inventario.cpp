@@ -1,4 +1,5 @@
 //Karina Alejandra Arriaza Ortiz
+//Modificaciones y ayuda con errores: Jennifer Barrios.
 #include "Inventario.h"
 #include "producto.h"
 #include "almacen.h"
@@ -12,10 +13,9 @@
 #include <vector>
 #include "usuarios.h"
 #include "bitacora.h"
-#include "Inventario.h"
-#include "Producto.h"
 #include <algorithm>
 #include <numeric>
+#include <cstring> // Para strncpy
 
 using namespace std;
 
@@ -188,6 +188,69 @@ void Inventario::guardarAlmacenesEnArchivo(const vector<Almacen>& almacenes) {
         int espacio = a.getEspacioDisponible();
         archivo.write(reinterpret_cast<const char*>(&capacidad), sizeof(capacidad));
         archivo.write(reinterpret_cast<const char*>(&espacio), sizeof(espacio));
+    }
+
+    archivo.close();
+}
+
+vector<Proveedor> Inventario::cargarProveedoresDesdeArchivo() {
+    vector<Proveedor> proveedores;
+    ifstream archivo("Proveedores.bin", ios::binary);
+
+    if (!archivo) {
+        cerr << "Error al abrir el archivo de proveedores." << endl;
+        return proveedores;
+    }
+
+    ProveedorRegistro reg;
+    while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+        // Decodificar los datos
+        Proveedor::decodificar(reg.id, sizeof(reg.id));
+        Proveedor::decodificar(reg.nombre, sizeof(reg.nombre));
+        Proveedor::decodificar(reg.telefono, sizeof(reg.telefono));
+
+        // Crear objeto Proveedor
+        Proveedor p;
+        p.setId(reg.id);
+        p.setNombre(reg.nombre);
+        p.setTelefono(reg.telefono);
+
+        proveedores.push_back(p);
+    }
+
+    archivo.close();
+    return proveedores;
+}
+
+void Inventario::guardarProveedoresEnArchivo(const vector<Proveedor>& proveedores) {
+    ofstream archivo("Proveedores.bin", ios::binary | ios::trunc);
+
+    if (!archivo) {
+        cerr << "Error al abrir el archivo de proveedores para escritura." << endl;
+        return;
+    }
+
+    // Escribir cada proveedor en el archivo binario
+    for (const auto& p : proveedores) {
+        ProveedorRegistro reg;
+
+
+        // Copiar datos asegurando terminación nula
+        strncpy(reg.id, p.getId().c_str(), sizeof(reg.id) - 1);
+        reg.id[sizeof(reg.id) - 1] = '\0';
+
+        strncpy(reg.nombre, p.getNombre().c_str(), sizeof(reg.nombre) - 1);
+        reg.nombre[sizeof(reg.nombre) - 1] = '\0';
+
+        strncpy(reg.telefono, p.getTelefono().c_str(), sizeof(reg.telefono) - 1);
+        reg.telefono[sizeof(reg.telefono) - 1] = '\0';
+
+        // Codificar los datos antes de guardar
+        Proveedor::codificar(reg.id, sizeof(reg.id));
+        Proveedor::codificar(reg.nombre, sizeof(reg.nombre));
+        Proveedor::codificar(reg.telefono, sizeof(reg.telefono));
+
+        archivo.write(reinterpret_cast<const char*>(&reg), sizeof(reg));
     }
 
     archivo.close();
