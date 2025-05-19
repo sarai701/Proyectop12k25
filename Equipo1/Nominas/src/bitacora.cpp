@@ -7,7 +7,7 @@
 #include <limits>
 
 using namespace std;
-
+//Isaias Cedillo (9959-24-1672) "IsaC8-bit"
 // Muestra el menú principal del sistema de bitácora
 void bitacora::menu()
 {

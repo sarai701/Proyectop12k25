@@ -5,15 +5,15 @@
 #include "usuarios.h"
 #include "bitacora.h"
 #include "sistema.h"
-
+//Realizado por ANGEL ROQUEL
 using namespace std;
 void menuGeneral();
 int contrasenia = 147;
 int ingreso;
 int main()
 {
-sistema seguridad;//Objeto creado de clase sistema-ANGEL ROQUEL
-Opciones opciones;//Objeto creado de clases Opciones-ANGEL ROQUEL
+sistema seguridad;//Objeto creado de clase sistema
+Opciones opciones;//Objeto creado de clases Opciones
     int opcion;
 
     do {

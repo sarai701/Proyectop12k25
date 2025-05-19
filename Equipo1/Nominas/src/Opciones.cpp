@@ -12,9 +12,9 @@
 using namespace std;
 bitacora Bitacora;
 Empleados mantenimiento;
+//codigo realizado por HERSON GIRON
 
-
-void Opciones::menu()//Metodo de despliegue del menu-ANGEL ROQUEL
+void Opciones::menu()//Metodo de despliegue del menu
 {
     int opciones;
     bool repetir = true;

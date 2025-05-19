@@ -10,7 +10,7 @@
 // Objeto creado de la clase Empleados
 Empleados empleados;
 
-// Creado y documentado Por Isaias Cedillo (9959-24-1672) "IsaC8-bit"
+// Creado y documentado Por Isaias Cedillo (9959-24-1672) "IsaC8-bit y Xander reyes(prestaciones)"
 // Constructor de la clase Empleados. Actualmente no realiza ninguna acción específica.
 Empleados::Empleados()
 {
@@ -597,7 +597,7 @@ void Empleados::buscarEmpleado() {
     // Cierra el archivo.
     file.close();
 }
-
+//Realizado por XANDER REYES
 void Empleados::calcularNominaMensual() {
     // Declaración de variable para almacenar el mes ingresado por el usuario
     int mesActual;

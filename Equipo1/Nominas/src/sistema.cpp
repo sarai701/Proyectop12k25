@@ -1,7 +1,7 @@
 #include "sistema.h"
 #include "Opciones.h"
 #include <conio.h>
-
+//Realizado por ANGEL ROQUEL
 Opciones opcion; // Se crea un objeto global de la clase Opciones
 
 sistema::sistema()

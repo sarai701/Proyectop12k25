@@ -9,7 +9,7 @@
 #include<iomanip>
 #include<limits> // Añadido para usar numeric_limits
 #include "bitacora.h"
-
+//CODIGO REALIZADO POR-Isaias Cedillo (9959-24-1672) "IsaC8-bit"
 using namespace std;
 
 class Empleados
@@ -23,7 +23,7 @@ class Empleados
         void cambioEmpleados();
         void borrarEmpleados();
         void buscarEmpleado();
-        //metodos para el proceso de nomina
+        //metodos para el proceso de nomina-XANDER REYES
         void mostrarMenuNomina();
         void calcularNominaAnual();
         void calcularNominaMensual();

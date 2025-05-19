@@ -4,7 +4,7 @@
 
 using std::string;
 
-class Opciones//Clase la cual muestra el menú-ANGEL ROQUEL
+class Opciones//Clase la cual muestra el menu-HERSON GIRON
 {
     private:
 		string id, nombre, estatus;
