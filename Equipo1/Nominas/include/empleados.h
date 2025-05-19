@@ -28,10 +28,13 @@ class Empleados
         void calcularNominaAnual();
         void calcularNominaMensual();
     private:
-        double salarioSinISR, salarioSinIGSS, salarioConBI;
+        double salarioSinISR, salarioSinIGSS, salarioSinIRTRA, salarioConBI;
         double salarioNeto;
         double IGSS=0.0483;
+        double IRTRA=0.01;
         double ISR=0.05;
+        double bono14;
+        double aguinaldo;
         int bonoIncentivo=250;
         int opcion;
         double salarioBruto;

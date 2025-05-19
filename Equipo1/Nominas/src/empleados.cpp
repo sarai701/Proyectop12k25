@@ -427,14 +427,165 @@ void Empleados::calcularNominaMensual()
     switch (mesActual)
     {
     case 1:
+        cout << "Nomina mes de Enero" << endl;
      salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
      salarioSinIGSS=salarioBruto*IGSS;
-     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR+bonoIncentivo;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
       cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
       cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
       cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
       cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
-     system("pause");
+      break;
+
+    case 2:
+        cout << "Nomina mes de Febrero" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 3:
+        cout << "Nomina mes de Marzo" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 4:
+        cout << "Nomina mes de Abril" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 5:
+        cout << "Nomina mes de Mayo" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+    case 6://Bono 14
+        cout << "Nomina mes de Junio" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     bono14=salarioBruto;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo+bono14;
+
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Bono 14: +Q"<<salarioBruto<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 7:
+        cout << "Nomina mes de Julio" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 8:
+        cout << "Nomina mes de Agosto" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 9:
+        cout << "Nomina mes de Septiembre" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 10:
+        cout << "Nomina mes de Octubre" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+     case 11:
+        cout << "Nomina mes de Noviembre" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo;
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
+      break;
+
+    case 12://Aguinaldo
+        cout << "Nomina mes de Diciembre" << endl;
+     salarioSinISR=salarioBruto*ISR;
+     salarioSinIRTRA=salarioBruto*IRTRA;
+     salarioSinIGSS=salarioBruto*IGSS;
+     aguinaldo=salarioBruto;
+     salarioNeto=salarioNeto-salarioSinIGSS-salarioSinISR-salarioSinIRTRA+bonoIncentivo+aguinaldo;
+
+      cout<<"Descuento del IGSS: Q"<<salarioSinIGSS<<endl;
+      cout<<"Descuento del IRTRA: Q"<<salarioSinIRTRA<<endl;
+      cout<<"Descuento del ISR: Q"<<salarioSinISR<<endl;
+      cout<<"Bono incentivo: +"<<bonoIncentivo<<endl;
+      cout<<"Aguinaldo: +Q"<<salarioBruto<<endl;
+      cout<<"Salario neto a recibir: Q"<<salarioNeto<<endl;
       break;
     }
 }
@@ -442,4 +593,3 @@ void Empleados::calcularNominaAnual()
 {
 
 }
-
