@@ -1,4 +1,4 @@
-//Karina Alejandra Arriaza Ortiz
+//Karina Alejandra Arriaza Ortiz 9959-24-14190
 //Modificaciones y ayuda con errores: Jennifer Barrios.
 #include "Inventario.h"
 #include "producto.h"

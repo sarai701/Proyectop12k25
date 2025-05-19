@@ -1,4 +1,4 @@
-//Karina Alejandra Arriaza Ortiz
+//Karina Alejandra Arriaza Ortiz 9959-24-15190
 // modificado por // 9959-24-11603 GE
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
