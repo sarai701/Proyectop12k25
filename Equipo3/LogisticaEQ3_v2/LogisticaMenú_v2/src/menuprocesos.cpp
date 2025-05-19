@@ -27,7 +27,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
 
         // Mostrar encabezado del menú y nombre del usuario actual
         cout << "\t\t========================================\n"
-             << "\t\t|          MENÚ DE PROCESOS            |\n"
+             << "\t\t|          MENU DE PROCESOS            |\n"
              << "\t\t========================================\n"
              << "\t\t| Usuario: " << usuarioRegistrado.getNombre() << "\n"
              << "\t\t========================================\n"
@@ -84,7 +84,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
 
             default:
                 // Manejar opción inválida
-                cout << "\n\t\tOpción inválida...";
+                cout << "\n\t\tOpcion invalida...";
         }
 
         // Esperar una tecla antes de volver a mostrar el menú

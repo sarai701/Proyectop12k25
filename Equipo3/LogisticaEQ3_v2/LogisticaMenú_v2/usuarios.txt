@@ -41,4 +41,8 @@
 =======
 3101 Angoly 12345678 3
 >>>>>>> 48272b46800959aae78e9d62f3c7b8e6938a3564
+<<<<<<< HEAD
 3102 JENNBF AJAXSU87 3
+=======
+3102 Alejandra alejandra 3
+>>>>>>> 969d0daebbc9eddb741396054b70664881184479

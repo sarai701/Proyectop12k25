@@ -229,7 +229,7 @@ void crearProductoInteractivo() {
     getline(cin, nombre);
     nuevo.setNombre(nombre);
 
-    cout << "Ingrese descripción: ";
+    cout << "Ingrese descripcion: ";
     string descripcion;
     getline(cin, descripcion);
     nuevo.setDescripcion(descripcion);
@@ -244,7 +244,7 @@ void crearProductoInteractivo() {
     cin >> stock;
     nuevo.setStock(stock);
 
-    cout << "Ingrese stock mínimo: ";
+    cout << "Ingrese stock minimo: ";
     int stockMin;
     cin >> stockMin;
     nuevo.setStockMinimo(stockMin);
@@ -271,7 +271,7 @@ void mostrarProductos() {
     }
 
     cout << "----------------------------------------------------------------------------------------\n";
-    cout << "ID       | Nombre           | Descripción       | Precio   | Stock  | Stock Mínimo\n";
+    cout << "ID       | Nombre           | Descripcion       | Precio   | Stock  | Stock Minimo\n";
     cout << "----------------------------------------------------------------------------------------\n";
 
     for (const auto& producto : productos) {
@@ -320,13 +320,13 @@ void crearAlmacenInteractivo() {
     }
     nuevo.setId(nuevoId);
 
-    cout << "Ingrese nombre del almacén: ";
+    cout << "Ingrese nombre del almacen: ";
     cin.ignore();
     string nombre;
     getline(cin, nombre);
     nuevo.setNombre(nombre);
 
-    cout << "Ingrese dirección: ";
+    cout << "Ingrese direccion: ";
     string direccion;
     getline(cin, direccion);
     nuevo.setDireccion(direccion);
@@ -335,13 +335,13 @@ void crearAlmacenInteractivo() {
     int capacidad;
     cin >> capacidad;
     nuevo.setCapacidad(capacidad);
-    nuevo.setEspacioDisponible(capacidad); // Inicialmente todo el espacio está disponible
+    nuevo.setEspacioDisponible(capacidad);
 
     almacenes.push_back(nuevo);
     Inventario::guardarAlmacenesEnArchivo(almacenes);
 
-    auditoria.registrar(usuarioRegistrado.getNombre(), "ALMACENES", "Creado almacén " + nuevo.getId());
-    cout << "\n\tAlmacén creado exitosamente.\n";
+    auditoria.registrar(usuarioRegistrado.getNombre(), "ALMACENES", "Creado almacen " + nuevo.getId());
+    cout << "\n\tAlmacen creado exitosamente.\n";
     system("pause");
 }
 
@@ -359,7 +359,7 @@ void mostrarAlmacenes() {
     }
 
     cout << "---------------------------------------------------------------------\n";
-    cout << "ID      | Nombre           | Dirección          | Capacidad | Disponible\n";
+    cout << "ID      | Nombre           | Direccion          | Capacidad | Disponible\n";
     cout << "---------------------------------------------------------------------\n";
 
     for (const auto& almacen : almacenes) {
@@ -428,9 +428,9 @@ void Inventario::consultarStockCompleto() {
 
     system("cls");
     cout << "\n\t\t=== CONSULTA COMPLETA DE STOCK ===\n";
-    cout << "\t\t" << left << setw(10) << "Código" << setw(25) << "Nombre"
-         << setw(10) << "Stock" << setw(15) << "Stock Mín"
-         << setw(15) << "En Almacén" << setw(10) << "Estado" << "\n";
+    cout << "\t\t" << left << setw(10) << "Codigo" << setw(25) << "Nombre"
+         << setw(10) << "Stock" << setw(15) << "Stock Min"
+         << setw(15) << "En Almacen" << setw(10) << "Estado" << "\n";
     cout << "\t\t" << string(85, '-') << "\n";
 
     for (const auto& producto : productos) {
@@ -462,7 +462,7 @@ void Inventario::consultarStockCompleto() {
         [](int total, const ItemInventario& item) { return total + item.cantidad; });
 
     cout << "\n\t\tTOTAL EN SISTEMA: " << totalSistema
-         << " | TOTAL EN ALMACÉN: " << totalAlmacen
+         << " | TOTAL EN ALMACEN: " << totalAlmacen
          << " | DIFERENCIA: " << (totalSistema - totalAlmacen) << "\n";
 
     cout << "\n\t\tPresione cualquier tecla para volver...";
@@ -549,14 +549,14 @@ void Inventario::registrarMercancia() {
     }
 
     string idAlmacen;
-    cout << "\t\tID del almacén: ";
+    cout << "\t\tID del almacen: ";
     cin >> idAlmacen;
 
     auto itAlmacen = find_if(almacenes.begin(), almacenes.end(),
         [&](const Almacen& a) { return a.getId() == idAlmacen; });
 
     if (itAlmacen == almacenes.end()) {
-        cout << "\t\tAlmacén no encontrado." << endl;
+        cout << "\t\tAlmacen no encontrado." << endl;
         system("pause");
         return;
     }
@@ -566,18 +566,15 @@ void Inventario::registrarMercancia() {
     cin >> cantidad;
 
     if (cantidad <= 0) {
-        cout << "\t\tCantidad inválida." << endl;
+        cout << "\t\tCantidad invalida." << endl;
         system("pause");
         return;
     }
 
-    // Actualizar stock del producto
     itProducto->setStock(itProducto->getStock() + cantidad);
 
-    // Actualizar espacio disponible en almacén (asumiendo 1 unidad = 1 espacio)
     itAlmacen->setEspacioDisponible(itAlmacen->getEspacioDisponible() - cantidad);
 
-    // Guardar cambios
     guardarProductosEnArchivo(productos);
     guardarAlmacenesEnArchivo(almacenes);
 
@@ -623,7 +620,7 @@ void Inventario::ajustarInventario() {
     cin >> nuevaCantidad;
 
     if (nuevaCantidad < 0) {
-        cout << "\t\tCantidad inválida." << endl;
+        cout << "\t\tCantidad invalida." << endl;
         system("pause");
         return;
     }
