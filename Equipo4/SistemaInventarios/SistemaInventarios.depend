@@ -418,25 +418,25 @@
 1747630981 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
 	<string>
 
-1747632499 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+1747632667 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
 	<vector>
 	<string>
 	"Producto.h"
 
-1747631983 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
+1747632667 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\producto.h
 	"Bitacora.h"
 	<string>
 
-1747631983 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
+1747632667 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\bitacora.h
 	<iostream>
 
-1747631983 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
+1747632667 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\facturacion.h
 	<iostream>
 	<vector>
 	<iomanip>
 	"Inventario.h"
 
-1747631983 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
+1747632667 c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\include\menu.h
 	<iostream>
 	"Inventario.h"
 	"Facturacion.h"
@@ -482,9 +482,9 @@
 	"Bitacora.h"
 	<vector>
 
-1747631983 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
+1747632667 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
 	"Facturacion.h"
 
-1747631983 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
+1747632667 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\producto.cpp
 	"Producto.h"
 

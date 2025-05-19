@@ -161,16 +161,52 @@ Producto* Inventario::buscarProducto(int codigo) {
 
 void Inventario::mostrarInventarioPorTipo(string tipo) {
     system("cls");
-    cout << "\n--- Informe de " << tipo << " ---\n";
-    cout << "Codigo\tNombre\tPrecio\tStock\n";
+    cout << fixed << setprecision(2);
+
+    cout << "==============================================================\n";
+    cout << "| KARDEX POR TIPO - " << setw(44) << left << tipo << "|\n";
+    cout << "==============================================================\n";
+    cout << "| Cod | Nombre       | Precio  | Stock | Entradas | Salidas | Total  |\n";
+    cout << "|-----|--------------|---------|-------|----------|---------|--------|\n";
+
     for (const auto& p : productos) {
-        if (p.tipo == tipo) {
-            cout << p.codigo << "\t" << p.nombre << "\t" << p.precio << "\t" << p.stock << endl;
+        if (p.tipo != tipo) continue;
+
+        int entradas = 0;
+        int salidas = 0;
+
+        ifstream bodega("bodega.txt");
+        if (bodega.is_open()) {
+            string linea;
+            while (getline(bodega, linea)) {
+                stringstream ss(linea);
+                string item;
+                vector<string> datos;
+                while (getline(ss, item, ',')) datos.push_back(item);
+
+                if (datos.size() >= 4 && stoi(datos[0]) == p.codigo) {
+                    if (datos[2] == "ENTRADA") entradas += stoi(datos[3]);
+                    else if (datos[2] == "SALIDA") salidas += stoi(datos[3]);
+                }
+            }
+            bodega.close();
         }
+
+        float total = p.precio * p.stock;
+
+        cout << "| " << setw(3) << left << p.codigo << " | "
+             << setw(12) << left << p.nombre << " | "
+             << setw(7) << right << p.precio << " | "
+             << setw(5) << right << p.stock << " | "
+             << setw(8) << right << entradas << " | "
+             << setw(7) << right << salidas << " | "
+             << "$" << setw(6) << right << total << " |\n";
     }
-    cout << "\n";
+
+    cout << "==============================================================\n";
     system("pause");
 }
+
 
 void Inventario::ventas(int codigo, int stock) {
     Producto* p = buscarProducto(codigo);
