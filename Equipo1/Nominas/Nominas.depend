@@ -305,9 +305,10 @@
 	<iomanip>
 	"bitacora.h"
 
-1747016685 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\main.cpp
+1747663414 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\main.cpp
 	<iostream>
 	<fstream>
+	<limits>
 	"Opciones.h"
 	"usuarios.h"
 	"bitacora.h"
@@ -322,12 +323,12 @@
 1747623766 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\bitacora.h
 	<string>
 
-1746458381 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\sistema.h
+1747663414 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\sistema.h
 	<fstream>
 	<vector>
 	"usuarios.h"
 
-1747016685 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\sistema.cpp
+1747663414 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\sistema.cpp
 	"sistema.h"
 	"Opciones.h"
 	<conio.h>
@@ -349,7 +350,7 @@
 	<ctime>
 	<limits>
 
-1747635525 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\empleados.cpp
+1747664836 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\empleados.cpp
 	"Empleados.h"
 	<iostream>
 	<fstream>
@@ -359,7 +360,7 @@
 	<iomanip>
 	"bitacora.h"
 
-1747634963 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\empleados.h
+1747663414 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\empleados.h
 	<iostream>
 	<fstream>
 	<stdlib.h>
@@ -369,7 +370,7 @@
 	<limits>
 	"bitacora.h"
 
-1747632677 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\opciones.cpp
+1747663414 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\opciones.cpp
 	"Opciones.h"
 	"bitacora.h"
 	<iostream>
