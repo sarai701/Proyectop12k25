@@ -116,7 +116,7 @@ void Empleados::registroEmpleados()
     cout << "Sueldo: Q";
     cin >> sueldo;
     //Creacion de archivo
-    file.open("Empleados.txt", ios::app | ios::out);
+    file.open("Empleados.bin", ios::app | ios::out);
     //Limitador nuevo y eficiente, Revisa que el archivo exista o este abierto
     if (tipoEmpleado.empty() || Nombre.empty() || sueldo <= 0)
         {
@@ -151,7 +151,7 @@ void Empleados::listaEmpleados()
 
     cout << "\n==================== LISTA DE EMPLEADOS ====================" << endl;
     //Abre el archivo previamente creado y revisa su existencia
-    file.open("Empleados.txt", ios::in);
+    file.open("Empleados.bin", ios::in);
     if (!file.is_open())
     {
         cout << "\nNo hay empleados registrados o el archivo no existe.\n";
@@ -211,7 +211,7 @@ void Empleados::cambioEmpleados() {
     getline(cin, NombreCambio);
 
     // Abrir archivo original para lectura
-    file.open("Empleados.txt", ios::in);
+    file.open("Empleados.bin", ios::in);
     if (!file.is_open()) {
         cout << "\n\t\t\tNo hay información o no se pudo abrir el archivo..." << endl;
         return;
@@ -244,7 +244,7 @@ void Empleados::cambioEmpleados() {
 
     // Crear archivo temporal para escribir los datos actualizados
     fstream file1;
-    file.open("Empleados.txt", ios::in);
+    file.open("Empleados.bin", ios::in);
     file1.open("Record.txt", ios::out);
     if (!file1.is_open()) {
         cout << "\n\t\t\tError al crear archivo temporal." << endl;
@@ -275,8 +275,8 @@ void Empleados::cambioEmpleados() {
     getline(cin, NombreBitacoraEnEmpleados);  // Corregido: usar la variable correcta
     string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
     bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
-    remove("Empleados.txt");
-    rename("Record.txt", "Empleados.txt");
+    remove("Empleados.bin");
+    rename("Record.txt", "Empleados.bin");
 }
 
 
@@ -292,7 +292,7 @@ void Empleados::borrarEmpleados()
     cout << "\n-------------------------Detalles Persona a Borrar-------------------------" << endl;
 
     // Abrir el archivo de empleados para lectura
-    file.open("Empleados.txt", ios::in);
+    file.open("Empleados.bin", ios::in);
     if (!file.is_open())
     {
         cout << "\n\t\t\tNo hay información o no se pudo abrir el archivo..." << endl;
@@ -353,8 +353,8 @@ void Empleados::borrarEmpleados()
     }
     else
     {
-        remove("Empleados.txt");              // Borrar archivo original
-        rename("Record.txt", "Empleados.txt"); // Renombrar archivo temporal como definitivo
+        remove("Empleados.bin");              // Borrar archivo original
+        rename("Record.txt", "Empleados.bin"); // Renombrar archivo temporal como definitivo
     }
      cout << "Ingresar nombre de persona que borro el empleado: ";
     string NombreBitacoraEnEmpleados;
@@ -371,7 +371,7 @@ void Empleados::buscarEmpleado() {
     cout << "Ingrese el nombre del empleado: ";
     cin.ignore(); //limpiar el buffer de entrada
     getline(cin, nombreBuscar);
-    file.open("Empleados.txt", ios::in);
+    file.open("Empleados.bin", ios::in);
     if (!file.is_open()) {
         cout << "\nNo hay empleados registrados o el archivo no existe.\n";
         return;

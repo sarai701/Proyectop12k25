@@ -302,3 +302,83 @@
 	<iomanip>
 	"bitacora.h"
 
+1747016685 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\main.cpp
+	<iostream>
+	<fstream>
+	"Opciones.h"
+	"usuarios.h"
+	"bitacora.h"
+	"sistema.h"
+
+1747016685 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\opciones.h
+	<iostream>
+
+1746458381 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\usuarios.h
+	<iostream>
+
+1747623766 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\bitacora.h
+	<string>
+
+1746458381 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\sistema.h
+	<fstream>
+	<vector>
+	"usuarios.h"
+
+1747016685 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\sistema.cpp
+	"sistema.h"
+	"Opciones.h"
+	<conio.h>
+
+1746458381 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<bitacora.h>
+	<iostream>
+
+1747623766 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<iomanip>
+	<ctime>
+	<limits>
+
+1747635525 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"bitacora.h"
+
+1747634963 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\empleados.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	<limits>
+	"bitacora.h"
+
+1747632677 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\opciones.cpp
+	"Opciones.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+	"Prestaciones.h"
+	"Empleados.h"
+
+1747016685 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\prestaciones.h
+	<string>
+
