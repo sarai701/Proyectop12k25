@@ -1,4 +1,4 @@
-//Boris de León 9959-24-6203
+// Boris de León 9959-24-6203
 // Modificado por Boris de Leon el 10 de mayo
 #include "Cliente.h"
 #include "Bitacora.h" // Agrega la bitacora
@@ -33,10 +33,13 @@ void Cliente::cargarClientes() {
     Cliente c;
     string linea;
 
+    // Leer línea por línea del archivo
     while (getline(archivo, linea)) {
         size_t pos = 0;
         int campo = 0;
         string datos[4];  // Solo 4 campos ahora (sin saldo)
+
+        // Separar los 3 primeros campos
         for (int i = 0; i < 3; ++i) {
             pos = linea.find(',');
             datos[i] = linea.substr(0, pos);
@@ -44,16 +47,17 @@ void Cliente::cargarClientes() {
         }
         datos[3] = linea; // Dirección
 
+        // Asignar datos al objeto cliente
         c.codigo = datos[0];
         c.nombre = datos[1];
         c.telefono = datos[2];
         c.direccion = datos[3];
 
-        clientes.push_back(c);
+        clientes.push_back(c); // Agregar a la lista
     }
 
     archivo.close();
-    ordenarClientes();
+    ordenarClientes(); // Ordenar después de cargar
 }
 
 // Guarda todos los clientes en el archivo clientes.txt
@@ -71,6 +75,8 @@ void Cliente::ordenarClientes() {
         return a.nombre < b.nombre;
     });
 }
+
+// Menú CRUD de clientes básico
 void Cliente::menuClienteCRUD() {
     int opcion;
     do {
@@ -87,6 +93,7 @@ void Cliente::menuClienteCRUD() {
         cin >> opcion;
         cin.ignore();
 
+        // Selección según opción
         switch (opcion) {
             case 1: crearCliente(); break;
             case 2: borrarCliente(); break;
@@ -101,8 +108,7 @@ void Cliente::menuClienteCRUD() {
     } while (true);
 }
 
-
-// Muestra el menú principal
+// Menú principal de clientes con funciones extendidas
 void Cliente::menuCliente() {
     int opcion;
     do {
@@ -124,6 +130,7 @@ void Cliente::menuCliente() {
         cin >> opcion;
         cin.ignore();
 
+        // Opciones según la entrada del usuario
         switch (opcion) {
             case 1: crearCliente(); break;
             case 2: borrarCliente(); break;
@@ -156,12 +163,12 @@ void Cliente::crearCliente() {
     cout << "Teléfono: "; getline(cin, c.telefono);
     cout << "Dirección: "; getline(cin, c.direccion);
 
-    clientes.push_back(c);
-    ordenarClientes();
-    guardarClientes();
+    clientes.push_back(c); // Agregar cliente
+    ordenarClientes();     // Ordenar lista
+    guardarClientes();     // Guardar en archivo
 
     cout << "\nCliente agregado correctamente.";
-    log.insertar("Admin", 4101, "Clientes", "Crear Cliente");
+    log.insertar("Admin", 4101, "Clientes", "Crear Cliente"); // Registrar en bitácora
 
     pausar();
 }
@@ -176,6 +183,7 @@ void Cliente::borrarCliente() {
     bool eliminado = false;
     vector<Cliente> nuevaLista;
 
+    // Recorrer y copiar los que no coinciden
     for (const auto& c : clientes) {
         if (c.codigo != codigo) {
             nuevaLista.push_back(c);
@@ -187,8 +195,7 @@ void Cliente::borrarCliente() {
     if (eliminado) {
         clientes = nuevaLista;
         guardarClientes();
-        log.insertar("Admin", 4104, "Clientes", "Borrar Cliente");
-
+        log.insertar("Admin", 4104, "Clientes", "Borrar Cliente"); // Bitácora
         cout << "\nCliente eliminado correctamente.";
     } else {
         cout << "\nCliente no encontrado.";
@@ -208,6 +215,7 @@ void Cliente::buscarCliente() {
 
     for (const auto& c : clientes) {
         if (c.codigo == codigo) {
+            // Mostrar datos si se encuentra
             cout << "\nCliente encontrado:";
             cout << "\nCódigo    : " << c.codigo;
             cout << "\nNombre    : " << c.nombre;
@@ -236,6 +244,7 @@ void Cliente::modificarCliente() {
 
     for (auto& c : clientes) {
         if (c.codigo == codigo) {
+            // Solicitar nuevos datos
             cout << "\nIngrese nueva información:";
             cout << "\nNuevo Código: "; getline(cin, c.codigo);
             cout << "Nuevo Nombre: "; getline(cin, c.nombre);
@@ -249,7 +258,7 @@ void Cliente::modificarCliente() {
     if (modificado) {
         ordenarClientes();
         guardarClientes();
-        log.insertar("Admin", 4103, "Clientes", "Modificar Cliente");
+        log.insertar("Admin", 4103, "Clientes", "Modificar Cliente"); // Bitácora
 
         cout << "\nCliente modificado exitosamente.";
     } else {
@@ -267,6 +276,7 @@ void Cliente::desplegarClientes() {
     if (clientes.empty()) {
         cout << "\nNo hay clientes registrados.";
     } else {
+        // Mostrar todos los datos de cada cliente
         for (const auto& c : clientes) {
             cout << "\n-----------------------------";
             cout << "\nCódigo    : " << c.codigo;  // Muestra primero el código
@@ -280,12 +290,13 @@ void Cliente::desplegarClientes() {
     pausar();
 }
 
+// Registra un movimiento financiero para un cliente
 void Cliente::registrarMovimiento() {
     limpiarPantalla();
     cargarClientes();  // Solución agregada
 
     string codigoCliente, descripcion, fecha;
-    double monto=0;
+    double monto = 0;
     cout << "\n=== Registrar Movimiento ===";
     cout << "\nCódigo del Cliente: ";
     cin.ignore();
@@ -295,17 +306,21 @@ void Cliente::registrarMovimiento() {
     for (const auto& c : clientes) {
         if (c.codigo == codigoCliente) {
             encontrado = true;
+
+            // Solicitar datos del movimiento
             cout << "Descripción del movimiento: ";
             getline(cin, descripcion);
 
             cout << "Fecha del movimiento (DD/MM/AAAA): ";
             getline(cin, fecha);
+
             cout << "Monto del movimiento: ";
             cin >> monto;
             cin.ignore();
 
+            // Guardar en archivo de movimientos
             ofstream archivo("movimientos.txt", ios::app);
-            archivo << codigoCliente << "," << descripcion << "," << fecha << "," << monto  << "\n";
+            archivo << codigoCliente << "," << descripcion << "," << fecha << "," << monto << "\n";
             archivo.close();
 
             cout << "\nMovimiento registrado correctamente.";
@@ -321,7 +336,9 @@ void Cliente::registrarMovimiento() {
     pausar();
 }
 
-
+// Muestra los movimientos registrados para un cliente específico.
+// Lee el archivo "movimientos.txt" y filtra por el código del cliente.
+// Si encuentra movimientos, los muestra. Si no, avisa que no hay registros.
 void Cliente::mostrarMovimientos() {
     limpiarPantalla();
     string codigoCliente, linea;
@@ -353,6 +370,8 @@ void Cliente::mostrarMovimientos() {
     pausar();
 }
 
+// Muestra todo el contenido del archivo "movimientos.txt" sin filtrar.
+// Ideal para revisión general o depuración.
 void Cliente::abrirArchivoMovimientos() {
     limpiarPantalla();
     cout << "\n=== Contenido del archivo movimientos.txt ===\n";
@@ -367,6 +386,9 @@ void Cliente::abrirArchivoMovimientos() {
     pausar();
 }
 
+// Registra un préstamo para un cliente si existe en el vector 'clientes'.
+// Guarda en "prestamos.txt" el código, monto y estado (pagado o no).
+// También registra la acción en el log del sistema.
 void Cliente::registrarPrestamo() {
     limpiarPantalla();
     string codigoCliente, estado;
@@ -403,6 +425,9 @@ void Cliente::registrarPrestamo() {
     pausar();
 }
 
+// Muestra los préstamos de un cliente según su código.
+// Lee "prestamos.txt" y muestra monto y estado de pago si hay registros.
+// Informa si no hay préstamos asociados al cliente ingresado.
 void Cliente::mostrarPrestamos() {
     limpiarPantalla();
     string codigoCliente, linea;
