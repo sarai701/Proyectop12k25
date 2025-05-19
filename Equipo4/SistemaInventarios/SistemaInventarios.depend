@@ -368,7 +368,7 @@
 	<sstream>
 	"Bitacora.h"
 
-1747034121 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+1747609752 source:c:\users\usuario\documents\progra\programación 1\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
 	"Bitacora.h"
 	<iostream>
 	<fstream>
@@ -378,6 +378,9 @@
 	<iomanip>
 	<algorithm>
 	<ctime>
+	<vector>
+	<sstream>
+	<cstring>
 
 1747023056 c8c78a09cfede2ec27dc91d75b4c2
 
