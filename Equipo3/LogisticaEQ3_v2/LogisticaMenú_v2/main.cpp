@@ -62,7 +62,7 @@ int main() {
         std::cout << "Login fallido. Saliendo del programa.\n";
     }
 
-    std::cout << "\n\t\t** Sistema de Logística - Hasta pronto **\n";
+    std::cout << "\n\t\t** Sistema de Logistica - Hasta pronto **\n";
 
     // Guardar datos actualizados
     std::cout << "Guardando clientes..." << std::endl;
@@ -78,7 +78,6 @@ int main() {
     Transportistas::guardarEnArchivo(listaTransportistas);
 
     std::cout << "Guardando productos..." << std::endl;
-    // Cambiado a guardarEnArchivoBin (nombre correcto según Producto.h)
     Producto::guardarEnArchivoBin(listaProductos);
 
     std::cout << "Guardando proveedores..." << std::endl;

@@ -19,6 +19,7 @@
 
 using namespace std;
 
+
 extern usuarios usuarioRegistrado;
 extern bitacora auditoria;
 std::vector<Inventario> Inventario::listaInventario;
@@ -395,7 +396,7 @@ void Inventario::controlInventario() {
 
         switch(opcion) {
             case 1: consultarStockCompleto(); break;
-            case 2: registrarMercancia(); break;
+            case 2: registrarMercancias(); break;
             case 3: ajustarInventario(); break;
             case 4: reporteExistencias(); break;
             case 5: break;
@@ -507,81 +508,114 @@ vector<Inventario::ItemInventario> Inventario::cargarInventarioDesdeArchivo() {
     return inventario;
 }
 
-void Inventario::registrarMercancia() {
+void Inventario::registrarMercancias() {
     system("cls");
     cout << "\t\t========================================" << endl;
     cout << "\t\t| REGISTRAR MERCANCIA NUEVA            |" << endl;
     cout << "\t\t========================================" << endl;
 
+    // Cargar datos actualizados
     vector<Producto> productos = cargarProductosDesdeArchivo();
     vector<Almacen> almacenes = cargarAlmacenesDesdeArchivo();
+    vector<Proveedor> proveedores = cargarProveedoresDesdeArchivo();
 
-    if (productos.empty() || almacenes.empty()) {
-        cout << "\t\tDebe haber productos y almacenes registrados primero." << endl;
+    // Validar datos mínimos requeridos
+    if (productos.empty()) {
+        cout << "\t\tNo hay productos registrados. Debe registrar productos primero." << endl;
+        system("pause");
+        return;
+    }
+
+    if (almacenes.empty()) {
+        cout << "\t\tNo hay almacenes registrados. Debe registrar almacenes primero." << endl;
         system("pause");
         return;
     }
 
     // Mostrar productos disponibles
-    cout << "\n\tProductos disponibles:\n";
+    cout << "\n\t\tPRODUCTOS DISPONIBLES:\n";
     for (const auto& p : productos) {
-        cout << "\t" << p.getId() << " - " << p.getNombre() << endl;
+        cout << "\t\tID: " << p.getId() << " | Nombre: " << p.getNombre() << endl;
     }
 
+    // Selección de producto
     string idProducto;
-    cout << "\t\tID del producto: ";
+    cout << "\t\tID del producto a registrar: ";
     cin >> idProducto;
 
-    auto itProducto = find_if(productos.begin(), productos.end(),
-        [&](const Producto& p) { return p.getId() == idProducto; });
+    // Buscar producto
+    auto productoIt = find_if(productos.begin(), productos.end(),
+        [&idProducto](const Producto& p) { return p.getId() == idProducto; });
 
-    if (itProducto == productos.end()) {
-        cout << "\t\tProducto no encontrado." << endl;
+    if (productoIt == productos.end()) {
+        cout << "\n\t\tError: Producto no encontrado." << endl;
         system("pause");
         return;
     }
 
     // Mostrar almacenes disponibles
-    cout << "\n\tAlmacenes disponibles:\n";
+    cout << "\n\t\tALMACENES DISPONIBLES:\n";
     for (const auto& a : almacenes) {
-        cout << "\t" << a.getId() << " - " << a.getNombre()
-             << " (Espacio: " << a.getEspacioDisponible() << ")" << endl;
+        cout << "\t\tID: " << a.getId() << " | Nombre: " << a.getNombre() << endl;
     }
 
+    // Selección de almacén
     string idAlmacen;
-    cout << "\t\tID del almacen: ";
+    cout << "\t\tID del almacén destino: ";
     cin >> idAlmacen;
 
-    auto itAlmacen = find_if(almacenes.begin(), almacenes.end(),
-        [&](const Almacen& a) { return a.getId() == idAlmacen; });
+    // Buscar almacén
+    auto almacenIt = find_if(almacenes.begin(), almacenes.end(),
+        [&idAlmacen](const Almacen& a) { return a.getId() == idAlmacen; });
 
-    if (itAlmacen == almacenes.end()) {
-        cout << "\t\tAlmacen no encontrado." << endl;
+    if (almacenIt == almacenes.end()) {
+        cout << "\n\t\tError: Almacén no encontrado." << endl;
         system("pause");
         return;
     }
 
+    // Ingresar cantidad con validación
     int cantidad;
     cout << "\t\tCantidad a registrar: ";
-    cin >> cantidad;
+    while (!(cin >> cantidad) || cantidad <= 0) {
+        cout << "\t\tCantidad inválida. Ingrese un número positivo: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
 
-    if (cantidad <= 0) {
-        cout << "\t\tCantidad invalida." << endl;
+    // Verificar espacio disponible
+    if (almacenIt->getEspacioDisponible() < cantidad) {
+        cout << "\n\t\tError: Espacio insuficiente en el almacén." << endl;
+        cout << "\t\tEspacio disponible: " << almacenIt->getEspacioDisponible() << endl;
         system("pause");
         return;
     }
 
-    itProducto->setStock(itProducto->getStock() + cantidad);
+    // Crear nuevo registro de inventario
+    ItemInventario nuevoRegistro;
+    nuevoRegistro.idProducto = idProducto;
+    nuevoRegistro.idAlmacen = idAlmacen;
+    nuevoRegistro.cantidad = cantidad;
 
-    itAlmacen->setEspacioDisponible(itAlmacen->getEspacioDisponible() - cantidad);
+    // Actualizar registros
+    productoIt->setStock(productoIt->getStock() + cantidad);
+    almacenIt->setEspacioDisponible(almacenIt->getEspacioDisponible() - cantidad);
 
+    // Guardar cambios
     guardarProductosEnArchivo(productos);
     guardarAlmacenesEnArchivo(almacenes);
 
-    auditoria.insertar(usuarioRegistrado.getNombre(), "200", "REG-MERC");
-    cout << "\n\t\tMercancia registrada correctamente.";
+    // Aquí deberías implementar guardarInventarioEnArchivo(nuevoRegistro);
+
+    // Mostrar resumen de la operación
+    cout << "\n\t\tREGISTRO EXITOSO:" << endl;
+    cout << "\t\tProducto: " << productoIt->getNombre() << " (ID: " << productoIt->getId() << ")" << endl;
+    cout << "\t\tCantidad registrada: " << cantidad << endl;
+    cout << "\t\tAlmacén destino: " << almacenIt->getNombre() << endl;
+
     system("pause");
 }
+
 
 void Inventario::ajustarInventario() {
     system("cls");

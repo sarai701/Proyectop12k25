@@ -21,6 +21,7 @@ public:
     struct ItemInventario {
         std::string idProducto;
         std::string idAlmacen;
+        std::string idProveedores;
         int cantidad;
         std::string ubicacion;
         std::string fechaIngreso;
@@ -39,7 +40,6 @@ public:
 
     // Métodos de la clase
     void controlInventario();
-    void registrarMercancia();
     void ajustarInventario();
     void reporteExistencias();
     void mostrarInventario();
@@ -47,6 +47,7 @@ public:
     void transferirEntreAlmacenes();
     void buscarProductoEnInventario();
     void generarReporteInventario();
+    void registrarMercancias();
 
     // Métodos auxiliares
     static bool verificarDisponibilidad(const std::string& idProducto, int cantidadRequerida);
