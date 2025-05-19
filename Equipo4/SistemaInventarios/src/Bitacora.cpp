@@ -7,6 +7,9 @@
 #include<iomanip>
 #include<algorithm>
 #include<ctime>
+#include<vector>
+#include<sstream>
+#include<cstring>
 
 using namespace std;
 
@@ -41,97 +44,82 @@ void bitacora::menu()
     } while(choice != 2);
 }
 
-void bitacora::insertar(string nombre, int codigo, string aplicacion, string accion)
-{
-    fstream file;
-    fstream readFile;
+struct EntradaBitacora {
+    int codigo;
+    char nombre[20];
+    char aplicacion[20];
+    char accion[100];
+    char fecha[30];
+    char hora[10];
+};
+
+void bitacora::insertar(string nombre, int codigoDummy, string aplicacion, string accion) {
+    fstream binFile;
+    EntradaBitacora entrada;
 
     int ultimoCodigo = 1999;
-    string line;
 
-    readFile.open("bitacora.txt", ios::in);
-    if (readFile)
-    {
-        while (getline(readFile, line))
-        {
-            if (line.length() >= 4) {
-                string codStr = line.substr(0, 4);
-                bool esNumero = all_of(codStr.begin(), codStr.end(), ::isdigit);
-                if (esNumero) {
-                    int cod = stoi(codStr);
-                    if (cod > ultimoCodigo)
-                        ultimoCodigo = cod;
-                }
-            }
+    // Leer el utlimo código
+    binFile.open("bitacora.dat", ios::in | ios::binary);
+    if (binFile) {
+        EntradaBitacora temp;
+        while (binFile.read(reinterpret_cast<char*>(&temp), sizeof(temp))) {
+            if (temp.codigo > ultimoCodigo)
+                ultimoCodigo = temp.codigo;
         }
+        binFile.close();
     }
-    readFile.close();
 
     int nuevoCodigo = ultimoCodigo + 1;
-    if (nuevoCodigo > 2999)
-    {
+    if (nuevoCodigo > 2999) {
         cout << "❌ Límite de bitácoras alcanzado (2999)" << endl;
         return;
     }
 
-    file.open("bitacora.txt", ios::app | ios::out);
+    // Llenar campos
+    entrada.codigo = nuevoCodigo;
+    strncpy(entrada.nombre, nombre.c_str(), sizeof(entrada.nombre));
+    strncpy(entrada.aplicacion, aplicacion.c_str(), sizeof(entrada.aplicacion));
+    strncpy(entrada.accion, accion.c_str(), sizeof(entrada.accion));
 
     time_t now = time(0);
-    struct tm * timeinfo = localtime(&now);
+    struct tm *timeinfo = localtime(&now);
+    strftime(entrada.fecha, sizeof(entrada.fecha), "%b %d %Y", timeinfo);
+    strftime(entrada.hora, sizeof(entrada.hora), "%H:%M:%S", timeinfo);
 
-    char dateBuffer[25];
-    char timeBuffer[10];
-
-    strftime(dateBuffer, sizeof(dateBuffer), "%b %d %Y %H:%M:%S", timeinfo);
-    strftime(timeBuffer, sizeof(timeBuffer), "%H:%M:%S", timeinfo);
-
-    // Escribimos los campos con formato fijo
-    file << std::setw(4) << std::setfill('0') << nuevoCodigo << " "
-         << std::left << std::setw(20) << nombre
-         << std::left << std::setw(20) << aplicacion
-         << std::left << std::setw(30) << accion
-         << std::left << std::setw(30) << dateBuffer
-         << std::left << std::setw(10) << timeBuffer << "\n";
-
-
-    file.close();
+    // Guardar en archivo binario
+    binFile.open("bitacora.dat", ios::app | ios::binary);
+    binFile.write(reinterpret_cast<char*>(&entrada), sizeof(entrada));
+    binFile.close();
 }
+
 
 void bitacora::desplegar() {
     system("cls");
-    fstream file;
-    string linea;
+    fstream binFile;
+    EntradaBitacora entrada;
     int total = 0;
 
-    cout << "\n-------------------------Tabla de Detalles de Bitacora -------------------------" << endl;
-    file.open("bitacora.txt", ios::in);
-    if (!file) {
-        cout << "\n\t\t\tNo hay información...";
+    cout << "\n------------------- Bitácora -------------------\n";
+    binFile.open("bitacora.dat", ios::in | ios::binary);
+    if (!binFile) {
+        cout << "\n\t\t\tNo hay información...\n";
     } else {
-        while (getline(file, linea)) {
-            if (linea.length() >= 103) { // Validación de longitud
-                string codigo = linea.substr(0, 4);
-                string nombre = linea.substr(5, 20);
-                string aplicacion = linea.substr(26, 20);
-                string accion = linea.substr(47, 30);
-                string fecha = linea.substr(75, 19);  // Sep 25 2023 14:30:00
-                string hora = linea.substr(95, 8);     // 14:30:00
-
-                cout << "\n\t\t\t Codigo Bitacora: " << codigo << endl;
-                cout << "\t\t\t Nombre Usuario:  " << nombre << endl;
-                cout << "\t\t\t Aplicacion:      " << aplicacion << endl;
-                cout << "\t\t\t Accion:          " << accion << endl;
-                cout << "\t\t\t Fecha y Hora:    " << fecha << " " << hora << endl;
-                cout << "-------------------------------------------------------------------------------\n";
-                total++;
-            } else {
-                cout << "Error en formato de línea: " << linea << endl;
-            }
+        while (binFile.read(reinterpret_cast<char*>(&entrada), sizeof(entrada))) {
+            cout << "-----------------------------------------------\n";
+            cout << "[" << total << "] Código:      " << entrada.codigo << "\n";
+            cout << "    Usuario:     " << entrada.nombre << "\n";
+            cout << "    Aplicación:  " << entrada.aplicacion << "\n";
+            cout << "    Acción:      " << entrada.accion << "\n";
+            cout << "    Fecha:       " << entrada.fecha << " " << entrada.hora << "\n";
+            total++;
         }
         if (total == 0) {
-            cout << "\n\t\t\tNo hay información...";
+            cout << "\n\t\t\tNo hay información...\n";
+        } else {
+            cout << "-----------------------------------------------\n";
         }
     }
-    file.close();
+    binFile.close();
     system("pause");
 }
