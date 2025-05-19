@@ -27,6 +27,25 @@ void limpiarBufferEntrada() {
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora lo que quede en el buffer
 }
 
+void realizarBackup() {
+    // Crear directorio si no existe (Windows)
+    system("mkdir backup 2> nul");
+
+    // Lista de archivos a respaldar
+    const char* archivos[] = {
+        "clientes.txt", "proveedores.txt", "empleados.txt",
+        "movimientos.txt", "prestamos.txt", "bitacora.txt",
+        "auditores.txt", "pagos.txt", "salarios.txt"
+    };
+
+    // Copiar cada archivo sobrescribiendo el anterior
+    for (const char* archivo : archivos) {
+        string comando = "copy /Y " + string(archivo) + // /Y para sobrescribir en Windows
+                        " backup\\" + string(archivo) + ".bak > nul";
+        system(comando.c_str());
+    }
+}
+
 void menuArchivo(const string& usuario, Bitacora& bitacora) {
     Usuario::limpiarPantalla();
     int opcion;
@@ -45,8 +64,9 @@ void menuArchivo(const string& usuario, Bitacora& bitacora) {
 
         switch (opcion) {
             case 1:
-                cout << "\n[Simulando backup de archivos del sistema...]\n";
-                bitacora.insertar(usuario, 4905, "Sistema", "Realizó backup del sistema");
+                realizarBackup();
+                cout << "\nBackup realizado exitosamente!\n";
+                bitacora.insertar(usuario, 4905, "Sistema", "Backup realizado");
                 break;
             case 2:
                 return;
