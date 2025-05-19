@@ -50,7 +50,7 @@ int main() {
         switch (opcionGeneral) {
             case 1:
                 menu.mostrarOpciones(inventario, factura, nombreUsuario);
-                bit.insertar(nombreUsuario, 2001, "Catálogo", "Acceso al módulo de inventario");
+                bit.insertar(nombreUsuario, 1999, "Catálogo", "Acceso al submenú de inventario");
                 break;
 
             case 2: {
