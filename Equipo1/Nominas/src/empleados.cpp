@@ -5,10 +5,12 @@
 #include<cstdlib>
 #include<conio.h>
 #include<iomanip>
+#include "bitacora.h"
 //Creado y documentado Por Isaias Cedillo (9959-24-1672) "IsaC8-bit"
 Empleados::Empleados()
 {
 }
+bitacora bitacoraempleado;
 void Empleados::menuEmpleados()
 {
     int eleccion = 0;
@@ -34,11 +36,12 @@ void Empleados::menuEmpleados()
             case 1:
                 cout << "Opcion escogida... \n";
                 registroEmpleados();
-                cout << "Hay mas empleados por anadir? Y/N \n";
+                cout << "Hay más empleados por añadir? Y/N \n";
                 cin >> x;
-                while (x == 'y' || x == 'Y')
-                {
-                    registroEmpleados();
+                while (x == 'y' || x == 'Y') {
+                registroEmpleados();
+                cout << "¿Desea ingresar otro empleado? Y/N \n";
+                cin >> x;
                 }
                 break;
             case 2:
@@ -84,6 +87,12 @@ void Empleados::registroEmpleados()
     //Creacion de archivo
     file.open("Empleados.txt", ios::app | ios::out);
     //Limitador nuevo y eficiente (Gracias a DeepSeek, Revisa que el archivo exista o este abierto
+    if (tipoEmpleado.empty() || Nombre.empty() || sueldo <= 0)
+        {
+        cout << "Error: campos inválidos.\n";
+        return;
+        }
+
     if (!file.is_open())
     {
         cout << "Error al abrir el archivo!" << endl;
@@ -94,7 +103,12 @@ void Empleados::registroEmpleados()
     file << tipoEmpleado << "|" << Nombre << "|" << sueldo << "\n";
     //Registro completado
     file.close();
-    cout << "\nEmpleado registrado exitosamente!\n";
+    cout << "Ingresar nombre de persona registrante: ";
+    string NombreBitacoraEnEmpleados;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpiar buffer antes de getline
+    getline(cin, NombreBitacoraEnEmpleados);  // Corregido: usar la variable correcta
+    string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
+    bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Ing");
 }
 
 void Empleados::listaEmpleados()
@@ -143,6 +157,12 @@ void Empleados::listaEmpleados()
     cout << "\nTotal de empleados: " << total << endl;
 
     file.close();
+     cout << "Ingresar nombre de persona que reviso el sistema: ";
+    string NombreBitacoraEnEmpleados;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpiar buffer antes de getline
+    getline(cin, NombreBitacoraEnEmpleados);  // Corregido: usar la variable correcta
+    string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
+    bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Cons");
 }
 void Empleados::cambioEmpleados() {
     // Limpiar pantalla
@@ -218,7 +238,12 @@ void Empleados::cambioEmpleados() {
     }
     file.close();
     file1.close();
-
+    cout << "Ingresar nombre de persona que realizo el cambio: ";
+    string NombreBitacoraEnEmpleados;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpiar buffer antes de getline
+    getline(cin, NombreBitacoraEnEmpleados);  // Corregido: usar la variable correcta
+    string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
+    bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
     remove("Empleados.txt");
     rename("Record.txt", "Empleados.txt");
 }
@@ -300,4 +325,10 @@ void Empleados::borrarEmpleados()
         remove("Empleados.txt");              // Borrar archivo original
         rename("Record.txt", "Empleados.txt"); // Renombrar archivo temporal como definitivo
     }
+     cout << "Ingresar nombre de persona que borro el empleado: ";
+    string NombreBitacoraEnEmpleados;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpiar buffer antes de getline
+    getline(cin, NombreBitacoraEnEmpleados);  // Corregido: usar la variable correcta
+    string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
+    bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
 }

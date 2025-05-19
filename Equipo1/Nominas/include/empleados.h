@@ -8,6 +8,7 @@
 #include<conio.h>
 #include<iomanip>
 #include<limits> // Añadido para usar numeric_limits
+#include "bitacora.h"
 
 using namespace std;
 

@@ -19,6 +19,8 @@ public:
 
     // Muestra todos los registros almacenados
     void desplegar();
+    // Aplicacion para registros
+     std::string generarCodigoAplicacion();
 };
 
 #endif

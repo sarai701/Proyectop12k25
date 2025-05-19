@@ -7,3 +7,7 @@ usuario        100            LOGS
 usuario        100            LOGS           
 "Xander Reyes","10000","ING",2025-05-05 09:35:44
 "angel","edit","edit",2025-05-11 18:32:09
+"Chuek","Catalogo","Creacion de Empleado: Isaias",2025-05-18 19:47:02
+"El amante de xander","Catalogo","Creacion de Empleado: Chuek en tanga",2025-05-18 19:49:47
+"Luis Miguel","7000","Ing",2025-05-18 20:41:56
+"asas","7001","Cons",2025-05-18 20:43:23
