@@ -1,3 +1,5 @@
+//LUIS ANGEL MENDEZ FUENTES
+//9959-24-6845
 // Inclusión de encabezados propios
 #include "MenuClientes.h"
 #include "Clientes.h"
@@ -11,13 +13,16 @@
 using namespace std;
 
 // Definición de rangos válidos para los ID de clientes
-const int CODIGO_INICIAL = 3107;
-const int CODIGO_FINAL = 3157;
+const int CODIGO_INICIAL = 3107; /**< ID mínimo válido para los clientes */
+const int CODIGO_FINAL = 3157;   /**< ID máximo válido para los clientes */
 
 /**
- * Muestra el menú de gestión de clientes.
- * Permite agregar, mostrar, modificar o eliminar clientes.
- * @param listaClientes Vector que contiene la lista de todos los clientes registrados.
+ * @brief Muestra el menú interactivo de gestión de clientes.
+ *
+ * Permite al usuario realizar operaciones como agregar, mostrar, modificar
+ * o eliminar clientes. Al finalizar, guarda automáticamente los datos.
+ *
+ * @param listaClientes Vector que contiene la lista actual de clientes registrados.
  * @param usuarioActual Objeto que representa al usuario que está utilizando el sistema.
  */
 void MenuClientes::mostrar(vector<Clientes>& listaClientes, usuarios& usuarioActual) {
@@ -49,14 +54,17 @@ void MenuClientes::mostrar(vector<Clientes>& listaClientes, usuarios& usuarioAct
 
         switch (opcion) {
             case 1:
+                // Agregar nuevo cliente
                 Clientes::agregar(listaClientes, usuarioActual.getNombre());
                 break;
 
             case 2:
+                // Mostrar lista de clientes
                 Clientes::mostrar(listaClientes);
                 break;
 
             case 3: {
+                // Modificar cliente existente
                 Clientes::mostrar(listaClientes);
                 if (!listaClientes.empty()) {
                     cout << "\n   Ingrese ID del cliente a modificar: ";
@@ -73,6 +81,7 @@ void MenuClientes::mostrar(vector<Clientes>& listaClientes, usuarios& usuarioAct
             }
 
             case 4: {
+                // Eliminar cliente existente
                 Clientes::mostrar(listaClientes);
                 if (!listaClientes.empty()) {
                     cout << "\n   Ingrese ID del cliente a eliminar: ";
@@ -89,11 +98,13 @@ void MenuClientes::mostrar(vector<Clientes>& listaClientes, usuarios& usuarioAct
             }
 
             case 5:
+                // Guardar cambios y salir del menú
                 Clientes::guardarEnArchivo(listaClientes);
                 cout << "\n   Regresando al menu principal...\n";
                 break;
 
             default:
+                // Opción no válida
                 cout << "\n   Opcion invalida.\n";
                 system("pause");
                 break;

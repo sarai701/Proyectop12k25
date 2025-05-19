@@ -1,3 +1,5 @@
+//LUIS ANGEL MENDEZ FUENTES
+//9959-24-6845
 #include "bitacora.h"
 #include <iostream>
 #include <fstream>
@@ -11,7 +13,10 @@
 
 using namespace std;
 
-// Estructura para cada entrada de bitácora (usada en binarios)
+/**
+ * Estructura que representa un registro de la bitácora.
+ * Se utiliza para guardar los datos de cada evento en el archivo binario.
+ */
 struct Registro {
     int codigo;
     char usuario[30];
@@ -20,7 +25,10 @@ struct Registro {
     char fecha[20];
 };
 
-// Inicialización de los códigos de los módulos
+/**
+ * Mapa estático que almacena los rangos de códigos por módulo.
+ * Utilizado para asignar códigos únicos a cada registro.
+ */
 std::unordered_map<std::string, int> CodigosBitacora::rangos = {
     {"AUTENTICACION", 3000}, {"USUARIOS", 3050}, {"PEDIDOS", 3100},
     {"CLIENTES", 3150}, {"PROVEEDORES", 3200}, {"PRODUCTOS", 3250},
@@ -29,6 +37,12 @@ std::unordered_map<std::string, int> CodigosBitacora::rangos = {
     {"SISTEMA", 3600}
 };
 
+/**
+ * Obtiene el código actual para un módulo y lo incrementa para el próximo uso.
+ * Si el módulo no existe en el mapa, se inicializa en 3000.
+ * @param modulo Nombre del módulo.
+ * @return Código actual asignado para el módulo.
+ */
 int CodigosBitacora::getCodigo(const std::string& modulo) {
     if (rangos.find(modulo) == rangos.end()) {
         rangos[modulo] = 3000;
@@ -36,6 +50,13 @@ int CodigosBitacora::getCodigo(const std::string& modulo) {
     return rangos[modulo]++;
 }
 
+/**
+ * Registra un nuevo evento en la bitácora.
+ * Escribe la información en el archivo binario `bitacora.bin`.
+ * @param usuario Nombre del usuario que realizó la acción.
+ * @param modulo Módulo del sistema donde ocurrió el evento.
+ * @param descripcion Breve explicación de lo que ocurrió.
+ */
 void bitacora::registrar(const std::string& usuario, const std::string& modulo, const std::string& descripcion) {
     std::ofstream file("bitacora.bin", std::ios::binary | std::ios::app);
     if (!file) {
@@ -61,6 +82,10 @@ void bitacora::registrar(const std::string& usuario, const std::string& modulo, 
     file.close();
 }
 
+/**
+ * Obtiene la fecha actual del sistema en formato DD/MM/AAAA.
+ * @return Fecha como cadena de texto.
+ */
 std::string bitacora::obtenerFechaActual() {
     auto now = std::chrono::system_clock::now();
     std::time_t time = std::chrono::system_clock::to_time_t(now);
@@ -70,6 +95,10 @@ std::string bitacora::obtenerFechaActual() {
     return oss.str();
 }
 
+/**
+ * Muestra todos los registros de la bitácora almacenados en el archivo binario.
+ * Presenta los datos en formato tabular por consola.
+ */
 void bitacora::mostrarBitacora() {
 #ifdef _WIN32
     system("cls");
@@ -108,6 +137,10 @@ void bitacora::mostrarBitacora() {
     system("pause");
 }
 
+/**
+ * Genera una copia de seguridad de la bitácora actual.
+ * El archivo generado se nombra automáticamente con fecha y hora.
+ */
 void bitacora::generarBackup() {
     auto now = std::chrono::system_clock::now();
     std::time_t time = std::chrono::system_clock::to_time_t(now);
@@ -130,6 +163,10 @@ void bitacora::generarBackup() {
     system("pause");
 }
 
+/**
+ * Elimina todos los registros de la bitácora, dejando el archivo binario vacío.
+ * Esta operación no se puede deshacer.
+ */
 void bitacora::reiniciarBitacora() {
     std::ofstream file("bitacora.bin", std::ios::binary | std::ios::trunc);
     if (file.is_open()) {
@@ -141,6 +178,10 @@ void bitacora::reiniciarBitacora() {
     system("pause");
 }
 
+/**
+ * Busca y muestra todos los registros asociados a un nombre de usuario específico.
+ * Presenta primero una lista de usuarios únicos para ayudar al usuario a elegir.
+ */
 void bitacora::buscarPorNombreUsuario() {
 #ifdef _WIN32
     system("cls");
@@ -204,6 +245,10 @@ void bitacora::buscarPorNombreUsuario() {
     system("pause");
 }
 
+/**
+ * Busca y muestra todos los registros asociados a una fecha específica.
+ * La búsqueda se hace por coincidencia exacta con el formato "DD/MM/AAAA".
+ */
 void bitacora::buscarPorFecha() {
 #ifdef _WIN32
     system("cls");
@@ -239,6 +284,10 @@ void bitacora::buscarPorFecha() {
     system("pause");
 }
 
+/**
+ * Busca y muestra todos los registros asociados a una fecha específica.
+ * La búsqueda se hace por coincidencia exacta con el formato "DD/MM/AAAA".
+ */
 void bitacora::menuBitacora() {
     int opcion = 0;
     do {
