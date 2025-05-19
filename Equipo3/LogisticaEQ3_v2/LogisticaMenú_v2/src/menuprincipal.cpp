@@ -72,7 +72,7 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
                 return;
 
             default:
-                cout << "\n\t\tOpción inválida... Intenta de nuevo...";
+                cout << "\n\t\tOpcion invalida... Intenta de nuevo...";
         }
     } while(choice != 6);
 }

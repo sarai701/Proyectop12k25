@@ -44,7 +44,7 @@ void Transportistas::agregar(std::vector<Transportistas>& lista, const std::stri
     nuevo.id = generarIdUnico(lista);
 
     if (nuevo.id.empty()) {
-        cerr << "\n\t\tError: No hay códigos disponibles para nuevos transportistas\n";
+        cerr << "\n\t\tError: No hay codigos disponibles para nuevos transportistas\n";
         system("pause");
         return;
     }
@@ -55,10 +55,10 @@ void Transportistas::agregar(std::vector<Transportistas>& lista, const std::stri
     cout << "\t\tNombre: ";
     getline(cin, nuevo.nombre);
 
-    cout << "\t\tTeléfono: ";
+    cout << "\t\tTelefono: ";
     getline(cin, nuevo.telefono);
 
-    cout << "\t\tVehículo: ";
+    cout << "\t\tVehiculo: ";
     getline(cin, nuevo.vehiculo);
 
     cout << "\t\tDisponibilidad (disponible/Diurna/Nocturna/24-7): ";
@@ -134,10 +134,10 @@ void Transportistas::eliminar(std::vector<Transportistas>& lista, const std::str
 
 void Transportistas::cargarDesdeArchivo(std::vector<Transportistas>& lista) {
     lista.clear();
-    std::ifstream archivo("transportistas.txt");
+    std::ifstream archivo("transportistas.bin", ios::binary);
 
     if (!archivo.is_open()) {
-        std::ofstream nuevoArchivo("transportistas.txt");
+        std::ofstream nuevoArchivo("transportistas.bin", ios::binary);
         return;
     }
 
@@ -157,7 +157,7 @@ void Transportistas::cargarDesdeArchivo(std::vector<Transportistas>& lista) {
 }
 
 void Transportistas::guardarEnArchivo(const std::vector<Transportistas>& lista) {
-    std::ofstream archivo("transportistas.txt");
+    std::ofstream archivo("transportistas.bin", ios::binary);
 
     for (const auto& transp : lista) {
         archivo << transp.id << ","

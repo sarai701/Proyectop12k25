@@ -50,7 +50,7 @@ bool usuarios::esNumero(const string& str) {
 }
 
 bool usuarios::usuarioExiste(const string& nombreUsuario) {
-    ifstream archivo("usuarios.txt");
+    ifstream archivo("usuarios.bin", ios::binary);
     string linea;
 
     while (getline(archivo, linea)) {
@@ -144,7 +144,7 @@ bool usuarios::loginUsuarios() {
 
 void usuarios::registrarUsuario() {
     system("cls");
-    ofstream archivo("usuarios.txt", ios::app);
+    ofstream archivo("usuarios.bin", ios::binary);
     if (!archivo.is_open()) {
         cerr << "\n\t\tError al abrir archivo de usuarios!\n";
         return;
@@ -208,7 +208,7 @@ void usuarios::registrarUsuario() {
 }
 
 bool usuarios::buscarUsuario(const string& user, const string& pass) {
-    ifstream archivo("usuarios.txt");
+    ifstream archivo("usuarios.bin", ios::binary);
     if (!archivo.is_open()) {
         cerr << "\n\t\tError al abrir archivo de usuarios!\n";
         return false;

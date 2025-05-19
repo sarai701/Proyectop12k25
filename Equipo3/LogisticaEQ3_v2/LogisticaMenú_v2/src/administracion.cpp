@@ -92,7 +92,7 @@ void Administracion::agregar(std::vector<Administracion>& lista, const std::stri
 }
 
 void Administracion::guardarEnArchivo(const std::vector<Administracion>& lista) {
-    std::ofstream archivo("administradores.txt");
+    std::ofstream archivo("administradores.bin", ios::binary);
 
     for (const auto& admin : lista) {
         archivo << admin.id << ","
@@ -186,10 +186,10 @@ void Administracion::eliminar(std::vector<Administracion>& lista, const std::str
 
 void Administracion::cargarDesdeArchivo(std::vector<Administracion>& lista) {
     lista.clear();
-    std::ifstream archivo("administradores.txt");
+    std::ifstream archivo("administradores.bin", ios::binary);
 
     if (!archivo.is_open()) {
-        std::ofstream nuevoArchivo("administradores.txt");
+        std::ofstream nuevoArchivo("administradores.bin", ios::binary);
         return;
     }
 
