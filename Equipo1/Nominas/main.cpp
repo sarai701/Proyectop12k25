@@ -8,7 +8,8 @@
 
 using namespace std;
 void menuGeneral();
-
+int contrasenia = 147;
+int ingreso;
 int main()
 {
 sistema seguridad;//Objeto creado de clase sistema-ANGEL ROQUEL
@@ -17,8 +18,9 @@ Opciones opciones;//Objeto creado de clases Opciones-ANGEL ROQUEL
 
     do {//Ciclo de sistema de seguridad, registro ingreso de usuarios-ANGEL ROQUEL
         system ("cls");
+
         cout << "1. Registrar usuario" << endl;
-        cout << "2. Ingresar usuario" << endl;
+        cout << "2. Ingresar" << endl;
         cout << "3. Mostrar usuarios" << endl;
         cout << "4. Salir" << endl;
         cout << "Ingrese opcion: ";
@@ -26,7 +28,16 @@ Opciones opciones;//Objeto creado de clases Opciones-ANGEL ROQUEL
 
         switch (opcion) {
             case 1:
-                seguridad.registrarUsuario();
+                system("cls");
+                cout <<"Ingrese contrasenia maestra.."<<endl;
+                cin >> ingreso;
+                if (ingreso==contrasenia)
+                {
+                    seguridad.registrarUsuario();
+                }else{
+                cout << "Contraseña incorrecta..."<<endl;
+                cout << "Regresando......."<<endl;
+                }
                 break;
             case 2:
                 seguridad.ingresarUsuario();

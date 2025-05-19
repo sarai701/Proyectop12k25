@@ -5,6 +5,7 @@
 #include <fstream>//Librería para archivos de lectura o escritura
 #include <algorithm>// Para la función sort (ordenamiento)
 #include "Bitacora.h"
+#include "Moneda.h"
 
 // Creamos un objeto global de bitácora para registrar las acciones realizadas en Nominas
 Bitacora bitacoralog3;
@@ -244,7 +245,8 @@ void Nominas::desplegarEmpleados() {
             cout << "\nTeléfono  : " << e.telefono;
             cout << "\nCódigo    : " << e.codigo;
             cout << "\nDirección : " << e.direccion;
-            cout << "\nSalario   : Q" << e.salario;
+            cout << "\nSalario   : " << Moneda::getSimbolo()
+         << Moneda::convertirDesdeGtq(e.salario);
         }
         cout << "\n-----------------------------";
         bitacoralog3.insertar("Admin", 4005, "Nominas", "Ver empleados");

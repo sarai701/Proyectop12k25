@@ -1,0 +1,66 @@
+-------------------------- BITÁCORA DEL SISTEMA --------------------------
+ID_ACCION   USUARIO        MODULO              DESCRIPCION                        FECHA_HORA          
+---------------------------------------------------------------------------
+3000        Jennifer       000                 LOGIN-FAIL                         12/05/2025 02:11:24 
+3001        Jennifer       000                 REG-USER                           12/05/2025 02:11:40 
+3002        Jennifer       000                 LOGIN                              12/05/2025 02:11:48 
+3000        Jennifer       000                 LOGIN                              14/05/2025 11:25:52 
+3150        Jennifer       CLIENTES            Cliente agregado - ID: 3107        14/05/2025 11:26:32 
+3000        Jennifer       000                 LOGIN                              14/05/2025 11:26:59 
+3000        Jennifer       000                 LOGIN                              14/05/2025 11:32:31 
+3000        Jennifer       000                 LOGIN                              14/05/2025 11:33:21 
+3000        Jennifer       000                 LOGIN                              14/05/2025 15:45:05 
+3000        Jennifer       000                 LOGIN                              14/05/2025 15:50:11 
+3000        Jennifer       000                 LOGIN-FAIL                         14/05/2025 15:54:54 
+3001        Jennifer       000                 LOGIN                              14/05/2025 15:55:02 
+3000        Jennifer       000                 LOGIN                              14/05/2025 15:57:55 
+3000        Jennifer       000                 LOGIN                              14/05/2025 15:59:41 
+3150        Jennifer       CLIENTES            Cliente modificado - ID: 3109      14/05/2025 16:01:15 
+3000        Jennifer       000                 LOGIN                              14/05/2025 16:54:55 
+3100        Jennifer       PEDIDOS             Salida de gestión de pedidos       14/05/2025 16:55:56 
+3000        Jennifer       ALMACEN             Almacén creado - ID: 3260          14/05/2025 16:56:41 
+3250        Jennifer       PRODUCTOS           Agregado: 3209                     14/05/2025 16:57:08 
+3101        Jennifer       PEDIDOS             Pedido creado - ID: 3400           14/05/2025 16:58:00 
+3102        Jennifer       PEDIDOS             Consulta de pedidos                14/05/2025 16:58:05 
+3103        Jennifer       PEDIDOS             Vista de historial de pedidos      14/05/2025 16:58:36 
+3000        Jennifer       000                 LOGIN                              15/05/2025 06:15:38 
+3100        Jennifer       PEDIDOS             Consulta de pedidos                15/05/2025 06:16:28 
+3101        Jennifer       PEDIDOS             Vista de historial de pedidos      15/05/2025 06:16:48 
+3102        Jennifer       PEDIDOS             Salida de gestión de pedidos       15/05/2025 06:17:42 
+3000        Jennifer       000                 LOGIN                              15/05/2025 06:18:41 
+3000        Jennifer       000                 LOGIN                              15/05/2025 14:29:59 
+3100        Jennifer       PEDIDOS             Vista de historial de pedidos      15/05/2025 14:30:30 
+3101        Jennifer       PEDIDOS             Consulta de pedidos                15/05/2025 14:30:34 
+3000        Jennifer       000                 LOGIN                              15/05/2025 14:45:17 
+3100        Jennifer       PEDIDOS             Vista de historial de pedidos      15/05/2025 14:45:30 
+3101        Jennifer       PEDIDOS             Salida de gestión de pedidos       15/05/2025 14:45:37 
+3000        Jennifer       000                 LOGIN                              15/05/2025 14:46:45 
+3100        Jennifer       PEDIDOS             Salida de gestión de pedidos       15/05/2025 14:46:55 
+3101        Jennifer       PEDIDOS             Consulta de pedidos                15/05/2025 14:47:26 
+3102        Jennifer       PEDIDOS             Vista de historial de pedidos - ID: 340015/05/2025 14:47:31 
+3103        Jennifer       PEDIDOS             Vista de historial de pedidos - ID: 340015/05/2025 14:47:43 
+3000        Karina         000                 LOGIN-FAIL                         15/05/2025 17:38:00 
+3001        Karina         000                 LOGIN-FAIL                         15/05/2025 17:38:44 
+3002        karina alewi   000                 LOGIN-FAIL                         15/05/2025 17:39:04 
+3000        Karina         000                 REG-USER                           15/05/2025 17:39:52 
+3001        Karina         000                 LOGIN                              15/05/2025 17:40:10 
+3100        Karina         PEDIDOS             Salida de gestión de pedidos       15/05/2025 17:42:57 
+3101        Karina         PEDIDOS             Salida de gestión de pedidos       15/05/2025 17:43:03 
+3102        Karina         PEDIDOS             Salida de gestión de pedidos       15/05/2025 17:43:20 
+3000        Karina         200                 STOCK                              15/05/2025 17:44:38 
+3000        Karina         000                 LOGIN                              16/05/2025 16:49:01 
+3000        Ale            000                 REG-USER                           16/05/2025 17:39:51 
+3000        Ale            000                 LOGIN                              16/05/2025 17:48:29 
+3000        Ale            200                 STOCK                              16/05/2025 17:48:51 
+3000        Ale            000                 LOGIN                              16/05/2025 17:58:14 
+3001        Ale            000                 LOGOUT                             16/05/2025 17:58:33 
+3002                       000                 LOGOUT                             16/05/2025 17:58:53 
+3000        Ale            000                 LOGIN                              16/05/2025 18:01:32 
+3000        Kari           000                 REG-USER                           16/05/2025 18:02:23 
+3001        Kari           000                 LOGIN                              16/05/2025 18:02:33 
+3000        Kari           000                 LOGIN-FAIL                         16/05/2025 18:15:22 
+3001        Kari           000                 LOGIN                              16/05/2025 18:15:33 
+3002        Kari           000                 LOGOUT                             16/05/2025 18:15:44 
+3000        kari           000                 REG-USER                           16/05/2025 18:20:41 
+3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
+3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 

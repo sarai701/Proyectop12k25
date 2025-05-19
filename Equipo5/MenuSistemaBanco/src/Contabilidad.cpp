@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <algorithm>
 #include "Bitacora.h"
+#include "Moneda.h"
 
 #ifdef _WIN32
 #include <cstdlib>
@@ -80,7 +81,8 @@ void Contabilidad::registroNomina() {
             cout << "\nEmpleado encontrado:";
             cout << "\nNombre: " << nombre;
             cout << "\nCódigo: " << codigoArchivo;
-            cout << "\nSalario: $" << salario;
+            cout << "\nSalario: " << Moneda::getSimbolo()
+         << Moneda::convertirDesdeGtq(stod(salario));
 
             // Registrar pago
             char respuesta;

@@ -1,4 +1,5 @@
 //Boris de León 9959-24-6203
+// Modificado por Boris de Leon el 10 de mayo
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
@@ -31,8 +32,15 @@ public:
 
     void limpiarPantalla();        // Limpia la pantalla de la consola
     void pausar();                 // Pausa el programa hasta que se presione ENTER
+
+        // Nuevas funciones para movimientos y préstamos
+    void registrarMovimiento();         // Agrega un movimiento a un cliente
+    void mostrarMovimientos();          // Muestra los movimientos de un cliente
+    void abrirArchivoMovimientos();     // Abre el archivo de texto de movimientos
+
+    void registrarPrestamo();           // Registra un préstamo activo
+    void mostrarPrestamos();            // Muestra préstamos de un cliente
+
 };
 
 #endif
-
-

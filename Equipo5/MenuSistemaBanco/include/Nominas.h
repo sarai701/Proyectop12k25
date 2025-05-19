@@ -4,6 +4,9 @@
 #include "Bitacora.h"
 #include <string>
 #include <vector>
+#include "Bitacora.h"
+#include "Moneda.h"
+
 using namespace std;
 
 struct EmpleadoNomina {
@@ -11,7 +14,7 @@ struct EmpleadoNomina {
     string telefono;
     string codigo;
     string direccion;
-    float salario;
+    double salario; // Siempre en GTQ
 };
 
 class Nominas {
