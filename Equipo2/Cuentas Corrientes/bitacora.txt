@@ -15,15 +15,11 @@ usuario        100            LOGS
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS           
-<<<<<<< HEAD
-usuario        100            LOGS           
-=======
+usuario        100            LOGS          
 usuario1       Transacción    Registro de nueva transacción ID: 8701
+usuario        100            LOGS           
+usuario        100            LOGS           
 <<<<<<< HEAD
->>>>>>> 6ad56619e7b5284eab0880eb50fa314d941501a1
-=======
-usuario        100            LOGS           
-usuario        100            LOGS           
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -127,11 +123,34 @@ Juan           8040           INA
 Juan           100            LOGS           05-11-2025 10:19 AM
 =======
 >>>>>>> 7089f74027bc95a7f499a060c93850f247e5f731
+=======
+>>>>>>> 9e2dc4df2e4741ff1bec7737c74ace018bc7e39d
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS           
 Juan           8011           INS            
 Juan           8011           INS            
 >>>>>>> 5146112496d9c8d6b92a3fa298b46a4da780ddb1
+<<<<<<< HEAD
 Juan           100            LOGS           05-11-2025 01:38 PM
 Juan           100            LOGS           05-11-2025 01:38 PM
+=======
+Luisa          100            LOGS           05-11-2025 01:49 PM
+Luisa          100            LOGS           05-11-2025 01:54 PM
+Luisa          8035           RPR            05-11-2025 01:55 PM
+Luisa          100            LOGS           05-11-2025 01:55 PM
+               100            INSUS          05-11-2025 02:12 PM
+Marisa         100            LOGS           05-11-2025 02:13 PM
+Marisa         8040           INA            05-11-2025 02:14 PM
+Marisa         8041           MA             05-11-2025 02:15 PM
+Marisa         8035           RAR            05-11-2025 02:15 PM
+Marisa         8011           INS            05-11-2025 02:15 PM
+Marisa         8011           MC             05-11-2025 02:15 PM
+Marisa         8011           RPC            05-11-2025 02:16 PM
+Luisa          100            LOGS           05-11-2025 02:16 PM
+Luisa          100            INSUS          05-11-2025 02:17 PM
+Luisa          100            SRCH           05-11-2025 02:17 PM
+Luisa          100            DELUS          05-11-2025 02:17 PM
+Luisa          100            SRCH           05-11-2025 02:17 PM
+Luisa          100            BACK           05-11-2025 02:17 PM
+>>>>>>> e6993706f0502f46a3374cd9fd8aa862b1ede42a
