@@ -10,6 +10,10 @@
 #include <string>
 #include <limits> // Para numeric_limits
 
+// Implementación del constructor
+Almacen::Almacen() : id(""), direccion(""), capacidad(0),
+                    responsable(""), contacto(""), estado("operativo") {}
+
 // Constantes para el rango de IDs válidos (idéntico a Clientes)
 const int CODIGO_INICIAL = 3260;
 const int CODIGO_FINAL = 3310;

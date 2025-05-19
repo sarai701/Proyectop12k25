@@ -15,6 +15,8 @@ public:
     std::string vehiculo;
     std::string disponibilidad;
 
+    static std::vector<Transportistas> getTransportistasDisponibles();
+
     // M�todos est�ticos
     static std::string generarIdUnico(const std::vector<Transportistas>& lista);
     static bool idDisponible(const std::vector<Transportistas>& lista, const std::string& id);
