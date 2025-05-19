@@ -382,3 +382,84 @@
 1747016685 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\prestaciones.h
 	<string>
 
+1747631553 source:c:\users\angel r\desktop\nominas\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<iomanip>
+	<ctime>
+	<limits>
+
+1747631553 c:\users\angel r\desktop\nominas\include\bitacora.h
+	<string>
+
+1747654080 source:c:\users\angel r\desktop\nominas\src\sistema.cpp
+	"sistema.h"
+	"Opciones.h"
+	<conio.h>
+
+1747007819 c:\users\angel r\desktop\nominas\include\sistema.h
+	<fstream>
+	<vector>
+	"usuarios.h"
+
+1747007819 c:\users\angel r\desktop\nominas\include\usuarios.h
+	<iostream>
+
+1747522296 c:\users\angel r\desktop\nominas\include\opciones.h
+	<iostream>
+
+1747007819 source:c:\users\angel r\desktop\nominas\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<bitacora.h>
+	<iostream>
+
+1747657623 source:c:\users\angel r\desktop\nominas\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"bitacora.h"
+
+1747634995 c:\users\angel r\desktop\nominas\include\empleados.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	<limits>
+	"bitacora.h"
+
+1747655150 source:c:\users\angel r\desktop\nominas\src\opciones.cpp
+	"Opciones.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+	"Prestaciones.h"
+	"Empleados.h"
+
+1747522296 c:\users\angel r\desktop\nominas\include\prestaciones.h
+	<string>
+
+1747653753 source:c:\users\angel r\desktop\nominas\main.cpp
+	<iostream>
+	<fstream>
+	<limits>
+	"Opciones.h"
+	"usuarios.h"
+	"bitacora.h"
+	"sistema.h"
+

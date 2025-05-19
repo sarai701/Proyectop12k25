@@ -21,52 +21,45 @@ void Opciones::menu()//Metodo de despliegue del menu-ANGEL ROQUEL
     do
     {
         system("cls");
-        cout<<"\n\n\t\tMenu General"<<endl;
-        cout<<"\t --------------------"<<endl;
-        cout<<"\t 1. Archivo: "<<endl;
-        cout<<"\t 2. Catalogos: "<<endl;
-        cout<<"\t 3. Procesos: "<<endl;
-        cout<<"\t 4. Informes: "<<endl;
-        cout<<"\t 5. Bitacora: "<<endl;
-        cout<<"\t 6. Regresar: "<<endl;
-        cout<<"\t 7. Salir sistema: "<<endl;
+        cout<<"\n\n\t      Menu General"<<endl;
+        cout<<"\t ----------------------"<<endl;
+        cout<<"\t | 1. Catalogos:      |"<<endl;
+        cout<<"\t | 2. Procesos:       |"<<endl;
+        //cout<<"\t 3. Informes: "<<endl;
+        cout<<"\t | 3. Bitacora:       |"<<endl;
+        cout<<"\t | 4. Regresar:       |"<<endl;
+        cout<<"\t |                    |"<<endl;
+        cout<<"\t | 5. Salir sistema:  |"<<endl;
+        cout<<"\t ----------------------"<<endl<<endl;
+        cout<<"   Ingrese opcion: ";
         cin>>opciones;
         switch (opciones)
         {
         case 1:
             {
-
+            mantenimiento.menuEmpleados();
             }
             break;
         case 2:
             {
-             mantenimiento.menuEmpleados();
+             mantenimiento.mostrarMenuNomina();
             }
             break;
         case 3:
             {
-            mantenimiento.mostrarMenuNomina();
+            Bitacora.menu();
             }
             break;
         case 4:
             {
-
+            repetir=false;
             }
             break;
         case 5:
             {
-                Bitacora.menu();
-            }
-            break;
-        case 6:
-            repetir=false;
-            break;
-        case 7:
-            {
             repetir=false;
             exit(0);
             }
-            break;
 	default:
 		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez..";
 	}

@@ -19,16 +19,16 @@ void Empleados::mostrarMenuNomina()
     cout << "\n -----MENU DE PRESTACIONES LABORALES -----\n";
     cout << "\n -----------------------------------------\n";
     cout << "1. Mostrar nomina general"<<endl;
-    cout << "2. Mostrar nomina en especifico"<<endl;
-    cout << "3. Salir del sistema\n";
-    cout << "Seleccione una opcion: ";
+    cout << "2. Mostrar nomina en especifico"<<endl<<endl;
+    cout << "3. Regresar\n";
     cout << "\n -----------------------------------------\n";
     cout << "\n -----------------NOMIREG-----------------\n";
+    cout << "Seleccione una opcion: ";
     cin >> opcion;
     switch (opcion)
     {
     case 1:
-        cout<<"Proceso en desarollo...."<<endl;
+        cout<<"EN DESAROLLO...."<<endl;
         break;
     case 2:
         empleados.buscarEmpleado();
@@ -57,9 +57,9 @@ void Empleados::menuEmpleados()
         cout << "\t\t\t 2. Despliegue de Empleados" << endl;
         cout << "\t\t\t 3. Modificar Empleados" << endl;
         cout << "\t\t\t 4. Borrar Empleados" << endl;
-        cout << "\t\t\t 5. Salida" << endl;
+        cout << "\t\t\t 5. Regresar" << endl<<endl;
 
-        cout << "Presione el numero para el caso \n";
+        cout << "\t\t Ingrese numero de opcion: ";
         cin >> eleccion;
          //Switch de eleccion
         switch(eleccion)
@@ -94,7 +94,7 @@ void Empleados::menuEmpleados()
                 cout << "Opcion no valida" << endl;
                 break;
         }
-        system("pause");
+        //system("pause");
     } while(eleccion != 5);
 }
 
@@ -107,8 +107,6 @@ void Empleados::registroEmpleados()
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpiar buffer
     //Getlines para obtener palabras con espacios
-    cout << "Tipo de empleado (contrato/sueldo): ";
-    getline(cin, tipoEmpleado);
 
     cout << "Nombre completo: ";
     getline(cin, Nombre);
@@ -118,7 +116,7 @@ void Empleados::registroEmpleados()
     //Creacion de archivo
     file.open("Empleados.bin", ios::app | ios::out);
     //Limitador nuevo y eficiente, Revisa que el archivo exista o este abierto
-    if (tipoEmpleado.empty() || Nombre.empty() || sueldo <= 0)
+    if ( Nombre.empty() || sueldo < 4000)
         {
         cout << "Error: campos inválidos.\n";
         return;
@@ -141,6 +139,8 @@ void Empleados::registroEmpleados()
     string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
     bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Ing");
 }
+
+
 
 void Empleados::listaEmpleados()
 {
@@ -173,7 +173,7 @@ void Empleados::listaEmpleados()
             //convierte a string el float
             sueldo = stof(linea.substr(pos2 + 1));
             //Impresion y validacion
-            cout << "\nTipo: " << tipoEmpleado << endl;
+            cout << "-----------------------------"<<endl;
             cout << "Nombre: " << Nombre << endl;
             cout << "Sueldo: Q" << fixed << setprecision(2) << sueldo << endl;
             total++;
@@ -199,7 +199,7 @@ void Empleados::cambioEmpleados() {
     // Limpiar pantalla
     system("cls");
     fstream file;
-    string tipoEmpleadoCambio, NombreCambio;
+    string NombreCambio;
     float sueldoCambio;
     int found = 0;
 
@@ -237,10 +237,14 @@ void Empleados::cambioEmpleados() {
     }
 
     // Solicitar los nuevos datos
-    cout << "\n Ingrese el nuevo tipo de empleado (contrato/sueldo): ";
-    getline(cin, tipoEmpleadoCambio);
     cout << "\n Ingrese el nuevo sueldo: ";
     cin >> sueldoCambio;
+    if (sueldoCambio<4000)
+    {
+        cout<<"Ingrese un sueldo valido segun ley.."<<endl;
+        system("pause");
+    }else
+    {
 
     // Crear archivo temporal para escribir los datos actualizados
     fstream file1;
@@ -260,7 +264,7 @@ void Empleados::cambioEmpleados() {
             string nombreTemp = linea.substr(pos1 + 1, pos2 - pos1 - 1);
             float sueldoTemp = stof(linea.substr(pos2 + 1));
             if (nombreTemp == NombreCambio) {
-                file1 << tipoEmpleadoCambio << "|" << NombreCambio << "|" << sueldoCambio << "\n";
+                file1 << "|" << NombreCambio << "|" << sueldoCambio << "\n";
                 cout << "\n\t\t\tEmpleado actualizado con exito." << endl;
             } else {
                 file1 << tipoTemp << "|" << nombreTemp << "|" << sueldoTemp << "\n";
@@ -277,6 +281,8 @@ void Empleados::cambioEmpleados() {
     bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
     remove("Empleados.bin");
     rename("Record.txt", "Empleados.bin");
+    }
+
 }
 
 
@@ -337,7 +343,7 @@ void Empleados::borrarEmpleados()
             else
             {
                 found++; // Se encontró el empleado a borrar
-                cout << "\n\t\t\tBorrado de información exitoso" << endl;
+                cout << "\n\t\t\tBorrado exitoso" << endl;
             }
         }
     }
@@ -356,12 +362,22 @@ void Empleados::borrarEmpleados()
         remove("Empleados.bin");              // Borrar archivo original
         rename("Record.txt", "Empleados.bin"); // Renombrar archivo temporal como definitivo
     }
-     cout << "Ingresar nombre de persona que borro el empleado: ";
+     string nombre;
+cout << "Ingresar nombre de persona que borro el empleado: ";
+getline(cin, nombre);
+if (nombre.empty()) {
+    cout << "Por favor, ingrese un nombre válido." << endl;
+    cout << "Ingresar nombre de persona que borro el empleado: ";
+    getline(cin, nombre);
+}else
+{
     string NombreBitacoraEnEmpleados;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpiar buffer antes de getline
     getline(cin, NombreBitacoraEnEmpleados);  // Corregido: usar la variable correcta
     string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
     bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
+}
+
 }
 void Empleados::buscarEmpleado() {
     system("cls");

@@ -90,7 +90,8 @@ void sistema::mostrarUsuarios() {
             string contrasenia = linea.substr(coma + 1);
             string asteriscos(contrasenia.length(), '*');
             cout << "Nombre de usuario: " << usuario << endl;
-            cout << "Contraseña: " << asteriscos << endl;
+            cout << "Contrasenia: " << asteriscos << endl;
+            cout << "==============================="<<endl<<endl;
         }
         archivo.close();
     } else {
