@@ -244,7 +244,7 @@
 
 3 e7e19998b1cfe11f9c17f1baeeb14eb2f019514
 
-1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\main.cpp
+1747611549 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\main.cpp
 	<iostream>
 	"Usuario.h"
 	"Inventario.h"
@@ -252,10 +252,10 @@
 	"Bitacora.h"
 	"Menu.h"
 
-1747016071 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
+1747613882 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\usuario.h
 	<string>
 
-1747012532 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
+1747621103 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\inventario.h
 	<vector>
 	<string>
 	"Producto.h"
@@ -278,7 +278,7 @@
 	"Inventario.h"
 	"Facturacion.h"
 
-1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
+1747611549 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\bitacora.cpp
 	"Bitacora.h"
 	<iostream>
 	<fstream>
@@ -286,13 +286,13 @@
 	<cstdlib>
 	<conio.h>
 	<iomanip>
-	<cstring>
+	<algorithm>
 	<ctime>
 
 1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\facturacion.cpp
 	"Facturacion.h"
 
-1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
+1747621105 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\inventario.cpp
 	"Inventario.h"
 	<iostream>
 	<fstream>
@@ -300,7 +300,7 @@
 	<algorithm>
 	<cstdlib>
 
-1747012532 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
+1747611549 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\menu.cpp
 	"Menu.h"
 	"Bitacora.h"
 
@@ -380,4 +380,27 @@
 	<ctime>
 
 1747023056 c8c78a09cfede2ec27dc91d75b4c2
+
+1747620996 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\usuario.cpp
+	"Usuario.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	<sstream>
+	"Bitacora.h"
+	<vector>
+
+1747621238 source:c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\src\proveedor.cpp
+	"Proveedor.h"
+	<fstream>
+	<iostream>
+	<sstream>
+	<vector>
+	<cstdlib>
+	<conio.h>
+
+1747621170 c:\users\lava2\desktop\proyectop12k25\equipo4\sistemainventarios\include\proveedor.h
+	<string>
+	"Bitacora.h"
 
