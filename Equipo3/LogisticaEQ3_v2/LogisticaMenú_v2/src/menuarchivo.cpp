@@ -2,7 +2,9 @@
 #include "usuarios.h"
 #include <iostream>
 #include "globals.h"
-#include "../backup_manager.h"
+#include "backup_manager.h"
+
+//JENNIFER BARRIOS COORD: EQ3
 
 using namespace std;
 

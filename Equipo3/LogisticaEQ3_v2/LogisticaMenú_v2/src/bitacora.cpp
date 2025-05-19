@@ -1,6 +1,9 @@
 //LUIS ANGEL MENDEZ FUENTES
 //9959-24-6845
 #include "bitacora.h"
+//LUIS ANGEL MENDEZ FUENTES
+//9959-24-6845
+#include "bitacora.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>

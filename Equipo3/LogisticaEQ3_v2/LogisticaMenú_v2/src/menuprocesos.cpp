@@ -11,6 +11,8 @@
 #include "producto.h"
 #include "Almacen.h"
 
+///CREADO POR: JENNIFER BARRIOS EQ3
+
 using namespace std;
 
 // Declaración externa del usuario registrado actual

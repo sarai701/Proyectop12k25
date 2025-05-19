@@ -1,4 +1,4 @@
-//9959 24 11603 GE
+//9959 24 11603 GABRIELA ESCOBAR
 #include "Almacen.h"
 #include "bitacora.h"
 #include <iostream>

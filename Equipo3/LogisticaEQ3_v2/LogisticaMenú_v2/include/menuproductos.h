@@ -1,6 +1,7 @@
 #ifndef MENUPRODUCTOS_H
 #define MENUPRODUCTOS_H
-
+//JENNIFER BARRIOS COORD: EQ3
+//MAYO 2025
 // Inclusión de dependencias necesarias
 #include <vector>          // Para usar std::vector
 #include "Producto.h"      // Para la clase Producto

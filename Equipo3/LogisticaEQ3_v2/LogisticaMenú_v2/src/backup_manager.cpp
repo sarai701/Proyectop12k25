@@ -3,6 +3,8 @@
 #include <string>
 #include "globals.h"
 #include "bitacora.h"
+//JENNIFER BARRIOS COORD: EQ3
+//MAYO 2025
 
 using namespace std;
 
