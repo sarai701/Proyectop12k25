@@ -42,19 +42,15 @@ public:
     // Setters
     void setId(const std::string& id) { this->id = id; }
     void setNombre(const std::string& nombre) { this->nombre = nombre; }
-<<<<<<< HEAD
     void setContacto(const std::string& contacto) { this->contacto = contacto; }
-=======
->>>>>>> 6073975641cd1ff94558f987538d9f11131fbf3b
+
     void setTelefono(const std::string& telefono) { this->telefono = telefono; }
 
     // Getters
     std::string getId() const { return id; }
     std::string getNombre() const { return nombre; }
-<<<<<<< HEAD
     std::string getContacto() const { return contacto; }
-=======
->>>>>>> 6073975641cd1ff94558f987538d9f11131fbf3b
+
     std::string getTelefono() const { return telefono; }
 
 private:
@@ -72,16 +68,11 @@ private:
     static ProveedorRegistro toRegistro(const Proveedor& p);
     static Proveedor fromRegistro(const ProveedorRegistro& reg);
 
-<<<<<<< HEAD
-=======
     static void guardarEnBitacora(const std::string& usuario, const std::string& accion, const Proveedor& proveedor);
 
 
-    // Codificación y decodificación de campos
-    static void codificar(char* data, size_t len);
-    static void decodificar(char* data, size_t len);
 
->>>>>>> 6073975641cd1ff94558f987538d9f11131fbf3b
+
     static constexpr char XOR_KEY = 0xAA;
 };
 

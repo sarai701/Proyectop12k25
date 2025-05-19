@@ -1,29 +1,35 @@
-// Angoly Araujo Mayo 2025 9959-24-17623
-#include "proveedor.h"
-#include "bitacora.h"
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <algorithm>
-#include <limits>
-#include <cstring>
-#include <ctime>
+// Angoly Araujo Mayo 2025
+// 9959-24-17623
+
+#include "proveedor.h"     // Cabecera que define la clase Proveedor
+#include "bitacora.h"      // Cabecera para registrar operaciones en bitácora
+#include <iostream>        // Entrada/salida estándar
+#include <fstream>         // Manejo de archivos
+#include <vector>          // Uso de vectores (listas dinámicas)
+#include <algorithm>       // Funciones como find_if, none_of, etc.
+#include <limits>          // Para numeric_limits
+#include <cstring>         // Funciones para manejar cadenas de caracteres tipo C
+#include <ctime>           // Manejo de tiempo (aunque no se usa aquí explícitamente)
 
 using namespace std;
 
+// Rango de códigos válidos para proveedores
 const int CODIGO_INICIAL_PROV = 3158;
 const int CODIGO_FINAL_PROV = 3208;
 
+// Codifica una cadena con XOR para ocultar información
 void Proveedor::codificar(char* data, size_t len) {
     for (size_t i = 0; i < len; ++i) {
         data[i] ^= XOR_KEY;
     }
 }
 
+// Decodifica una cadena usando el mismo método XOR (es reversible)
 void Proveedor::decodificar(char* data, size_t len) {
     codificar(data, len);
 }
 
+// Convierte un objeto Proveedor a su forma binaria codificada para almacenamiento
 ProveedorRegistro Proveedor::toRegistro(const Proveedor& p) {
     ProveedorRegistro reg = {};
     strncpy(reg.id, p.id.c_str(), sizeof(reg.id) - 1);
@@ -35,6 +41,7 @@ ProveedorRegistro Proveedor::toRegistro(const Proveedor& p) {
     return reg;
 }
 
+// Reconstruye un objeto Proveedor desde un registro codificado
 Proveedor Proveedor::fromRegistro(const ProveedorRegistro& regCodificado) {
     ProveedorRegistro reg = regCodificado;
     decodificar(reg.id, sizeof(reg.id));
@@ -47,6 +54,7 @@ Proveedor Proveedor::fromRegistro(const ProveedorRegistro& regCodificado) {
     return p;
 }
 
+// Genera un ID único disponible dentro del rango permitido
 string Proveedor::generarIdUnico(const vector<Proveedor>& lista) {
     for (int i = CODIGO_INICIAL_PROV; i <= CODIGO_FINAL_PROV; ++i) {
         string id = to_string(i);
@@ -55,10 +63,12 @@ string Proveedor::generarIdUnico(const vector<Proveedor>& lista) {
     return "";
 }
 
+// Verifica si un ID ya está siendo usado en la lista de proveedores
 bool Proveedor::idDisponible(const vector<Proveedor>& lista, const string& id) {
     return none_of(lista.begin(), lista.end(), [&id](const Proveedor& p) { return p.id == id; });
 }
 
+// Verifica si un ID está dentro del rango permitido
 bool Proveedor::esIdValido(const string& id) {
     try {
         int valor = stoi(id);
@@ -68,10 +78,12 @@ bool Proveedor::esIdValido(const string& id) {
     }
 }
 
+// Guarda en bitácora una acción realizada sobre un proveedor
 void Proveedor::guardarEnBitacora(const string& usuario, const string& operacion, const Proveedor& proveedor) {
     bitacora::registrar(usuario, "PROVEEDORES", operacion + " - ID: " + proveedor.getId());
 }
 
+// Agrega un nuevo proveedor a la lista
 void Proveedor::agregar(vector<Proveedor>& lista, const string& usuarioActual) {
     int opcion;
     cout << "\n\t\tDesea volver al menu principal? (1: Si / 0: No): ";
@@ -90,11 +102,13 @@ void Proveedor::agregar(vector<Proveedor>& lista, const string& usuarioActual) {
     cout << "\n\t\t=== AGREGAR PROVEEDOR (ID Auto-Asignado: " << nuevo.id << ") ===\n";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
+    // Solicita nombre hasta que no esté vacío
     do {
         cout << "\t\tNombre completo: ";
         getline(cin, nuevo.nombre);
     } while (nuevo.nombre.empty());
 
+    // Solicita teléfono hasta que no esté vacío
     do {
         cout << "\t\tTelefono: ";
         getline(cin, nuevo.telefono);
@@ -107,6 +121,7 @@ void Proveedor::agregar(vector<Proveedor>& lista, const string& usuarioActual) {
     system("pause");
 }
 
+// Muestra todos los proveedores en pantalla
 void Proveedor::mostrar(const vector<Proveedor>& lista) {
     cout << "\n\t\t--- LISTA DE PROVEEDORES ---\n";
     for (const auto& p : lista) {
@@ -117,6 +132,7 @@ void Proveedor::mostrar(const vector<Proveedor>& lista) {
     system("pause");
 }
 
+// Permite modificar nombre y teléfono de un proveedor existente
 void Proveedor::modificar(vector<Proveedor>& lista, const string& usuarioActual, const string& /*idDummy*/) {
     int opcion;
     cout << "\n\t\tDesea volver al menu principal? (1: Si / 0: No): ";
@@ -136,10 +152,12 @@ void Proveedor::modificar(vector<Proveedor>& lista, const string& usuarioActual,
 
         string nuevoNombre, nuevoTelefono;
 
+        // Pide nuevo nombre (opcional)
         cout << "\t\tNuevo nombre (" << it->getNombre() << "): ";
         getline(cin, nuevoNombre);
         if (!nuevoNombre.empty()) it->setNombre(nuevoNombre);
 
+        // Pide nuevo teléfono (opcional)
         cout << "\t\tNuevo telefono (" << it->getTelefono() << "): ";
         getline(cin, nuevoTelefono);
         if (!nuevoTelefono.empty()) it->setTelefono(nuevoTelefono);
@@ -153,6 +171,7 @@ void Proveedor::modificar(vector<Proveedor>& lista, const string& usuarioActual,
     system("pause");
 }
 
+// Elimina un proveedor de la lista si existe
 void Proveedor::eliminar(vector<Proveedor>& lista, const string& usuarioActual, const string& /*idDummy*/) {
     int opcion;
     cout << "\n\t\tDesea volver al menu principal? (1: Si / 0: No): ";
@@ -177,6 +196,7 @@ void Proveedor::eliminar(vector<Proveedor>& lista, const string& usuarioActual, 
     system("pause");
 }
 
+// Guarda la lista de proveedores en un archivo binario, codificados
 void Proveedor::guardarEnArchivoBinario(const vector<Proveedor>& lista) {
     ofstream archivo("Proveedores.bin", ios::binary | ios::trunc);
     if (!archivo) {
@@ -192,6 +212,7 @@ void Proveedor::guardarEnArchivoBinario(const vector<Proveedor>& lista) {
     archivo.close();
 }
 
+// Carga los proveedores desde el archivo binario y los decodifica
 void Proveedor::cargarDesdeArchivoBinario(vector<Proveedor>& lista) {
     lista.clear();
     ifstream archivo("Proveedores.bin", ios::binary);
@@ -205,10 +226,11 @@ void Proveedor::cargarDesdeArchivoBinario(vector<Proveedor>& lista) {
     archivo.close();
 }
 
-// Wrappers para main.cpp
+// Funciones auxiliares que permiten usar la clase desde main.cpp
 void Proveedor::guardarEnArchivo(vector<Proveedor>& lista) {
     guardarEnArchivoBinario(lista);
 }
 void Proveedor::cargarDesdeArchivo(vector<Proveedor>& lista) {
     cargarDesdeArchivoBinario(lista);
 }
+
