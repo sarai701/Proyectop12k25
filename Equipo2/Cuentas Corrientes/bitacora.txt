@@ -16,13 +16,21 @@ usuario        100            LOGS
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS          
-usuario1       Transacción    Registro de nueva transacción ID: 8701
+
+usuario1       Transacciï¿½n    Registro de nueva transacciï¿½n ID: 8701
 usuario        100            LOGS           
 usuario        100            LOGS           
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+usuario1       TransacciÃ³n    Registro de nueva transacciÃ³n ID: 8701
+usuario        100            LOGS           
+usuario        100            LOGS           
+
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+Juan           8011           INS            
+Juan           8011           INS            
+
 usuario        100            LOGS           
 usuario registrado8011           INC            
 usuario registrado8011           MC             
@@ -41,10 +49,10 @@ Fernanda       100            LOGS
 Luisa          100            LOGS           
 Luisa          100            LOGS           
 Luisa          100            LOGS           
-=======
+
 usuario        100            LOGS           05-10-2025 10:11 PM
 
->>>>>>> 8b07566a77f57c3bf4460f4fe62b5eded80e6ab0
+
 Luisa          100            LOGS           05-11-2025 03:01 AM
 Luisa          100            SRCH           05-11-2025 03:01 AM
 Luisa          100            INSUS          05-11-2025 03:01 AM
@@ -114,27 +122,25 @@ Emily          100            SRCH           05-11-2025 04:07 AM
 Emily          100            LOGS           05-11-2025 04:08 AM
 Emily          100            LOGS           05-11-2025 04:12 AM
 Emily          100            BACK           05-11-2025 04:12 AM
-=======
+
 usuario        100            LOGS           
 usuario        100            LOGS           
 Juan           8035           RAR            
 Juan           8040           INA            
->>>>>>> facturas
+
 Juan           100            LOGS           05-11-2025 10:19 AM
-=======
->>>>>>> 7089f74027bc95a7f499a060c93850f247e5f731
-=======
->>>>>>> 9e2dc4df2e4741ff1bec7737c74ace018bc7e39d
+
+
+
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS           
 Juan           8011           INS            
 Juan           8011           INS            
->>>>>>> 5146112496d9c8d6b92a3fa298b46a4da780ddb1
-<<<<<<< HEAD
+
 Juan           100            LOGS           05-11-2025 01:38 PM
 Juan           100            LOGS           05-11-2025 01:38 PM
-=======
+
 Luisa          100            LOGS           05-11-2025 01:49 PM
 Luisa          100            LOGS           05-11-2025 01:54 PM
 Luisa          8035           RPR            05-11-2025 01:55 PM
@@ -153,4 +159,3 @@ Luisa          100            SRCH           05-11-2025 02:17 PM
 Luisa          100            DELUS          05-11-2025 02:17 PM
 Luisa          100            SRCH           05-11-2025 02:17 PM
 Luisa          100            BACK           05-11-2025 02:17 PM
->>>>>>> e6993706f0502f46a3374cd9fd8aa862b1ede42a

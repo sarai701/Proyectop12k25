@@ -1,0 +1,217 @@
+# depslib dependency file v1.0
+1746502200 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\src\bitacora.cpp
+	"Bitacora.h"
+	<iostream>
+	<iomanip>
+
+1746502200 c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\include\bitacora.h
+	<string>
+	<fstream>
+
+1746502597 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\src\envios.cpp
+	"envios.h"
+	<iostream>
+
+1746502294 c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\include\envios.h
+	"bitacora.h"
+	"usuario.h"
+
+1746502838 c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\include\usuario.h
+	<string>
+	"bitacora.h"
+
+1746502892 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\src\facturacion.cpp
+	"facturacion.h"
+	<iostream>
+
+1746502025 c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\include\facturacion.h
+	"bitacora.h"
+	"usuario.h"
+
+1746502621 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\src\pedidos.cpp
+	"pedidos.h"
+	<iostream>
+
+1746502333 c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\include\pedidos.h
+	"bitacora.h"
+	"usuario.h"
+
+1746500235 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\src\reportes.cpp
+	"Reportes.h"
+	<iostream>
+	<fstream>
+	<vector>
+
+1746500235 c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\include\reportes.h
+
+1746500235 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\main.cpp
+	<iostream>
+	"include/Reportes.h"
+	"include/Usuario.h"
+	"include/Inventario.h"
+	"include/Facturacion.h"
+	"include/Bitacora.h"
+	"include/Envios.h"
+	"include/Pedidos.h"
+
+1746501453 c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\include\inventario.h
+	"bitacora.h"
+	"usuario.h"
+
+1746502865 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\src\inventario.cpp
+	"Inventario.h"
+	<iostream>
+	<fstream>
+	<iomanip>
+
+1746502676 source:c:\users\mende\onedrive\documents\laboratorio\progra1\proyectop12k25\equipo3\logisticaeq3\src\usuario.cpp
+	"Usuario.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<iomanip>
+
+1746504602 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\reportes.cpp
+	"reportes.h"
+	<iostream>
+	<thread>
+	<chrono>
+
+1746504602 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\reportes.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746505379 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\bitacora.h
+	<string>
+	<fstream>
+
+1746505955 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\usuarios.h
+	<string>
+	"bitacora.h"
+
+1746505575 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<iomanip>
+
+1746503214 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\pedidos.cpp
+	"pedidos.h"
+	<iostream>
+
+1746505586 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\pedidos.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746503214 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\envios.cpp
+	"envios.h"
+	<iostream>
+
+1746505601 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\envios.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746507165 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\inventario.cpp
+	"inventario.h"
+	<iostream>
+
+1746507212 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\inventario.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746507526 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\usuarios.cpp
+	"usuarios.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<iomanip>
+
+1746504602 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\main.cpp
+	<iostream>
+	"usuarios.h"
+	"pedidos.h"
+	"inventario.h"
+	"envios.h"
+	"facturacion.h"
+	"reportes.h"
+	"bitacora.h"
+
+1746506497 c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\include\facturacion.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746503343 source:c:\users\50240\documents\programacion1\proyectop12k25\equipo3\logisticaeq3\src\facturacion.cpp
+	"facturacion.h"
+	<iostream>
+
+1747407144 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\main.cpp
+	<iostream>
+	"usuarios.h"
+	"pedidos.h"
+	"inventario.h"
+	"envios.h"
+	"facturacion.h"
+	"reportes.h"
+	"bitacora.h"
+
+1747406271 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\usuarios.h
+	<string>
+	"bitacora.h"
+
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\bitacora.h
+	<string>
+	<fstream>
+
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\pedidos.h
+	"bitacora.h"
+	"usuarios.h"
+
+1746660424 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\inventario.h
+	"bitacora.h"
+	"usuarios.h"
+
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\envios.h
+	"bitacora.h"
+	"usuarios.h"
+
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\facturacion.h
+	"bitacora.h"
+	"usuarios.h"
+
+1747033289 c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\include\reportes.h
+	"bitacora.h"
+	"usuarios.h"
+
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<iomanip>
+
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\envios.cpp
+	"envios.h"
+	<iostream>
+
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\facturacion.cpp
+	"facturacion.h"
+	<iostream>
+
+1746660424 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\inventario.cpp
+	"inventario.h"
+	<iostream>
+
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\pedidos.cpp
+	"pedidos.h"
+	<iostream>
+
+1747033289 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\reportes.cpp
+	"reportes.h"
+	<iostream>
+	<thread>
+	<chrono>
+
+1747181371 source:c:\users\va\desktop\progra1\proyectop12k25\equipo3\logisticaeq3\src\usuarios.cpp
+	"usuarios.h"
+	<iostream>
+	<fstream>
+	<conio.h>
+	<iomanip>
+

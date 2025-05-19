@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1746416864 source:c:\users\isaia\onedrive\escritorio\repositorios github\progra_1_umg\proyectos\empleados\main.cpp
+	<iostream>
+	"Empleados.h"
+
+1746416769 source:c:\users\isaia\onedrive\escritorio\repositorios github\progra_1_umg\proyectos\empleados\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+
+1746416287 c:\users\isaia\onedrive\escritorio\repositorios github\progra_1_umg\proyectos\empleados\include\empleados.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+

@@ -1,0 +1,10 @@
+---------------------------------- Lista de Clientes ----------------------------------
+ID        Nombre                   Dirección                Teléfono       NIT            
+------------------------------------------------------------------------------------------
+3107      LUIS ANGEL M NDEZ FUENTESZONA 18                  33054264       1806810-3      
+3108      ANGOLY CAMILA ARAUJO MAYENZONA 18                  58954125       1254789-8     
+3109      JENNIFER ALBA DAYAMI BARRIOS FLORESZONA 17                  54525908       14589
+3110      KARINA ALEJANDRA ARRIAZA ORTIZZONA 17                  85964125       7845129-3 
+3111      JULISSA GABRIELA ESCOBAR CHINCHILLAZONA 6                   58458961       15236
+3112      DULCE MARIA MARTINEZ AREVALOZONA 21                  52148969       1458967-2   
+------------------------------------------------------------------------------------------
