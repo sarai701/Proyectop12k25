@@ -9,6 +9,7 @@
 struct ProveedorRegistro {
     char id[10];
     char nombre[50];
+    char contacto[50];  // Añadir este campo
     char telefono[20];
 };
 
@@ -33,7 +34,22 @@ public:
     static bool idDisponible(const std::vector<Proveedor>& lista, const std::string& id);
     static bool esIdValido(const std::string& id);
 
+    // Setters
+    void setId(const std::string& id) { this->id = id; }
+    void setNombre(const std::string& nombre) { this->nombre = nombre; }
+    void setTelefono(const std::string& telefono) { this->telefono = telefono; }
+
+    // Getters
+    std::string getId() const { return id; }
+    std::string getNombre() const { return nombre; }
+    std::string getTelefono() const { return telefono; }
+
 private:
+
+    const char* archivoProveedores = "Proveedores.bin";
+    const char* archivoBitacora = "bitacora.bin";
+
+
     std::string id;
     std::string nombre;
     std::string telefono;
@@ -41,6 +57,9 @@ private:
     // Conversión registro <-> objeto
     static ProveedorRegistro toRegistro(const Proveedor& p);
     static Proveedor fromRegistro(const ProveedorRegistro& reg);
+
+    static void guardarEnBitacora(const std::string& usuario, const std::string& accion, const Proveedor& proveedor);
+
 
     // Codificación y decodificación de campos
     static void codificar(char* data, size_t len);
