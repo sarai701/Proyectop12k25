@@ -13,20 +13,9 @@
 #include <chrono>
 #include <cstring>
 #include <set>
+#include <cstring>
 
 using namespace std;
-
-/**
- * Estructura que representa un registro de la bitácora.
- * Se utiliza para guardar los datos de cada evento en el archivo binario.
- */
-struct Registro {
-    int codigo;
-    char usuario[30];
-    char modulo[30];
-    char descripcion[100];
-    char fecha[20];
-};
 
 /**
  * Mapa estático que almacena los rangos de códigos por módulo.
@@ -48,14 +37,14 @@ std::unordered_map<std::string, int> CodigosBitacora::rangos = {
  */
 int CodigosBitacora::getCodigo(const std::string& modulo) {
     if (rangos.find(modulo) == rangos.end()) {
-        rangos[modulo] = 3000;
+        rangos[modulo] = 3000;  // O puedes asignar otro rango por defecto
     }
     return rangos[modulo]++;
 }
 
 /**
  * Registra un nuevo evento en la bitácora.
- * Escribe la información en el archivo binario `bitacora.bin`.
+ * Escribe la información en el archivo binario bitacora.bin.
  * @param usuario Nombre del usuario que realizó la acción.
  * @param modulo Módulo del sistema donde ocurrió el evento.
  * @param descripcion Breve explicación de lo que ocurrió.
@@ -67,7 +56,7 @@ void bitacora::registrar(const std::string& usuario, const std::string& modulo, 
         return;
     }
 
-    Registro r;
+    RegistroBitacora r;
     r.codigo = CodigosBitacora::getCodigo(modulo);
     strncpy(r.usuario, usuario.c_str(), sizeof(r.usuario));
     r.usuario[sizeof(r.usuario) - 1] = '\0';
@@ -79,9 +68,9 @@ void bitacora::registrar(const std::string& usuario, const std::string& modulo, 
     r.descripcion[sizeof(r.descripcion) - 1] = '\0';
 
     std::time_t now = std::time(nullptr);
-    std::strftime(r.fecha, sizeof(r.fecha), "%d/%m/%Y %H:%M:%S", std::localtime(&now));
+    std::strftime(r.fecha_hora, sizeof(r.fecha_hora), "%d/%m/%Y %H:%M:%S", std::localtime(&now));
 
-    file.write(reinterpret_cast<char*>(&r), sizeof(Registro));
+    file.write(reinterpret_cast<char*>(&r), sizeof(RegistroBitacora));
     file.close();
 }
 
@@ -102,6 +91,11 @@ std::string bitacora::obtenerFechaActual() {
  * Muestra todos los registros de la bitácora almacenados en el archivo binario.
  * Presenta los datos en formato tabular por consola.
  */
+
+ void bitacora::insertar(const std::string& usuario, const std::string& modulo, const std::string& descripcion) {
+    registrar(usuario, modulo, descripcion);
+}
+
 void bitacora::mostrarBitacora() {
 #ifdef _WIN32
     system("cls");
@@ -116,7 +110,7 @@ void bitacora::mostrarBitacora() {
         return;
     }
 
-    Registro r;
+    RegistroBitacora r;
 
     std::cout << "\n----------------------------- REPORTE DE BITACORA -----------------------------\n";
     std::cout << std::left << std::setw(10) << "ID"
@@ -126,12 +120,12 @@ void bitacora::mostrarBitacora() {
               << std::setw(20) << "FECHA" << "\n";
     std::cout << "-------------------------------------------------------------------------------\n";
 
-    while (file.read(reinterpret_cast<char*>(&r), sizeof(Registro))) {
+    while (file.read(reinterpret_cast<char*>(&r), sizeof(RegistroBitacora))) {
         std::cout << std::left << std::setw(10) << r.codigo
                   << std::setw(15) << r.usuario
                   << std::setw(15) << r.modulo
                   << std::setw(35) << r.descripcion
-                  << std::setw(20) << r.fecha << "\n";
+                  << std::setw(20) << r.fecha_hora << "\n";
     }
 
     std::cout << "-------------------------------------------------------------------------------\n";
@@ -200,14 +194,14 @@ void bitacora::buscarPorNombreUsuario() {
 
     // Paso 1: Mostrar todos los nombres de usuario únicos
     std::set<std::string> usuariosUnicos;
-    Registro temp;
+    RegistroBitacora temp;
 
-    while (file.read(reinterpret_cast<char*>(&temp), sizeof(Registro))) {
+    while (file.read(reinterpret_cast<char*>(&temp), sizeof(RegistroBitacora))) {
         usuariosUnicos.insert(temp.usuario);
     }
 
-    file.clear();                // Limpia banderas de EOF
-    file.seekg(0);               // Regresa al inicio para nueva lectura
+    file.clear();  // Limpia banderas de EOF
+    file.seekg(0); // Regresa al inicio para nueva lectura
 
     std::cout << "\n\t\tUSUARIOS DISPONIBLES EN LA BITACORA:\n";
     std::cout << "\t\t-------------------------------------\n";
@@ -216,11 +210,17 @@ void bitacora::buscarPorNombreUsuario() {
     }
 
     std::string usuarioBuscar;
-    std::cout << "\n\t\tIngrese el nombre del usuario a buscar exactamente como aparece: ";
+    std::cout << "\n\t\tIngrese el nombre del usuario a buscar exactamente como aparece (0 para salir): ";
     std::cin >> usuarioBuscar;
 
+    if (usuarioBuscar == "0") {
+        // Salir si el usuario ingresa 0
+        file.close();
+        return;
+    }
+
     // Paso 2: Buscar registros por usuario
-    Registro r;
+    RegistroBitacora r;
     bool encontrado = false;
     std::cout << "\n\t\tRegistros encontrados:\n";
     std::cout << "\t\t-------------------------------------------------------------\n";
@@ -230,12 +230,12 @@ void bitacora::buscarPorNombreUsuario() {
               << std::setw(20) << "FECHA" << "\n";
     std::cout << "\t\t-------------------------------------------------------------\n";
 
-    while (file.read(reinterpret_cast<char*>(&r), sizeof(Registro))) {
+    while (file.read(reinterpret_cast<char*>(&r), sizeof(RegistroBitacora))) {
         if (usuarioBuscar == r.usuario) {
             std::cout << std::left << std::setw(10) << r.codigo
                       << std::setw(15) << r.modulo
                       << std::setw(35) << r.descripcion
-                      << std::setw(20) << r.fecha << "\n";
+                      << std::setw(20) << r.fecha_hora << "\n";
             encontrado = true;
         }
     }
@@ -260,8 +260,13 @@ void bitacora::buscarPorFecha() {
 #endif
 
     std::string fechaBuscar;
-    std::cout << "\n\t\tIngrese la fecha a buscar (formato DD/MM/AAAA): ";
+    std::cout << "\n\t\tIngrese la fecha a buscar (formato DD/MM/AAAA) (0 para salir): ";
     std::cin >> fechaBuscar;
+
+    if (fechaBuscar == "0") {
+        // Salir si el usuario ingresa 0
+        return;
+    }
 
     std::ifstream file("bitacora.bin", std::ios::binary);
     if (!file) {
@@ -269,12 +274,12 @@ void bitacora::buscarPorFecha() {
         return;
     }
 
-    Registro r;
+    RegistroBitacora r;
     bool encontrado = false;
     std::cout << "\n\t\tRegistros encontrados:\n";
-    while (file.read(reinterpret_cast<char*>(&r), sizeof(Registro))) {
-        if (std::string(r.fecha).substr(0, 10) == fechaBuscar) {
-            std::cout << "\t\t" << r.codigo << " | " << r.usuario << " | " << r.modulo << " | " << r.descripcion << " | " << r.fecha << "\n";
+    while (file.read(reinterpret_cast<char*>(&r), sizeof(RegistroBitacora))) {
+        if (std::string(r.fecha_hora).substr(0, 10) == fechaBuscar) {
+            std::cout << "\t\t" << r.codigo << " | " << r.usuario << " | " << r.modulo << " | " << r.descripcion << " | " << r.fecha_hora << "\n";
             encontrado = true;
         }
     }

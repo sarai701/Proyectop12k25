@@ -1,24 +1,16 @@
-//LUIS ANGEL MENDEZ FUENTES
-//9959-24-6845
 #ifndef BITACORA_H
 #define BITACORA_H
 //CREADO POR: JENNIFER BARRIOS MAYO 2025
 #include <string>
 #include <unordered_map>
 
-/**
- * @struct RegistroBitacora
- * @brief Representa un registro individual dentro de la bitácora del sistema.
- *
- * Contiene información sobre una acción realizada, incluyendo el usuario,
- * el módulo afectado, una descripción de la acción, y la fecha/hora del evento.
- */
 struct RegistroBitacora {
-    int id_accion;              /**< ID único de la acción basada en el módulo */
-    char usuario[30];           /**< Nombre del usuario que ejecutó la acción */
-    char modulo[30];            /**< Nombre del módulo donde se ejecutó la acción */
-    char descripcion[100];      /**< Descripción de la acción realizada */
-    char fecha_hora[20];        /**< Fecha y hora en que ocurrió la acción */
+    int id_accion;              ///< ID único de la acción basada en el módulo
+    int codigo;                 ///< Código del módulo al que pertenece la acción
+    char usuario[30];           ///< Nombre del usuario que ejecutó la acción
+    char modulo[30];            ///< Nombre del módulo donde se ejecutó la acción
+    char descripcion[100];      ///< Descripción de la acción realizada
+    char fecha_hora[20];        ///< Fecha y hora en que ocurrió la acción
 };
 
 /**
@@ -30,7 +22,7 @@ struct RegistroBitacora {
  */
 class CodigosBitacora {
 private:
-    static std::unordered_map<std::string, int> rangos; /**< Mapa de módulos y sus códigos únicos */
+    static std::unordered_map<std::string, int> rangos;///< Mapa de modulos
 
 public:
     /**
@@ -104,6 +96,7 @@ private:
      * @return Fecha y hora actual como string.
      */
     static std::string obtenerFechaActual();
+
 };
 
 #endif // BITACORA_H

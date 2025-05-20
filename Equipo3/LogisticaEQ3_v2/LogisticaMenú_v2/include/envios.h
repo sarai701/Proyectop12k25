@@ -15,11 +15,11 @@
  * como el ID del envío, pedido, transportista y cliente, además del estado del envío.
  */
 struct Envio {
-    std::string idEnvio;         /**< ID único del envío (formato numérico entre 3500 y 3599) */
-    std::string idPedido;        /**< ID del pedido asociado al envío */
-    std::string idTransportista; /**< ID del transportista asignado al envío */
-    std::string idCliente;       /**< ID del cliente receptor del envío */
-    std::string estado;          /**< Estado actual del envío (ej. "En camino", "Entregado") */
+    std::string idEnvio;         ///< ID único del envío (formato numérico entre 3500 y 3599) */
+    std::string idPedido;        ///< ID del pedido asociado al envío */
+    std::string idTransportista; ///< ID del transportista asignado al envío */
+    std::string idCliente;       ///< ID del cliente receptor del envío */
+    std::string estado;          ///< Estado actual del envío (ej. "En camino", "Entregado") */
 };
 
 /**
