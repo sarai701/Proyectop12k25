@@ -2,7 +2,7 @@
 #include "usuarios.h"
 #include <iostream>
 #include "globals.h"
-#include "backup_manager.h"
+//#include "backup_manager.h"
 
 //JENNIFER BARRIOS COORD: EQ3
 
@@ -37,7 +37,7 @@ void MenuArchivo::mostrar() {
                 break;
             }
             case 2:
-                BackupManager::mostrarMenuBackup();  // Llamar al menú de backup
+               // BackupManager::mostrarMenuBackup();  // Llamar al menú de backup
                 break;
             case 3:
                 return;
