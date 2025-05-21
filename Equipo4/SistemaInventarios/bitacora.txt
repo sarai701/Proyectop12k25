@@ -16,90 +16,56 @@ kevin          100            LOGS
 kevin          100            LOGS           
 kevin          100            LOGS           
 kevin          LOGS           Inicio exitoso Fri May 02 22:19:16 2025 22:19:16  
-kevin          Ver Inventario GeneralVisualización del inventarioFri May 02 22:19:23 2025 22:19:23  
-kevin          Ver Inventario VentasVisualización de inventario de ventasFri May 02 22:19:26 2025 22:19:26  
+kevin          Ver Inventario GeneralVisualizaciÃ³n del inventarioFri May 02 22:19:23 2025 22:19:23  
+kevin          Ver Inventario VentasVisualizaciÃ³n de inventario de ventasFri May 02 22:19:26 2025 22:19:26  
 kevin          LOGS           Inicio exitoso Sun May 04 21:54:50 2025 21:54:50  
-kevin          Ver Inventario GeneralVisualización del inventarioSun May 04 21:55:13 2025 21:55:13  
-kevin          Ver Inventario VentasVisualización de inventario de ventasSun May 04 21:55:27 2025 21:55:27  
-kevin          Ver Inventario StockVisualización de inventario de stockSun May 04 21:55:39 2025 21:55:39  
-kevin          Ver Inventario ComprasVisualización de inventario de comprasSun May 04 21:55:42 2025 21:55:42  
-kevin          Ver Inventario GeneralVisualización del inventarioSun May 04 21:56:20 2025 21:56:20  
-kevin          Ver Inventario VentasVisualización de inventario de ventasSun May 04 21:56:28 2025 21:56:28  
-kevin          Ver Inventario StockVisualización de inventario de stockSun May 04 21:56:32 2025 21:56:32  
-kevin          Ver Inventario ComprasVisualización de inventario de comprasSun May 04 21:56:34 2025 21:56:34  
-kevin          Ver Inventario VentasVisualización de inventario de ventasSun May 04 22:01:31 2025 22:01:31  
+kevin          Ver Inventario GeneralVisualizaciÃ³n del inventarioSun May 04 21:55:13 2025 21:55:13  
+kevin          Ver Inventario VentasVisualizaciÃ³n de inventario de ventasSun May 04 21:55:27 2025 21:55:27  
+kevin          Ver Inventario StockVisualizaciÃ³n de inventario de stockSun May 04 21:55:39 2025 21:55:39  
+kevin          Ver Inventario ComprasVisualizaciÃ³n de inventario de comprasSun May 04 21:55:42 2025 21:55:42  
+kevin          Ver Inventario GeneralVisualizaciÃ³n del inventarioSun May 04 21:56:20 2025 21:56:20  
+kevin          Ver Inventario VentasVisualizaciÃ³n de inventario de ventasSun May 04 21:56:28 2025 21:56:28  
+kevin          Ver Inventario StockVisualizaciÃ³n de inventario de stockSun May 04 21:56:32 2025 21:56:32  
+kevin          Ver Inventario ComprasVisualizaciÃ³n de inventario de comprasSun May 04 21:56:34 2025 21:56:34  
+kevin          Ver Inventario VentasVisualizaciÃ³n de inventario de ventasSun May 04 22:01:31 2025 22:01:31  
 kevin          LOGS           Inicio exitoso Sun May 04 22:23:25 2025 22:23:25  
-kevin          Ver Inventario GeneralVisualizaci�n del inventarioSun May 04 22:24:16 2025 22:24:16  
-kevin          Ver Inventario VentasVisualizaci�n de inventario de ventasSun May 04 22:24:29 2025 22:24:29  
-kevin          Ver Inventario StockVisualizaci�n de inventario de stockSun May 04 22:25:14 2025 22:25:14  
-kevin          Ver Inventario GeneralVisualización del inventarioSun May 04 22:24:16 2025 22:24:16  
-kevin          Ver Inventario VentasVisualización de inventario de ventasSun May 04 22:24:29 2025 22:24:29  
-kevin          Ver Inventario StockVisualización de inventario de stockSun May 04 22:25:14 2025 22:25:14  
+kevin          Ver Inventario GeneralVisualizaciï¿½n del inventarioSun May 04 22:24:16 2025 22:24:16  
+kevin          Ver Inventario VentasVisualizaciï¿½n de inventario de ventasSun May 04 22:24:29 2025 22:24:29  
+kevin          Ver Inventario StockVisualizaciï¿½n de inventario de stockSun May 04 22:25:14 2025 22:25:14  
+kevin          Ver Inventario GeneralVisualizaciÃ³n del inventarioSun May 04 22:24:16 2025 22:24:16  
+kevin          Ver Inventario VentasVisualizaciÃ³n de inventario de ventasSun May 04 22:24:29 2025 22:24:29  
+kevin          Ver Inventario StockVisualizaciÃ³n de inventario de stockSun May 04 22:25:14 2025 22:25:14  
 kevin          LOGS           Inicio exitoso Fri May 09 16:05:01 2025 16:05:01  
-kevin          Catálogo       Acceso al módulo de inventarioFri May 09 16:05:10 2025 16:05:10  
+kevin          CatÃ¡logo       Acceso al mÃ³dulo de inventarioFri May 09 16:05:10 2025 16:05:10  
 kevin          LOGS           Inicio exitoso Fri May 09 16:05:25 2025 16:05:25  
-kevin          Informes       Revisión de bitácoraFri May 09 16:06:20 2025 16:06:20  
+kevin          Informes       RevisiÃ³n de bitÃ¡coraFri May 09 16:06:20 2025 16:06:20  
 kevin          LOGS           Inicio exitoso Fri May 09 16:07:33 2025 16:07:33  
 kevin          LOGS           Inicio exitoso Sat May 10 15:23:07 2025 15:23:07  
 kevin          LOGS           Inicio exitoso Sun May 11 11:33:34 2025 11:33:34  
 kevin          LOGS           Inicio exitoso Sun May 11 11:37:01 2025 11:37:01  
-kevin          Informes       RevisiÃ³n de bitÃ¡coraSun May 11 11:37:18 2025 11:37:18  
-kevin          CatÃ¡logo      Acceso al mÃ³dulo de inventarioSun May 11 11:37:28 2025 11:37:28  
-kevin          Procesos       Acceso a gestiÃ³n de usuariosSun May 11 11:37:53 2025 11:37:53  
+kevin          Informes       RevisiÃƒÂ³n de bitÃƒÂ¡coraSun May 11 11:37:18 2025 11:37:18  
+kevin          CatÃƒÂ¡logo      Acceso al mÃƒÂ³dulo de inventarioSun May 11 11:37:28 2025 11:37:28  
+kevin          Procesos       Acceso a gestiÃƒÂ³n de usuariosSun May 11 11:37:53 2025 11:37:53  
 kevin          LOGF           Intento fallidoSun May 11 20:06:45 2025 20:06:45  
 1              LOGF           Intento fallidoSun May 11 20:06:46 2025 20:06:46  
 luis           LOGS           Inicio exitoso Sun May 11 20:07:17 2025 20:07:17  
-luis           Catálogo      Acceso al módulo de inventarioSun May 11 20:07:49 2025 20:07:49  
+luis           CatÃ¡logo      Acceso al mÃ³dulo de inventarioSun May 11 20:07:49 2025 20:07:49  
 luis           LOGS           Inicio exitoso Sun May 11 20:15:22 2025 20:15:22  
 kevin          LOGS           Inicio exitoso Sun May 11 12:32:02 2025 12:32:02  
 kevin          LOGS           Inicio exitoso Sun May 11 12:32:50 2025 12:32:50  
 kevin          Catálogo      Acceso al módulo de inventarioSun May 11 12:33:48 2025 12:33:48  
 kevin          Informes       Revisión de bitácoraSun May 11 12:34:54 2025 12:34:54  
-
-<<<<<<< HEAD
 kevin          LOGS           Inicio exitoso Sun May 11 22:11:58 2025 22:11:58  
 kevin          LOGS           Inicio exitoso Sun May 11 22:13:11 2025 22:13:11  
-kevin          Catálogo      Acceso al módulo de inventarioSun May 11 22:13:16 2025 22:13:16  
+kevin          CatÃ¡logo      Acceso al mÃ³dulo de inventarioSun May 11 22:13:16 2025 22:13:16  
 kevin          LOGS           Inicio exitoso Sun May 11 22:32:17 2025 22:32:17  
-kevin          Informes       Revisión de bitácoraSun May 11 22:32:32 2025 22:32:32  
+kevin          Informes       RevisiÃ³n de bitÃ¡coraSun May 11 22:32:32 2025 22:32:32  
 kevin          LOGS           Inicio exitoso Sun May 11 22:33:17 2025 22:33:17  
-kevin          Procesos       Acceso a gestión de usuariosSun May 11 22:34:27 2025 22:34:27  
+kevin          Procesos       Acceso a gestiÃ³n de usuariosSun May 11 22:34:27 2025 22:34:27  
 kevin          LOGS           Inicio exitoso Sun May 11 22:40:12 2025 22:40:12  
-kevin          Catálogo      Acceso al módulo de inventarioSun May 11 22:40:33 2025 22:40:33  
-kevin          Procesos       Acceso a gestión de usuariosSun May 11 22:41:31 2025 22:41:31  
-kevin          Informes       Revisión de bitácoraSun May 11 22:42:06 2025 22:42:06  
-kevin          Ver Inventario VentasVisualizaci�n de inventario de ventasSun May 11 22:42:21 2025 22:42:21  
-kevin          Catálogo      Acceso al módulo de inventarioSun May 11 22:42:30 2025 22:42:30  
-=======
-kevin          LOGS           Inicio exitoso Sun May 11 17:31:31 2025 17:31:31  
-kevin          LOGS           Inicio exitoso Sun May 11 17:55:22 2025 17:55:22  
->>>>>>> 5ac1bf792a663f1b56d9a6e9060c9a14568a6794
-2000 kevin0000000000LOGS00000000000Inicio exitoso0Mon May 12 00:14:06 2025000:14:0600
-2001 kevin0000000000LOGS00000000000Inicio exitoso0Mon May 12 00:16:29 2025000:16:2900
-2002 kevin0000000000LOGS00000000000Inicio exitoso0Mon May 12 00:19:48 2025000:19:4800
-2003 kevin0000000000LOGS00000000000Inicio exitoso0Mon May 12 00:23:58 2025000:23:5800
-2004 kevin0000000000LOGS00000000000Inicio exitoso000000May 12 2025 00:30:390000000:30:3900
-2005 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000Mon May 12 00:34:11 202500000000:34:1100
-2006 kevin000000000000000Informes000000000000Revisión de bitácora00000000Mon May 12 00:34:19 202500000000:34:1900
-2007 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000Mon May 12 00:37:16 202500000000:37:1600
-2008 kevin0000000000LOGS00000000000Inicio exitoso000000May 12 2025 00:37:440000000:37:4400
-2009 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000Mon May 12 00:37:57 202500000000:37:5700
-2010 kevin000000000000000LOGF0000000000000000Intento fallido000000000000000May 12 2025 00:44:40000000000000:44:4000
-2011 kevin000000000000000LOGF0000000000000000Intento fallido000000000000000May 12 2025 00:44:44000000000000:44:4400
-2012 kevin0000000000LOGS00000000000Inicio exitoso000000May 12 2025 00:46:240000000:46:2400
-2013 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 00:47:15000000000000:47:1500
-2014 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 00:49:32000000000000:49:3200
-2015 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000Mon May 12 01:15:24 202500000001:15:2400
-2016 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000Mon May 12 01:16:10 202500000001:16:1000
-2017 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:16:36000000000001:16:3600
-2018 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:17:13000000000001:17:1300
-2019 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:17:22000000000001:17:2200
-2020 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:17:42000000000001:17:4200
-2021 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:17:59000000000001:17:5900
-2022 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:19:24000000000001:19:2400
-2023 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:19:33000000000001:19:3300
-2024 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:22:39000000000001:22:3900
-2025 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:23:31000000000001:23:3100
-kevin  LOGS  Inicio exitoso Mon May 12 01:24:36 2025 01:24:36
-kevin  LOGS  Inicio exitoso Mon May 12 01:28:03 2025 01:28:03
-2026 kevin000000000000000LOGS0000000000000000Inicio exitoso0000000000000000May 12 2025 01:28:31000000000001:28:3100
+kevin          CatÃ¡logo      Acceso al mÃ³dulo de inventarioSun May 11 22:40:33 2025 22:40:33  
+kevin          Procesos       Acceso a gestiÃ³n de usuariosSun May 11 22:41:31 2025 22:41:31  
+kevin          Informes       RevisiÃ³n de bitÃ¡coraSun May 11 22:42:06 2025 22:42:06  
+kevin          Ver Inventario VentasVisualización de inventario de ventasSun May 11 22:42:21 2025 22:42:21  
+kevin          CatÃ¡logo      Acceso al mÃ³dulo de inventarioSun May 11 22:42:30 2025 22:42:30  
+

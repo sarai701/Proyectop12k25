@@ -1,5 +1,6 @@
-// Modificación por Ferdynand Monroy abril 2025
+// Modificaciï¿½n por Ferdynand Monroy abril 2025
 // Modificado para guardado de productos por Anthony Suc, 2 de mayo 2025
+//Modificacion by Marco H. 18/05/25
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
@@ -24,6 +25,10 @@ public:
     void guardarEnArchivo() const;
     void cargarDesdeArchivo();
     bool eliminarProducto(int codigo);
+    void movimientoBodega(int codigo, int cantidad, bool esEntrada);
+    void mostrarMovimientosBodega();
+    void mostrarKardexBodega();
+
 
     ~Inventario();
 };

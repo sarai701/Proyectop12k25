@@ -12,7 +12,10 @@ public:
     bool buscar(std::string user, std::string passw);
     std::string getNombre();
     void setNombre(std::string nombre);
-    void consultarUsuarios(); // Nueva declaración
+    void consultarUsuarios();
+    void agregarUsuarios();
+    void modificarUsuarios();
+    void eliminarUsuarios();
 
 private:
     int id;
