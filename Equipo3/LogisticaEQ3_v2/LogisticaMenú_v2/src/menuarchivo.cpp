@@ -2,6 +2,7 @@
 #include "usuarios.h"
 #include <iostream>
 #include "globals.h"
+#include "../backup_manager.h"
 
 using namespace std;
 
@@ -34,7 +35,7 @@ void MenuArchivo::mostrar() {
                 break;
             }
             case 2:
-                // Código para backup
+                BackupManager::mostrarMenuBackup();  // Llamar al menú de backup
                 break;
             case 3:
                 return;
@@ -47,7 +48,7 @@ void MenuArchivo::mostrar() {
 
 bool MenuArchivo::cerrarSesion() {
     char confirmacion;
-    cout << "\n\t\t¿Esta seguro que desea cerrar sesion? (S/N): ";
+    cout << "\n\t\t ¿Esta seguro que desea cerrar sesion? (S/N): ";
     cin >> confirmacion;
 
     if(toupper(confirmacion) == 'S') {

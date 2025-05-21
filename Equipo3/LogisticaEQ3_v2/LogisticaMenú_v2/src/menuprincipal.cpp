@@ -26,18 +26,18 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
         system("cls");
 
         cout << "\t\t========================================\n"
-             << "\t\t|     SISTEMA DE GESTIÓN LOGÍSTICA     |\n"
+             << "\t\t|     SISTEMA DE GESTION LOGISTICA     |\n"
              << "\t\t========================================\n"
              << "\t\t| Usuario: " << usuarioActual.getNombre() << "\n"
              << "\t\t================================================\n"
              << "\t\t 1. Archivo\n"
-             << "\t\t 2. Catálogos\n"
+             << "\t\t 2. Catalogos\n"
              << "\t\t 3. Procesos\n"
              << "\t\t 4. Informes\n"
-             << "\t\t 5. Bitácora\n"
+             << "\t\t 5. Bitacora\n"
              << "\t\t 6. Salir\n"
              << "\t\t========================================\n"
-             << "\t\tIngresa tu opción: ";
+             << "\t\tIngresa tu opcion: ";
 
         cin >> choice;
 
@@ -72,7 +72,7 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
                 return;
 
             default:
-                cout << "\n\t\tOpción inválida... Intenta de nuevo...";
+                cout << "\n\t\tOpcion invalida... Intenta de nuevo...";
         }
     } while(choice != 6);
 }

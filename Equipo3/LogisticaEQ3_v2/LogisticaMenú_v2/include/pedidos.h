@@ -28,15 +28,14 @@ public:
         double precioUnitario;
     };
 
+    // Declaración del constructor (sin implementación aquí)
     Pedidos();
 
     static std::vector<Pedidos> listaPedidos;  // Lista estática
 
-
-
     void gestionPedidos(const std::vector<Clientes>& clientes,
-                       std::vector<Producto>& productos,
-                       const std::vector<Almacen>& almacenes);
+                      std::vector<Producto>& productos,
+                      const std::vector<Almacen>& almacenes);
 
     void crearPedido(const std::vector<Clientes>& clientes,
                    const std::vector<Producto>& productos,
@@ -60,22 +59,20 @@ public:
     std::string getEstado() const { return estado; }
     std::string getIdCliente() const { return idCliente; }
 
-
 private:
+    // Orden correcto de miembros para coincidir con la inicialización
     std::string id;
-    std::string estado;
     std::string idCliente;
     std::string idAlmacen;
     std::time_t fechaPedido;
+    std::string estado;
     std::vector<DetallePedido> detalles;
-
 
     static std::string generarIdUnico(const std::vector<Pedidos>& lista);
     static bool idDisponible(const std::vector<Pedidos>& lista, const std::string& id);
     static bool validarCliente(const std::string& idCliente, const std::vector<Clientes>& clientes);
     static bool validarProducto(const std::string& codigoProducto, const std::vector<Producto>& productos);
     static bool validarAlmacen(const std::string& idAlmacen, const std::vector<Almacen>& almacenes);
-
 };
 
 #endif // PEDIDOS_H

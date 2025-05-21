@@ -9,23 +9,39 @@
 #include <limits>
 #include "bitacora.h"
 
-//JENNIFER ALBA DAYAMI BARRIOS FLORES
-//9959-24-10016
-//MAYO 2025
-
 using namespace std;
 
 // Rango de códigos válidos para productos (3209-3259)
 const int CODIGO_INICIAL = 3209;
 const int CODIGO_FINAL = 3259;
 
+// Constructor
+Producto::Producto() : precio(0.0), stock(0), stockMinimo(0) {}
+
+// Getters
+string Producto::getId() const { return id; }
+string Producto::getCodigo() const { return codigo; }
+string Producto::getNombre() const { return nombre; }
+string Producto::getDescripcion() const { return descripcion; }
+double Producto::getPrecio() const { return precio; }
+int Producto::getStock() const { return stock; }
+int Producto::getStockMinimo() const { return stockMinimo; }
+
+// Setters
+void Producto::setId(const string& id) { this->id = id; }
+void Producto::setCodigo(const string& codigo) { this->codigo = codigo; }
+void Producto::setNombre(const string& nombre) { this->nombre = nombre; }
+void Producto::setDescripcion(const string& descripcion) { this->descripcion = descripcion; }
+void Producto::setPrecio(double precio) { this->precio = precio; }
+void Producto::setStock(int stock) { this->stock = stock; }
+void Producto::setStockMinimo(int stockMinimo) { this->stockMinimo = stockMinimo; }
+
 // Genera un código único que no haya sido usado, dentro del rango permitido
 string Producto::generarCodigoUnico(const vector<Producto>& lista) {
-    // Recorre el rango buscando el primer código disponible
     for (int i = CODIGO_INICIAL; i <= CODIGO_FINAL; ++i) {
         string codigo = to_string(i);
         if (codigoDisponible(lista, codigo)) {
-            return codigo; // Retorna el primer código libre
+            return codigo;
         }
     }
     return ""; // Si no hay disponibles, retorna cadena vacía
@@ -33,7 +49,6 @@ string Producto::generarCodigoUnico(const vector<Producto>& lista) {
 
 // Verifica si un código aún no ha sido asignado a ningún producto
 bool Producto::codigoDisponible(const vector<Producto>& lista, const string& codigo) {
-    // Retorna true si ningún producto tiene ese código
     return none_of(lista.begin(), lista.end(),
         [&codigo](const Producto& p) { return p.codigo == codigo; });
 }
@@ -41,54 +56,95 @@ bool Producto::codigoDisponible(const vector<Producto>& lista, const string& cod
 // Comprueba si un código está dentro del rango numérico permitido
 bool Producto::esCodigoValido(const string& codigo) {
     try {
-        int num = stoi(codigo); // Intenta convertir a entero
+        int num = stoi(codigo);
         return (num >= CODIGO_INICIAL && num <= CODIGO_FINAL);
     } catch (...) {
-        return false; // Si ocurre una excepción, el código no es válido
+        return false;
     }
 }
 
 // Agrega un nuevo producto a la lista de inventario
 void Producto::agregar(vector<Producto>& lista, const string& usuarioActual) {
     Producto nuevo;
-    nuevo.codigo = generarCodigoUnico(lista); // Asigna código único
+    nuevo.codigo = generarCodigoUnico(lista);
 
-    // Verifica si hay códigos disponibles
     if (nuevo.codigo.empty()) {
         cerr << "\n\t\tError: No hay códigos disponibles\n";
         system("pause");
         return;
     }
 
-    // Solicita los datos del nuevo producto
     cout << "\n\t\t=== AGREGAR PRODUCTO (Código: " << nuevo.codigo << ") ===\n";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia buffer
+    cout << "\t\t(0 para cancelar)\n";
 
-    // Captura del nombre del producto
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
     cout << "\t\tNombre del producto: ";
-    getline(cin, nuevo.nombre);
+    string nombre;
+    getline(cin, nombre);
 
-    // Captura y validación del precio
+    if (nombre == "0") {
+        cout << "\t\tOperación cancelada.\n";
+        system("pause");
+        return;
+    }
+    nuevo.setNombre(nombre);
+
+    cout << "\t\tDescripción: ";
+    string descripcion;
+    getline(cin, descripcion);
+    nuevo.setDescripcion(descripcion);
+
     cout << "\t\tPrecio: ";
-    while (!(cin >> nuevo.precio)) {
+    double precio;
+    while (!(cin >> precio) || precio < 0) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "\t\tEntrada inválida. Ingrese precio: ";
+        cout << "\t\tEntrada inválida. Ingrese precio (0 para cancelar): ";
+        string input;
+        getline(cin, input);
+        if (input == "0") {
+            cout << "\t\tOperación cancelada.\n";
+            system("pause");
+            return;
+        }
     }
+    nuevo.setPrecio(precio);
 
-    // Captura y validación del stock
     cout << "\t\tStock inicial: ";
-    while (!(cin >> nuevo.stock)) {
+    int stock;
+    while (!(cin >> stock)) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        cout << "\t\tEntrada inválida. Ingrese stock: ";
+        cout << "\t\tEntrada inválida. Ingrese stock (0 para cancelar): ";
+        string input;
+        getline(cin, input);
+        if (input == "0") {
+            cout << "\t\tOperación cancelada.\n";
+            system("pause");
+            return;
+        }
     }
+    nuevo.setStock(stock);
 
-    // Agrega a la lista y guarda en archivo
+    cout << "\t\tStock mínimo: ";
+    int stockMin;
+    while (!(cin >> stockMin)) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "\t\tEntrada inválida. Ingrese stock mínimo (0 para cancelar): ";
+        string input;
+        getline(cin, input);
+        if (input == "0") {
+            cout << "\t\tOperación cancelada.\n";
+            system("pause");
+            return;
+        }
+    }
+    nuevo.setStockMinimo(stockMin);
+
     lista.push_back(nuevo);
     guardarEnArchivoBin(lista);
-
-    // Registra en bitácora
     bitacora::registrar(usuarioActual, "PRODUCTOS", "Agregado: " + nuevo.codigo);
     cout << "\n\t\tProducto registrado!\n";
     system("pause");
@@ -98,56 +154,96 @@ void Producto::agregar(vector<Producto>& lista, const string& usuarioActual) {
 void Producto::mostrar(const vector<Producto>& lista) {
     system("cls");
     cout << "\n\t\t=== INVENTARIO ===\n";
-    cout << "\t\t" << left << setw(10) << "Código" << setw(30) << "Nombre"
-         << setw(15) << "Precio" << setw(10) << "Stock" << "\n";
-    cout << "\t\t" << string(65, '-') << "\n";
+    cout << "\t\t" << left << setw(10) << "Código" << setw(25) << "Nombre"
+         << setw(15) << "Precio" << setw(10) << "Stock" << setw(15) << "Stock Mín" << "\n";
+    cout << "\t\t" << string(75, '-') << "\n";
 
-    // Muestra los datos de cada producto
-    for (const auto& producto : lista) {
-        cout << "\t\t" << left << setw(10) << producto.codigo << setw(30) << producto.nombre
-             << "$" << setw(14) << fixed << setprecision(2) << producto.precio
-             << setw(10) << producto.stock << "\n";
+    if (lista.empty()) {
+        cout << "\t\tNo hay productos registrados.\n";
+    } else {
+        for (const auto& producto : lista) {
+            cout << "\t\t" << left << setw(10) << producto.codigo
+                 << setw(25) << producto.nombre.substr(0, 24)
+                 << "$" << setw(14) << fixed << setprecision(2) << producto.precio
+                 << setw(10) << producto.stock
+                 << setw(15) << producto.stockMinimo << "\n";
+        }
     }
-    system("pause");
+    cout << "\n\t\tPresione cualquier tecla para continuar...";
+    cin.ignore();
+    cin.get();
 }
 
 // Modifica los datos de un producto existente
 void Producto::modificar(vector<Producto>& lista, const string& usuarioActual, const string& codigo) {
-    // Busca el producto por su código
     auto it = find_if(lista.begin(), lista.end(),
         [&codigo](const Producto& p) { return p.codigo == codigo; });
 
-    // Si se encuentra, permite modificarlo
     if (it != lista.end()) {
         cout << "\n\t\t=== MODIFICAR PRODUCTO (Código: " << codigo << ") ===\n";
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia buffer
+        cout << "\t\t(Deje en blanco para mantener el valor actual)\n";
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         // Modificación del nombre
         cout << "\t\tNuevo nombre (" << it->nombre << "): ";
-        getline(cin, it->nombre);
+        string nuevoNombre;
+        getline(cin, nuevoNombre);
+        if (!nuevoNombre.empty()) {
+            it->setNombre(nuevoNombre);
+        }
+
+        // Modificación de la descripción
+        cout << "\t\tNueva descripción (" << it->descripcion << "): ";
+        string nuevaDesc;
+        getline(cin, nuevaDesc);
+        if (!nuevaDesc.empty()) {
+            it->setDescripcion(nuevaDesc);
+        }
 
         // Modificación del precio
         cout << "\t\tNuevo precio (" << it->precio << "): ";
-        while (!(cin >> it->precio)) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\t\tEntrada inválida. Ingrese un valor numérico para el precio: ";
+        string precioStr;
+        getline(cin, precioStr);
+        if (!precioStr.empty()) {
+            try {
+                double nuevoPrecio = stod(precioStr);
+                it->setPrecio(nuevoPrecio);
+            } catch (...) {
+                cout << "\t\tPrecio no válido. Se mantiene el actual.\n";
+            }
         }
 
         // Modificación del stock
         cout << "\t\tNuevo stock (" << it->stock << "): ";
-        while (!(cin >> it->stock)) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\t\tEntrada inválida. Ingrese un valor entero para el stock: ";
+        string stockStr;
+        getline(cin, stockStr);
+        if (!stockStr.empty()) {
+            try {
+                int nuevoStock = stoi(stockStr);
+                it->setStock(nuevoStock);
+            } catch (...) {
+                cout << "\t\tStock no válido. Se mantiene el actual.\n";
+            }
         }
 
-        // Guarda cambios y registra modificación
+        // Modificación del stock mínimo
+        cout << "\t\tNuevo stock mínimo (" << it->stockMinimo << "): ";
+        string stockMinStr;
+        getline(cin, stockMinStr);
+        if (!stockMinStr.empty()) {
+            try {
+                int nuevoStockMin = stoi(stockMinStr);
+                it->setStockMinimo(nuevoStockMin);
+            } catch (...) {
+                cout << "\t\tStock mínimo no válido. Se mantiene el actual.\n";
+            }
+        }
+
         guardarEnArchivoBin(lista);
-        bitacora::registrar(usuarioActual, "PRODUCTOS", "Producto modificado - Código: " + codigo);
+        bitacora::registrar(usuarioActual, "PRODUCTOS", "Modificado: " + codigo);
         cout << "\n\t\tProducto modificado exitosamente!\n";
     } else {
-        // Si no se encuentra el producto
         cout << "\t\tProducto no encontrado.\n";
     }
     system("pause");
@@ -155,25 +251,29 @@ void Producto::modificar(vector<Producto>& lista, const string& usuarioActual, c
 
 // Elimina un producto de la lista por su código
 void Producto::eliminar(vector<Producto>& lista, const string& usuarioActual, const string& codigo) {
-    // Busca el producto por código
     auto it = find_if(lista.begin(), lista.end(),
         [&codigo](const Producto& p) { return p.codigo == codigo; });
 
-    // Si lo encuentra, lo elimina
     if (it != lista.end()) {
-        lista.erase(it); // Elimina producto
-        guardarEnArchivoBin(lista); // Guarda cambios
-        bitacora::registrar(usuarioActual, "PRODUCTOS", "Producto eliminado - Código: " + codigo);
-        cout << "\n\t\tProducto eliminado exitosamente!\n";
+        cout << "\n\t\t¿Está seguro que desea eliminar el producto " << it->nombre << "? (s/n): ";
+        char confirmacion;
+        cin >> confirmacion;
+
+        if (tolower(confirmacion) == 's') {
+            lista.erase(it);
+            guardarEnArchivoBin(lista);
+            bitacora::registrar(usuarioActual, "PRODUCTOS", "Eliminado: " + codigo);
+            cout << "\n\t\tProducto eliminado exitosamente!\n";
+        } else {
+            cout << "\n\t\tOperación cancelada.\n";
+        }
     } else {
-        // Producto no encontrado
         cout << "\t\tProducto no encontrado.\n";
     }
     system("pause");
 }
 
-// Guarda la lista de productos en el archivo de texto
-
+// Guarda la lista de productos en archivo binario
 void Producto::guardarEnArchivoBin(const vector<Producto>& productos) {
     ofstream archivo("productos.bin", ios::binary | ios::out);
 
@@ -183,12 +283,17 @@ void Producto::guardarEnArchivoBin(const vector<Producto>& productos) {
     }
 
     try {
-        // Escribir cantidad de productos primero
+        // Escribir cantidad de productos
         size_t cantidad = productos.size();
         archivo.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
 
         // Escribir cada producto
         for (const auto& producto : productos) {
+            // Escribir ID
+            size_t idSize = producto.id.size();
+            archivo.write(reinterpret_cast<const char*>(&idSize), sizeof(idSize));
+            archivo.write(producto.id.c_str(), idSize);
+
             // Escribir código
             size_t codigoSize = producto.codigo.size();
             archivo.write(reinterpret_cast<const char*>(&codigoSize), sizeof(codigoSize));
@@ -199,9 +304,15 @@ void Producto::guardarEnArchivoBin(const vector<Producto>& productos) {
             archivo.write(reinterpret_cast<const char*>(&nombreSize), sizeof(nombreSize));
             archivo.write(producto.nombre.c_str(), nombreSize);
 
-            // Escribir precio y stock
+            // Escribir descripción
+            size_t descSize = producto.descripcion.size();
+            archivo.write(reinterpret_cast<const char*>(&descSize), sizeof(descSize));
+            archivo.write(producto.descripcion.c_str(), descSize);
+
+            // Escribir precio, stock y stock mínimo
             archivo.write(reinterpret_cast<const char*>(&producto.precio), sizeof(producto.precio));
             archivo.write(reinterpret_cast<const char*>(&producto.stock), sizeof(producto.stock));
+            archivo.write(reinterpret_cast<const char*>(&producto.stockMinimo), sizeof(producto.stockMinimo));
         }
 
         archivo.flush();
@@ -218,14 +329,12 @@ void Producto::guardarEnArchivoBin(const vector<Producto>& productos) {
     archivo.close();
 }
 
-
+// Carga la lista de productos desde archivo binario
 void Producto::cargarDesdeArchivoBin(vector<Producto>& productos) {
     productos.clear();
     ifstream archivo("productos.bin", ios::binary | ios::in);
 
-
     if (!archivo) {
-        // Si el archivo no existe, no es un error (primera ejecución)
         return;
     }
 
@@ -236,6 +345,12 @@ void Producto::cargarDesdeArchivoBin(vector<Producto>& productos) {
 
         for (size_t i = 0; i < cantidad; ++i) {
             Producto producto;
+
+            // Leer ID
+            size_t idSize;
+            archivo.read(reinterpret_cast<char*>(&idSize), sizeof(idSize));
+            producto.id.resize(idSize);
+            archivo.read(&producto.id[0], idSize);
 
             // Leer código
             size_t codigoSize;
@@ -249,9 +364,16 @@ void Producto::cargarDesdeArchivoBin(vector<Producto>& productos) {
             producto.nombre.resize(nombreSize);
             archivo.read(&producto.nombre[0], nombreSize);
 
-            // Leer precio y stock
+            // Leer descripción
+            size_t descSize;
+            archivo.read(reinterpret_cast<char*>(&descSize), sizeof(descSize));
+            producto.descripcion.resize(descSize);
+            archivo.read(&producto.descripcion[0], descSize);
+
+            // Leer precio, stock y stock mínimo
             archivo.read(reinterpret_cast<char*>(&producto.precio), sizeof(producto.precio));
             archivo.read(reinterpret_cast<char*>(&producto.stock), sizeof(producto.stock));
+            archivo.read(reinterpret_cast<char*>(&producto.stockMinimo), sizeof(producto.stockMinimo));
 
             productos.push_back(producto);
         }
@@ -261,12 +383,8 @@ void Producto::cargarDesdeArchivoBin(vector<Producto>& productos) {
         }
     } catch (const exception& e) {
         cerr << "\n\t\tError al cargar productos: " << e.what() << "\n";
-        productos.clear(); // Limpiar lista parcialmente cargada
+        productos.clear();
     }
 
     archivo.close();
-}
-
-void Producto::setStock(int nuevoStock) {
-    stock = nuevoStock;
 }

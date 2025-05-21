@@ -1,4 +1,4 @@
-// Karina Alejandra Arriaza Ortiz
+//Karina Alejandra Arriaza Ortiz
 #include "usuarios.h"
 #include <iostream>
 #include <fstream>
@@ -16,9 +16,12 @@ const int CODIGO_FINAL = 3149;
 
 extern bitacora auditoria;
 
-// Funciones auxiliares privadas
+// Constructor
+usuarios::usuarios() : id(""), nombre(""), contrasena(""), nivelAcceso(0) {}
+
+// Implementación de métodos
 string usuarios::generarCodigoUnico() {
-    ifstream archivo("usuarios.txt");
+    ifstream archivo("usuarios.bin"; ios::binary);
     set<string> codigosExistentes;
     string linea;
 
@@ -48,7 +51,7 @@ bool usuarios::esNumero(const string& str) {
 }
 
 bool usuarios::usuarioExiste(const string& nombreUsuario) {
-    ifstream archivo("usuarios.txt");
+    ifstream archivo("usuarios.bin", ios::binary);
     string linea;
 
     while (getline(archivo, linea)) {
@@ -82,7 +85,7 @@ string usuarios::leerPasswordSegura() {
 bool usuarios::loginUsuarios() {
     string user, pass;
     int intentos = 0;
-    bool acceso = false;
+    bool autenticado = false; // Cambiado de 'acceso' a 'autenticado'
 
     do {
         system("cls");
@@ -91,7 +94,6 @@ bool usuarios::loginUsuarios() {
         cout << "\t\t========================================" << endl;
         cout << "\t\t1. Iniciar sesion" << endl;
         cout << "\t\t2. Registrarse (nuevo usuario)" << endl;
-        cout << "\t\t3. Salir del Programa" << endl;
         cout << "\t\t========================================" << endl;
         cout << "\t\tOpcion: ";
 
@@ -107,7 +109,7 @@ bool usuarios::loginUsuarios() {
                 pass = leerPasswordSegura();
 
                 if (buscarUsuario(user, pass)) {
-                    acceso = true;
+                    autenticado = true;
                     nombre = user;
                     auditoria.insertar(nombre, "000", "LOGIN");
                     cout << "\n\t\tAutenticacion exitosa. Bienvenido!\n";
@@ -125,24 +127,11 @@ bool usuarios::loginUsuarios() {
                 registrarUsuario();
                 break;
 
-            case 3:
-                auditoria.insertar("Sistema", "000", "PROGRAMA CERRADO");
-                cout << "\n\t\tSaliendo del programa...\n";
-                system("pause");
-                return false;
-
-            default:
-                cout << "\n\t\tOpcion invalida!\n";
-                system("pause");
-        }
-    } while (intentos < 3);
-
-    return false;
 }
 
 void usuarios::registrarUsuario() {
     system("cls");
-    ofstream archivo("usuarios.txt", ios::app);
+    ofstream archivo("usuarios.bin", ios::binary);
     if (!archivo.is_open()) {
         cerr << "\n\t\tError al abrir archivo de usuarios!\n";
         return;
@@ -206,7 +195,7 @@ void usuarios::registrarUsuario() {
 }
 
 bool usuarios::buscarUsuario(const string& user, const string& pass) {
-    ifstream archivo("usuarios.txt");
+    ifstream archivo("usuarios.bin", ios::binary);
     if (!archivo.is_open()) {
         cerr << "\n\t\tError al abrir archivo de usuarios!\n";
         return false;

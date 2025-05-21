@@ -546,4 +546,77 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3103        Angel          PEDIDOS             Consulta de pedidos                18/05/2025 11:29:11 
 3104        Angel          PEDIDOS             Salida de gestión de pedidos       18/05/2025 11:29:19 
 >>>>>>> 06213e2a7593c2c519cf32a6481efe3964f5ffc6
+<<<<<<< HEAD
 >>>>>>> 5a65c92ccab82300f344ad48eadc2e2d63e07041
+3000        AJAX           000                 LOGIN-FAIL                         18/05/2025 15:31:39 
+3001        AJAX           000                 LOGIN-FAIL                         18/05/2025 15:31:47 
+3002        Jennifer       000                 LOGIN                              18/05/2025 15:31:56 
+3000        Jennifer       500                 REPVENT                            18/05/2025 15:32:04 
+3000        Jennifer       000                 LOGIN                              18/05/2025 16:04:43 
+3000        Jennifer       000                 LOGIN                              18/05/2025 16:21:35 
+3250        Jennifer       PRODUCTOS           Agregado: 3209                     18/05/2025 16:22:31 
+3000        Jennifer       000                 LOGIN                              18/05/2025 16:24:06 
+3600        SISTEMA        SISTEMA             Backup de bitácora generado: backup_bitacora_20250518_162419.txt18/05/2025 16:24:19 
+3601        SISTEMA        SISTEMA             Backup de bitácora generado: backup_bitacora_20250518_162424.txt18/05/2025 16:24:24 
+=======
+3000        Angoly         000                 REG-USER                           18/05/2025 11:54:04 
+3001        Camila         000                 LOGIN-FAIL                         18/05/2025 11:54:13 
+3002        Angoly         000                 LOGIN                              18/05/2025 11:54:22 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 11:54:43 
+3000        Angoly         000                 LOGIN                              18/05/2025 11:56:19 
+3150        Angoly         CLIENTES            Cliente agregado - ID: 3108        18/05/2025 11:56:45 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:13:58 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:14:18 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:16:50 
+3100        Angoly         PEDIDOS             Pedido creado - ID: 3406           18/05/2025 12:17:25 
+3101        Angoly         PEDIDOS             Salida de gestión de pedidos       18/05/2025 12:17:30 
+3102        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:17:43 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:22:34 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:22:53 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:24:30 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:24:48 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:34:49 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:35:07 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:39:39 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:39:54 
+3101        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:40:25 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:42:54 
+3000        Angoly         000                 LOGIN                              18/05/2025 12:48:04 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 12:48:17 
+3000        Angoly         000                 LOGIN                              18/05/2025 13:34:51 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 13:35:04 
+3000        Angoly         000                 LOGIN                              18/05/2025 13:45:37 
+3000        Angoly         000                 LOGIN                              18/05/2025 13:47:02 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 13:47:17 
+3000        Angoly         000                 LOGIN                              18/05/2025 14:00:35 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 14:00:50 
+3000        Angoly         000                 LOGIN                              18/05/2025 14:27:00 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 14:27:14 
+3000        Angoly         000                 LOGIN                              18/05/2025 14:45:32 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 14:45:41 
+3000        Angoly         000                 LOGIN-FAIL                         18/05/2025 15:13:19 
+3001        Angoly         000                 LOGIN                              18/05/2025 15:13:26 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 15:13:35 
+3000        12345678       000                 LOGIN-FAIL                         18/05/2025 15:18:10 
+3001        Angoly         000                 LOGIN                              18/05/2025 15:18:22 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 15:18:32 
+3000        Angoly         000                 LOGIN                              18/05/2025 15:21:52 
+3100        Angoly         PEDIDOS             Consulta de pedidos                18/05/2025 15:22:10 
+>>>>>>> 48272b46800959aae78e9d62f3c7b8e6938a3564
+3000        Karina         000                 LOGIN                              18/05/2025 16:32:37 
+3000        Karina         000                 LOGIN                              18/05/2025 16:38:01 
+3000        Karina         200                 REPORTE-INV                        18/05/2025 16:38:31 
+3001        Karina         000                 LOGOUT                             18/05/2025 16:39:27 
+3002        Sistema        000                 PROGRAMA CERRADO                   18/05/2025 16:39:39 
+3000        Karina         000                 LOGIN                              18/05/2025 17:12:40 
+3000        Alejandra      000                 REG-USER                           18/05/2025 17:15:05 
+3001        Alejandra      000                 LOGIN                              18/05/2025 17:15:21 
+3000        Alejandra      200                 REPORTE-INV                        18/05/2025 17:16:46 
+3000        Karina         000                 LOGIN                              18/05/2025 17:20:47 
+3000        Karina         000                 LOGIN                              18/05/2025 17:21:25 
+3000        Karina         200                 REPORTE-INV                        18/05/2025 17:21:45 
+3001        Karina         000                 LOGOUT                             18/05/2025 17:22:05 
+3002        Sistema        000                 PROGRAMA CERRADO                   18/05/2025 17:22:08 
+3000        Karina         000                 LOGIN                              18/05/2025 17:39:14 
+3001        Karina         000                 LOGOUT                             18/05/2025 17:39:21 
+3002        Sistema        000                 PROGRAMA CERRADO                   18/05/2025 17:39:25 
