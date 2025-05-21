@@ -1,3 +1,4 @@
+//Karina Alejandra Arriaza Ortiz
 #include "usuarios.h"
 #include <iostream>
 #include <fstream>
@@ -23,7 +24,7 @@ usuarios::usuarios() : id(""), nombre(""), contrasena(""), nivelAcceso(0) {}
 
 // Implementación de métodos
 string usuarios::generarCodigoUnico() {
-    ifstream archivo("usuarios.txt");
+    ifstream archivo("usuarios.bin"; ios::binary);
     set<string> codigosExistentes;
     string linea;
 
@@ -96,7 +97,6 @@ bool usuarios::loginUsuarios() {
         cout << "\t\t========================================" << endl;
         cout << "\t\t1. Iniciar sesion" << endl;
         cout << "\t\t2. Registrarse (nuevo usuario)" << endl;
-        cout << "\t\t3. Salir del Programa" << endl;
         cout << "\t\t========================================" << endl;
         cout << "\t\tOpcion: ";
 
@@ -130,19 +130,6 @@ bool usuarios::loginUsuarios() {
                 registrarUsuario();
                 break;
 
-            case 3:
-                auditoria.insertar("Sistema", "000", "PROGRAMA CERRADO");
-                cout << "\n\t\tSaliendo del programa...\n";
-                system("pause");
-                return false;
-
-            default:
-                cout << "\n\t\tOpcion invalida!\n";
-                system("pause");
-        }
-    } while (intentos < 3 && !autenticado);
-
-    return autenticado;
 }
 
 void usuarios::registrarUsuario() {

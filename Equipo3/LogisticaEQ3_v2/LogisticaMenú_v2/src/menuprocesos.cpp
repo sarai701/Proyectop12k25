@@ -2,7 +2,7 @@
 #include "usuarios.h"
 #include <iostream>
 #include "pedidos.h"
-#include "inventario.h"
+#include "Inventario.h"
 #include "envios.h"
 #include "facturacion.h"
 #include "reportes.h"
@@ -55,7 +55,7 @@ void MenuProcesos::mostrar(std::vector<Clientes>& clientes,
             case 2:
                 {
                     Inventario gestorInventario;
-                    gestorInventario.controlInventario(); // Cambiado a controlInventario
+                    Inventario.controlInventario(productos, almacenes, proveedores); // Cambiado a Inventario
                 }
                 break;
 

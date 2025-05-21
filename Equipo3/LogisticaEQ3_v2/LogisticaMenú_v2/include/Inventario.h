@@ -3,70 +3,71 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
 
+#include "bitacora.h"
+#include "usuarios.h"
+#include "producto.h"
+#include "almacen.h"
+#include "proveedor.h"
 #include <vector>
 #include <string>
-#include "Producto.h"
-#include "Almacen.h"
-#include "Proveedor.h"
-
-// Declaración adelantada para resolver dependencias circulares
-class usuarios;
-class bitacora;
+#include <ctime>
 
 class Inventario {
-public:
+private:
+    std::string codigoProducto;
+    std::string idAlmacen;
+    std::string idProveedor;
+    int cantidad;
+    time_t fechaRegistro;
+    std::string estado;
 
-    struct ProveedorRegistro {
-        char id[10];
-        char nombre[50];
-        char telefono[15];
-    };
-
+    // Variable estática para almacenar todos los registros de inventario
     static std::vector<Inventario> listaInventario;
 
-    static void codificar(char* data, size_t len);
-    static void decodificar(char* data, size_t len);
+public:
+    // Constructor
+    Inventario() : cantidad(0), fechaRegistro(time(nullptr)), estado("activo") {}
 
-    struct ItemInventario {
-        std::string idProducto;
-        std::string idAlmacen;
-        std::string idProveedores;
-        int cantidad;
-        std::string ubicacion;
-        std::string fechaIngreso;
-        std::string lote;
-    };
+    // Métodos principales
+    void controlInventario(std::vector<Producto>& productos,
+                         std::vector<Almacen>& almacenes,
+                         std::vector<Proveedor>& proveedores);
 
-     void consultarStockCompleto();
+    void consultarStock(const std::vector<Producto>& productos,
+                      const std::vector<Almacen>& almacenes);
 
-    // Métodos estáticos para gestión de archivos
-    static std::vector<Producto> cargarProductosDesdeArchivo();
-    static void guardarProductosEnArchivo(const std::vector<Producto>& productos);
-    static std::vector<Almacen> cargarAlmacenesDesdeArchivo();
-    static void guardarAlmacenesEnArchivo(const std::vector<Almacen>& almacenes);
-    static std::vector<Proveedor> cargarProveedoresDesdeArchivo();
-    static void guardarProveedoresEnArchivo(const std::vector<Proveedor>& proveedores);
+    void registrarMercancia(std::vector<Producto>& productos,
+                          const std::vector<Almacen>& almacenes,
+                          const std::vector<Proveedor>& proveedores);
 
-    // Métodos de la clase
-    void controlInventario();
-    void ajustarInventario();
-    void reporteExistencias();
-    void mostrarInventario();
-    void agregarProductoAInventario();
-    void transferirEntreAlmacenes();
-    void buscarProductoEnInventario();
-    void generarReporteInventario();
-    void registrarMercancias();
+    void ajustarInventario(std::vector<Producto>& productos,
+                         const std::vector<Almacen>& almacenes);
 
-    // Métodos auxiliares
-    static bool verificarDisponibilidad(const std::string& idProducto, int cantidadRequerida);
-    static std::vector<ItemInventario> obtenerProductosBajoStockMinimo();
-    static std::vector<ItemInventario> obtenerProductosPorAlmacen(const std::string& idAlmacen);
-    static int obtenerStockTotalProducto(const std::string& idProducto);
+    void reporteExistencias(const std::vector<Producto>& productos,
+                           const std::vector<Almacen>& almacenes);
 
-private:
-    std::vector<ItemInventario> cargarInventarioDesdeArchivo();
-    static std::string generarIdRegistroUnico(const std::vector<ItemInventario>& inventario);
+    void transferirEntreAlmacenes(std::vector<Almacen>& almacenes,
+                                 std::vector<Producto>& productos);
+
+    // Métodos de persistencia
+    static void guardarEnArchivoBin(const std::vector<Inventario>& lista);
+    static void cargarDesdeArchivoBin(std::vector<Inventario>& lista);
+
+    // Getters
+    std::string getCodigoProducto() const { return codigoProducto; }
+    std::string getIdAlmacen() const { return idAlmacen; }
+    std::string getIdProveedor() const { return idProveedor; }
+    int getCantidad() const { return cantidad; }
+    time_t getFechaRegistro() const { return fechaRegistro; }
+    std::string getEstado() const { return estado; }
+
+    // Setters
+    void setCodigoProducto(const std::string& codigo) { codigoProducto = codigo; }
+    void setIdAlmacen(const std::string& id) { idAlmacen = id; }
+    void setIdProveedor(const std::string& id) { idProveedor = id; }
+    void setCantidad(int cant) { cantidad = cant; }
+    void setFechaRegistro(time_t fecha) { fechaRegistro = fecha; }
+    void setEstado(const std::string& est) { estado = est; }
 };
 
 #endif // INVENTARIO_H
