@@ -1,3 +1,5 @@
+//LUIS ANGEL MENDEZ FUENTES
+//9959-24-6845
 #ifndef ENVIOS_H
 #define ENVIOS_H
 
@@ -5,45 +7,84 @@
 #include <vector>
 #include "transportistas.h"
 
-// Estructura que representa un envío
+/**
+ * @struct Envio
+ * @brief Representa un envío realizado a un cliente.
+ *
+ * Esta estructura contiene los datos necesarios para realizar un envío,
+ * como el ID del envío, pedido, transportista y cliente, además del estado del envío.
+ */
 struct Envio {
-    std::string idEnvio;                  // ID numérico único del envío
-    std::string idPedido;                 // ID del pedido asociado
-    std::string idTransportista;          // ID del transportista asignado
-    std::string idCliente;                // ID del cliente receptor
-    std::string estado;                   // Estado actual del envío (Ej: "En camino", "Entregado")
+    std::string idEnvio;         ///< ID único del envío (formato numérico entre 3500 y 3599) */
+    std::string idPedido;        ///< ID del pedido asociado al envío */
+    std::string idTransportista; ///< ID del transportista asignado al envío */
+    std::string idCliente;       ///< ID del cliente receptor del envío */
+    std::string estado;          ///< Estado actual del envío (ej. "En camino", "Entregado") */
 };
 
+/**
+ * @class Envios
+ * @brief Clase que gestiona la creación, almacenamiento y consulta de envíos.
+ *
+ * Esta clase permite gestionar los envíos dentro del sistema, incluyendo
+ * la generación automática de IDs, persistencia en archivos binarios,
+ * y selección de transportistas disponibles.
+ */
 class Envios {
 public:
-    // Menú principal para gestión de envíos
+
+    /**
+     * @brief Muestra el menú principal del módulo de gestión de envíos.
+     */
     void gestionEnvios();
 
-    // Crear un envío mediante interacción con usuario
+    /**
+     * @brief Crea un nuevo envío solicitando los datos al usuario.
+     */
     void crearEnvioInteractivo();
 
-    // Crear un envío desde otro módulo (por ejemplo, desde pedidos)
+    /**
+     * @brief Crea un nuevo envío desde otro módulo (como pedidos).
+     * @param idPedido ID del pedido asociado al envío.
+     * @param transportistasDisponibles Lista de transportistas disponibles para asignar.
+     */
     static void crearEnvio(const std::string& idPedido, const std::vector<Transportistas>& transportistasDisponibles);
 
-    // Mostrar todos los envíos
+    /**
+     * @brief Muestra en consola todos los envíos registrados.
+     */
     void mostrarEnvios();
 
-    // Cargar envíos desde archivo binario
+    /**
+     * @brief Carga todos los envíos desde el archivo binario "envios.dat".
+     * @return Vector con todos los envíos cargados.
+     */
     static std::vector<Envio> cargarEnviosDesdeArchivo();
 
-    // Guardar todos los envíos en archivo binario
+    /**
+     * @brief Guarda todos los envíos en el archivo binario "envios.dat".
+     * @param envios Vector de envíos a guardar.
+     */
     static void guardarEnviosEnArchivo(const std::vector<Envio>& envios);
 
-    // Generar automáticamente el siguiente ID disponible para un nuevo envío
+    /**
+     * @brief Genera automáticamente un ID único dentro del rango 3500–3599.
+     * @return El ID numérico disponible convertido a entero.
+     */
     static int generarIdEnvio();
 
-    // Versión alternativa de creación interactiva con parámetros
+    /**
+     * @brief Variante de crearEnvioInteractivo con parámetros, útil para pruebas o llamadas desde otros módulos.
+     * @param idPedido ID del pedido asociado.
+     * @param listaTransportistas Lista de transportistas disponibles.
+     */
     void crearEnvioInteractivo(const std::string& idPedido, const std::vector<Transportistas>& listaTransportistas);
 
 private:
-    // Vector que almacena los envíos en memoria
+    /**
+     * @brief Vector estático que contiene todos los envíos cargados en memoria.
+     */
     static std::vector<Envio> envios;
 };
 
 #endif // ENVIOS_H
-

@@ -1,6 +1,6 @@
 #ifndef BACKUP_MANAGER_H
 #define BACKUP_MANAGER_H
-
+//CREADO POR: JENNIFER BARRIOS.
 #include <string>
 #include <vector>
 

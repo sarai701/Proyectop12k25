@@ -59,7 +59,8 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
                 break;
 
             case 4:
-                MenuInformes::mostrar();
+                MenuInformes menuInformes;
+                menuInformes.mostrar(usuarioActual);
                 break;
 
             case 5: {

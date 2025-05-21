@@ -9,6 +9,9 @@
 #include <set>
 #include "globals.h"
 
+///KARINA ALEJANDRA ARRIAZA ORTIZ
+//MAYO 2025
+
 using namespace std;
 
 const int CODIGO_INICIAL = 3100;

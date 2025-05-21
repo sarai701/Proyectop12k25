@@ -1,276 +1,329 @@
-//Angoly Araujo Mayo 2025
+// Angoly Araujo Mayo 2025 9959-24-17623
+
 #include "facturacion.h"
-#include "bitacora.h"
-#include "pedidos.h"
 #include "clientes.h"
+#include "pedidos.h"
+#include "bitacora.h"
+#include "usuarios.h"
 #include <fstream>
-#include <cstring>
-#include <cstdlib>
-#include <ctime>
 #include <iomanip>
-#include <vector>
+#include <cstring>
+#include <algorithm>
+#include <regex>
 
-using namespace std;
+// Variables externas que se usan en este módulo
+extern usuarios usuarioRegistrado; // Usuario actualmente registrado en sesión
+extern bitacora auditoria;         // Bitácora para registrar acciones del sistema
 
+// Genera un nuevo ID de factura
+int Facturacion::generarIdFactura() {
+    ifstream archivo("facturas.bin", ios::binary); // Abre archivo binario de facturas
+    int ultimoId = 3554; // ID base mínimo
+    Factura temp;
+
+    // Lee facturas existentes para encontrar el último ID usado
+    while (archivo.read(reinterpret_cast<char*>(&temp), sizeof(Factura))) {
+        if (temp.idFactura > ultimoId)
+            ultimoId = temp.idFactura;
+    }
+
+    archivo.close();
+
+    // Control de rango de IDs permitidos
+    if (ultimoId >= 3606) return -1; // ID fuera de rango permitido
+    return ultimoId + 1; // Retorna el siguiente ID
+}
+
+// Guarda una factura en el archivo binario
+void Facturacion::guardarEnArchivo(const Factura& factura) {
+    ofstream archivo("facturas.bin", ios::binary | ios::app); // Abre en modo añadir
+    archivo.write(reinterpret_cast<const char*>(&factura), sizeof(Factura)); // Escribe la factura
+    archivo.close();
+}
+
+// Registra una acción en la bitácora del sistema
+void Facturacion::registrarBitacora(const Factura& factura, const string& accion, const string& usuario) {
+    ofstream bitacora("bitacora.bin", ios::app); // Abre archivo en modo añadir
+    bitacora << accion << " de factura ID: " << factura.idFactura
+             << " por usuario: " << usuario << endl;
+    bitacora.close();
+}
+
+// Muestra el menú principal del módulo de facturación
 void Facturacion::mostrarMenuFacturacion() {
     int opcion;
     do {
-        system("cls");
-        cout << "=== MENU FACTURACION ===\n";
-        cout << "1. Crear factura\n";
-        cout << "2. Mostrar facturas\n";
-        cout << "3. Modificar factura\n";
-        cout << "4. Eliminar factura\n";
-        cout << "5. Salir\n";
-        cout << "Opcion: ";
+        system("cls"); // Limpia pantalla (en Windows)
+        cout << "===========================================\n";
+        cout << "        SISTEMA DE FACTURACION\n";
+        cout << "     Usuario: " << usuarioRegistrado.getNombre() << "\n";
+        cout << "===========================================\n";
+        cout << " [1] Crear Factura\n";
+        cout << " [2] Mostrar Facturas\n";
+        cout << " [3] Modificar Factura\n";
+        cout << " [4] Eliminar Factura\n";
+        cout << " [0] Salir\n";
+        cout << "-------------------------------------------\n";
+        cout << "Seleccione una opcion: ";
         cin >> opcion;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Limpia el buffer de entrada
 
+        // Ejecuta la opción seleccionada
         switch (opcion) {
             case 1: crearFactura(); break;
             case 2: mostrarFacturas(); break;
             case 3: modificarFactura(); break;
             case 4: eliminarFactura(); break;
-            case 5: break;
-            default:
-                cout << "Opcion invalida!\n";
-                system("pause");
+            case 0: cout << "\nSaliendo del modulo de facturacion...\n"; break;
+            default: cout << "Opcion invalida. Intente de nuevo.\n"; break;
         }
-    } while (opcion != 5);
+
+        if (opcion != 0) {
+            cout << "\nPresione ENTER para continuar...";
+            cin.get(); // Espera que el usuario presione ENTER
+        }
+
+    } while (opcion != 0); // Repite mientras no se seleccione salir
 }
 
-int Facturacion::generarIdFactura() {
-    ifstream file(archivoFacturas, ios::binary);
-    Factura factura;
-    int ultimoId = 3555;
-
-    while (file.read(reinterpret_cast<char*>(&factura), sizeof(Factura))) {
-        if (factura.idFactura > ultimoId)
-            ultimoId = factura.idFactura;
-    }
-
-    file.close();
-
-    int nuevoId = ultimoId + 1;
-    if (nuevoId > 3606)
-        nuevoId = 3556;
-
-    return nuevoId;
-}
-
-void Facturacion::registrarBitacora(const Factura& factura, const string& accion, const string& usuario) {
-    ofstream bitacora(archivoBitacora, ios::app);
-    if (!bitacora) return;
-
-    time_t now = time(0);
-    tm* local = localtime(&now);
-    char timestamp[100];
-    strftime(timestamp, 100, "%d/%m/%Y %H:%M:%S", local);
-
-    bitacora << setw(10) << factura.idFactura << " "
-             << setw(15) << usuario << " "
-             << setw(20) << "FACTURACION" << " "
-             << setw(20) << accion << " "
-             << timestamp << endl;
-
-    bitacora.close();
-}
-
+// Crea una nueva factura a partir de un pedido
 void Facturacion::crearFactura() {
-    int repetir;
-    do {
-        Factura factura;
-        system("cls");
-        cout << "Crear nueva factura\n";
+    int volver;
+    cout << "Desea regresar al menu principal? (1: Si / 0: No): ";
+    cin >> volver;
+    if (volver == 1) return; // Si el usuario desea volver, salir
 
-        factura.idFactura = generarIdFactura();
-        cout << "ID factura generado: " << factura.idFactura << "\n";
+    // Cargar pedidos desde archivo
+    vector<Pedidos> listaPedidos;
+    Pedidos::cargarDesdeArchivoBin(listaPedidos);
 
-        // Cargar y mostrar clientes
-        vector<Clientes> clientesTemporales;
-        Clientes temp;
-        temp.cargarDesdeArchivo(clientesTemporales);
-        Clientes::mostrar(clientesTemporales);
-
-        if (clientesTemporales.empty()) {
-            cout << "No hay clientes disponibles. No se puede crear la factura.\n";
-            system("pause");
-            return;
-        }
-
-        cout << "Ingrese ID del cliente: ";
-        cin >> factura.idCliente;
-
-        // Mostrar pedidos
-        Pedidos pedidos;
-        pedidos.consultarPedidos();
-        cout << "Ingrese ID del pedido: ";
-        cin >> factura.idPedido;
-
-        // Buscar el pedido para extraer monto
-        ifstream filePedido("pedidos.bin", ios::binary);
-        if (!filePedido) {
-            cout << "No se pudo abrir pedidos.bin\n";
-            system("pause");
-            return;
-        }
-
-        struct Pedido {
-            int idPedido;
-            int idCliente;
-            char descripcion[100];
-            float monto;
-            bool entregado;
-        } pedido;
-
-        bool encontrado = false;
-        while (filePedido.read(reinterpret_cast<char*>(&pedido), sizeof(pedido))) {
-            if (pedido.idPedido == factura.idPedido) {
-                factura.monto = pedido.monto;
-                encontrado = true;
-                break;
-            }
-        }
-        filePedido.close();
-
-        if (!encontrado) {
-            cout << "Pedido no encontrado. No se puede crear factura.\n";
-            system("pause");
-            return;
-        }
-
-        factura.pagada = false;
-        strcpy(factura.cliente, "");
-
-        guardarEnArchivo(factura);
-        registrarBitacora(factura, "Factura agregada");
-
-        system("cls");
-        cout << "\n=========== FACTURA ===========" << endl;
-        cout << "ID Factura: " << factura.idFactura << endl;
-        cout << "ID Cliente: " << factura.idCliente << endl;
-        cout << "ID Pedido : " << factura.idPedido << endl;
-        cout << "Monto     : $" << fixed << setprecision(2) << factura.monto << endl;
-        cout << "Pagada    : " << (factura.pagada ? "Sí" : "No") << endl;
-        cout << "===============================" << endl;
-
-        cout << "\n¿Desea regresar al menú principal? (1: Sí / 0: No): ";
-        cin >> repetir;
-    } while (repetir == 0);
-}
-
-void Facturacion::guardarEnArchivo(Factura factura) {
-    ofstream file(archivoFacturas, ios::binary | ios::app);
-    if (file) {
-        file.write(reinterpret_cast<char*>(&factura), sizeof(Factura));
-        file.close();
-    } else {
-        cout << "No se pudo guardar la factura.\n";
-    }
-}
-
-void Facturacion::mostrarFacturas() {
-    system("cls");
-    cout << "Listado de facturas:\n";
-
-    ifstream file(archivoFacturas, ios::binary);
-    if (!file) {
-        cout << "No hay facturas guardadas.\n";
-        system("pause");
+    // Verificar si hay pedidos disponibles
+    if (listaPedidos.empty()) {
+        cout << "No hay pedidos registrados." << endl;
         return;
     }
 
-    Factura factura;
-    cout << left << setw(12) << "ID" << setw(12) << "Cliente" << setw(12) << "Pedido"
-         << setw(12) << "Monto" << setw(10) << "Pagada\n";
-    cout << string(60, '-') << "\n";
-    while (file.read(reinterpret_cast<char*>(&factura), sizeof(Factura))) {
-        cout << left << setw(12) << factura.idFactura
-             << setw(12) << factura.idCliente
-             << setw(12) << factura.idPedido
-             << setw(12) << fixed << setprecision(2) << factura.monto
-             << setw(10) << (factura.pagada ? "Sí" : "No") << "\n";
+    // Mostrar lista de pedidos al usuario
+    cout << "\n--- Lista de pedidos disponibles ---\n";
+    for (const auto& pedido : listaPedidos) {
+        cout << "ID Pedido: " << pedido.getId()
+             << " | ID Cliente: " << pedido.getIdCliente()
+             << " | Estado: " << pedido.getEstado() << endl;
     }
 
-    file.close();
-    system("pause");
+    // Solicita ID del pedido a facturar
+    string idPedidoStr;
+    cout << "Ingrese el ID del pedido para facturar: ";
+    cin >> idPedidoStr;
+
+    // Busca el pedido ingresado
+    auto it = find_if(listaPedidos.begin(), listaPedidos.end(), [&idPedidoStr](const Pedidos& p) {
+        return p.getId() == idPedidoStr;
+    });
+
+    if (it == listaPedidos.end()) {
+        cout << "ID de pedido no encontrado." << endl;
+        return;
+    }
+
+    // Crear nueva factura
+    Factura nueva;
+    nueva.idFactura = generarIdFactura();
+
+    try {
+        nueva.idPedido = stoi(it->getId());
+        nueva.idCliente = stoi(it->getIdCliente());
+    } catch (...) {
+        cerr << "Error al convertir ID de pedido o cliente a entero." << endl;
+        return;
+    }
+
+    nueva.monto = 0; // Inicializa monto
+    nueva.pagada = false;
+    memset(nueva.cliente, 0, sizeof(nueva.cliente)); // Limpia cadena de cliente
+
+    // Calcular monto total desde los detalles del pedido
+    string detalles = it->getDetalles();
+    size_t pos = 0;
+
+    // Procesa cada línea de detalle del pedido
+    while ((pos = detalles.find('\n')) != string::npos) {
+        string linea = detalles.substr(0, pos);
+        detalles.erase(0, pos + 1);
+
+        size_t precioPos = linea.find("Precio:");
+        size_t cantPos = linea.find("Cantidad:");
+
+        if (precioPos != string::npos && cantPos != string::npos) {
+            try {
+                string precioStr = linea.substr(precioPos + 7);
+                string cantidadStr = linea.substr(cantPos + 9, precioPos - cantPos - 9);
+
+                double precio = stod(precioStr);
+                int cantidad = stoi(cantidadStr);
+
+                nueva.monto += precio * cantidad; // Suma al total
+            } catch (...) {
+                cerr << "Error al extraer precio o cantidad de la linea: " << linea << endl;
+            }
+        }
+    }
+
+    // Obtener nombre y NIT del cliente asociado
+    string nombreCliente = "No encontrado";
+    string nitCliente = "No encontrado";
+
+    vector<Clientes> listaClientes;
+    Clientes::cargarDesdeArchivo(listaClientes);
+
+    // Busca el cliente por ID
+    for (const auto& c : listaClientes) {
+        if (stoi(c.getId()) == nueva.idCliente) {
+            nombreCliente = c.getNombre();
+            nitCliente = c.getNit();
+            strncpy(nueva.cliente, nombreCliente.c_str(), sizeof(nueva.cliente));
+            break;
+        }
+    }
+
+    // Guarda la factura en archivo
+    guardarEnArchivo(nueva);
+    registrarBitacora(nueva, "Creacion", usuarioRegistrado.getNombre());
+
+    // Muestra los datos de la factura
+    cout << "\n\n=====================================\n";
+    cout << "              FACTURA                \n";
+    cout << "=====================================\n";
+    cout << "ID Factura : " << nueva.idFactura << endl;
+    cout << "ID Cliente : " << nueva.idCliente << endl;
+    cout << "Nombre     : " << nombreCliente << endl;
+    cout << "NIT        : " << nitCliente << endl;
+    cout << "ID Pedido  : " << nueva.idPedido << endl;
+    cout << "Monto      : $" << fixed << setprecision(2) << nueva.monto << endl;
+    cout << "Estado     : " << (nueva.pagada ? "Pagada" : "No Pagada") << endl;
+    cout << "=====================================\n";
+    cout << "Factura creada exitosamente.\n";
+    cin.ignore();
+    cin.get(); // Espera para que el usuario lea
 }
 
+// Modifica el estado de una factura existente
 void Facturacion::modificarFactura() {
-    int repetir;
-    do {
-        system("cls");
-        int id;
-        cout << "Ingrese ID de la factura a modificar: ";
-        cin >> id;
+    int volver;
+    cout << "Desea regresar al menu principal? (1: Si / 0: No): ";
+    cin >> volver;
+    if (volver == 1) return;
 
-        fstream file(archivoFacturas, ios::binary | ios::in | ios::out);
-        Factura factura;
-        bool encontrado = false;
+    mostrarFacturas(); // Muestra facturas existentes
 
-        while (file.read(reinterpret_cast<char*>(&factura), sizeof(Factura))) {
-            if (factura.idFactura == id) {
-                cout << "\nFactura actual:\n";
-                cout << "ID Cliente actual: " << factura.idCliente << endl;
-                cout << "ID Pedido actual : " << factura.idPedido << endl;
-                cout << "Monto actual     : " << factura.monto << endl;
-                cout << "Pagada (1/0)     : " << factura.pagada << endl;
+    int id;
+    cout << "Ingrese el ID de la factura a modificar: ";
+    cin >> id;
 
-                cout << "\nIngrese nuevo ID de cliente: ";
-                cin >> factura.idCliente;
-                cout << "Ingrese nuevo ID de pedido : ";
-                cin >> factura.idPedido;
-                cout << "Ingrese nuevo monto        : ";
-                cin >> factura.monto;
-                cout << "¿Está pagada? (1: Sí / 0: No): ";
-                cin >> factura.pagada;
+    fstream archivo("facturas.bin", ios::binary | ios::in | ios::out);
+    Factura factura;
+    bool encontrado = false;
 
-                file.seekp(-static_cast<int>(sizeof(Factura)), ios::cur);
-                file.write(reinterpret_cast<char*>(&factura), sizeof(Factura));
-                encontrado = true;
-                registrarBitacora(factura, "Factura modificada");
+    // Busca la factura por ID
+    while (archivo.read(reinterpret_cast<char*>(&factura), sizeof(Factura))) {
+        if (factura.idFactura == id) {
+            encontrado = true;
+
+            // Cambia el estado de pago
+            cout << "Modificar estado de pago (1: Pagada / 0: No Pagada): ";
+            cin >> factura.pagada;
+
+            // Retrocede para sobrescribir
+            archivo.seekp(-static_cast<int>(sizeof(Factura)), ios::cur);
+            archivo.write(reinterpret_cast<const char*>(&factura), sizeof(Factura));
+
+            registrarBitacora(factura, "Modificacion", usuarioRegistrado.getNombre());
+            cout << "Factura modificada correctamente.\n";
+            break;
+        }
+    }
+
+    if (!encontrado)
+        cout << "Factura no encontrada.\n";
+
+    archivo.close();
+}
+
+// Elimina una factura del sistema
+void Facturacion::eliminarFactura() {
+    int volver;
+    cout << "Desea regresar al menu principal? (1: Si / 0: No): ";
+    cin >> volver;
+    if (volver == 1) return;
+
+    mostrarFacturas(); // Muestra facturas existentes
+
+    int id;
+    cout << "Ingrese el ID de la factura a eliminar: ";
+    cin >> id;
+
+    ifstream archivoLectura("facturas.bin", ios::binary);
+    ofstream archivoTemp("temp.bin", ios::binary);
+
+    Factura factura;
+    bool eliminado = false;
+
+    // Copia todas menos la factura a eliminar
+    while (archivoLectura.read(reinterpret_cast<char*>(&factura), sizeof(Factura))) {
+        if (factura.idFactura == id) {
+            eliminado = true;
+            registrarBitacora(factura, "Eliminacion", usuarioRegistrado.getNombre());
+        } else {
+            archivoTemp.write(reinterpret_cast<const char*>(&factura), sizeof(Factura));
+        }
+    }
+
+    archivoLectura.close();
+    archivoTemp.close();
+
+    // Sustituye el archivo original
+    remove("facturas.bin");
+    rename("temp.bin", "facturas.bin");
+
+    if (eliminado)
+        cout << "Factura eliminada correctamente.\n";
+    else
+        cout << "Factura no encontrada.\n";
+}
+
+// Muestra todas las facturas registradas
+void Facturacion::mostrarFacturas() {
+    ifstream archivo("facturas.bin", ios::binary);
+    if (!archivo) {
+        cout << "No hay facturas registradas.\n";
+        return;
+    }
+
+    vector<Clientes> listaClientes;
+    Clientes::cargarDesdeArchivo(listaClientes);
+
+    Factura factura;
+    cout << "\n======= LISTA DE FACTURAS =======\n";
+
+    // Lee y muestra cada factura
+    while (archivo.read(reinterpret_cast<char*>(&factura), sizeof(Factura))) {
+        string nombre = "N/D";
+
+        // Busca el nombre del cliente
+        for (const auto& cliente : listaClientes) {
+            if (stoi(cliente.getId()) == factura.idCliente) {
+                nombre = cliente.getNombre();
                 break;
             }
         }
-        file.close();
 
-        if (!encontrado) cout << "Factura no encontrada.\n";
+        cout << "ID Factura : " << factura.idFactura << endl;
+        cout << "ID Cliente : " << factura.idCliente << " (" << nombre << ")\n";
+        cout << "ID Pedido  : " << factura.idPedido << endl;
+        cout << "Monto      : $" << fixed << setprecision(2) << factura.monto << endl;
+        cout << "Estado     : " << (factura.pagada ? "Pagada" : "No Pagada") << endl;
+        cout << "----------------------------------\n";
+    }
 
-        cout << "\n¿Desea regresar al menú principal? (1: Sí / 0: No): ";
-        cin >> repetir;
-    } while (repetir == 0);
-}
-
-void Facturacion::eliminarFactura() {
-    int repetir;
-    do {
-        system("cls");
-        int id;
-        cout << "Ingrese ID de la factura a eliminar: ";
-        cin >> id;
-
-        ifstream original(archivoFacturas, ios::binary);
-        ofstream temporal("temp.bin", ios::binary);
-        Factura factura;
-        bool encontrado = false;
-
-        while (original.read(reinterpret_cast<char*>(&factura), sizeof(Factura))) {
-            if (factura.idFactura == id) {
-                registrarBitacora(factura, "Factura eliminada");
-                encontrado = true;
-                continue;
-            }
-            temporal.write(reinterpret_cast<char*>(&factura), sizeof(Factura));
-        }
-
-        original.close();
-        temporal.close();
-        remove(archivoFacturas);
-        rename("temp.bin", archivoFacturas);
-
-        if (!encontrado) cout << "Factura no encontrada.\n";
-        else cout << "Factura eliminada.\n";
-
-        cout << "\n¿Desea regresar al menú principal? (1: Sí / 0: No): ";
-        cin >> repetir;
-    } while (repetir == 0);
+    archivo.close();
 }

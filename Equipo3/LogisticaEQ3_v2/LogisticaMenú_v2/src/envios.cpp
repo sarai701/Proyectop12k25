@@ -1,3 +1,5 @@
+//LUIS ANGEL MENDEZ FUENTES
+//9959-24-6845
 #include "envios.h"
 #include "pedidos.h"
 #include "transportistas.h"
@@ -22,13 +24,25 @@ std::vector<Envio> Envios::envios;
 const int ID_ENVIO_INICIAL = 3500;
 const int ID_ENVIO_FINAL = 3599;
 
-// Funciones auxiliares para ID único
+/**
+ * @brief Verifica si un ID de envío ya ha sido utilizado.
+ *
+ * @param lista Vector de envíos existentes.
+ * @param id ID a verificar.
+ * @return true si el ID está disponible, false si ya existe.
+ */
 bool idEnvioDisponible(const vector<Envio>& lista, const string& id) {
     return none_of(lista.begin(), lista.end(), [&id](const Envio& e) {
         return e.idEnvio == id;
     });
 }
 
+/**
+ * @brief Genera un ID único para un nuevo envío dentro del rango permitido.
+ *
+ * @param lista Vector de envíos existentes.
+ * @return Un string con el nuevo ID único o una cadena vacía si se excede el rango.
+ */
 string generarIdEnvioUnico(const vector<Envio>& lista) {
     for (int i = ID_ENVIO_INICIAL; i <= ID_ENVIO_FINAL; ++i) {
         string id = to_string(i);
@@ -38,7 +52,11 @@ string generarIdEnvioUnico(const vector<Envio>& lista) {
 }
 
 // ----------- Funciones privadas estáticas ------------
-
+/**
+ * @brief Carga todos los envíos almacenados desde el archivo binario.
+ *
+ * @return Vector de estructuras Envio leídas desde el archivo.
+ */
 vector<Envio> Envios::cargarEnviosDesdeArchivo() {
     ifstream archivo("envios.bin", ios::binary);
     vector<Envio> lista;
@@ -71,6 +89,11 @@ vector<Envio> Envios::cargarEnviosDesdeArchivo() {
     return lista;
 }
 
+/**
+ * @brief Guarda todos los envíos en un archivo binario.
+ *
+ * @param envios Vector de estructuras Envio a guardar.
+ */
 void Envios::guardarEnviosEnArchivo(const vector<Envio>& envios) {
     ofstream archivo("envios.bin", ios::binary | ios::trunc);
     for (const auto& envio : envios) {
@@ -97,6 +120,11 @@ void Envios::guardarEnviosEnArchivo(const vector<Envio>& envios) {
 
 // ----------- Funciones auxiliares ------------
 
+/**
+ * @brief Carga todos los transportistas disponibles desde el archivo.
+ *
+ * @return Vector de transportistas con disponibilidad "disponible".
+ */
 vector<Transportistas> cargarTransportistasDisponibles() {
     vector<Transportistas> todos;
     Transportistas::cargarDesdeArchivo(todos);
@@ -108,11 +136,21 @@ vector<Transportistas> cargarTransportistasDisponibles() {
     return disponibles;
 }
 
+/**
+ * @brief Carga todos los pedidos existentes desde el archivo binario.
+ *
+ * @return Vector con la lista de pedidos.
+ */
 vector<Pedidos> cargarPedidos() {
     Pedidos::cargarDesdeArchivoBin(Pedidos::listaPedidos);
     return Pedidos::listaPedidos;
 }
 
+/**
+ * @brief Guarda la lista de pedidos en el archivo binario.
+ *
+ * @param pedidos Vector de pedidos a guardar.
+ */
 void guardarPedidos(const vector<Pedidos>& pedidos) {
     Pedidos::listaPedidos = pedidos;
     Pedidos::guardarEnArchivoBin(Pedidos::listaPedidos);
@@ -120,6 +158,12 @@ void guardarPedidos(const vector<Pedidos>& pedidos) {
 
 // ----------- Métodos de Envios ------------
 
+/**
+ * @brief Crea un nuevo envío interactivo solicitando al usuario la selección de pedido y transportista.
+ *
+ * Filtra los pedidos con estado "procesado" y transportistas con disponibilidad.
+ * Permite seleccionar ambos y genera un nuevo envío con ID único.
+ */
 void Envios::crearEnvioInteractivo() {
     system("cls");
     cout << "------------------------------------------------------------\n";
@@ -220,6 +264,15 @@ void Envios::crearEnvioInteractivo() {
     cout << "\n\tEnvio creado exitosamente.\n";
 }
 
+/**
+ * @brief Crea un nuevo envío automáticamente con un transportista disponible.
+ *
+ * Utiliza el primer transportista disponible en la lista proporcionada.
+ * Asigna un ID único al envío y lo marca como "en camino".
+ *
+ * @param idPedido ID del pedido al cual se le asignará el envío.
+ * @param transportistasDisponibles Lista de transportistas disponibles.
+ */
 void Envios::crearEnvio(const std::string& idPedido, const std::vector<Transportistas>& transportistasDisponibles) {
     if (transportistasDisponibles.empty()) {
         std::cout << "No hay transportistas disponibles." << std::endl;
@@ -237,18 +290,25 @@ void Envios::crearEnvio(const std::string& idPedido, const std::vector<Transport
     envios.push_back(nuevo);
     guardarEnviosEnArchivo(envios);
 
-    std::cout << "Envío creado con éxito para pedido: " << idPedido << std::endl;
+    std::cout << "Envio creado con exito para pedido: " << idPedido << std::endl;
 }
 
+/**
+ * @brief Muestra todos los envíos registrados en forma de tabla.
+ *
+ * Carga los envíos desde el archivo binario y los presenta con sus respectivos
+ * IDs de envío, pedidos, transportistas y estados.
+ * Si no hay envíos, informa al usuario.
+ */
 void Envios::mostrarEnvios() {
     system("cls");  // Limpia la pantalla
 
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
 
-    cout << "\n----------------------------- Reporte de Envíos -----------------------------\n" << endl;
+    cout << "\n----------------------------- REPORTE DE ENVIOS -----------------------------\n" << endl;
 
     if (envios.empty()) {
-        cout << "\t\t\tNo hay información ...\n";
+        cout << "\t\t\tNo hay informacion ...\n";
         cout << "\nPresione una tecla para continuar...";
         cin.ignore();
         cin.get();
@@ -256,7 +316,7 @@ void Envios::mostrarEnvios() {
     }
 
     cout << left
-         << setw(15) << "ID Envío"
+         << setw(15) << "ID Envio"
          << setw(15) << "ID Pedido"
          << setw(20) << "Transportista"
          << setw(15) << "Estado" << endl;
@@ -278,11 +338,18 @@ void Envios::mostrarEnvios() {
     cin.get();
 }
 
+/**
+ * @brief Muestra una tabla de envíos a partir de una estructura de datos ya formateada.
+ *
+ * Esta función asume que la primera fila del vector contiene los encabezados.
+ *
+ * @param tabla Vector de vectores de strings, representando filas y columnas de la tabla.
+ */
 void mostrarTablaEnvios(const vector<vector<string>>& tabla) {
     cout << "\n----------------------------- Tabla de Envíos -----------------------------\n" << endl;
 
     if (tabla.empty()) {
-        cout << "\t\t\tNo hay información ...\n";
+        cout << "\t\t\tNo hay informacion ...\n";
         return;
     }
 
@@ -307,6 +374,13 @@ void mostrarTablaEnvios(const vector<vector<string>>& tabla) {
     cout << "---------------------------------------------------------------------------\n";
 }
 
+/**
+ * @brief Permite modificar el estado de un envío existente.
+ *
+ * Muestra los envíos actuales, solicita el ID al usuario, y permite cambiar
+ * el estado a "en camino" o "entregado". Si se marca como entregado, también
+ * actualiza el estado del pedido relacionado.
+ */
 void modificarEstadoEnvio() {
     system("cls");
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
@@ -314,7 +388,7 @@ void modificarEstadoEnvio() {
     cout << "\n---------------------------- Modificar Estado de Envío ----------------------------\n" << endl;
 
     if (envios.empty()) {
-        cout << "\n\t\tNo hay envíos registrados.\n";
+        cout << "\n\t\tNo hay envios registrados.\n";
         cout << "------------------------------------------------------------------------------------\n";
         system("pause");
         return;
@@ -333,7 +407,7 @@ void modificarEstadoEnvio() {
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // limpiar buffer
 
     string idEnvio;
-    cout << "\nIngrese ID de envío a modificar (0 para salir): ";
+    cout << "\nIngrese ID de envio a modificar (0 para salir): ";
     getline(cin, idEnvio);
 
     if (idEnvio == "0") {
@@ -354,7 +428,7 @@ void modificarEstadoEnvio() {
 
             // Validación del estado
             if (nuevoEstado != "en camino" && nuevoEstado != "entregado") {
-                cout << "\n\tEstado inválido. Solo se permite 'en camino' o 'entregado'.\n";
+                cout << "\n\tEstado invalido. Solo se permite 'en camino' o 'entregado'.\n";
                 cout << "------------------------------------------------------------------------------------\n";
                 system("pause");
                 return;
@@ -381,14 +455,19 @@ void modificarEstadoEnvio() {
     }
 
     if (!encontrado) {
-        cout << "\n\tNo se encontró el envío con ID: " << idEnvio << "\n";
+        cout << "\n\tNo se encontro el envío con ID: " << idEnvio << "\n";
     }
 
     cout << "------------------------------------------------------------------------------------\n";
     system("pause");
 }
 
-
+/**
+ * @brief Cancela un envío que aún no ha sido entregado.
+ *
+ * Muestra todos los envíos, permite seleccionar uno por ID y lo marca
+ * como "Cancelado" si su estado actual es "en camino".
+ */
 void cancelarEnvio() {
     system("cls");
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
@@ -396,7 +475,7 @@ void cancelarEnvio() {
     cout << "\n------------------------------ Cancelar Envío ------------------------------\n" << endl;
 
     if (envios.empty()) {
-        cout << "\n\t\tNo hay envíos registrados.\n";
+        cout << "\n\t\tNo hay envios registrados.\n";
         cout << "---------------------------------------------------------------------------\n";
         system("pause");
         return;
@@ -415,7 +494,7 @@ void cancelarEnvio() {
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // limpiar buffer
 
     string idEnvio;
-    cout << "\nIngrese ID de envío a cancelar (0 para salir): ";
+    cout << "\nIngrese ID de envio a cancelar (0 para salir): ";
     getline(cin, idEnvio);
 
     if (idEnvio == "0") {
@@ -450,27 +529,33 @@ void cancelarEnvio() {
         Envios::guardarEnviosEnArchivo(envios);
         cout << "\n----------------------------- Envío cancelado exitosamente -----------------------------\n";
     } else {
-        cout << "\n\tNo se encontró el envío con ID: " << idEnvio << "\n";
+        cout << "\n\tNo se encontro el envio con ID: " << idEnvio << "\n";
     }
 
     cout << "---------------------------------------------------------------------------\n";
     system("pause");
 }
 
+/**
+ * @brief Elimina un envío del sistema.
+ *
+ * Solicita el ID del envío a eliminar. Si lo encuentra, lo elimina del archivo binario.
+ * No hay validaciones sobre su estado, se elimina directamente.
+ */
 void eliminarEnvio() {
     system("cls");
     vector<Envio> envios = Envios::cargarEnviosDesdeArchivo();
 
-    cout << "\n------------------------------ Eliminar Envío ------------------------------\n" << endl;
+    cout << "\n------------------------------ Eliminar Envio ------------------------------\n" << endl;
 
     if (envios.empty()) {
-        cout << "\n\t\tNo hay envíos registrados.\n";
+        cout << "\n\t\tNo hay envios registrados.\n";
         cout << "---------------------------------------------------------------------------\n";
         system("pause");
         return;
     }
 
-    cout << left << setw(12) << "ID Envío"
+    cout << left << setw(12) << "ID Envio"
          << setw(20) << "Estado" << endl;
     cout << "---------------------------------------------------------------------------\n";
 
@@ -498,15 +583,21 @@ void eliminarEnvio() {
     if (it != envios.end()) {
         envios.erase(it, envios.end());
         Envios::guardarEnviosEnArchivo(envios);
-        cout << "\n----------------------------- Envío eliminado exitosamente -----------------------------\n";
+        cout << "\n----------------------------- Envio eliminado exitosamente -----------------------------\n";
     } else {
-        cout << "\n\tNo se encontró el envío con ID: " << idEnvio << "\n";
+        cout << "\n\tNo se encontro el envio con ID: " << idEnvio << "\n";
     }
 
     cout << "---------------------------------------------------------------------------\n";
     system("pause");
 }
 
+/**
+ * @brief Menú principal de gestión de envíos.
+ *
+ * Ofrece opciones para crear, consultar, modificar, cancelar o eliminar envíos.
+ * Controla el flujo de navegación hasta que el usuario decide salir.
+ */
 void Envios::gestionEnvios() {
     int opcion = 0;
     do {
@@ -541,7 +632,7 @@ void Envios::gestionEnvios() {
                 eliminarEnvio();
                 break;
             case 6:
-                cout << "\n\tSaliendo al menú principal...\n";
+                cout << "\n\tSaliendo al menu principal...\n";
                 break;
             default:
                 cout << "\n\tOpción inválida.\n";
@@ -549,4 +640,5 @@ void Envios::gestionEnvios() {
                 break;
         }
     } while (opcion != 6);
+
 }
