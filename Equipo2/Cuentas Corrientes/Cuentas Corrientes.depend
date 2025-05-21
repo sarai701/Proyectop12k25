@@ -53,6 +53,12 @@
 	<iostream>
 	"bitacora.h"
 
+
+1746971183 D
+	<ctime>
+
+1746940673 source:c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+
 1745851900 D
 
 1746457224 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\main.cpp
@@ -72,6 +78,7 @@
 1745851900 56619e7b5284eab0880eb50fa314d941501a1
 
 1746940673 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+
 
 	"bitacora.h"
 	<iostream>
@@ -97,10 +104,59 @@
 
 	<ctime>
 
-1746940673 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+
+1746985125 93706f0502f46a3374cd9fd8aa862b1ede42a
+	"acreedor.h"
+	"bitacora.h"
+	"usuarios.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<conio.h>
+	<iomanip>
+
+1746457224 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\main.cpp
+	<iostream>
+	<fstream>
+	"usuarios.h"
+	"catalogos.h"
+	"procesos.h"
+
+1746201152 c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
 	<iostream>
 
+1746201152 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+
+1745851900 56619e7b5284eab0880eb50fa314d941501a1
+
+1745851900 6112496d9c8d6b92a3fa298b46a4da780ddb1
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<iostream>
+	<sstream>
+	"bitacora.h"
+	<limits>
+
+1746940673 c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+
+1746940673 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+
+	<iostream>
+	<iostream>
+	<iostream>
+
+1746958489 source:c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
+
 1746958026 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
+
 	"usuarios.h"
 
 	<fstream>
@@ -125,8 +181,35 @@
 	<limits>
 
 
+1746958489 c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
+
+
 1746954038 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
+
 	<string>
+	<iostream>
+	<string>
+
+1745851900 
+
+1746201152 c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+	<iostream>
+
+1746986363 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\src\cliente.cpp
+	"cliente.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+
+1746986007 c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\include\cliente.h
+	<iostream>
+
+1746201152 source:c:\users\miais\documents\programacion\programacion i\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
 
 1746456061 source:c:\programacion 1\progra\proyectop12k25\equipo2\cuentas corrientes\src\acreedor.cpp
 	"acreedor.h"
@@ -237,7 +320,10 @@
 	<fstream>
 	<string>
 
-1746452873 D
+1746985125 source:c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\src\acreedor.cpp
+
+
+1746985125 c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\include\acreedor.h
 
 1746423599 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\acreedor.cpp
 	"acreedor.h"
@@ -250,6 +336,7 @@
 	<iomanip>
 
 1746423599 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\acreedor.h
+
 	<iostream>
 
 1746423599 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\catalogos.cpp
@@ -261,6 +348,24 @@
 
 1746423599 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\catalogos.h
 
+
+1746987245 c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\include\cliente.h
+	<iostream>
+
+1746987245 c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\include\proveedor.h
+	<iostream>
+
+1746987245 source:c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\src\cliente.cpp
+	"cliente.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+
 1746201967 c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\include\cliente.h
 	<iostream>
 
@@ -269,7 +374,17 @@
 
 1746201967 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\cliente.cpp
 
-1746221627 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\cliente.cpp
+
+1747626295 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\cliente.cpp
+	"cliente.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
 
 1746937746 7566a77f57c3bf4460f4fe62b5eded80e6ab0
 	"cliente.h"
@@ -295,26 +410,42 @@
 	<fstream>
 	<string>
 
+
+1746987245 source:c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\src\proveedor.cpp
+	"proveedor.h"
+	"bitacora.h"
+	"usuarios.h"
+
 1746423599 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\src\proveedor.cpp
 
 1746221627 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\cliente.h
+
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<conio.h>
+	<iomanip>
+
+1747626270 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\cliente.h
 	<iostream>
 
-1746935187 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
+1746940113 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\bitacora.h
 	<iostream>
 
-1746221627 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
-	<iostream>
+1746992140 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\usuarios.h
+	<string>
 
-1746221627 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
+1746992140 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\usuarios.cpp
 	"usuarios.h"
 	<fstream>
 	<cstdlib>
 	<conio.h>
 	<iostream>
+	<sstream>
 	"bitacora.h"
+	<limits>
 
-1746452873 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\acreedor.cpp
+1747626379 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\acreedor.cpp
 	"acreedor.h"
 	"bitacora.h"
 	"usuarios.h"
@@ -324,7 +455,7 @@
 	<conio.h>
 	<iomanip>
 
-1746452873 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\acreedor.h
+1746992140 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\acreedor.h
 	<iostream>
 
 1746452873 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\catalogos.cpp
@@ -336,25 +467,33 @@
 
 1746452873 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\catalogos.h
 
-1746452873 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\proveedor.h
+1746992140 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\proveedor.h
 	<iostream>
 
-1746461306 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\factura.cpp
-	"factura.h"
-	<iostream>
-	<fstream>
-	<sstream>
-
-1746461306 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\factura.h
+1747626045 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\factura.cpp
 	<iostream>
 	<fstream>
 	<string>
+	<iomanip>
+	<algorithm>
+	<ctime>
+	<vector>
+	"factura.h"
+	"utilidades.h"
 
-1746461306 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\procesos.cpp
+1747626066 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\factura.h
+	<string>
+	<ctime>
+	<iomanip>
+	"cliente.h"
+
+1747627670 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\procesos.cpp
 	<iostream>
+	<limits>
 	"procesos.h"
 	"transaccion.h"
 	"factura.h"
+	"pago.h"
 
 1746461306 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\procesos.h
 
@@ -363,9 +502,21 @@
 	<fstream>
 	<string>
 
-1746452873 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\proveedor.cpp
+1747626325 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\proveedor.cpp
+	"proveedor.h"
+	"bitacora.h"
+	"usuarios.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<conio.h>
+	<iomanip>
+
+
+1746958489 source:c:\users\astri\onedrive\documentos\programaci�n i\proyectop12k25\equipo2\cuentas corrientes\main.cpp
 
 1746954559 source:c:\users\astri\onedrive\documentos\programación i\proyectop12k25\equipo2\cuentas corrientes\main.cpp
+
 	<iostream>
 	<fstream>
 	<cstdlib>
@@ -403,15 +554,17 @@
 
 1746452873 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\transaccion.cpp
 
-1746938418 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\main.cpp
+1746992140 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\main.cpp
 	<iostream>
 	<fstream>
+	<cstdlib>
 	"usuarios.h"
 	"catalogos.h"
 	"procesos.h"
 	"bitacora.h"
+	<limits>
 
-1746937746 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
+1746940113 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\bitacora.cpp
 	"bitacora.h"
 	<iostream>
 	<fstream>
@@ -487,4 +640,21 @@
 	<iostream>
 	<fstream>
 	<sstream>
+
+
+1747625693 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\utilidades.h
+	<string>
+
+1747625693 source:c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\src\utilidades.cpp
+	"utilidades.h"
+	"factura.h"
+	<fstream>
+	<sstream>
+	<limits>
+	<cctype>
+	<algorithm>
+
+1747625600 c:\users\mishel\onedrive\documentos\programacion\programacion 1\proyectop12k25\equipo2\cuentas corrientes\include\pago.h
+	<iostream>
+
 

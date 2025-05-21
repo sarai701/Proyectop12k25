@@ -16,6 +16,11 @@ usuario        100            LOGS
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS          
+
+usuario1       Transacci�n    Registro de nueva transacci�n ID: 8701
+usuario        100            LOGS           
+usuario        100            LOGS           
+
 usuario1       Transacción    Registro de nueva transacción ID: 8701
 usuario        100            LOGS           
 usuario        100            LOGS           
@@ -125,3 +130,32 @@ Juan           8040           INA
 
 Juan           100            LOGS           05-11-2025 10:19 AM
 
+
+
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+Juan           8011           INS            
+Juan           8011           INS            
+
+Juan           100            LOGS           05-11-2025 01:38 PM
+Juan           100            LOGS           05-11-2025 01:38 PM
+
+Luisa          100            LOGS           05-11-2025 01:49 PM
+Luisa          100            LOGS           05-11-2025 01:54 PM
+Luisa          8035           RPR            05-11-2025 01:55 PM
+Luisa          100            LOGS           05-11-2025 01:55 PM
+               100            INSUS          05-11-2025 02:12 PM
+Marisa         100            LOGS           05-11-2025 02:13 PM
+Marisa         8040           INA            05-11-2025 02:14 PM
+Marisa         8041           MA             05-11-2025 02:15 PM
+Marisa         8035           RAR            05-11-2025 02:15 PM
+Marisa         8011           INS            05-11-2025 02:15 PM
+Marisa         8011           MC             05-11-2025 02:15 PM
+Marisa         8011           RPC            05-11-2025 02:16 PM
+Luisa          100            LOGS           05-11-2025 02:16 PM
+Luisa          100            INSUS          05-11-2025 02:17 PM
+Luisa          100            SRCH           05-11-2025 02:17 PM
+Luisa          100            DELUS          05-11-2025 02:17 PM
+Luisa          100            SRCH           05-11-2025 02:17 PM
+Luisa          100            BACK           05-11-2025 02:17 PM

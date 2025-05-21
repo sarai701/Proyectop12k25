@@ -39,20 +39,24 @@
 		<Unit filename="include/catalogos.h" />
 		<Unit filename="include/cliente.h" />
 		<Unit filename="include/factura.h" />
+		<Unit filename="include/pago.h" />
 		<Unit filename="include/procesos.h" />
 		<Unit filename="include/proveedor.h" />
 		<Unit filename="include/transaccion.h" />
 		<Unit filename="include/usuarios.h" />
+		<Unit filename="include/utilidades.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/acreedor.cpp" />
 		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/catalogos.cpp" />
 		<Unit filename="src/cliente.cpp" />
 		<Unit filename="src/factura.cpp" />
+		<Unit filename="src/pago.cpp" />
 		<Unit filename="src/procesos.cpp" />
 		<Unit filename="src/proveedor.cpp" />
 		<Unit filename="src/transaccion.cpp" />
 		<Unit filename="src/usuarios.cpp" />
+		<Unit filename="src/utilidades.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

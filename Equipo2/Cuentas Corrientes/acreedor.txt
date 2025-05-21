@@ -1,2 +1,3 @@
 001            Acreedor1      12345678       000            Banco2         
 1001           Acreedor2      67890012       89345612-78    Bi             
+2              Cine           245678         895843         Banrural       
