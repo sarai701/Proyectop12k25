@@ -39,9 +39,9 @@ void realizarBackup() { //Crea un carpeta llamado "backup" si no existe
     //Si los archivos de respaldo ya existen, se sobrescriben automáticamente.
     // Lista de archivos a respaldar
     const char* archivos[] = {
-        "clientes.txt", "proveedores.txt", "empleados.txt",
-        "movimientos.txt", "prestamos.txt", "bitacora.txt",
-        "auditores.txt", "pagos.txt", "salarios.txt"
+        "bitacora.dat", "movimientos.dat",
+        "auditores.dat", "clientes.dat", "empleados.dat", "login.dat",
+        "nominas.dat", "pagos.dat", "prestamos.dat", "proveedores.dat"
     };
 
     // Copiar cada archivo sobrescribiendo el anterior

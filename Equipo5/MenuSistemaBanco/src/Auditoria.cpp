@@ -1,175 +1,171 @@
-//Jonathan Samuel Gonzalez Ixpata
-#include "Auditoria.h"
-#include <iostream>       // Para entrada y salida estándar
-#include <fstream>        // Para leer y escribir archivos
-#include "Bitacora.h"     // Para registrar acciones en la bitácora
+//Jonathan Samuel Gonzalez Ixpata 9959-23-3184
+#include "Auditoria.h"      // Declaración de la clase Auditoria
+#include <iostream>         // Entrada y salida estándar
+#include <fstream>          // Manejo de archivos binarios
+#include <cstring>          // Para usar strncpy
+#include "Bitacora.h"       // Para registrar acciones en la bitácora
 
 #ifdef _WIN32
-#include <cstdlib>        // Para usar system("cls") en Windows
+#include <cstdlib>          // Para usar system("cls") en Windows
 #endif
 
-Bitacora bitacoralogAuditoria;    // Objeto global para registrar acciones en la bitácora
-using namespace std;
+Bitacora bitacoralogAuditoria; // Bitácora para registrar acciones en Auditoria
+using namespace std;           // Evita usar std:: en todo el código
 
-// Función para limpiar la pantalla dependiendo del sistema operativo
+// Limpia la pantalla según el sistema operativo
 void Auditoria::limpiarPantalla() {
-#ifdef _WIN32
-    system("cls");        // Limpia la pantalla en Windows
-#else
-    system("clear");      // Limpia la pantalla en Linux o Mac
-#endif
+    #ifdef _WIN32
+        system("cls");     // Comando para limpiar pantalla en Windows
+    #else
+        system("clear");   // Comando para limpiar pantalla en otros sistemas
+    #endif
 }
 
-// Función para pausar el programa hasta que el usuario presione ENTER
+// Pausa la ejecución hasta que el usuario presione ENTER
 void Auditoria::pausar() {
-    cout << "\nPresione ENTER para continuar...";  // Mensaje para el usuario
-    cin.ignore();        // Ignora entrada previa
-    cin.get();           // Espera a que el usuario presione ENTER
+    cout << "\nPresione ENTER para continuar...";
+    cin.ignore();          // Limpia el buffer del teclado
+    cin.get();             // Espera a que se presione ENTER
 }
 
+// Asigna el nombre del usuario actual a la clase
 void Auditoria::setUsuario(const string& u) {
     usuario = u;
 }
 
-// Menú principal de Auditoría
+// Muestra el menú principal de Auditoría
 void Auditoria::menuAuditoria() {
-    int opcion;          // Variable para almacenar la opción del usuario
+    int opcion;
     do {
-        limpiarPantalla();    // Limpia pantalla antes de mostrar el menú
+        limpiarPantalla();                     // Limpia pantalla antes de mostrar menú
         cout << "\nUsuario: " << usuario << endl;
-        cout << "\n===== MENÚ DE AUDITORÍA =====";
-        cout << "\n1. Gestión de Auditores";
-        cout << "\n2. Registros Realizados";
-        cout << "\n3. Volver al menú anterior";
-        cout << "\nSeleccione una opción: ";
-        cin >> opcion;        // Lee la opción del usuario
-        cin.ignore();         // Limpia el buffer
+        cout << "\n===== MENU DE AUDITORIA =====";
+        cout << "\n1. Gestion de Auditores";
+        cout << "\n2. Volver al menu anterior";
+        cout << "\nSeleccione una opcion: ";
+        cin >> opcion;                         // Lee opción del usuario
+        cin.ignore();                          // Elimina salto de línea pendiente
 
         switch (opcion) {
-            case 1: submenuAuditor(); break;             // Ir al submenú de auditores
-            case 2: registrosRealizados(); break;        // Mostrar registros de auditoría
-            case 3: limpiarPantalla(); return;           // Volver al menú anterior
+            case 1: submenuAuditor(); break;   // Muestra submenú para gestionar auditores
+            case 2: limpiarPantalla(); return; // Sale del menú
             default:
-                cout << "\n¡Opción inválida!";           // Mensaje de error
-                pausar();                                // Pausar para que el usuario vea el mensaje
+                cout << "\nOpcion invalida!";
+                pausar();                      // Espera a que el usuario continúe
         }
-    } while (true);      // Bucle infinito hasta que se seleccione la opción 3
+    } while (true);
 }
 
-// Submenú para gestionar auditores
+// Submenú para registrar, borrar y mostrar auditores
 void Auditoria::submenuAuditor() {
-    int opcion;          // Variable para almacenar la opción del usuario
+    int opcion;
     do {
-        limpiarPantalla();    // Limpia pantalla antes de mostrar el submenú
+        limpiarPantalla();
         cout << "\nUsuario: " << usuario << endl;
-        cout << "\n===== GESTIÓN DE AUDITORES =====";
+        cout << "\n===== GESTION DE AUDITORES =====";
         cout << "\n1. Registrar Auditor";
         cout << "\n2. Borrar Auditor";
         cout << "\n3. Desplegar Auditores";
         cout << "\n4. Volver";
         cout << "\nSeleccione: ";
-        cin >> opcion;        // Lee la opción del usuario
-        cin.ignore();         // Limpia el buffer
+        cin >> opcion;
+        cin.ignore();
 
         switch (opcion) {
-            case 1: registrarAuditor(); break;           // Registrar un nuevo auditor
-            case 2: borrarAuditor(); break;              // Eliminar un auditor existente
-            case 3: despliegueAuditores(); break;        // Mostrar la lista de auditores
-            case 4: limpiarPantalla(); return;           // Volver al menú anterior
+            case 1: registrarAuditor(); break;     // Llama a la función para registrar auditor
+            case 2: borrarAuditor(); break;        // Llama a la función para borrar auditor
+            case 3: despliegueAuditores(); break;  // Muestra lista de auditores
+            case 4: limpiarPantalla(); return;     // Regresa al menú anterior
             default:
-                cout << "\n¡Opción inválida!";           // Mensaje de error
-                pausar();                                // Pausar para que el usuario vea el mensaje
+                cout << "\nOpcion invalida!";
+                pausar();
         }
-    } while (true);      // Bucle infinito hasta que se seleccione la opción 4
+    } while (true);
 }
 
-// Registrar nuevo auditor
+// Registra un nuevo auditor en memoria y archivo binario
 void Auditoria::registrarAuditor() {
-    limpiarPantalla();           // Limpia la pantalla
-    Auditores a;                 // Crear objeto auditor
+    limpiarPantalla();
+    Auditores a;
 
     cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== REGISTRAR AUDITOR ===";
     cout << "\nNombre: ";
-    getline(cin, a.nombre);      // Leer nombre del auditor
-    cout << "Código: ";
-    getline(cin, a.codigo);      // Leer código del auditor
+    string nombreInput;
+    getline(cin, nombreInput);                                    // Lee nombre
+    strncpy(a.nombre, nombreInput.c_str(), sizeof(a.nombre));     // Copia nombre a estructura
+    a.nombre[sizeof(a.nombre) - 1] = '\0';                         // Asegura terminación nula
 
-    auditores.push_back(a);      // Agregar auditor al vector
+    cout << "Codigo: ";
+    string codigoInput;
+    getline(cin, codigoInput);                                    // Lee código
+    strncpy(a.codigo, codigoInput.c_str(), sizeof(a.codigo));     // Copia código
+    a.codigo[sizeof(a.codigo) - 1] = '\0';                         // Asegura terminación nula
 
-    ofstream archivo("auditores.txt", ios::app);   // Abrir archivo para agregar datos
-    archivo << a.nombre << "," << a.codigo << "\n"; // Escribir datos en el archivo
-    archivo.close();              // Cerrar archivo
+    auditores.push_back(a);                                       // Agrega a vector en memoria
 
-    cout << "\n¡Auditor registrado!";              // Confirmación
-    bitacoralogAuditoria.insertar(usuario, 4301, "Auditoria", "Registrar"); // Registrar acción en bitácora
-    pausar();                      // Esperar al usuario
+    ofstream archivo("auditores.dat", ios::binary | ios::app);    // Abre archivo en modo binario
+    archivo.write(reinterpret_cast<char*>(&a), sizeof(Auditores));// Escribe datos del auditor
+    archivo.close();                                              // Cierra archivo
+
+    cout << "\nAuditor registrado!";
+    bitacoralogAuditoria.insertar(usuario, 4301, "Auditoria", "Registrar"); // Registra en bitácora
+    pausar();
 }
 
-// Borrar auditor por código
+// Elimina un auditor del archivo binario según código
 void Auditoria::borrarAuditor() {
-    limpiarPantalla();            // Limpia la pantalla
-    string codigo;                // Variable para almacenar el código
+    limpiarPantalla();
+    string codigo;
     cout << "\n=== BORRAR AUDITOR ===";
-    cout << "\nCódigo del auditor: ";
-    getline(cin, codigo);         // Leer código del auditor
+    cout << "\nCodigo del auditor: ";
+    getline(cin, codigo);                                    // Lee código a eliminar
 
-    vector<Auditores> nuevaLista; // Lista temporal para los que no serán eliminados
-    bool eliminado = false;       // Bandera para saber si se eliminó un auditor
+    ifstream archivoLectura("auditores.dat", ios::binary);   // Abre archivo para leer
+    vector<Auditores> nuevaLista;                            // Lista temporal sin el eliminado
+    Auditores a;
+    bool eliminado = false;
 
-    for (const auto& a : auditores) {
-        if (a.codigo != codigo) {
-            nuevaLista.push_back(a);  // Mantener auditores que no coincidan
+    while (archivoLectura.read(reinterpret_cast<char*>(&a), sizeof(Auditores))) {
+        if (codigo != a.codigo) {
+            nuevaLista.push_back(a);                         // Agrega solo si no coincide
         } else {
-            eliminado = true;         // Se encontró y eliminó el auditor
+            eliminado = true;                                // Marca que sí encontró y eliminó
         }
     }
+    archivoLectura.close();
 
     if (eliminado) {
-        auditores = nuevaLista;      // Reemplazar lista original con la nueva
-        ofstream archivo("auditores.txt");  // Reescribir el archivo completo
-        for (const auto& a : auditores) {
-            archivo << a.nombre << "," << a.codigo << "\n"; // Escribir auditor no eliminado
+        ofstream archivoEscritura("auditores.dat", ios::binary | ios::trunc); // Sobrescribe archivo
+        for (const auto& auditor : nuevaLista) {
+            archivoEscritura.write(reinterpret_cast<const char*>(&auditor), sizeof(Auditores));
         }
-        archivo.close();             // Cerrar archivo
-        cout << "\n¡Auditor eliminado!";    // Confirmación
+        archivoEscritura.close();
+        auditores = nuevaLista;                              // Actualiza vector en memoria
+        cout << "\nAuditor eliminado!";
     } else {
-        cout << "\n¡Código no encontrado!"; // Mensaje si no se encuentra el código
+        cout << "\nCodigo no encontrado!";
     }
 
-    bitacoralogAuditoria.insertar(usuario, 4302, "Auditoria", "Borrar"); // Registrar acción en bitácora
-    pausar();                    // Esperar al usuario
+    bitacoralogAuditoria.insertar(usuario, 4302, "Auditoria", "Borrar"); // Registra en bitácora
+    pausar();
 }
 
-// Mostrar todos los auditores
+// Muestra todos los auditores guardados en el archivo
 void Auditoria::despliegueAuditores() {
-    limpiarPantalla();           // Limpia la pantalla
-    ifstream archivo("auditores.txt");   // Abrir archivo de auditores
+    limpiarPantalla();
+    ifstream archivo("auditores.dat", ios::binary);   // Abre archivo binario para lectura
+    Auditores a;
 
     cout << "\n=== LISTA DE AUDITORES ===";
-    cout << "\nNombre\t\tCódigo\n";
+    cout << "\nNombre\t\tCodigo\t\tAccion realizada\n";
+    cout << "------------------------------------------------\n";
 
-    string linea;                // Variable para leer línea del archivo
-    while (getline(archivo, linea)) {
-        size_t pos = linea.find(",");       // Buscar posición de la coma
-        string nombre = linea.substr(0, pos);  // Extraer nombre
-        string codigo = linea.substr(pos + 1); // Extraer código
-
-        cout << nombre << "\t\t" << codigo << "\n";  // Mostrar datos
+    while (archivo.read(reinterpret_cast<char*>(&a), sizeof(Auditores))) {
+        cout << a.nombre << "\t\t" << a.codigo << "\t\tRevision realizada\n";
     }
 
-    archivo.close();             // Cerrar archivo
-    bitacoralogAuditoria.insertar(usuario, 4303, "Auditoria", "Desplegar"); // Registrar acción en bitácora
-    pausar();                    // Esperar al usuario
-}
-
-// Tabla genérica de registros
-void Auditoria::registrosRealizados() {
-    limpiarPantalla();           // Limpia la pantalla
-    cout << "\n=== REGISTROS DE AUDITORÍA ===";
-    cout << "\nFecha\t\tAcción\t\tUsuario";
-    cout << "\n2023-10-01\tRevisión\tAuditor1";       // Registro de ejemplo
-    cout << "\n2023-10-02\tVerificación\tAuditor2";    // Registro de ejemplo
-    bitacoralogAuditoria.insertar(usuario, 4304, "Auditoria", "registrosRealizados"); // Registrar acción en bitácora
-    pausar();                    // Esperar al usuario
+    archivo.close();
+    bitacoralogAuditoria.insertar(usuario, 4303, "Auditoria", "Desplegar"); // Bitácora
+    pausar();
 }

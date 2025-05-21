@@ -1,37 +1,43 @@
-//Jonathan Samuel Gonzalez Ixpata
-#ifndef AUDITORIA_H         // Verifica si AUDITORIA_H no ha sido definido
-#define AUDITORIA_H         // Define AUDITORIA_H para evitar inclusiones múltiples
+// Jonathan Samuel Gonzalez Ixpata 9959-23-3184
 
-#include <string>           // Incluye soporte para cadenas de texto (std::string)
-#include <vector>           // Incluye soporte para vectores dinámicos (std::vector)
-#include "Bitacora.h"       // Incluye la clase para registrar acciones (bitácora)
+#ifndef AUDITORIA_H
+#define AUDITORIA_H
 
-using namespace std;        // Evita tener que escribir std:: en cada uso de string o vector
+#include <string>
+#include <vector>
+#include "Bitacora.h"
 
-// Estructura para almacenar los datos de un auditor
+using namespace std;
+
+// Estructura que almacena información básica de los auditores
 struct Auditores {
-    string nombre;          // Nombre del auditor
-    string codigo;          // Código identificador del auditor
+    char nombre[50];     // Nombre completo del auditor (50 caracteres)
+    char codigo[20];     // Identificador único del auditor (20 caracteres)
 };
 
-// Declaración de la clase Auditoria
+// Clase principal para gestión del módulo de auditoría
 class Auditoria {
 private:
-    string usuario;//bitacora
-    vector<Auditores> auditores; // Lista de auditores almacenados
+    string usuario;              // Usuario actual del sistema
+    vector<Auditores> auditores; // Almacenamiento temporal de auditores
 
 public:
-    void setUsuario(const string& u);//bitacora
-    void menuAuditoria();          // Muestra el menú principal de auditoría
-    void registrosRealizados();    // Muestra una tabla con registros de auditoría
-    void limpiarPantalla();        // Limpia la pantalla según el sistema operativo
-    void pausar();                 // Pausa la ejecución hasta que el usuario presione ENTER
+    // Establece el usuario activo para registro en bitácora
+    void setUsuario(const string& u);
 
-    // Funciones para la gestión de auditores
-    void submenuAuditor();         // Muestra un submenú con opciones de gestión
-    void registrarAuditor();       // Permite registrar un nuevo auditor
-    void borrarAuditor();          // Elimina un auditor según su código
-    void despliegueAuditores();    // Muestra en pantalla todos los auditores registrados
+    // Gestión principal del módulo
+    void menuAuditoria();       // Menú principal de auditoría
+
+    // Utilidades de sistema
+    void limpiarPantalla();     // Limpia consola según SO
+    void pausar();              // Pausa ejecución hasta entrada
+
+    // Funcionalidades de gestión de auditores
+    void submenuAuditor();      // Submenú de operaciones
+    void registrarAuditor();    // Registra nuevos auditores
+    void borrarAuditor();       // Elimina auditores por código
+    void despliegueAuditores(); // Muestra lista completa de auditores
 };
 
-#endif  // Fin del include guard
+#endif
+
