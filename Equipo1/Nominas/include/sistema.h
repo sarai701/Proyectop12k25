@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <vector>
+#include <limits>
 #include "usuarios.h"
 
 using namespace std;
@@ -12,13 +13,15 @@ class sistema //clase sistema la cual es encargada del proceso de registrar loge
 public:
     sistema();
     virtual ~sistema();
-
+//Se declaran los metodos para sistemas de seguridad
     void registrarUsuario();
     void ingresarUsuario();
     void mostrarUsuarios();
+    std::string getUsuarioActual() const { return usuarioActual; }
 
 private:
     string archivoUsuarios = "usuarios.txt";
+    string usuarioActual = "";
 };
 
 #endif // SISTEMA_H

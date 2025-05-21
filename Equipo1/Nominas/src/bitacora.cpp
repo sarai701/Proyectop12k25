@@ -7,7 +7,7 @@
 #include <limits>
 
 using namespace std;
-
+//Isaias Cedillo (9959-24-1672) "IsaC8-bit"
 // Muestra el menú principal del sistema de bitácora
 void bitacora::menu()
 {
@@ -47,8 +47,45 @@ void bitacora::menu()
                 string nombre, aplicacion, accion;
                 cout << "\n\t\t\tIngrese nombre del usuario: ";
                 getline(cin, nombre);
-                cout << "\t\t\tIngrese nombre de la aplicacion: ";
-                getline(cin, aplicacion);
+                // Generar código de aplicación automáticamente (de 7000 a 7999)
+                fstream readFile("bitacora.txt", ios::in);
+                int codigoApp = 7000;
+
+                    if (readFile)
+                        {
+                        string lastNombre, lastAplicacion, lastAccion, lastTimestamp;
+                        while (readFile >> std::quoted(lastNombre))
+                            {
+                                readFile.ignore();
+                                readFile >> std::quoted(lastAplicacion);
+                                readFile.ignore();
+                                readFile >> std::quoted(lastAccion);
+                                readFile.ignore();
+                                getline(readFile, lastTimestamp);
+
+                                try
+                                {
+                                    int cod = stoi(lastAplicacion);
+                                    if (cod >= 7000 && cod < 7999)
+                                        {
+                                            codigoApp = cod + 1;
+                                        }
+                                        else if (cod >= 7999)
+                                        {
+                                            codigoApp = 7000; // Reinicia a 7000 si supera el rango
+                                        }
+                                }
+                                catch (...)
+                                {
+            // Si la aplicación no es un número, se ignora
+                                }
+                            }
+                    }
+readFile.close();
+
+// Asigna el código como string
+aplicacion = to_string(codigoApp);
+
                 cout << "\t\t\tIngrese accion realizada: ";
                 getline(cin, accion);
                 insertar(nombre, aplicacion, accion); // Agrega el registro
@@ -126,4 +163,58 @@ void bitacora::desplegar()
     file.close(); // Cierra el archivo
     cout << "\n\n";
     system("pause"); // Pausa para que el usuario vea los resultados
+}
+
+std::string bitacora::generarCodigoAplicacion()
+ {
+   // Abre el archivo "bitacora.txt" en modo lectura para examinar los registros existentes
+fstream readFile("bitacora.txt", ios::in);
+
+// Inicializa la variable codigoApp con 7000, que será el valor base o inicial del código de aplicación
+int codigoApp = 7000;
+
+if (readFile) {  // Verifica si el archivo se abrió correctamente
+    // Variables temporales para almacenar los datos leídos de cada registro
+    string lastNombre, lastAplicacion, lastAccion, lastTimestamp;
+
+    // Ciclo para leer todo el archivo línea por línea, extrayendo cada campo
+    // El formato esperado es: "nombre","aplicacion","accion",timestamp
+    while (readFile >> std::quoted(lastNombre)) {
+        // Lee el campo nombre entre comillas (std::quoted maneja espacios y comillas internas)
+
+        readFile.ignore();  // Ignora el carácter coma (,) después del campo nombre
+
+        readFile >> std::quoted(lastAplicacion);  // Lee el campo aplicacion entre comillas
+
+        readFile.ignore();  // Ignora la coma después del campo aplicacion
+
+        readFile >> std::quoted(lastAccion);  // Lee el campo accion entre comillas
+
+        readFile.ignore();  // Ignora la coma después del campo accion
+
+        getline(readFile, lastTimestamp);  // Lee el campo timestamp completo (hasta el fin de línea)
+
+        try {
+            // Intenta convertir el campo 'aplicacion' a entero para manejar códigos numéricos
+            int cod = stoi(lastAplicacion);
+
+            // Verifica si el código está dentro del rango válido 7000 a 7998
+            if (cod >= 7000 && cod < 7999) {
+                // Actualiza codigoApp para que sea el siguiente número consecutivo
+                codigoApp = cod + 1;
+            }
+            else if (cod >= 7999) {
+                // Si el código supera el límite 7999, reinicia a 7000 para evitar salirse del rango
+                codigoApp = 7000;
+            }
+        } catch (...) {
+            // Si la conversión a entero falla (p.ej. aplicacion no es numérico), ignora el error
+            // Esto permite que registros con valores no numéricos en aplicacion no interrumpan el proceso
+        }
+    }
+}
+
+// Cierra el archivo para liberar recursos
+readFile.close();
+    return to_string(codigoApp);
 }

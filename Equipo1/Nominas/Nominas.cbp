@@ -36,14 +36,12 @@
 		</Compiler>
 		<Unit filename="include/Empleados.h" />
 		<Unit filename="include/Opciones.h" />
-		<Unit filename="include/Prestaciones.h" />
 		<Unit filename="include/bitacora.h" />
 		<Unit filename="include/sistema.h" />
 		<Unit filename="include/usuarios.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Empleados.cpp" />
 		<Unit filename="src/Opciones.cpp" />
-		<Unit filename="src/Prestaciones.cpp" />
 		<Unit filename="src/bitacora.cpp" />
 		<Unit filename="src/sistema.cpp" />
 		<Unit filename="src/usuarios.cpp" />
