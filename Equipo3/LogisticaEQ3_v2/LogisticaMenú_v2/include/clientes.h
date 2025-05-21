@@ -49,7 +49,7 @@ public:
      * @param usuarioActual Nombre de usuario que realiza la acción.
      * @param id ID del cliente que se desea modificar.
      */
-    static void modificar(std::vector<Clientes>& lista, const std::string& usuarioActual, const std::string& id);
+    static void modificar(std::vector<Clientes>& lista, const std::string& usuarioActual, const std::string& idCliente);
 
     /**
      * @brief Elimina un cliente existente por ID.

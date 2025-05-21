@@ -70,22 +70,24 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
     // Genera un ID único para el nuevo cliente
     nuevo.id = generarIdUnico(lista);
     if (nuevo.id.empty()) {
-        std::cerr << "\n\t\tError: No hay códigos disponibles para nuevos clientes (rango lleno)\n";
+        std::cerr << "\n\t\tError: No hay codigos disponibles para nuevos clientes (rango lleno)\n";
         system("pause");
         return;
     }
 
-    std::cout << "\n\t\t=== AGREGAR CLIENTE (ID Auto-Asignado: " << nuevo.id << ") ===\n";
+    std::cout << "\n-------------------------- AGREGAR CLIENTE --------------------------\n";
+    std::cout << std::left << std::setw(25) << "ID Asignado:" << nuevo.id << "\n";
+    std::cout << "---------------------------------------------------------------------\n";
 
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     std::cout << "\t\tNombre completo: ";
     std::getline(std::cin, nuevo.nombre);
 
-    std::cout << "\t\tDirección: ";
+    std::cout << "\t\tDireccion: ";
     std::getline(std::cin, nuevo.direccion);
 
-    std::cout << "\t\tTeléfono: ";
+    std::cout << "\t\tTelefono: ";
     std::getline(std::cin, nuevo.telefono);
 
     std::cout << "\t\tNIT: ";
@@ -96,7 +98,47 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
 
     // Registra la acción en la bitácora
     bitacora::registrar(usuarioActual, "CLIENTES", "Cliente agregado - ID: " + nuevo.id);
+
+    // Mostrar reporte visual de un solo cliente
+    std::cout << "\n-------------------------- Cliente Registrado --------------------------\n";
+    std::cout << std::left << std::setw(15) << "ID"
+              << std::setw(25) << "Nombre"
+              << std::setw(20) << "NIT"
+              << std::setw(20) << "Telefono"
+              << std::setw(30) << "Direccion" << "\n";
+    std::cout << "---------------------------------------------------------------------------\n";
+    std::cout << std::left << std::setw(15) << nuevo.id
+              << std::setw(25) << nuevo.nombre
+              << std::setw(20) << nuevo.nit
+              << std::setw(20) << nuevo.telefono
+              << std::setw(30) << nuevo.direccion << "\n";
+    std::cout << "---------------------------------------------------------------------------\n";
+
+    // Opcional: Guardar también en un archivo de reportes
+    std::ofstream reporteFile("clientes.txt", std::ios::app);
+    if (reporteFile.is_open()) {
+        reporteFile << "-------------------------- NUEVO CLIENTE --------------------------\n";
+        reporteFile << std::left << std::setw(15) << "ID"
+                    << std::setw(25) << "Nombre"
+                    << std::setw(20) << "NIT"
+                    << std::setw(20) << "Telefono"
+                    << std::setw(30) << "Direccion" << "\n";
+        reporteFile << "-------------------------------------------------------------------\n";
+        reporteFile << std::left << std::setw(15) << nuevo.id
+                    << std::setw(25) << nuevo.nombre
+                    << std::setw(20) << nuevo.nit
+                    << std::setw(20) << nuevo.telefono
+                    << std::setw(30) << nuevo.direccion << "\n";
+        reporteFile << "-------------------------------------------------------------------\n\n";
+        reporteFile.close();
+    }
+
     std::cout << "\n\t\tCliente registrado exitosamente con ID: " << nuevo.id << "\n";
+
+    // Limpiar buffer antes del system("pause") para evitar doble pausa
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     system("pause");
 }
 
@@ -107,28 +149,36 @@ void Clientes::agregar(std::vector<Clientes>& lista, const std::string& usuarioA
  */
 void Clientes::mostrar(const std::vector<Clientes>& lista) {
     if (lista.empty()) {
-        cout << "\n\t--- NO HAY CLIENTES REGISTRADOS ---\n";
-        cout << "\tEl archivo puede estar vacío o no se cargó correctamente.\n";
+        std::cout << "\n----------------------------- CLIENTES -----------------------------\n";
+        std::cout << "\tNo hay clientes registrados.\n";
+        std::cout << "\tEl archivo puede estar vacío o no se cargo correctamente.\n";
+        std::cout << "--------------------------------------------------------------------\n";
     } else {
-        cout << "\n\t" << string(100, '-') << "\n";
-        cout << "\t" << left
-             << setw(10) << "| ID |"
-             << setw(30) << " NOMBRE COMPLETO |"
-             << setw(25) << " DIRECCIÓN |"
-             << setw(15) << " TELÉFONO |"
-             << setw(15) << " NIT |" << "\n";
-        cout << "\t" << string(100, '-') << "\n";
+        std::cout << "\n----------------------------- LISTADO DE CLIENTES -----------------------------\n";
+        std::cout << std::left
+                  << std::setw(10) << "ID"
+                  << std::setw(30) << "Nombre completo"
+                  << std::setw(25) << "Direccion"
+                  << std::setw(15) << "Teléfono"
+                  << std::setw(20) << "NIT" << "\n";
+        std::cout << std::string(100, '-') << "\n";
 
         for (const auto& cliente : lista) {
-            cout << "\t" << left
-                 << "| " << setw(6) << cliente.id << "| "
-                 << setw(28) << cliente.nombre << "| "
-                 << setw(23) << cliente.direccion << "| "
-                 << setw(13) << cliente.telefono << "| "
-                 << setw(13) << cliente.nit << "|" << "\n";
+            std::cout << std::left
+                      << std::setw(10) << cliente.id
+                      << std::setw(30) << cliente.nombre
+                      << std::setw(25) << cliente.direccion
+                      << std::setw(15) << cliente.telefono
+                      << std::setw(20) << cliente.nit << "\n";
         }
-        cout << "\t" << string(100, '-') << "\n";
+
+        std::cout << std::string(100, '-') << "\n";
     }
+
+    // Limpiar buffer antes del system("pause") para evitar doble pausa
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     system("pause");
 }
 
@@ -139,33 +189,49 @@ void Clientes::mostrar(const std::vector<Clientes>& lista) {
  * @param usuarioActual Usuario que realiza la modificación.
  * @param id ID del cliente a modificar.
  */
-void Clientes::modificar(std::vector<Clientes>& lista, const std::string& usuarioActual, const std::string& id) {
-    auto it = find_if(lista.begin(), lista.end(),
-        [&id](const Clientes& c) { return c.id == id; });
+void Clientes::modificar(std::vector<Clientes>& lista, const std::string& usuarioActual, const std::string& idCliente) {
+    // Buscar cliente con el idCliente recibido
+    auto it = std::find_if(lista.begin(), lista.end(),
+        [&idCliente](const Clientes& c) { return c.id == idCliente; });
 
-    if (it != lista.end()) {
-        cout << "\n--- MODIFICAR CLIENTE (ID: " << id << ") ---\n";
-
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-        cout << "Nuevo nombre (" << it->nombre << "): ";
-        getline(cin, it->nombre);
-
-        cout << "Nueva dirección (" << it->direccion << "): ";
-        getline(cin, it->direccion);
-
-        cout << "Nuevo teléfono (" << it->telefono << "): ";
-        getline(cin, it->telefono);
-
-        cout << "Nuevo NIT (" << it->nit << "): ";
-        getline(cin, it->nit);
-
-        guardarEnArchivo(lista); // Guarda los cambios en el archivo
-        bitacora::registrar(usuarioActual, "CLIENTES", "Cliente modificado - ID: " + id);
-        cout << "Cliente modificado!\n";
-    } else {
-        cout << "Cliente no encontrado.\n";
+    if (it == lista.end()) {
+        std::cout << "Cliente con ID '" << idCliente << "' no encontrado.\n";
+        system("pause");
+        return;
     }
+
+    std::cout << "\n-------------------------- MODIFICAR CLIENTE --------------------------\n";
+    std::cout << std::left << std::setw(25) << "ID del cliente:" << idCliente << "\n";
+    std::cout << "------------------------------------------------------------------------\n";
+
+    // Mostrar datos actuales
+    std::cout << std::left << std::setw(15) << "Nombre actual:" << it->nombre << "\n";
+    std::cout << std::left << std::setw(15) << "Direccion actual:" << it->direccion << "\n";
+    std::cout << std::left << std::setw(15) << "Telefono actual:" << it->telefono << "\n";
+    std::cout << std::left << std::setw(15) << "NIT actual:" << it->nit << "\n";
+    std::cout << "------------------------------------------------------------------------\n";
+
+    // Pedir nuevos datos
+    std::cout << "Nuevo nombre: ";
+    std::getline(std::cin, it->nombre);
+
+    std::cout << "Nueva direccion: ";
+    std::getline(std::cin, it->direccion);
+
+    std::cout << "Nuevo telefono: ";
+    std::getline(std::cin, it->telefono);
+
+    std::cout << "Nuevo NIT: ";
+    std::getline(std::cin, it->nit);
+
+    // Guardar cambios y registrar en bitácora
+    guardarEnArchivo(lista);
+    bitacora::registrar(usuarioActual, "CLIENTES", "Cliente modificado - ID: " + idCliente);
+
+    std::cout << "\n-----------------------------\n";
+    std::cout << "¡Cliente modificado exitosamente!\n";
+    std::cout << "-----------------------------\n";
+
     system("pause");
 }
 
@@ -177,17 +243,31 @@ void Clientes::modificar(std::vector<Clientes>& lista, const std::string& usuari
  * @param id ID del cliente a eliminar.
  */
 void Clientes::eliminar(std::vector<Clientes>& lista, const std::string& usuarioActual, const std::string& id) {
-    auto it = find_if(lista.begin(), lista.end(),
+    auto it = std::find_if(lista.begin(), lista.end(),
         [&id](const Clientes& c) { return c.id == id; });
+
+    std::cout << "\n--------------------------- ELIMINAR CLIENTE ---------------------------\n";
+    std::cout << std::left << std::setw(25) << "ID a eliminar:" << id << "\n";
+    std::cout << "------------------------------------------------------------------------\n";
 
     if (it != lista.end()) {
         lista.erase(it); // Elimina el cliente de la lista
         guardarEnArchivo(lista); // Guarda la lista actualizada
         bitacora::registrar(usuarioActual, "CLIENTES", "Cliente eliminado - ID: " + id);
-        cout << "Cliente eliminado!\n";
+
+        std::cout << "\n-----------------------------\n";
+        std::cout << "¡Cliente eliminado exitosamente!\n";
+        std::cout << "-----------------------------\n";
     } else {
-        cout << "Cliente no encontrado.\n";
+        std::cout << "\n-----------------------------\n";
+        std::cout << "Cliente con ID '" << id << "' no encontrado.\n";
+        std::cout << "-----------------------------\n";
     }
+
+    // Limpiar buffer antes de la pausa para evitar doble mensaje
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
     system("pause");
 }
 
