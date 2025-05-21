@@ -1,9 +1,12 @@
+// Maria Celeste Mayen Ibarra 9959-23-3775
+
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
 #include <iostream>
 #include <vector>
 #include <string>
+#include "Cliente.h"
 
 // Clase que representa a un cliente dentro del sistema
 class Cliente {

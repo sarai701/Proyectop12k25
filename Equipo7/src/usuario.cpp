@@ -1,11 +1,5 @@
-#include "usuario.h"
+//  MARLON DE LEON
 
-usuario::usuario()
-{
-    //ctor
-}
+#include "Usuario.h"
 
-usuario::~usuario()
-{
-    //dtor
-}
+Usuario::Usuario(std::string u, std::string p) : username(u), password(p) {}
