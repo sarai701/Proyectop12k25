@@ -1,38 +1,53 @@
-//Programado por Priscila Sarai Guzmán Calgua 9959-23-450
+// Programado por Priscila Sarai Guzmán Calgua 9959-23-450
+
 #include "Usuario.h"
 #include <iostream>
-#include <fstream> //Librería para archivos de lectura o escritura
-#include <conio.h>// Se usa _getch() para ocultar la contraseña mientras se escribe
-#include <cstdlib>
-//Objeto global de tipo Botacora para registrar inicio de sesión
-Bitacora bitacoralog2;
+#include <fstream>
+#include <conio.h> // Para _getch()
+#include <cstring> // Para strcpy, strcmp
+#include <cstdlib> // Para system()
+
 using namespace std;
 
-//Definición de la constante que representa el archivo de login
-const string Usuario::ARCHIVO_LOGIN = "login.txt";
-//Constructor por defecto
-Usuario::Usuario() : nombreUsuario(""), contrasena("") {} //Inicializa las variables de nombre de usuario y contraseña como vacías
-//Inicializa el nombre usuario y contraseña
+// Objeto global de bitácora para registrar actividades de login
+Bitacora bitacoralogUsuario;
+
+// Definición del archivo binario de login
+const string Usuario::ARCHIVO_LOGIN = "login.dat";
+
+// Constructor por defecto
+Usuario::Usuario() : nombreUsuario(""), contrasena("") {}
+
+// Constructor con parámetros
 Usuario::Usuario(const string& usuario, const string& contrasena)
     : nombreUsuario(usuario), contrasena(contrasena) {}
 
-//Método para obtener el nombre del usuario
+// Devuelve el nombre de usuario
 string Usuario::getNombreUsuario() const {
     return nombreUsuario;
 }
-//Método para obtener la contraseña
+
+// Devuelve la contraseña
 string Usuario::getContrasena() const {
     return contrasena;
 }
-//Método para crear un nuevo usuario
+
+// Establece el nombre de usuario
 void Usuario::setNombreUsuario(const string& usuario) {
     nombreUsuario = usuario;
 }
-//para crear una nueva contraseña
+
+// Establece la contraseña
 void Usuario::setContrasena(const string& contrasena) {
     this->contrasena = contrasena;
 }
 
+// Establece el nombre del usuario autenticado (para bitácora)
+void Usuario::setUsuario(const string& u) {
+    usuario = u;
+}
+
+// Limpia la pantalla según el sistema operativo
 void Usuario::limpiarPantalla() {
 #ifdef _WIN32
     system("cls");
@@ -41,34 +56,36 @@ void Usuario::limpiarPantalla() {
 #endif
 }
 
-// Función para leer la contraeña de forma oculta
+// Función para ocultar la contraseña mientras se escribe
 string leerContrasenaOculta() {
-    string contrasena;//Variable que almacena la contraeña
-    char tecla;//Variable para almacenar cada tecla
+    string contrasena;
+    char tecla;
     while (true) {
-        tecla = _getch();//Leee la tecla sin mostrarla
-        if (tecla == 13) break;//Si da enter se termina la lectura
-        else if (tecla == 8 && !contrasena.empty()) { //si la contraseña no esta vacía y si es retroceso
-            contrasena.pop_back();//Elimina el ultimo caracter de la contraseña
-            cout << "\b \b";//Borra el caracter en pantalla (retroceso)
+        tecla = _getch();
+        if (tecla == 13) break; // Enter
+        else if (tecla == 8 && !contrasena.empty()) {
+            contrasena.pop_back();
+            cout << "\b \b"; // Borrar carácter en pantalla
         } else if (tecla != 8 && tecla != 13) {
             contrasena += tecla;
             cout << '*';
         }
     }
     cout << endl;
-    return contrasena;//Devuelve la contraseña oculta
+    return contrasena;
 }
-// Método para autenticar al usuario comparando el nombre de usuario y la contraseña ingresada
+
+// Autenticación directa (comparación interna)
 bool Usuario::autenticar(const string& usuario, const string& contrasena) const {
     return (this->nombreUsuario == usuario && this->contrasena == contrasena);
 }
-// Método para autenticar al usuario desde un archivo de texto (login.txt)
+
+// Verifica usuario/contraseña desde el archivo binario login.dat
 bool Usuario::autenticarDesdeArchivo(string& usuarioAutenticado) {
     limpiarPantalla();
     string usuarioIngresado, contrasenaIngresada;
     int intentos = 3;
- // Bucle que se ejecuta mientras haya intentos disponibles
+
     while (intentos > 0) {
         cout << "\n========== INICIO DE SESION ==========";
         cout << "\nUsuario: ";
@@ -76,20 +93,19 @@ bool Usuario::autenticarDesdeArchivo(string& usuarioAutenticado) {
         cout << "Contraseña: ";
         contrasenaIngresada = leerContrasenaOculta();
 
-        ifstream archivo("login.txt");//Abre el archivo de login.txt para leer los usuarios registrados
+        ifstream archivo(ARCHIVO_LOGIN, ios::binary);
         if (!archivo.is_open()) {
-            cout << "\nError al abrir el archivo login.txt\n";
+            cout << "\nError al abrir el archivo " << ARCHIVO_LOGIN << "\n";
             return false;
         }
 
-        string user, pass;
-// Bucle que recorre todos los usuarios y contraseñas del archivo
-        while (archivo >> user >> pass) {
-            Usuario usuario(user, pass); // Crea un objeto Usuario con los datos del archivo
-            if (usuario.autenticar(usuarioIngresado, contrasenaIngresada)) { // Si coinciden
-                usuarioAutenticado = usuarioIngresado; // Guarda el nombre del usuario autenticado
+        RegistroUsuario reg;
+        // Recorre todos los registros del archivo
+        while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(RegistroUsuario))) {
+            if (usuarioIngresado == reg.nombreUsuario && contrasenaIngresada == reg.contrasena) {
+                usuarioAutenticado = usuarioIngresado;
                 cout << "\nInicio de sesión exitoso.\n";
-                archivo.close(); // Cierra el archivo
+                archivo.close();
                 cout << "\nPresione una tecla para continuar";
                 cin.ignore();
                 cin.get();
@@ -97,8 +113,8 @@ bool Usuario::autenticarDesdeArchivo(string& usuarioAutenticado) {
                 return true;
             }
         }
-        archivo.close();
 
+        archivo.close();
         intentos--;
         cout << "\nUsuario o contraseña incorrectos. Intentos restantes: " << intentos << endl;
     }
@@ -106,8 +122,9 @@ bool Usuario::autenticarDesdeArchivo(string& usuarioAutenticado) {
     cout << "\nDemasiados intentos fallidos. Acceso denegado.\n";
     return false;
 }
-//Método para registrar un nuevo usuario en el archivo de login.txt
-bool Usuario::registrarUsuario() {
+
+// Registra un nuevo usuario en el archivo binario login.dat
+string Usuario::registrarUsuario() {
     limpiarPantalla();
     string nuevoUsuario, nuevaContrasena;
 
@@ -117,26 +134,41 @@ bool Usuario::registrarUsuario() {
     cout << "Ingrese contraseña: ";
     nuevaContrasena = leerContrasenaOculta();
 
-    ofstream archivo("login.txt", ios::app); // Abre el archivo login.txt en modo "append" para agregar un nuevo usuario
+    // Crear estructura con datos de longitud fija
+    RegistroUsuario reg;
+    strncpy(reg.nombreUsuario, nuevoUsuario.c_str(), sizeof(reg.nombreUsuario));
+    reg.nombreUsuario[sizeof(reg.nombreUsuario) - 1] = '\0'; // Seguridad
+    strncpy(reg.contrasena, nuevaContrasena.c_str(), sizeof(reg.contrasena));
+    reg.contrasena[sizeof(reg.contrasena) - 1] = '\0';
+
+    ofstream archivo(ARCHIVO_LOGIN, ios::binary | ios::app);
     if (!archivo.is_open()) {
-        cout << "\nError al abrir el archivo login.txt para escribir.\n";
-        return false;
+        cout << "\nError al abrir el archivo " << ARCHIVO_LOGIN << " para escritura.\n";
+        return "";
     }
 
-    // Escribe el nuevo usuario y su contraseña en el archivo
-    archivo << nuevoUsuario << " " << nuevaContrasena << endl;
+    archivo.write(reinterpret_cast<const char*>(&reg), sizeof(RegistroUsuario));
     archivo.close();
+
     cout << "\nUsuario registrado con éxito.\n";
     cout << "\nPresione Enter para continuar";
     cin.ignore();
     cin.get();
     limpiarPantalla();
-    return true;
+
+    return nuevoUsuario;
 }
 
-// Menú de autenticación que permite al usuario elegir entre iniciar sesión, registrarse o salir
+// Pausa para permitir que el usuario lea un mensaje antes de continuar
+void Usuario::pausar() {
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore();
+    cin.get();
+}
+
+// Muestra menú de autenticación (inicio de sesión o registro)
 bool Usuario::menuAutenticacion(string& usuarioAutenticado) {
-    int opcion; // Variable para almacenar la opción seleccionada por el usuario
+    int opcion;
     do {
         limpiarPantalla();
         cout << "\n===== SISTEMA DE ACCESO =====";
@@ -149,18 +181,23 @@ bool Usuario::menuAutenticacion(string& usuarioAutenticado) {
         switch (opcion) {
             case 1:
                 if (autenticarDesdeArchivo(usuarioAutenticado)) {
+                    bitacoralogUsuario.insertar(usuarioAutenticado, 1000, "Usuario", "Inicio de sesión exitoso");
                     return true;
                 }
+                bitacoralogUsuario.insertar("Desconocido", 4902, "Usuario", "Intento de inicio de sesión fallido");
                 break;
 
-            case 2:
-                registrarUsuario(); // Llama al método para registrar un nuevo usuario
+            case 2: {
+                string nuevoUsuario = registrarUsuario();
+                if (!nuevoUsuario.empty()) {
+                    bitacoralogUsuario.insertar(nuevoUsuario, 1001, "Usuario", "Registro de nuevo usuario");
+                }
                 break;
+            }
 
             case 3:
                 cout << "\nSaliendo...\n";
                 return false;
-                break;
 
             default:
                 cout << "\nOpción no válida.\n";

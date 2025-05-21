@@ -2,37 +2,41 @@
 #ifndef BANCOS_H
 #define BANCOS_H
 
-#include <string>
-#include "Bitacora.h"
-#include "Moneda.h"
+#include <string>         // Para el uso de std::string
+#include "Bitacora.h"     // Para registrar las acciones realizadas
+#include "Moneda.h"       // Para manejar la configuración de moneda
 
+using namespace std;      // Evita tener que escribir std:: antes de string, cout, etc.
+
+// Clase que gestiona la configuración bancaria del sistema
 class Bancos {
 private:
-    static Bitacora bitacoraBancos; // Instancia de bitácora para Bancos
+    string usuario;//bitacora
+        // Objeto de bitácora para registrar acciones del módulo Bancos
 
-    std::string bancoSeleccionado;
-    std::string tipoCuentaSeleccionada;
-    std::string monedaSeleccionada;
+    string bancoSeleccionado;           // Nombre del banco seleccionado
+    string tipoCuentaSeleccionada;      // Tipo de cuenta seleccionada (Corriente o Ahorro)
+    string monedaSeleccionada;          // Tipo de moneda seleccionada (GTQ, USD, EUR)
 
-    void menuSeleccionBanco();
-    void menuTipoCuenta();
-    void menuTipoMoneda();
+    // Métodos internos para los distintos menús de selección
+    void menuSeleccionBanco();          // Menú para seleccionar banco
+    void menuTipoCuenta();              // Menú para seleccionar tipo de cuenta
+    void menuTipoMoneda();              // Menú para seleccionar tipo de moneda
 
 public:
-    Bancos();
+    void setUsuario(const string& u);//bitacora
+    Bancos();                           // Constructor
 
-    // Configuración y visualización
-    void menuConfiguracion();
-    void mostrarConfiguracion();
+    void menuConfiguracion();           // Menú principal de configuración bancaria
+    void mostrarConfiguracion();        // Muestra la configuración actual al usuario
 
-    // Funciones auxiliares
-    static void limpiarPantalla();
-    static void pausar();
+    static void limpiarPantalla();      // Limpia la consola
+    static void pausar();               // Pausa la ejecución esperando ENTER
 
-    // Getters
-    std::string getBanco() const;
-    std::string getCuenta() const;
-    std::string getMoneda() const;
+    // Métodos para obtener los valores seleccionados
+    string getBanco() const;            // Devuelve el banco seleccionado
+    string getCuenta() const;           // Devuelve el tipo de cuenta seleccionada
+    string getMoneda() const;           // Devuelve la moneda seleccionada
 };
 
 #endif

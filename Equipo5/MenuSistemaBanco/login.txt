@@ -1,8 +1,0 @@
-admin 1234
-Prisci 1111
-admin2 1234453
-Sarai 5555
-Guzman 654
-Calgua 1234
-Boris 12345
-123 321

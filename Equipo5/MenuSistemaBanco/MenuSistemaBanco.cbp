@@ -39,6 +39,7 @@
 		<Unit filename="include/Bitacora.h" />
 		<Unit filename="include/Cliente.h" />
 		<Unit filename="include/Contabilidad.h" />
+		<Unit filename="include/Cuentas.h" />
 		<Unit filename="include/Empleados.h" />
 		<Unit filename="include/Moneda.h" />
 		<Unit filename="include/Nominas.h" />
@@ -50,6 +51,7 @@
 		<Unit filename="src/Bitacora.cpp" />
 		<Unit filename="src/Cliente.cpp" />
 		<Unit filename="src/Contabilidad.cpp" />
+		<Unit filename="src/Cuentas.cpp" />
 		<Unit filename="src/Empleados.cpp" />
 		<Unit filename="src/Moneda.cpp" />
 		<Unit filename="src/Nominas.cpp" />

@@ -6,8 +6,10 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <cstring> //Para la implementacion de strncpy
 
-Bitacora log; // Instancia global para registrar eventos
+
+Bitacora bitacoralogCliente; // Instancia global para registrar eventos
 using namespace std;
 
 // Limpia la pantalla según el sistema operativo
@@ -28,42 +30,38 @@ void Cliente::pausar() {
 
 // Carga los clientes desde el archivo clientes.txt
 void Cliente::cargarClientes() {
-    clientes.clear();  // Vaciar lista actual
-    ifstream archivo("clientes.txt");
-    Cliente c;
-    string linea;
-
-    while (getline(archivo, linea)) {
-        size_t pos = 0;
-        int campo = 0;
-        string datos[4];  // Solo 4 campos ahora (sin saldo)
-        for (int i = 0; i < 3; ++i) {
-            pos = linea.find(',');
-            datos[i] = linea.substr(0, pos);
-            linea.erase(0, pos + 1);
-        }
-        datos[3] = linea; // Dirección
-
-        c.codigo = datos[0];
-        c.nombre = datos[1];
-        c.telefono = datos[2];
-        c.direccion = datos[3];
-
+    clientes.clear();
+    ifstream archivo("clientes.dat", ios::binary);
+    RegistroCliente reg;
+    while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+        Cliente c;
+        c.codigo = reg.codigo;
+        c.nombre = reg.nombre;
+        c.telefono = reg.telefono;
+        c.direccion = reg.direccion;
         clientes.push_back(c);
     }
-
     archivo.close();
     ordenarClientes();
 }
 
-// Guarda todos los clientes en el archivo clientes.txt
+
+
+// Guarda todos los clientes en el archivo clientes
 void Cliente::guardarClientes() {
-    ofstream archivo("clientes.txt");
+    ofstream archivo("clientes.dat", ios::binary | ios::trunc);
     for (const auto& c : clientes) {
-        archivo << c.codigo << "," << c.nombre << "," << c.telefono << "," << c.direccion << "\n";
+        RegistroCliente reg{};
+        strncpy(reg.codigo, c.codigo.c_str(), sizeof(reg.codigo) - 1);
+        strncpy(reg.nombre, c.nombre.c_str(), sizeof(reg.nombre) - 1);
+        strncpy(reg.telefono, c.telefono.c_str(), sizeof(reg.telefono) - 1);
+        strncpy(reg.direccion, c.direccion.c_str(), sizeof(reg.direccion) - 1);
+        archivo.write(reinterpret_cast<char*>(&reg), sizeof(reg));
     }
     archivo.close();
 }
+
+
 
 // Ordena los clientes alfabéticamente por nombre
 void Cliente::ordenarClientes() {
@@ -72,12 +70,49 @@ void Cliente::ordenarClientes() {
     });
 }
 
+void Cliente::setUsuario(const string& u) {
+    usuario = u;
+}
+
+void Cliente::menuClienteCRUD() {
+    int opcion;
+    do {
+        cargarClientes(); // cargar clientes
+        limpiarPantalla();
+        cout << "\nUsuario: " << usuario << endl;
+        cout << "\n===== MENÚ DE CLIENTES =====";
+        cout << "\n1. Crear Cliente";
+        cout << "\n2. Borrar Cliente";
+        cout << "\n3. Buscar Cliente";
+        cout << "\n4. Modificar Cliente";
+        cout << "\n5. Desplegar Clientes";
+        cout << "\n6. Salir";
+        cout << "\nSeleccione una opción: ";
+        cin >> opcion;
+        cin.ignore();
+
+        switch (opcion) {
+            case 1: crearCliente(); break;
+            case 2: borrarCliente(); break;
+            case 3: buscarCliente(); break;
+            case 4: modificarCliente(); break;
+            case 5: desplegarClientes(); break;
+            case 6: limpiarPantalla(); return;
+            default:
+                cout << "\nOpción inválida.";
+                pausar();
+        }
+    } while (true);
+}
+
+
 // Muestra el menú principal
 void Cliente::menuCliente() {
     int opcion;
     do {
         cargarClientes(); // Cargar al entrar o después de cada operación
         limpiarPantalla();
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== MENÚ DE CLIENTES =====";
         cout << "\n1. Crear Cliente";
         cout << "\n2. Borrar Cliente";
@@ -120,6 +155,7 @@ void Cliente::crearCliente() {
     limpiarPantalla();
     Cliente c;
 
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Crear Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, c.codigo);  // Colocado primero
     cout << "Nombre: "; getline(cin, c.nombre);
@@ -131,7 +167,7 @@ void Cliente::crearCliente() {
     guardarClientes();
 
     cout << "\nCliente agregado correctamente.";
-    log.insertar("Admin", 4101, "Clientes", "Crear Cliente");
+    bitacoralogCliente.insertar(usuario, 4101, "Clientes", "Crear Cliente");
 
     pausar();
 }
@@ -140,6 +176,7 @@ void Cliente::crearCliente() {
 void Cliente::borrarCliente() {
     limpiarPantalla();
     string codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Borrar Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, codigo);
 
@@ -157,7 +194,7 @@ void Cliente::borrarCliente() {
     if (eliminado) {
         clientes = nuevaLista;
         guardarClientes();
-        log.insertar("Admin", 4104, "Clientes", "Borrar Cliente");
+        bitacoralogCliente.insertar(usuario, 4102, "Clientes", "Borrar Cliente");
 
         cout << "\nCliente eliminado correctamente.";
     } else {
@@ -171,6 +208,7 @@ void Cliente::borrarCliente() {
 void Cliente::buscarCliente() {
     limpiarPantalla();
     string codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Buscar Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, codigo);
 
@@ -184,6 +222,7 @@ void Cliente::buscarCliente() {
             cout << "\nTeléfono  : " << c.telefono;
             cout << "\nDirección : " << c.direccion;
             encontrado = true;
+            bitacoralogCliente.insertar(usuario, 4103, "Clientes", "Buscar Cliente");
             break;
         }
     }
@@ -199,6 +238,7 @@ void Cliente::buscarCliente() {
 void Cliente::modificarCliente() {
     limpiarPantalla();
     string codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Modificar Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, codigo);
 
@@ -216,11 +256,11 @@ void Cliente::modificarCliente() {
         }
     }
 
-    if (modificado) {
-        ordenarClientes();
-        guardarClientes();
-        log.insertar("Admin", 4103, "Clientes", "Modificar Cliente");
 
+if (modificado) { // Si se realizó alguna modificación en el cliente:
+    ordenarClientes(); // Ordena la lista de clientes para mantener el orden alfabético o lógico.
+    guardarClientes(); // Guarda la lista actualizada de clientes en el archivo correspondiente,
+    bitacoralogCliente.insertar(usuario, 4104, "Clientes", "Modificar Cliente"); // Registra la acción realizada en la bitácora del sistema
         cout << "\nCliente modificado exitosamente.";
     } else {
         cout << "\nCliente no encontrado.";
@@ -232,6 +272,7 @@ void Cliente::modificarCliente() {
 // Muestra todos los clientes
 void Cliente::desplegarClientes() {
     limpiarPantalla();
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Clientes Registrados ===\n";
 
     if (clientes.empty()) {
@@ -245,6 +286,7 @@ void Cliente::desplegarClientes() {
             cout << "\nDirección : " << c.direccion;
         }
         cout << "\n-----------------------------";
+        bitacoralogCliente.insertar(usuario, 4105, "Clientes", "Desplegar Cliente");
     }
 
     pausar();
@@ -252,14 +294,17 @@ void Cliente::desplegarClientes() {
 
 void Cliente::registrarMovimiento() {
     limpiarPantalla();
+    cargarClientes();  // Solución agregada
+
     string codigoCliente, descripcion, fecha;
     double monto=0;
     cout << "\n=== Registrar Movimiento ===";
     cout << "\nCódigo del Cliente: ";
+    cin.ignore();
     getline(cin, codigoCliente);
 
     bool encontrado = false;
-    for (const auto& c : clientes) {
+    for (const auto& c : clientes) {   // Recorre cada cliente dentro del vector 'clientes'.
         if (c.codigo == codigoCliente) {
             encontrado = true;
             cout << "Descripción del movimiento: ";
@@ -271,12 +316,17 @@ void Cliente::registrarMovimiento() {
             cin >> monto;
             cin.ignore();
 
-            ofstream archivo("movimientos.txt", ios::app);
-            archivo << codigoCliente << "," << descripcion << "," << fecha << "," << monto  << "\n";
-            archivo.close();
+            ofstream archivo("movimientos.dat", ios::binary | ios::app);
+RegistroMovimiento reg{};
+strncpy(reg.codigoCliente, codigoCliente.c_str(), sizeof(reg.codigoCliente) - 1);
+strncpy(reg.descripcion, descripcion.c_str(), sizeof(reg.descripcion) - 1);
+strncpy(reg.fecha, fecha.c_str(), sizeof(reg.fecha) - 1);
+reg.monto = monto;
+archivo.write(reinterpret_cast<char*>(&reg), sizeof(reg));
+archivo.close();
 
             cout << "\nMovimiento registrado correctamente.";
-            log.insertar("Admin", 5101, "Movimientos", "Registrar Movimiento");
+
             break;
         }
     }
@@ -288,112 +338,114 @@ void Cliente::registrarMovimiento() {
     pausar();
 }
 
+
 void Cliente::mostrarMovimientos() {
-    limpiarPantalla();
-    string codigoCliente, linea;
-    cout << "\n=== Mostrar Movimientos ===";
-    cout << "\nCódigo del Cliente: ";
-    getline(cin, codigoCliente);
+    limpiarPantalla();                         // Limpia la pantalla antes de mostrar información.
+    string codigoCliente, linea;               // Declara variables para código del cliente y línea leída.
+    cout << "\n=== Mostrar Movimientos ===";   // Muestra título del menú.
+    cout << "\nCódigo del Cliente: ";          // Solicita al usuario ingresar el código del cliente.
+    cin.ignore();                             // Limpia el buffer de entrada para evitar errores.
+    getline(cin, codigoCliente);              // Lee el código del cliente ingresado por el usuario.
 
-    ifstream archivo("movimientos.txt");
-    bool hayMovimientos = false;
-
-    while (getline(archivo, linea)) {
-        size_t pos = linea.find(',');
-        string codigo = linea.substr(0, pos);
-        string descripcion = linea.substr(pos + 1);
-
-        if (codigo == codigoCliente) {
-            cout << "\n- " << descripcion;
-            hayMovimientos = true;
-        }
+ifstream archivo("movimientos.dat", ios::binary);
+RegistroMovimiento reg;
+bool hayMovimientos = false;
+while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+    if (codigoCliente == reg.codigoCliente) {
+        cout << "\n- " << reg.descripcion << " | Fecha: " << reg.fecha << " | Monto: Q" << reg.monto;
+        hayMovimientos = true;
     }
+}
+archivo.close();
+if (!hayMovimientos) {
+    cout << "\nNo hay movimientos registrados para este cliente.";
+}
 
-    archivo.close();
-
-    if (!hayMovimientos) {
-        cout << "\nNo hay movimientos registrados para este cliente.";
-    }
 
     pausar();
 }
 
 void Cliente::abrirArchivoMovimientos() {
-    limpiarPantalla();
-    cout << "\n=== Contenido del archivo movimientos.txt ===\n";
+    limpiarPantalla();                       // Limpia la pantalla antes de mostrar contenido.
+    cout << "\n=== Contenido del archivo movimientos.txt ===\n";  // Muestra título.
 
-    ifstream archivo("movimientos.txt");
-    string linea;
-    while (getline(archivo, linea)) {
-        cout << linea << "\n";
-    }
-    archivo.close();
+    ifstream archivo("movimientos.dat", ios::binary);
+RegistroMovimiento reg;
+while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+    cout << "\nCliente: " << reg.codigoCliente
+         << " | Desc: " << reg.descripcion
+         << " | Fecha: " << reg.fecha
+         << " | Monto: Q" << reg.monto;
+}
+archivo.close(); // Cierra el archivo después de leerlo.
 
-    pausar();
+    pausar();                              // Pausa el programa hasta que el usuario presione ENTER.
 }
 
+
 void Cliente::registrarPrestamo() {
-    limpiarPantalla();
-    string codigoCliente, estado;
-    double monto;
-    cout << "\n=== Registrar Préstamo ===";
-    cout << "\nCódigo del Cliente: ";
-    getline(cin, codigoCliente);
+    limpiarPantalla();                                // Limpia pantalla antes de iniciar.
+    string codigoCliente, estado;                      // Variables para código y estado del préstamo.
+    double monto;                                      // Variable para monto del préstamo.
+    cout << "\n=== Registrar Préstamo ===";            // Muestra título de la función.
+    cout << "\nCódigo del Cliente: ";                  // Solicita código del cliente.
+    cin.ignore();                                      // Ignora caracteres previos en el buffer.
+    getline(cin, codigoCliente);                       // Lee el código del cliente.
 
-    bool encontrado = false;
-    for (const auto& c :clientes) {
-        if (c.codigo == codigoCliente) {
-            encontrado = true;
-            cout << "Monto del préstamo: ";
-            cin >> monto;
-            cin.ignore();
-            cout << "¿Está pagado? (Sí/No): ";
-            getline(cin, estado);
+    bool encontrado = false;                           // Variable para verificar si cliente existe.
+    for (const auto& c :clientes) {                    // Itera sobre todos los clientes.
+        if (c.codigo == codigoCliente) {               // Verifica si el código coincide.
+            encontrado = true;                         // Marca cliente como encontrado.
+            cout << "Monto del préstamo: ";            // Solicita monto del préstamo.
+            cin >> monto;                              // Lee el monto.
+            cin.ignore();                              // Limpia buffer después de entrada numérica.
+            cout << "¿Está pagado? (Sí/No): ";         // Pregunta estado del pago.
+            getline(cin, estado);                       // Lee el estado del préstamo.
 
-            ofstream archivo("prestamos.txt", ios::app);
-            archivo << codigoCliente << "," << monto << ", se realizo el pago del prestamo? " << estado << "\n";
-            archivo.close();
+            ofstream archivo("prestamos.dat", ios::binary | ios::app);
+RegistroPrestamo reg{};
+strncpy(reg.codigoCliente, codigoCliente.c_str(), sizeof(reg.codigoCliente) - 1);
+reg.monto = monto;
+strncpy(reg.estado, estado.c_str(), sizeof(reg.estado) - 1);
+archivo.write(reinterpret_cast<char*>(&reg), sizeof(reg));
+archivo.close();
 
-            cout << "\nPréstamo registrado correctamente.";
-            log.insertar("Admin", 5201, "Préstamos", "Registrar Préstamo");
-            break;
+
+            cout << "\nPréstamo registrado correctamente."; // Mensaje de confirmación.
+
+            break;                                     // Sale del ciclo al encontrar el cliente.
         }
     }
 
-    if (!encontrado) {
-        cout << "\nCliente no encontrado.";
+    if (!encontrado) {                                 // Si cliente no fue encontrado.
+        cout << "\nCliente no encontrado.";            // Muestra mensaje de error.
     }
 
-    pausar();
+    pausar();                                         // Pausa hasta que usuario presione ENTER.
 }
 
 void Cliente::mostrarPrestamos() {
     limpiarPantalla();
-    string codigoCliente, linea;
+    string codigoCliente;
     cout << "\n=== Mostrar Préstamos ===";
     cout << "\nCódigo del Cliente: ";
+    cin.ignore();
     getline(cin, codigoCliente);
 
-    ifstream archivo("prestamos.txt");
-    bool hayPrestamos = false;
+    ifstream archivo("prestamos.dat", ios::binary);
+    RegistroPrestamo reg;
+    bool encontrado = false;
 
-    while (getline(archivo, linea)) {
-        size_t pos1 = linea.find(',');
-        size_t pos2 = linea.find(',', pos1 + 1);
-        string codigo = linea.substr(0, pos1);
-        string monto = linea.substr(pos1 + 1, pos2 - pos1 - 1);
-        string estado = linea.substr(pos2 + 1);
-
-        if (codigo == codigoCliente) {
-            cout << "\nMonto: Q." << monto << " - Estado: " << estado;
-            hayPrestamos = true;
+    while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+        if (codigoCliente == reg.codigoCliente) {
+            cout << "\nMonto: Q" << reg.monto << " | Estado: " << reg.estado;
+            encontrado = true;
         }
     }
-
     archivo.close();
 
-    if (!hayPrestamos) {
-        cout << "\nNo hay préstamos registrados para este cliente.";
+    if (!encontrado) {
+        cout << "\nNo se encontraron préstamos para este cliente.";
     }
 
     pausar();

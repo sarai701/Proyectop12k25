@@ -1,70 +1,65 @@
-//Programado por Priscila Sarai Guzmán Calgua 9959-23-450
+// Programado por Priscila Sarai Guzmán Calgua 9959-23-450
 #ifndef USUARIO_H
 #define USUARIO_H
-#include "Bitacora.h"
 
+#include "Bitacora.h"
 #include <string>
 using namespace std;
+
+// Estructura fija para el almacenamiento binario de usuarios
+struct RegistroUsuario {
+    char nombreUsuario[30];
+    char contrasena[30];
+};
+
 class Usuario {
 private:
-    string nombreUsuario;  // Almacena el nombre de usuario
-    string contrasena;     // Almacena la contraseña del usuario
-    static const std::string ARCHIVO_LOGIN; // Declaración
+    string usuario;               // Usuario autenticado (para bitácora)
+    string nombreUsuario;         // Almacena el nombre de usuario
+    string contrasena;            // Almacena la contraseña del usuario
+    static const string ARCHIVO_LOGIN; // Nombre del archivo binario login.dat
 
 public:
+    void setUsuario(const string& u); // Establece el usuario autenticado (bitácora)
+
     // Constructor por defecto
-    // Inicializa el nombre de usuario y la contraseña como cadenas vacías
     Usuario();
 
     // Constructor con parámetros
-    // Inicializa el nombre de usuario y la contraseña con los valores proporcionados
-    Usuario(const string& usuario, const std::string& contrasena);
+    Usuario(const string& usuario, const string& contrasena);
 
-    // Método para obtener el nombre de usuario
-    // Devuelve el nombre del usuario
+    // Obtiene el nombre del usuario
     string getNombreUsuario() const;
 
-    // Método para obtener la contraseña
-    // Devuelve la contraseña del usuario
+    // Obtiene la contraseña del usuario
     string getContrasena() const;
 
-    // Método para establecer (modificar) el nombre de usuario
-    // Recibe un nuevo nombre de usuario y lo asigna
+    // Establece/modifica el nombre de usuario
     void setNombreUsuario(const string& usuario);
 
-    // Método para establecer (modificar) la contraseña
-    // Recibe una nueva contraseña y la asigna
+    // Establece/modifica la contraseña
     void setContrasena(const string& contrasena);
 
-    // Método que verifica si el nombre de usuario y la contraseña proporcionados son correctos
-    // Compara los valores proporcionados con los almacenados en el objeto
+    // Verifica si usuario y contraseña coinciden con los almacenados en el objeto
     bool autenticar(const string& usuario, const string& contrasena) const;
 
-    // Métodos estáticos para control de acceso (no dependen de un objeto)
+    // Autenticación directa desde archivo binario login.dat
+    bool autenticarDesdeArchivo(string& usuarioAutenticado);
 
-    // Inicia sesión verificando los datos desde el archivo "login.txt"
-    // Retorna true si la autenticación es exitosa, de lo contrario false
-    static bool iniciarSesion();
+    // Inicia sesión verificando desde archivo binario login.dat
+    bool iniciarSesion();
 
-    // Registra un nuevo usuario en el archivo "login.txt"
-    // Recibe el nombre de usuario y la contraseña y los guarda en el archivo
-    // Retorna true si el registro es exitoso, de lo contrario false
-    static bool registrarUsuario();
+    // Registra nuevo usuario en archivo binario login.dat
+    string registrarUsuario();
 
-    // Muestra el menú de autenticación (iniciar sesión o registrar nuevo usuario)
-    // Devuelve true si se inicia sesión correctamente, false si se cancela
-    static bool menuAutenticacion(string& usuarioAutenticado);
+    // Muestra menú de autenticación
+    bool menuAutenticacion(string& usuarioAutenticado);
 
-    // Método para hacer una pausa y esperar que el usuario presione Enter para continuar
-    // Esto ayuda a hacer la interfaz más interactiva
-    static void pausar();
+    // Espera que el usuario presione Enter para continuar
+    void pausar();
+
+    // Limpia pantalla (multiplataforma)
     static void limpiarPantalla();
-
-    // Función para autenticar desde el archivo
-    static bool autenticarDesdeArchivo(string& usuarioAutenticado);
-
-
 };
 
 #endif
-
