@@ -38,14 +38,10 @@ void MenuProveedores::mostrar(vector<Proveedor>& lista, usuarios& usuarioActual)
                 Proveedor::mostrar(lista);
                 break;
             case 3:
-                cout << "\t\tIngrese ID del proveedor a modificar: ";
-                cin >> id;
-                Proveedor::modificar(lista, usuarioActual.getNombre(), id);
+                Proveedor::modificar(lista, usuarioActual.getNombre(), "");
                 break;
             case 4:
-                cout << "\t\tIngrese ID del proveedor a eliminar: ";
-                cin >> id;
-                Proveedor::eliminar(lista, usuarioActual.getNombre(), id);
+                Proveedor::eliminar(lista, usuarioActual.getNombre(), "");
                 break;
             case 5:
                 return;

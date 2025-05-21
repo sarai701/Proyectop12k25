@@ -1,62 +1,50 @@
-// Angoly Araujo Mayo 2025
-// 9959-24-17623
+// Angoly Araujo Mayo 2025 9959-24-17623
+
 
 #ifndef FACTURACION_H
 #define FACTURACION_H
 
-#include <iostream>
+// Se incluye la biblioteca estándar de cadenas de texto
+#include <string>
 using namespace std;
 
-// Estructura que representa una factura individual
+// Estructura que representa una factura
 struct Factura {
-    int idFactura;          // Identificador único de la factura
-    int idCliente;          // Identificador del cliente asociado
-    int idPedido;           // Identificador del pedido relacionado
-    float monto;            // Monto total de la factura
-    bool pagada;            // Estado de pago de la factura (true si está pagada)
-    char cliente[50];       // Nombre del cliente (no se usa activamente, pero se mantiene por compatibilidad)
+    int idFactura;        // Identificador único de la factura
+    int idCliente;        // Identificador del cliente asociado a la factura
+    int idPedido;         // Identificador del pedido asociado a la factura
+    float monto;          // Monto total de la factura
+    bool pagada;          // Estado de pago de la factura (true = pagada, false = pendiente)
+    char cliente[50];     // Nombre del cliente (máximo 50 caracteres)
 };
 
-// Clase que maneja las operaciones relacionadas con facturación
+// Clase que gestiona las operaciones relacionadas con la facturación
 class Facturacion {
-private:
-    // Nombre del archivo donde se guardan las facturas
-    const char* archivoFacturas = "facturas.bin";
-
-    // Nombre del archivo donde se guarda la bitácora de acciones
-    const char* archivoBitacora = "bitacora.bin";
-
-    // Guarda una factura en el archivo binario
-    void guardarEnArchivo(Factura factura);
-
-    // Muestra información de los clientes (definición pendiente)
-    void mostrarClientes();
-
-    // Muestra información de los pedidos (definición pendiente)
-    void mostrarPedidos();
-
-    // Genera un nuevo ID único para una factura
-    int generarIdFactura();
-
-    // Registra una acción en la bitácora (como crear, modificar, eliminar una factura)
-    void registrarBitacora(const Factura& factura, const string& accion, const string& usuario = "Usuario");
-
 public:
-    // Muestra el menú principal del módulo de facturación
-    void mostrarMenuFacturacion();
+    // Crea una nueva factura y la guarda en el archivo
+    static void crearFactura();
 
-    // Crea una nueva factura y la guarda
-    void crearFactura();
+    // Muestra todas las facturas almacenadas
+    static void mostrarFacturas();
 
-    // Muestra todas las facturas existentes
-    void mostrarFacturas();
+    // Permite modificar una factura existente
+    static void modificarFactura();
 
-    // Permite modificar los datos de una factura
-    void modificarFactura();
+    // Elimina una factura específica del archivo
+    static void eliminarFactura();
 
-    // Elimina una factura del archivo
-    void eliminarFactura();
+    // Muestra el menú principal de opciones de facturación
+    static void mostrarMenuFacturacion();
+
+private:
+    // Genera un ID único para una nueva factura
+    static int generarIdFactura();
+
+    // Guarda una factura en el archivo correspondiente
+    static void guardarEnArchivo(const Factura& factura);
+
+    // Registra una acción (crear, modificar, eliminar) en una bitácora con el usuario que la realizó
+    static void registrarBitacora(const Factura& factura, const string& accion, const string& usuario);
 };
 
-#endif
-
+#endif // FACTURACION_H
