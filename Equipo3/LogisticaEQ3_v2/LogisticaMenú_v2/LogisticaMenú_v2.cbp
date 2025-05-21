@@ -34,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="CODIGOS_BITACORA.md" />
+		<Unit filename="include/Inventario.h" />
 		<Unit filename="include/administracion.h" />
 		<Unit filename="include/almacen.h" />
 		<Unit filename="include/bitacora.h" />

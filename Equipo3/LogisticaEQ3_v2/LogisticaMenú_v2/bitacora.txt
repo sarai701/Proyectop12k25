@@ -64,3 +64,24 @@ ID_ACCION   USUARIO        MODULO              DESCRIPCION                      
 3000        kari           000                 REG-USER                           16/05/2025 18:20:41 
 3001        kari           000                 LOGIN                              16/05/2025 18:20:50 
 3002        kari           000                 LOGOUT                             16/05/2025 18:21:07 
+3000        arriaza        000                 REG-USER                           17/05/2025 11:22:52 
+3000        Jennifer       000                 LOGIN                              17/05/2025 18:02:42 
+3000        Sistema        000                 PROGRAMA CERRADO                   17/05/2025 20:19:46 
+3000        Karina         000                 REG-USER                           17/05/2025 21:36:16 
+3001        Karina         000                 LOGIN                              17/05/2025 21:36:25 
+3000        Sistema        000                 PROGRAMA CERRADO                   17/05/2025 22:00:29 
+3000        Karina         000                 LOGIN                              17/05/2025 23:06:21 
+3000        Karina         200                 STOCK                              17/05/2025 23:06:33 
+3001        Karina         000                 LOGOUT                             17/05/2025 23:07:05 
+3000        Karina         000                 LOGIN                              17/05/2025 23:12:35 
+3001        Karina         000                 LOGOUT                             17/05/2025 23:12:43 
+3000        Karina         000                 LOGIN                              17/05/2025 23:39:23 
+3001        Karina         000                 LOGOUT                             17/05/2025 23:39:31 
+3000        Karina         000                 LOGIN                              17/05/2025 23:41:21 
+3001        Karina         000                 LOGOUT                             17/05/2025 23:41:27 
+3000        Karina         000                 LOGIN                              17/05/2025 23:45:54 
+3001        Karina         000                 LOGOUT                             17/05/2025 23:46:02 
+3000        Karina         000                 LOGIN                              17/05/2025 23:50:47 
+3001        Karina         000                 LOGOUT                             17/05/2025 23:50:52 
+3000        Karina         000                 LOGIN                              17/05/2025 23:51:57 
+3001        Karina         000                 LOGOUT                             17/05/2025 23:52:01 
