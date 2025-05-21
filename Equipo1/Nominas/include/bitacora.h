@@ -1,11 +1,11 @@
 #ifndef BITACORA_H
 #define BITACORA_H
-
 #include <string>
 using namespace std;
-
+//Xander Reyes y Herson Giron (base)
+//Isaias Cedillo (9959-24-1672) "IsaC8-bit"
 // Clase que maneja el sistema de bitácora
-class bitacora {// Registro de bitacora - Isaias Cedillo (9959-24-1672) "IsaC8-bit"
+class bitacora {// Registro de bitacora
 private:
     // Variables para almacenar información de cada registro
     string nombre, aplicacion, accion;

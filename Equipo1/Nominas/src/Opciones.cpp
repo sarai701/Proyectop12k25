@@ -12,7 +12,7 @@
 using namespace std;
 bitacora Bitacora;
 Empleados mantenimiento;
-//codigo realizado por HERSON GIRON
+//codigo realizado por HERSON GIRON 9959-24-20
 
 void Opciones::menu()//Metodo de despliegue del menu
 {

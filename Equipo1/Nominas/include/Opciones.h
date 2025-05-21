@@ -4,7 +4,7 @@
 
 using std::string;
 
-class Opciones//Clase la cual muestra el menu-HERSON GIRON
+class Opciones//Clase la cual muestra el menu-HERSON GIRON 9959-24-20
 {
     private:
 		string id, nombre, estatus;

@@ -314,13 +314,13 @@
 	"bitacora.h"
 	"sistema.h"
 
-1747667424 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\opciones.h
+1747668590 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\opciones.h
 	<iostream>
 
 1746458381 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\usuarios.h
 	<iostream>
 
-1747667572 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\bitacora.h
+1747668635 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\bitacora.h
 	<string>
 
 1747663414 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\sistema.h
@@ -341,7 +341,7 @@
 	<bitacora.h>
 	<iostream>
 
-1747667424 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\bitacora.cpp
+1747668590 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\bitacora.cpp
 	"bitacora.h"
 	<iostream>
 	<fstream>
@@ -370,7 +370,7 @@
 	<limits>
 	"bitacora.h"
 
-1747667424 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\opciones.cpp
+1747668590 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\opciones.cpp
 	"Opciones.h"
 	"bitacora.h"
 	<iostream>
