@@ -33,15 +33,14 @@ void Inventario::controlInventario(vector<Producto>& productos,
         cout << "\t\t 2. Registrar mercancia" << endl;
         cout << "\t\t 3. Ajustar inventario" << endl;
         cout << "\t\t 4. Reporte de existencias" << endl;
-        cout << "\t\t 5. Transferir entre almacenes" << endl;
-        cout << "\t\t 6. Volver al menu anterior" << endl;
+        cout << "\t\t 5. Volver al menu anterior" << endl;
         cout << "\t\t========================================" << endl;
         cout << "\t\tOpcion a escoger: ";
 
-        while (!(cin >> opcion) || opcion < 1 || opcion > 6) {
+        while (!(cin >> opcion) || opcion < 1 || opcion > 5) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "\t\tEntrada inválida. Ingrese un número del 1 al 6: ";
+            cout << "\t\tEntrada inválida. Ingrese un número del 1 al 5: ";
         }
 
         switch(opcion) {
@@ -567,6 +566,7 @@ void Inventario::guardarEnArchivoBin(const vector<Inventario>& lista) {
     }
 
     archivo.close();
+    system("pause");
 }
 
 void Inventario::cargarDesdeArchivoBin(vector<Inventario>& lista) {
