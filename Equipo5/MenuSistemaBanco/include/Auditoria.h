@@ -17,9 +17,11 @@ struct Auditores {
 // Declaración de la clase Auditoria
 class Auditoria {
 private:
+    string usuario;//bitacora
     vector<Auditores> auditores; // Lista de auditores almacenados
 
 public:
+    void setUsuario(const string& u);//bitacora
     void menuAuditoria();          // Muestra el menú principal de auditoría
     void registrosRealizados();    // Muestra una tabla con registros de auditoría
     void limpiarPantalla();        // Limpia la pantalla según el sistema operativo

@@ -11,7 +11,8 @@ using namespace std;      // Evita tener que escribir std:: antes de string, cou
 // Clase que gestiona la configuración bancaria del sistema
 class Bancos {
 private:
-    static Bitacora bitacoraBancos;     // Objeto de bitácora para registrar acciones del módulo Bancos
+    string usuario;//bitacora
+        // Objeto de bitácora para registrar acciones del módulo Bancos
 
     string bancoSeleccionado;           // Nombre del banco seleccionado
     string tipoCuentaSeleccionada;      // Tipo de cuenta seleccionada (Corriente o Ahorro)
@@ -23,6 +24,7 @@ private:
     void menuTipoMoneda();              // Menú para seleccionar tipo de moneda
 
 public:
+    void setUsuario(const string& u);//bitacora
     Bancos();                           // Constructor
 
     void menuConfiguracion();           // Menú principal de configuración bancaria

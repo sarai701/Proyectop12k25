@@ -5,7 +5,7 @@
 #include <conio.h>// Se usa _getch() para ocultar la contraseña mientras se escribe
 #include <cstdlib>
 //Objeto global de tipo Botacora para registrar inicio de sesión
-Bitacora bitacoralog2;
+Bitacora bitacoralogUsuario;
 using namespace std;
 
 //Definición de la constante que representa el archivo de login
@@ -107,7 +107,7 @@ bool Usuario::autenticarDesdeArchivo(string& usuarioAutenticado) {
     return false;
 }
 //Método para registrar un nuevo usuario en el archivo de login.txt
-bool Usuario::registrarUsuario() {
+string Usuario::registrarUsuario() {
     limpiarPantalla();
     string nuevoUsuario, nuevaContrasena;
 
@@ -120,7 +120,7 @@ bool Usuario::registrarUsuario() {
     ofstream archivo("login.txt", ios::app); // Abre el archivo login.txt en modo "append" para agregar un nuevo usuario
     if (!archivo.is_open()) {
         cout << "\nError al abrir el archivo login.txt para escribir.\n";
-        return false;
+        return "";
     }
 
     // Escribe el nuevo usuario y su contraseña en el archivo
@@ -131,12 +131,16 @@ bool Usuario::registrarUsuario() {
     cin.ignore();
     cin.get();
     limpiarPantalla();
-    return true;
+    return nuevoUsuario;
+}
+
+void Usuario::setUsuario(const string& u) {
+    usuario = u;
 }
 
 // Menú de autenticación que permite al usuario elegir entre iniciar sesión, registrarse o salir
 bool Usuario::menuAutenticacion(string& usuarioAutenticado) {
-    int opcion; // Variable para almacenar la opción seleccionada por el usuario
+    int opcion;
     do {
         limpiarPantalla();
         cout << "\n===== SISTEMA DE ACCESO =====";
@@ -149,18 +153,23 @@ bool Usuario::menuAutenticacion(string& usuarioAutenticado) {
         switch (opcion) {
             case 1:
                 if (autenticarDesdeArchivo(usuarioAutenticado)) {
+                    bitacoralogUsuario.insertar(usuarioAutenticado, 1000, "Usuario", "Inicio de sesión exitoso");
                     return true;
                 }
+                bitacoralogUsuario.insertar("Desconocido", 4902, "Usuario", "Intento de inicio de sesión fallido");
                 break;
 
             case 2:
-                registrarUsuario(); // Llama al método para registrar un nuevo usuario
+            {
+                string nuevoUsuario = registrarUsuario();
+                if (!nuevoUsuario.empty()) {
+                        bitacoralogUsuario.insertar(nuevoUsuario, 1001, "Usuario", "Registro de nuevo usuario");
+                }
                 break;
-
+}
             case 3:
                 cout << "\nSaliendo...\n";
                 return false;
-                break;
 
             default:
                 cout << "\nOpción no válida.\n";

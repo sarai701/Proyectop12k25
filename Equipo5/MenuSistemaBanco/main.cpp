@@ -21,7 +21,7 @@ using namespace std;
 void pausar() {
     cout << "\nPresione ENTER para continuar...";
     // Ignorar cualquier entrada pendiente en el buffer hasta encontrar salto de línea
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     // Esperar a que el usuario presione ENTER
     cin.get();
 }
@@ -30,7 +30,7 @@ void pausar() {
 void limpiarBufferEntrada() {
     cin.clear(); // Limpia cualquier error previo de cin (como entrada no numérica cuando se esperaba un número)
     // Ignora todo lo que quede en el buffer de entrada para evitar problemas en lecturas siguientes
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 }
 
 void realizarBackup() { //Crea un carpeta llamado "backup" si no existe
@@ -60,6 +60,7 @@ void menuArchivo(const string& usuario, Bitacora& bitacora) {
 
     do {
         // Mostrar las opciones disponibles en el menú Archivo
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n--- MENÚ ARCHIVO ---";
         cout << "\n1. Backup";
         cout << "\n2. Volver al Menú General";
@@ -102,6 +103,7 @@ void menuCatalogos(const string& usuario, Bitacora& bitacora, Empleados& emplead
     int opcion;// Variable para almacenar la opción del usuario
 
     do {
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n--- MENÚ CATÁLOGOS ---";
         cout << "\n1. Nóminas";
         cout << "\n2. Cliente";
@@ -166,15 +168,20 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
     Usuario::limpiarPantalla();
 
     Bancos bancos; // Objeto para manejar configuración bancaria
+    bancos.setUsuario(usuario);
     Moneda moneda; // Objeto para manejar tipo de moneda
+    contabilidad.setUsuario(usuario);
+
 
     // Al iniciar el menú de procesos, solicita configuración bancaria
-    cout << "\nSeleccione configuración bancaria y moneda para Procesos:\n";
+    cout << "\nSeleccione configuración bancaria:\n";
+    cout << "\nUsuario: " << usuario << endl;
     bancos.menuConfiguracion(); // Muestra opciones para configurar banco y moneda
-    bitacora.insertar(usuario, 4300, "Procesos", "Configuración bancaria y moneda seleccionada");
+    bitacora.insertar(usuario, 4300, "Procesos", "Configuración bancaria");
 
     int opcionProcesos;
     do {
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n--- MENÚ PROCESOS ---" << endl;
         cout << "1. Clientes" << endl;
         cout << "2. Contabilidad" << endl;
@@ -196,6 +203,7 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
                 int opcionClientes;
                 do {
                     // Submenú para procesos relacionados con clientes
+                    cout << "\nUsuario: " << usuario << endl;
                     cout << "\n--- PROCESOS - CLIENTES ---" << endl;
                     cout << "1. Registrar movimiento" << endl;
                     cout << "2. Mostrar movimientos" << endl;
@@ -216,23 +224,23 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
                     switch (opcionClientes) {
                         case 1:
                             cliente.registrarMovimiento(); // Registra un movimiento bancario
-                            bitacora.insertar(usuario, 4100, "Clientes", "Movimiento registrado");
+                            bitacora.insertar(usuario, 4106, "Clientes", "Movimiento registrado");
                             break;
                         case 2:
                             cliente.mostrarMovimientos(); // Muestra los movimientos registrados
-                            bitacora.insertar(usuario, 4101, "Clientes", "Movimientos mostrados");
+                            bitacora.insertar(usuario, 4107, "Clientes", "Movimientos mostrados");
                             break;
                         case 3:
                             cliente.abrirArchivoMovimientos(); // Abre archivo externo con movimientos
-                            bitacora.insertar(usuario, 4102, "Clientes", "Mostrar movimientos");
+                            bitacora.insertar(usuario, 4108, "Clientes", "Mostrar movimientos");
                             break;
                         case 4:
                             cliente.registrarPrestamo(); // Registra un préstamo para el cliente
-                            bitacora.insertar(usuario, 4103, "Clientes", "Préstamo registrado");
+                            bitacora.insertar(usuario, 4109, "Clientes", "Préstamo registrado");
                             break;
                         case 5:
                             cliente.mostrarPrestamos(); // Muestra préstamos registrados
-                            bitacora.insertar(usuario, 4104, "Clientes", "Préstamos mostrados");
+                            bitacora.insertar(usuario, 4110, "Clientes", "Préstamos mostrados");
                             break;
                         case 6:
                             break; // Sale del submenú clientes
@@ -274,6 +282,7 @@ void menuInformes(const string& usuario, Bitacora& bitacora) {
     Usuario::limpiarPantalla();
     int opcionInformes;
     do {
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n--- MENÚ INFORMES ---" << endl;
         cout << "1. Bitácora" << endl;
         cout << "2. Volver al menú principal" << endl;
@@ -307,14 +316,20 @@ void menuGeneral(const string& usuario) {
     // Crea los objetos necesarios para los diferentes módulos del sistema
     Bitacora bitacora;
     Empleados empleados;
+    empleados.setUsuario(usuario);
     Cliente cliente;
+    cliente.setUsuario(usuario);
     Proveedor proveedor;
+    proveedor.setUsuario(usuario);
     Auditoria auditoria;
+    auditoria.setUsuario(usuario);
     Nominas nominas;
+    nominas.setUsuario(usuario);
     Contabilidad contabilidad;
 
     int opcion;
     do {
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n======= MENÚ GENERAL =======";
         cout << "\n1. Archivo";
         cout << "\n2. Catálogos";
@@ -364,9 +379,10 @@ int main() {
 
     while (true) {
         string usuarioLogueado;//Variable para guardar el nombre del usuario
+        Usuario usuario;
         // Llama al menú de autenticación y verifica si el usuario se autenticó correctamente
-        if (Usuario::menuAutenticacion(usuarioLogueado)) {
-            bitacoraGlobal.insertar(usuarioLogueado, 4900, "Sistema", "Inicio de sesión exitoso");
+         if (usuario.menuAutenticacion(usuarioLogueado)) {
+
             menuGeneral(usuarioLogueado);
         } else {
             cout << "\nAutenticación fallida.\n";

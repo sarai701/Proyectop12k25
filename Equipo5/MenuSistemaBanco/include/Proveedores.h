@@ -1,3 +1,4 @@
+// Boris de León 9959-24-6203
 #ifndef PROVEEDORES_H
 #define PROVEEDORES_H
 
@@ -8,6 +9,8 @@ using namespace std;
 
 class Proveedor {
 public:
+    void setUsuario(const string& u);//bitacora
+
     string codigo;     // Código del proveedor
     string nombre;     // Nombre del proveedor
     string telefono;   // Teléfono del proveedor
@@ -21,6 +24,8 @@ public:
     void desplegarProveedores();        // Muestra todos los proveedores
 
 private:
+    string usuario;//bitacora
+
     void limpiarPantalla();             // Limpia la pantalla de la consola
     void pausar();                      // Pausa el programa hasta que se presione ENTER
 

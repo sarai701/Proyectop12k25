@@ -9,11 +9,16 @@
 
 class Contabilidad {
 public:
+    void setUsuario(const string& u);//bitacora
     void menuContabilidad();               // Menú principal
     void registroNomina();                 // Opción 1: Registrar pago
     void desplegarRegistroSalarios();      // Opción 2: Generar salarios.txt
     void limpiarPantalla();                // Limpiar pantalla
     void pausar();                         // Pausar ejecución
-};
+
+
+private:
+    string usuario;//bitacora
+    };
 
 #endif

@@ -12,12 +12,15 @@ using namespace std;
 
 class Cliente {
 private:
+    string usuario;//bitacora
     vector<Cliente> clientes; // Lista de clientes en memoria
     void cargarClientes();         // Carga desde clientes.txt
     void guardarClientes();        // Guarda toda la lista en clientes.txt
     void ordenarClientes();        // Ordena alfabéticamente por nombre
 
 public:
+    void setUsuario(const string& u);//bitacora
+
     string codigo;            // Código del cliente
     string nombre;            // Nombre del cliente
     string telefono;          // Teléfono del cliente

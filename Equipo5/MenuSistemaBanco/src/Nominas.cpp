@@ -5,9 +5,11 @@
 #include <algorithm> // Para la función sort (orden)
 #include "Bitacora.h"
 #include "Moneda.h"
+#include <string>       // Para string
+#include <stdexcept>    // Para runtime_error
 
 // Bitácora global para registrar acciones realizadas en Nóminas
-Bitacora bitacoralog3;
+Bitacora bitacoralogNominas;
 
 using namespace std;
 
@@ -27,10 +29,10 @@ void Nominas::pausar() {
     cin.get();//Espera que el usuario presione ENTER
 }
 
-// Carga los empleados desde el archivo "empleados.txt"
+// Carga los empleados desde el archivo "nominas.txt"
 void Nominas::cargarEmpleados() {
     empleados.clear();
-    ifstream archivo("empleados.txt");//Abre el archivo en modo lectura
+    ifstream archivo("nominas.txt");//Abre el archivo en modo lectura
 
     try {
        //verifica si el archivo se puede abrir
@@ -76,10 +78,10 @@ void Nominas::cargarEmpleados() {
     }
 }
 
-// Guarda los empleados actuales en "empleados.txt"
+// Guarda los empleados actuales en "nominas.txt"
 void Nominas::guardarEmpleados() {
     try {
-        ofstream archivo("empleados.txt");//Modo escritura (sobrescribe)
+        ofstream archivo("nominas.txt");//Modo escritura (sobrescribe)
         if (!archivo.is_open()) {
             throw runtime_error("No se pudo abrir el archivo nominas.txt para escritura.");
         }
@@ -103,12 +105,37 @@ void Nominas::ordenarEmpleados() {
     });
 }
 
+
+
+void Nominas::setUsuario(const string& u) {
+    usuario = u;
+}
+
+double leerSalario() {
+    string entrada;
+    double salario;
+    cout << "Salario (GTQ): Q";
+    getline(cin, entrada);  // Se lee como string
+
+    try {
+        // Intenta convertir a double
+        salario = stod(entrada);
+    } catch (const invalid_argument& e) {
+        throw runtime_error("Entrada inválida. Debe ingresar un número para el salario.");
+    } catch (const out_of_range& e) {
+        throw runtime_error("El salario ingresado es demasiado grande.");
+    }
+
+    return salario;
+}
+
 // Menú principal de Nóminas
 void Nominas::menuNominas() {
     int opcion;
     do {
         cargarEmpleados();
         limpiarPantalla();
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== MENÚ DE NÓMINAS =====";
         cout << "\n1. Crear Empleado";
         cout << "\n2. Borrar Empleado";
@@ -137,27 +164,39 @@ void Nominas::crearEmpleado() {
     limpiarPantalla();
     EmpleadoNomina e;
 
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Crear Empleado ===";
     cout << "\nNombre: "; getline(cin, e.nombre);
     cout << "Teléfono: "; getline(cin, e.telefono);
     cout << "Código: "; getline(cin, e.codigo);
     cout << "Dirección: "; getline(cin, e.direccion);
-    cout << "Salario (GTQ): Q"; cin >> e.salario;
-    cin.ignore();
 
-    empleados.push_back(e);//agrega el nuevo empleado
-    ordenarEmpleados();//Ordena la lista
-    guardarEmpleados();//Guarda en archivo
+    bool valido = false;
+    while (!valido) {
+        try {
+            e.salario = leerSalario();
+            valido = true;
+        } catch (const runtime_error& ex) {
+            cout << ex.what() << endl;
+            cout << "Intente de nuevo.\n";
+        }
+    }
 
-    bitacoralog3.insertar("admin", 4001, "Nominas", "Crear empleado");
+    empleados.push_back(e);
+    ordenarEmpleados();
+    guardarEmpleados();
+
+    bitacoralogNominas.insertar(usuario, 4001, "Nominas", "Crear empleado");
     cout << "\nEmpleado agregado correctamente.";
     pausar();
 }
+
 
 // Borra un empleado existente
 void Nominas::borrarEmpleado() {
     limpiarPantalla();
     string nombre, codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Borrar Empleado ===";
     cout << "\nNombre: "; getline(cin, nombre);
     cout << "Código: "; getline(cin, codigo);
@@ -176,7 +215,7 @@ void Nominas::borrarEmpleado() {
     if (eliminado) {
         empleados = nuevaLista;
         guardarEmpleados();
-        bitacoralog3.insertar("admin", 4002, "Nominas", "Eliminar empleado");
+        bitacoralogNominas.insertar(usuario, 4002, "Nominas", "Eliminar empleado");
         cout << "\nEmpleado eliminado correctamente.";
     } else {
         cout << "\nEmpleado no encontrado.";
@@ -189,6 +228,7 @@ void Nominas::borrarEmpleado() {
 void Nominas::buscarEmpleado() {
     limpiarPantalla();
     string nombre, codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Buscar Empleado ===";
     cout << "\nNombre: "; getline(cin, nombre);
     cout << "Código: "; getline(cin, codigo);
@@ -205,7 +245,7 @@ void Nominas::buscarEmpleado() {
             cout << "\nSalario   : " << Moneda::getSimbolo()
                  << Moneda::convertirDesdeGtq(e.salario);
             encontrado = true;
-            bitacoralog3.insertar("admin", 4003, "Nominas", "Buscar empleado");
+            bitacoralogNominas.insertar(usuario, 4003, "Nominas", "Buscar empleado");
             break;
         }
     }
@@ -221,6 +261,7 @@ void Nominas::buscarEmpleado() {
 void Nominas::modificarEmpleado() {
     limpiarPantalla();
     string nombre, codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Modificar Empleado ===";
     cout << "\nNombre: "; getline(cin, nombre);
     cout << "Código: "; getline(cin, codigo);
@@ -244,7 +285,7 @@ void Nominas::modificarEmpleado() {
     if (modificado) {
         ordenarEmpleados();
         guardarEmpleados();
-        bitacoralog3.insertar("admin", 4004, "Nominas", "Modificar empleado");
+        bitacoralogNominas.insertar(usuario, 4004, "Nominas", "Modificar empleado");
         cout << "\nEmpleado modificado exitosamente.";
     } else {
         cout << "\nEmpleado no encontrado.";
@@ -256,6 +297,7 @@ void Nominas::modificarEmpleado() {
 // Muestra todos los empleados registrados
 void Nominas::desplegarEmpleados() {
     limpiarPantalla();
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Empleados Registrados ===\n";
 
     if (empleados.empty()) {
@@ -271,7 +313,7 @@ void Nominas::desplegarEmpleados() {
                  << Moneda::convertirDesdeGtq(e.salario);
         }
         cout << "\n-----------------------------";
-        bitacoralog3.insertar("admin", 4005, "Nominas", "Ver empleados");
+        bitacoralogNominas.insertar(usuario, 4005, "Nominas", "Ver empleados");
     }
 
     pausar();

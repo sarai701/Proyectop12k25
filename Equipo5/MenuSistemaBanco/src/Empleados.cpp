@@ -4,6 +4,7 @@
 #include <fstream>     // Incluye la biblioteca para manejo de archivos.
 #include <algorithm>   // Incluye funciones de algoritmos, como sort.
 #include "Bitacora.h"  // Incluye el encabezado de la clase Bitacora.
+#include <limits>
 
 using namespace std; // Permite usar elementos del espacio de nombres std sin prefijo.
 
@@ -66,11 +67,15 @@ void Empleados::ordenarEmpleados() { // Método para ordenar empleados alfabética
     });
 }
 
+void Empleados::setUsuario(const string& u) {
+    usuario = u;
+}
 void Empleados::menuEmpleados() { // Método para mostrar el menú principal de empleados.
     int opcion; // Variable para almacenar la opción seleccionada por el usuario.
     do {
         cargarEmpleados(); // Carga la lista de empleados antes de mostrar el menú.
         limpiarPantalla(); // Limpia la pantalla.
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== MENÚ DE EMPLEADOS ====="; // Muestra el encabezado del menú.
         cout << "\n1. Crear Empleado"; // Opción para crear un nuevo empleado.
         cout << "\n2. Borrar Empleado"; // Opción para borrar un empleado.
@@ -80,7 +85,7 @@ void Empleados::menuEmpleados() { // Método para mostrar el menú principal de em
         cout << "\n6. Salir"; // Opción para salir del menú.
         cout << "\nSeleccione una opción: "; // Solicita al usuario que seleccione una opción.
         cin >> opcion; // Lee la opción ingresada por el usuario.
-        cin.ignore(); // Ignora el carácter de nueva línea.
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Ignora el carácter de nueva línea.
 
         switch (opcion) { // Estructura de control para manejar la opción seleccionada.
             case 1: crearEmpleado(); break; // Llama al método para crear un empleado.
@@ -101,6 +106,7 @@ void Empleados::menuEmpleados() { // Método para mostrar el menú principal de em
 void Empleados::crearEmpleado() { // Método para crear un nuevo empleado.
     limpiarPantalla(); // Limpia la pantalla.
     Empleado e; // Crea una instancia de Empleado.
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Crear Empleado ==="; // Encabezado del proceso de creación.
     cout << "\nNombre: "; getline(cin, e.nombre); // Solicita el nombre.
     cout << "Código: "; getline(cin, e.codigo); // Solicita el código.
@@ -111,7 +117,7 @@ void Empleados::crearEmpleado() { // Método para crear un nuevo empleado.
     ordenarEmpleados(); // Ordena la lista de empleados.
     guardarEmpleados(); // Guarda la lista actualizada en el archivo.
 
-    bitacoralogEmpleados.insertar("Admin", 4006, "Empleados", "Crear empleado"); // Registra la acción en la bitácora.
+    bitacoralogEmpleados.insertar(usuario, 4006, "Empleados", "Crear empleado"); // Registra la acción en la bitácora.
     cout << "\nEmpleado agregado correctamente."; // Mensaje de confirmación.
     pausar(); // Pausa la ejecución.
 }
@@ -119,6 +125,7 @@ void Empleados::crearEmpleado() { // Método para crear un nuevo empleado.
 void Empleados::borrarEmpleado() { // Método para borrar un empleado.
     limpiarPantalla(); // Limpia la pantalla.
     string nombre, codigo; // Variables para almacenar el nombre y código del empleado a borrar.
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Borrar Empleado ==="; // Encabezado del proceso de borrado.
     cout << "\nNombre: "; getline(cin, nombre); // Solicita el nombre.
     cout << "Código: "; getline(cin, codigo); // Solicita el código.
@@ -137,7 +144,7 @@ void Empleados::borrarEmpleado() { // Método para borrar un empleado.
     if (eliminado) { // Si se eliminó un empleado.
         empleados = nuevaLista; // Actualiza la lista de empleados.
         guardarEmpleados(); // Guarda la lista actualizada en el archivo.
-        bitacoralogEmpleados.insertar("Admin", 4007, "Empleados", "Borrar empleado"); // Registra la acción en la bitácora.
+        bitacoralogEmpleados.insertar(usuario, 4007, "Empleados", "Borrar empleado"); // Registra la acción en la bitácora.
         cout << "\nEmpleado eliminado correctamente."; // Mensaje de confirmación.
     } else {
         cout << "\nEmpleado no encontrado."; // Mensaje si no se encontró al empleado.
@@ -149,6 +156,7 @@ void Empleados::borrarEmpleado() { // Método para borrar un empleado.
 void Empleados::buscarEmpleado() { // Método para buscar un empleado.
     limpiarPantalla(); // Limpia la pantalla.
     string nombre, codigo; // Variables para almacenar el nombre y código del empleado a buscar.
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Buscar Empleado ==="; // Encabezado del proceso de búsqueda.
     cout << "\nNombre: "; getline(cin, nombre); // Solicita el nombre.
     cout << "Código: "; getline(cin, codigo); // Solicita el código.
@@ -162,7 +170,7 @@ void Empleados::buscarEmpleado() { // Método para buscar un empleado.
             cout << "\nCódigo   : " << e.codigo; // Muestra el código.
             cout << "\nPuesto   : " << e.puesto; // Muestra el puesto.
             cout << "\nTeléfono : " << e.telefono; // Muestra el teléfono.
-            bitacoralogEmpleados.insertar("Admin", 4008, "Empleados", "Buscar empleado"); // Registra la acción en la bitácora.
+            bitacoralogEmpleados.insertar(usuario, 4008, "Empleados", "Buscar empleado"); // Registra la acción en la bitácora.
             encontrado = true; // Marca que se encontró al empleado.
             break; // Sale del bucle.
         }
@@ -178,6 +186,7 @@ void Empleados::buscarEmpleado() { // Método para buscar un empleado.
 void Empleados::modificarEmpleado() { // Método para modificar información de un empleado.
     limpiarPantalla(); // Limpia la pantalla.
     string nombre, codigo; // Variables para almacenar el nombre y código del empleado a modificar.
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Modificar Empleado ==="; // Encabezado del proceso de modificación.
     cout << "\nNombre: "; getline(cin, nombre); // Solicita el nombre.
     cout << "Código: "; getline(cin, codigo); // Solicita el código.
@@ -199,7 +208,7 @@ void Empleados::modificarEmpleado() { // Método para modificar información de un
     if (modificado) { // Si se modificó el empleado.
         ordenarEmpleados(); // Ordena la lista de empleados.
         guardarEmpleados(); // Guarda la lista actualizada en el archivo.
-        bitacoralogEmpleados.insertar("Admin", 4009, "Empleados", "Modificar empleado"); // Registra la acción en la bitácora.
+        bitacoralogEmpleados.insertar(usuario, 4009, "Empleados", "Modificar empleado"); // Registra la acción en la bitácora.
         cout << "\nEmpleado modificado correctamente."; // Mensaje de confirmación.
     } else {
         cout << "\nEmpleado no encontrado."; // Mensaje si no se encontró al empleado.
@@ -210,6 +219,7 @@ void Empleados::modificarEmpleado() { // Método para modificar información de un
 
 void Empleados::desplegarEmpleados() { // Método para mostrar todos los empleados.
     limpiarPantalla(); // Limpia la pantalla.
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Empleados Registrados ===\n"; // Encabezado de la lista de empleados.
 
     if (empleados.empty()) { // Si no hay empleados registrados.
@@ -223,7 +233,7 @@ void Empleados::desplegarEmpleados() { // Método para mostrar todos los empleado
             cout << "\nTeléfono : " << e.telefono; // Muestra el teléfono.
         }
         cout << "\n----------------------------"; // Línea divisoria final.
-        bitacoralogEmpleados.insertar("Admin", 4010, "Empleados", "Desplegar empleados"); // Registra la acción en la bitácora.
+        bitacoralogEmpleados.insertar(usuario, 4010, "Empleados", "Desplegar empleados"); // Registra la acción en la bitácora.
     }
 
     pausar(); // Pausa la ejecución.

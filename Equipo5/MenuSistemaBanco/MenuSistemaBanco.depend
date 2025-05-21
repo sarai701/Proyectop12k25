@@ -658,19 +658,19 @@
 	<algorithm>
 	"Bitacora.h"
 
-1746505083 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\auditoria.cpp
+1747738731 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\auditoria.cpp
 	"Auditoria.h"
 	<iostream>
 	<fstream>
 	"Bitacora.h"
 	<cstdlib>
 
-1746505083 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\auditoria.h
+1747731244 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\auditoria.h
 	<string>
 	<vector>
 	"Bitacora.h"
 
-1747604362 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
+1747738684 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cliente.cpp
 	"Cliente.h"
 	"Bitacora.h"
 	<iostream>
@@ -678,15 +678,15 @@
 	<vector>
 	<algorithm>
 
-1747604361 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
+1747726430 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cliente.h
 	<string>
 	<vector>
 	"Bitacora.h"
 
-1747604361 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
+1747667783 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bitacora.h
 	<string>
 
-1747020455 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
+1747738582 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\contabilidad.cpp
 	"Contabilidad.h"
 	<vector>
 	<sstream>
@@ -696,25 +696,24 @@
 	"Moneda.h"
 	<cstdlib>
 
-1746505083 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\contabilidad.h
+1747725735 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\contabilidad.h
 	<iostream>
 	<fstream>
 	<string>
 	"Bitacora.h"
 
-1746505874 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\proveedores.cpp
+1747738349 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\proveedores.cpp
 	"Proveedores.h"
-	"Bitacora.h"
 	<iostream>
 	<fstream>
 	<algorithm>
-
-1746505874 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\proveedores.h
-	<string>
-	<vector>
 	"Bitacora.h"
 
-1747623241 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\main.cpp
+1747722340 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\proveedores.h
+	<string>
+	<vector>
+
+1747738174 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\main.cpp
 	<iostream>
 	<fstream>
 	<string>
@@ -731,22 +730,23 @@
 	"Moneda.h"
 	<limits>
 
-1746505874 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\empleados.h
+1747722033 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\empleados.h
 	<vector>
 	<string>
 	"Bitacora.h"
 
-1747012039 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\usuario.h
+1747737595 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\usuario.h
 	"Bitacora.h"
 	<string>
+	<string>
 
-1747610061 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
+1747733487 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\nominas.h
 	<string>
 	<vector>
 	"Bitacora.h"
 	"Moneda.h"
 
-1747604362 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
+1747649322 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bitacora.cpp
 	"Bitacora.h"
 	<fstream>
 	<iostream>
@@ -754,22 +754,25 @@
 	<ctime>
 	<cstring>
 
-1747625558 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
+1747738507 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\empleados.cpp
 	"Empleados.h"
 	<iostream>
 	<fstream>
 	<algorithm>
 	"Bitacora.h"
+	<limits>
 
-1747624530 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
+1747738437 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\nominas.cpp
 	"Nominas.h"
 	<iostream>
 	<fstream>
 	<algorithm>
 	"Bitacora.h"
 	"Moneda.h"
+	<string>
+	<stdexcept>
 
-1746505083 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\usuario.cpp
+1747730721 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\usuario.cpp
 	"Usuario.h"
 	<iostream>
 	<fstream>
@@ -1499,23 +1502,24 @@
 	<conio.h>
 	<cstdlib>
 
-1747604361 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bancos.h
+1747724160 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\bancos.h
 	<string>
 	"Bitacora.h"
 	"Moneda.h"
 
-1747604361 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\moneda.h
+1747665717 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\moneda.h
 	"Bitacora.h"
 	<string>
 
-1747604362 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\moneda.cpp
+1747665683 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\moneda.cpp
 	"Moneda.h"
 	"Bitacora.h"
 	<iostream>
 
-1747604361 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bancos.cpp
+1747738164 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\bancos.cpp
 	"Bancos.h"
 	"Moneda.h"
+	"Cuentas.h"
 	<iostream>
 
 1747015541 source:c:\users\deleo\onedrive\documentos\github\prueba equipo 5(2)\menusistemabanco\main.cpp
@@ -1951,11 +1955,11 @@
 	"Moneda.h"
 	<limits>
 
-1747625558 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cuentas.cpp
+1747738173 source:c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\src\cuentas.cpp
 	"Cuentas.h"
 	<iostream>
 
-1747625558 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cuentas.h
+1747724420 c:\users\prisc\onedrive\documentos\programacion1\programacion1-tareas\proyectofinal\proyectop12k25\equipo5\menusistemabanco\include\cuentas.h
 	<string>
 	"Bitacora.h"
 

@@ -1,4 +1,2 @@
-Jose,12354544,123456,zona 10,4000
-Josue,45433433,1,zona 2,2000
-Mar¡a,12390877,2,zona 6,3000
-Pedro,12567899,666,zona 4,4000
+Fernando,1,Supervisor,23765434
+Josue,12,Obrero,12435643

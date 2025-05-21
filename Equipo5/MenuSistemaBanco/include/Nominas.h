@@ -14,6 +14,7 @@ struct EmpleadoNomina {
     string nombre;
     string telefono;
     string codigo;
+    string puesto;
     string direccion;
     double salario;
 };
@@ -21,12 +22,15 @@ struct EmpleadoNomina {
 class Nominas {
 private:
     vector<EmpleadoNomina> empleados;   // Lista en memoria de empleados
+    string usuario;//bitacora
     void cargarEmpleados();             // Carga los datos desde empleados.txt
     void guardarEmpleados();            // Guarda todos los datos en empleados.txt
     void ordenarEmpleados();            // Ordena los empleados por código
-
+    void guardarNominas();
 public:
-    void menuNominas();                 // Muestra el menú del módulo de Nóminas
+    void setUsuario(const string& u);//bitacora
+
+    void menuNominas();// Muestra el menú del módulo de Nóminas
     void crearEmpleado();              // Agrega un nuevo empleado
     void borrarEmpleado();             // Elimina un empleado por código
     void buscarEmpleado();             // Busca un empleado por código

@@ -6,21 +6,24 @@
 #include <string>
 #include "Bitacora.h"
 
+using namespace std;
+
 // Clase para representar a un empleado
 class Empleado {
 public:
-    std::string nombre;      // Nombre del empleado
-    std::string codigo;      // Código de identificación
-    std::string puesto;      // Puesto de trabajo
-    std::string telefono;    // Teléfono del empleado
+    string nombre;      // Nombre del empleado
+    string codigo;      // Código de identificación
+    string puesto;      // Puesto de trabajo
+    string telefono;    // Teléfono del empleado
 };
 
 // Clase principal para la gestión de empleados
 class Empleados {
 private:
-    std::vector<Empleado> empleados;   // Vector que almacena la lista de empleados
-
+    vector<Empleado> empleados;   // Vector que almacena la lista de empleados
+    string usuario;//Bitacora
 public:
+    void setUsuario(const string& u);//bitacora
     // Funciones
     void limpiarPantalla();            // Limpia la pantalla según el sistema operativo
     void pausar();                     // Pausa el programa hasta que se presione ENTER

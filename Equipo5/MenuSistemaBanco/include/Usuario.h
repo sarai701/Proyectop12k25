@@ -2,23 +2,26 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 #include "Bitacora.h"
+#include <string>
 
 #include <string>
 using namespace std;
 class Usuario {
 private:
+    string usuario;//bitacora
     string nombreUsuario;  // Almacena el nombre de usuario
     string contrasena;     // Almacena la contraseña del usuario
-    static const std::string ARCHIVO_LOGIN; // Declaración
+    static const string ARCHIVO_LOGIN; // Declaración
 
 public:
+    void setUsuario(const string& u);//bitacora
     // Constructor por defecto
     // Inicializa el nombre de usuario y la contraseña como cadenas vacías
     Usuario();
 
     // Constructor con parámetros
     // Inicializa el nombre de usuario y la contraseña con los valores proporcionados
-    Usuario(const string& usuario, const std::string& contrasena);
+    Usuario(const string& usuario, const string& contrasena);
 
     // Método para obtener el nombre de usuario
     // Devuelve el nombre del usuario
@@ -44,24 +47,24 @@ public:
 
     // Inicia sesión verificando los datos desde el archivo "login.txt"
     // Retorna true si la autenticación es exitosa, de lo contrario false
-    static bool iniciarSesion();
+    bool iniciarSesion();
 
     // Registra un nuevo usuario en el archivo "login.txt"
     // Recibe el nombre de usuario y la contraseña y los guarda en el archivo
     // Retorna true si el registro es exitoso, de lo contrario false
-    static bool registrarUsuario();
+    string registrarUsuario();
 
     // Muestra el menú de autenticación (iniciar sesión o registrar nuevo usuario)
     // Devuelve true si se inicia sesión correctamente, false si se cancela
-    static bool menuAutenticacion(string& usuarioAutenticado);
+    bool menuAutenticacion(string& usuarioAutenticado);
 
     // Método para hacer una pausa y esperar que el usuario presione Enter para continuar
     // Esto ayuda a hacer la interfaz más interactiva
-    static void pausar();
+    void pausar();
     static void limpiarPantalla();
 
     // Función para autenticar desde el archivo
-    static bool autenticarDesdeArchivo(string& usuarioAutenticado);
+    bool autenticarDesdeArchivo(string& usuarioAutenticado);
 
 
 };

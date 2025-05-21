@@ -12,7 +12,7 @@
 #endif
 
 // Instancia de bitácora para registrar actividades de Contabilidad
-Bitacora bitacoralog5;
+Bitacora bitacoralogContabilidad;
 
 using namespace std;
 
@@ -32,11 +32,16 @@ void Contabilidad::pausar() {
     cin.get();
 }
 
+void Contabilidad::setUsuario(const string& u) {
+    usuario = u;
+}
+
 // Menú principal del módulo de contabilidad
 void Contabilidad::menuContabilidad() {
     int opcion;
     do {
         limpiarPantalla();
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== MENÚ CONTABILIDAD =====";
         cout << "\n1. Registrar Pago de Nómina";
         cout << "\n2. Desplegar Registro de Salarios";
@@ -60,6 +65,7 @@ void Contabilidad::menuContabilidad() {
 void Contabilidad::registroNomina() {
     limpiarPantalla();
     string codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== REGISTRO DE PAGO ===";
     cout << "\nIngrese el código del empleado: ";
     getline(cin, codigo);
@@ -109,7 +115,7 @@ void Contabilidad::registroNomina() {
     }
 
     // Registrar acción en la bitácora
-    bitacoralog5.insertar("Admin", 4401, "Contabilidad", "Registro Nomina");
+    bitacoralogContabilidad.insertar(usuario, 4401, "Contabilidad", "Registro Nomina");
 
     pausar();
 }
@@ -177,5 +183,5 @@ void Contabilidad::desplegarRegistroSalarios() {
     pausar();
 
     // Registrar acción en la bitácora
-    bitacoralog5.insertar("Admin", 4402, "Contabilidad", "Desplegar registro nomina");
+    bitacoralogContabilidad.insertar(usuario, 4402, "Contabilidad", "Desplegar registro nomina");
 }

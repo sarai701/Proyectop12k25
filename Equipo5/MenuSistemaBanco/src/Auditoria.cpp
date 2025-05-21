@@ -8,7 +8,7 @@
 #include <cstdlib>        // Para usar system("cls") en Windows
 #endif
 
-Bitacora bitacoralog4;    // Objeto global para registrar acciones en la bitácora
+Bitacora bitacoralogAuditoria;    // Objeto global para registrar acciones en la bitácora
 using namespace std;
 
 // Función para limpiar la pantalla dependiendo del sistema operativo
@@ -27,11 +27,16 @@ void Auditoria::pausar() {
     cin.get();           // Espera a que el usuario presione ENTER
 }
 
+void Auditoria::setUsuario(const string& u) {
+    usuario = u;
+}
+
 // Menú principal de Auditoría
 void Auditoria::menuAuditoria() {
     int opcion;          // Variable para almacenar la opción del usuario
     do {
         limpiarPantalla();    // Limpia pantalla antes de mostrar el menú
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== MENÚ DE AUDITORÍA =====";
         cout << "\n1. Gestión de Auditores";
         cout << "\n2. Registros Realizados";
@@ -56,6 +61,7 @@ void Auditoria::submenuAuditor() {
     int opcion;          // Variable para almacenar la opción del usuario
     do {
         limpiarPantalla();    // Limpia pantalla antes de mostrar el submenú
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== GESTIÓN DE AUDITORES =====";
         cout << "\n1. Registrar Auditor";
         cout << "\n2. Borrar Auditor";
@@ -82,6 +88,7 @@ void Auditoria::registrarAuditor() {
     limpiarPantalla();           // Limpia la pantalla
     Auditores a;                 // Crear objeto auditor
 
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== REGISTRAR AUDITOR ===";
     cout << "\nNombre: ";
     getline(cin, a.nombre);      // Leer nombre del auditor
@@ -95,7 +102,7 @@ void Auditoria::registrarAuditor() {
     archivo.close();              // Cerrar archivo
 
     cout << "\n¡Auditor registrado!";              // Confirmación
-    bitacoralog4.insertar("Admin", 4301, "Auditoria", "Registrar"); // Registrar acción en bitácora
+    bitacoralogAuditoria.insertar(usuario, 4301, "Auditoria", "Registrar"); // Registrar acción en bitácora
     pausar();                      // Esperar al usuario
 }
 
@@ -130,7 +137,7 @@ void Auditoria::borrarAuditor() {
         cout << "\n¡Código no encontrado!"; // Mensaje si no se encuentra el código
     }
 
-    bitacoralog4.insertar("Admin", 4302, "Auditoria", "Borrar"); // Registrar acción en bitácora
+    bitacoralogAuditoria.insertar(usuario, 4302, "Auditoria", "Borrar"); // Registrar acción en bitácora
     pausar();                    // Esperar al usuario
 }
 
@@ -152,7 +159,7 @@ void Auditoria::despliegueAuditores() {
     }
 
     archivo.close();             // Cerrar archivo
-    bitacoralog4.insertar("Admin", 4303, "Auditoria", "Desplegar"); // Registrar acción en bitácora
+    bitacoralogAuditoria.insertar(usuario, 4303, "Auditoria", "Desplegar"); // Registrar acción en bitácora
     pausar();                    // Esperar al usuario
 }
 
@@ -163,6 +170,6 @@ void Auditoria::registrosRealizados() {
     cout << "\nFecha\t\tAcción\t\tUsuario";
     cout << "\n2023-10-01\tRevisión\tAuditor1";       // Registro de ejemplo
     cout << "\n2023-10-02\tVerificación\tAuditor2";    // Registro de ejemplo
-    bitacoralog4.insertar("Admin", 4304, "Auditoria", "registrosRealizados"); // Registrar acción en bitácora
+    bitacoralogAuditoria.insertar(usuario, 4304, "Auditoria", "registrosRealizados"); // Registrar acción en bitácora
     pausar();                    // Esperar al usuario
 }

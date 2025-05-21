@@ -1,5 +1,9 @@
 NOMBRE                        CODIGO         PAGADO    
+B                             1              Si        
 Jose                          123456         No        
-Josue                         1              No        
+Josue                         1              Si        
 Mar¡a                         2              No        
+Olga                          3              No        
 Pedro                         666            Si        
+William                       12             No        
+s                             1              Si        

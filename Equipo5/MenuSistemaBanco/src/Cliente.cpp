@@ -7,7 +7,7 @@
 #include <vector>
 #include <algorithm>
 
-Bitacora log; // Instancia global para registrar eventos
+Bitacora bitacoralogCliente; // Instancia global para registrar eventos
 using namespace std;
 
 // Limpia la pantalla según el sistema operativo
@@ -71,11 +71,17 @@ void Cliente::ordenarClientes() {
         return a.nombre < b.nombre;
     });
 }
+
+void Cliente::setUsuario(const string& u) {
+    usuario = u;
+}
+
 void Cliente::menuClienteCRUD() {
     int opcion;
     do {
         cargarClientes(); // cargar clientes
         limpiarPantalla();
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== MENÚ DE CLIENTES =====";
         cout << "\n1. Crear Cliente";
         cout << "\n2. Borrar Cliente";
@@ -108,6 +114,7 @@ void Cliente::menuCliente() {
     do {
         cargarClientes(); // Cargar al entrar o después de cada operación
         limpiarPantalla();
+        cout << "\nUsuario: " << usuario << endl;
         cout << "\n===== MENÚ DE CLIENTES =====";
         cout << "\n1. Crear Cliente";
         cout << "\n2. Borrar Cliente";
@@ -150,6 +157,7 @@ void Cliente::crearCliente() {
     limpiarPantalla();
     Cliente c;
 
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Crear Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, c.codigo);  // Colocado primero
     cout << "Nombre: "; getline(cin, c.nombre);
@@ -161,7 +169,7 @@ void Cliente::crearCliente() {
     guardarClientes();
 
     cout << "\nCliente agregado correctamente.";
-    log.insertar("Admin", 4101, "Clientes", "Crear Cliente");
+    bitacoralogCliente.insertar(usuario, 4101, "Clientes", "Crear Cliente");
 
     pausar();
 }
@@ -170,6 +178,7 @@ void Cliente::crearCliente() {
 void Cliente::borrarCliente() {
     limpiarPantalla();
     string codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Borrar Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, codigo);
 
@@ -187,7 +196,7 @@ void Cliente::borrarCliente() {
     if (eliminado) {
         clientes = nuevaLista;
         guardarClientes();
-        log.insertar("Admin", 4104, "Clientes", "Borrar Cliente");
+        bitacoralogCliente.insertar(usuario, 4102, "Clientes", "Borrar Cliente");
 
         cout << "\nCliente eliminado correctamente.";
     } else {
@@ -201,6 +210,7 @@ void Cliente::borrarCliente() {
 void Cliente::buscarCliente() {
     limpiarPantalla();
     string codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Buscar Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, codigo);
 
@@ -214,6 +224,7 @@ void Cliente::buscarCliente() {
             cout << "\nTeléfono  : " << c.telefono;
             cout << "\nDirección : " << c.direccion;
             encontrado = true;
+            bitacoralogCliente.insertar(usuario, 4103, "Clientes", "Buscar Cliente");
             break;
         }
     }
@@ -229,6 +240,7 @@ void Cliente::buscarCliente() {
 void Cliente::modificarCliente() {
     limpiarPantalla();
     string codigo;
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Modificar Cliente ===";
     cout << "\nCódigo de Cliente: "; getline(cin, codigo);
 
@@ -250,7 +262,7 @@ void Cliente::modificarCliente() {
 if (modificado) { // Si se realizó alguna modificación en el cliente:
     ordenarClientes(); // Ordena la lista de clientes para mantener el orden alfabético o lógico.
     guardarClientes(); // Guarda la lista actualizada de clientes en el archivo correspondiente,
-    log.insertar("Admin", 4103, "Clientes", "Modificar Cliente"); // Registra la acción realizada en la bitácora del sistema
+    bitacoralogCliente.insertar(usuario, 4104, "Clientes", "Modificar Cliente"); // Registra la acción realizada en la bitácora del sistema
         cout << "\nCliente modificado exitosamente.";
     } else {
         cout << "\nCliente no encontrado.";
@@ -262,6 +274,7 @@ if (modificado) { // Si se realizó alguna modificación en el cliente:
 // Muestra todos los clientes
 void Cliente::desplegarClientes() {
     limpiarPantalla();
+    cout << "\nUsuario: " << usuario << endl;
     cout << "\n=== Clientes Registrados ===\n";
 
     if (clientes.empty()) {
@@ -275,6 +288,7 @@ void Cliente::desplegarClientes() {
             cout << "\nDirección : " << c.direccion;
         }
         cout << "\n-----------------------------";
+        bitacoralogCliente.insertar(usuario, 4105, "Clientes", "Desplegar Cliente");
     }
 
     pausar();
@@ -309,7 +323,7 @@ void Cliente::registrarMovimiento() {
             archivo.close();
 
             cout << "\nMovimiento registrado correctamente.";
-            log.insertar("Admin", 5101, "Movimientos", "Registrar Movimiento");
+
             break;
         }
     }
@@ -393,7 +407,7 @@ void Cliente::registrarPrestamo() {
             archivo.close();                            // Cierra el archivo.
 
             cout << "\nPréstamo registrado correctamente."; // Mensaje de confirmación.
-            log.insertar("Admin", 5201, "Préstamos", "Registrar Préstamo"); // Registra acción en bitácora.
+
             break;                                     // Sale del ciclo al encontrar el cliente.
         }
     }
