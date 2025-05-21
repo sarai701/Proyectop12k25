@@ -12,9 +12,9 @@
 using namespace std;
 bitacora Bitacora;
 Empleados mantenimiento;
-//codigo realizado por HERSON GIRON 9959-24-20
+//codigo realizado por HERSON GIRON
 
-void Opciones::menu()//Metodo de despliegue del menu
+void Opciones::menu(string usuario)//Metodo de despliegue del menu
 {
     int opciones;
     bool repetir = true;
@@ -37,13 +37,13 @@ void Opciones::menu()//Metodo de despliegue del menu
         {
         case 1:
             {
-            mantenimiento.menuEmpleados(); //Se llama al metodo menu empleados con el objeto de la clase EMPLEADOS
+            mantenimiento.menuEmpleados(usuario); //Se llama al metodo menu empleados con el objeto de la clase EMPLEADOS
             //Para mostrar el menu y manipular datos del empleados
             }
             break;
         case 2:
             {
-             mantenimiento.mostrarMenuNomina(); //Se llama al metodo mostrar menu nomina de la clase EMPLEADOS para mostrar
+             mantenimiento.mostrarMenuNomina(usuario); //Se llama al metodo mostrar menu nomina de la clase EMPLEADOS para mostrar
              //el menu de procesos de empleados
             }
             break;

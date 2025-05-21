@@ -314,13 +314,13 @@
 	"bitacora.h"
 	"sistema.h"
 
-1747668590 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\opciones.h
+1747667424 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\opciones.h
 	<iostream>
 
 1746458381 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\usuarios.h
 	<iostream>
 
-1747668635 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\bitacora.h
+1747667572 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\bitacora.h
 	<string>
 
 1747663414 c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\include\sistema.h
@@ -341,7 +341,7 @@
 	<bitacora.h>
 	<iostream>
 
-1747668590 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\bitacora.cpp
+1747667424 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\bitacora.cpp
 	"bitacora.h"
 	<iostream>
 	<fstream>
@@ -370,7 +370,7 @@
 	<limits>
 	"bitacora.h"
 
-1747668590 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\opciones.cpp
+1747667424 source:c:\users\giron\onedrive\documentos\universidad umg 2025\programacion 1\proyectop12k25\equipo1\nominas\src\opciones.cpp
 	"Opciones.h"
 	"bitacora.h"
 	<iostream>
@@ -488,5 +488,87 @@
 	"bitacora.h"
 
 1747522825 c:\users\reyes\documents\progra\proyectop12k25\equipo1\nominas\include\prestaciones.h
+	<string>
+
+1747782341 source:c:\users\isaia\onedrive\escritorio\equipo1\nominas\main.cpp
+	<iostream>
+	<fstream>
+	<limits>
+	"Opciones.h"
+	"usuarios.h"
+	"bitacora.h"
+	"sistema.h"
+
+1747795433 c:\users\isaia\onedrive\escritorio\equipo1\nominas\include\opciones.h
+	<iostream>
+
+1747782341 c:\users\isaia\onedrive\escritorio\equipo1\nominas\include\usuarios.h
+	<iostream>
+
+1747782341 c:\users\isaia\onedrive\escritorio\equipo1\nominas\include\bitacora.h
+	<string>
+
+1747796121 c:\users\isaia\onedrive\escritorio\equipo1\nominas\include\sistema.h
+	<fstream>
+	<vector>
+	<limits>
+	"usuarios.h"
+
+1747795433 source:c:\users\isaia\onedrive\escritorio\equipo1\nominas\src\bitacora.cpp
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<iomanip>
+	<ctime>
+	<limits>
+
+1747782341 source:c:\users\isaia\onedrive\escritorio\equipo1\nominas\src\usuarios.cpp
+	"usuarios.h"
+	<fstream>
+	<cstdlib>
+	<conio.h>
+	<bitacora.h>
+	<iostream>
+
+1747795509 source:c:\users\isaia\onedrive\escritorio\equipo1\nominas\src\sistema.cpp
+	"sistema.h"
+	"Opciones.h"
+	<conio.h>
+
+1747795796 source:c:\users\isaia\onedrive\escritorio\equipo1\nominas\src\empleados.cpp
+	"Empleados.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"bitacora.h"
+
+1747795433 c:\users\isaia\onedrive\escritorio\equipo1\nominas\include\empleados.h
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	<limits>
+	"bitacora.h"
+
+1747795433 source:c:\users\isaia\onedrive\escritorio\equipo1\nominas\src\opciones.cpp
+	"Opciones.h"
+	"bitacora.h"
+	<iostream>
+	<fstream>
+	<stdlib.h>
+	<cstdlib>
+	<conio.h>
+	<iomanip>
+	"usuarios.h"
+	"Prestaciones.h"
+	"Empleados.h"
+
+1747782341 c:\users\isaia\onedrive\escritorio\equipo1\nominas\include\prestaciones.h
 	<string>
 

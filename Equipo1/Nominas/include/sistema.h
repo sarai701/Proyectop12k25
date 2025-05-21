@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <vector>
+#include <limits>
 #include "usuarios.h"
 
 using namespace std;
@@ -16,9 +17,11 @@ public:
     void registrarUsuario();
     void ingresarUsuario();
     void mostrarUsuarios();
+    std::string getUsuarioActual() const { return usuarioActual; }
 
 private:
     string archivoUsuarios = "usuarios.txt";
+    string usuarioActual = "";
 };
 
 #endif // SISTEMA_H

@@ -8,7 +8,6 @@
 
 using namespace std;
 //Isaias Cedillo (9959-24-1672) "IsaC8-bit"
-//Xander Reyes y Herson Giron (base)
 // Muestra el menú principal del sistema de bitácora
 void bitacora::menu()
 {

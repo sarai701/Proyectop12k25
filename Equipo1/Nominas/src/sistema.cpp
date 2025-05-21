@@ -1,6 +1,7 @@
 #include "sistema.h"
 #include "Opciones.h"
 #include <conio.h>
+#include <limits>
 //Realizado por ANGEL ROQUEL
 Opciones opcion; // Se crea un objeto global de la clase Opciones
 
@@ -19,9 +20,9 @@ void sistema::registrarUsuario() {
     system("cls");       // Limpia la pantalla
 
     string nombre, contrasenia;  // Variables para guardar el nombre y la contraseña del usuario
-
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "Ingrese nombre de usuario: ";
-    cin >> nombre;       // Captura el nombre del usuario
+    getline(cin,nombre);  // Captura el nombre del usuario Corregido por Isaias Cedillo para obtener nombre completo del usuario
 
     cout << "Ingrese contrasenia: ";
     char caracter;       // Variable para leer carácter por carácter la contraseña
@@ -86,9 +87,10 @@ void sistema::ingresarUsuario() {
 
             // Compara los datos ingresados con los del archivo
             if (usuario == nombre && contraseniaArchivo == contrasenia) {
+                usuarioActual = nombre;
                 cout << "Ingreso exitoso." << endl;
                 archivo.close();      // Cierra el archivo
-                opcion.menu();        // Llama al menú principal del sistema
+                opcion.menu(usuario);        // Llama al menú principal del sistema
                 return;               // Sale de la función
             }
         }

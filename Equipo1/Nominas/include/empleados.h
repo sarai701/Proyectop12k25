@@ -14,33 +14,37 @@ using namespace std;
 
 class Empleados
 {
-  public:
-        //Metosoa
-        Empleados();
-        void menuEmpleados();
-        void registroEmpleados();
-        void listaEmpleados();
-        void cambioEmpleados();
-        void borrarEmpleados();
-        void buscarEmpleado();
-        //metodos para el proceso de nomina-XANDER REYES
-        void mostrarMenuNomina();
-        void calcularNominaAnual();
-        void calcularNominaMensual();
-    private:
-        //Se declararon las variables ISR, IGSS, IRTRA, BONO INCENTIVO
-        double salarioSinISR, salarioSinIGSS, salarioSinIRTRA, salarioConBI;
-        double salarioNeto;
-        double IGSS=0.0483;
-        double IRTRA=0.01;
-        double ISR=0.05;
-        double bono14;
-        double aguinaldo;
-        int bonoIncentivo=250;
-        int opcion;
-        double salarioBruto;
-        string tipoEmpleado, Nombre;
-        float sueldo = 0.0;
+
+public:
+     Empleados();
+    // Métodos con parametros para el usuario
+    void menuEmpleados(const string& usuarioRegistrante);
+    void registroEmpleados(const string& usuarioRegistrante);
+    void listaEmpleados(const string& usuarioRegistrante);
+    void cambioEmpleados(const string& usuarioRegistrante);
+    void borrarEmpleados(const string& usuarioRegistrante);
+    void buscarEmpleado(const string& usuarioRegistrante);
+
+    //Nominas XANDER REYES
+    void mostrarMenuNomina(const string& usuarioRegistrante);
+    void calcularNominaAnual();
+    void calcularNominaMensual();
+
+private:
+    // Variables para cálculos de nómina XANDER REYES
+    double salarioSinISR, salarioSinIGSS, salarioSinIRTRA, salarioConBI;
+    double salarioNeto;
+    double IGSS = 0.0483;
+    double IRTRA = 0.01;
+    double ISR = 0.05;
+    double bono14;
+    double aguinaldo;
+    int bonoIncentivo = 250;
+    int opcion;
+    double salarioBruto;
+    string tipoEmpleado, Nombre;
+    float sueldo = 0.0;
+
 
 };
 

@@ -9,14 +9,14 @@
 #include "bitacora.h"
 // Objeto creado de la clase Empleados
 Empleados empleados;
-
+bitacora bitacoraempleado;
 // Creado y documentado Por Isaias Cedillo (9959-24-1672) "IsaC8-bit y Xander reyes(prestaciones)"
 // Constructor de la clase Empleados. Actualmente no realiza ninguna acción específica.
 Empleados::Empleados()
 {
 }
 // Metodo que muestra el menú de nómina
-void Empleados::mostrarMenuNomina()
+void Empleados::mostrarMenuNomina(const std::string& usuarioRegistrante)
 {
     // Inicia un bucle que se ejecuta hasta que la opción sea 3.
     do{
@@ -44,7 +44,7 @@ void Empleados::mostrarMenuNomina()
         // Mostrar nómina específica.
         case 2:
             // Llama a la función buscarEmpleado del objeto empleados.
-            empleados.buscarEmpleado();
+            buscarEmpleado(usuarioRegistrante);
             break;
         // Opción no válida.
         default:
@@ -56,11 +56,8 @@ void Empleados::mostrarMenuNomina()
     }while (opcion!=3);
 }
 
-// Objeto creado de la clase bitacora
-bitacora bitacoraempleado;
-
 // Muestra el menú principal para la gestión de empleados.
-void Empleados::menuEmpleados()
+void Empleados::menuEmpleados(const std::string& usuarioRegistrante)
 {
     // Inicializa la variable para la elección del usuario.
     int eleccion = 0;
@@ -79,7 +76,6 @@ void Empleados::menuEmpleados()
         cout << "\t\t\t 3. Modificar Empleados" << endl;
         cout << "\t\t\t 4. Borrar Empleados" << endl;
         cout << "\t\t\t 5. Regresar" << endl<<endl;
-
         // Solicita al usuario que ingrese el número de la opción.
         cout << "\t\t Ingrese numero de opcion: ";
         // Lee la elección del usuario.
@@ -91,14 +87,14 @@ void Empleados::menuEmpleados()
             case 1:
                 cout << "Opcion escogida... \n";
                 // Llama a la función registroEmpleados para ingresar un nuevo empleado.
-                registroEmpleados();
+                registroEmpleados(usuarioRegistrante);
                 // Pregunta si hay más empleados para añadir.
                 cout << "Hay más empleados por añadir? Y/N \n";
                 cin >> x;
                 // Inicia un bucle para permitir el ingreso de múltiples empleados.
                 while (x == 'y' || x == 'Y') {
                     // Llama a la función registroEmpleados para ingresar otro empleado.
-                    registroEmpleados();
+                    registroEmpleados(usuarioRegistrante);
                     cout << "¿Desea ingresar otro empleado? Y/N \n";
                     cin >> x;
                 }
@@ -107,19 +103,19 @@ void Empleados::menuEmpleados()
             case 2:
                 cout << "Opcion escogida...\n";
                 // Llama a la función listaEmpleados para mostrar la lista de empleados.
-                listaEmpleados();
+                listaEmpleados(usuarioRegistrante);
                 break;
             //Modificar empleados.
             case 3:
                 cout << "Opcion escogida \n";
                 // Llama a la función cambioEmpleados para modificar la información de un empleado.
-                cambioEmpleados();
+                cambioEmpleados(usuarioRegistrante);
                 break;
             //Borrar empleados.
             case 4:
                 cout << "Opcion escogida \n";
                 // Llama a la función borrarEmpleados para eliminar un empleado.
-                borrarEmpleados();
+                borrarEmpleados(usuarioRegistrante);
                 break;
             // Regresar.
             case 5:
@@ -138,7 +134,7 @@ void Empleados::menuEmpleados()
 }
 
 // Registra la información de un nuevo empleado.
-void Empleados::registroEmpleados()
+void Empleados::registroEmpleados(const std::string& usuarioRegistrante)
 {
     // Limpia la pantalla de la consola.
     system("cls");
@@ -176,22 +172,14 @@ void Empleados::registroEmpleados()
     file << tipoEmpleado << "|" << Nombre << "|" << sueldo << "\n";
     // Cierra el archivo.
     file.close();
-    // Solicita el nombre de la persona que realiza el registro para la bitácora.
-    cout << "Ingresar nombre de persona registrante: ";
-    // Declara una variable para almacenar el nombre de la bitácora.
-    string NombreBitacoraEnEmpleados;
-    // Limpia el búfer de entrada antes de leer el nombre de la bitácora.
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    // Lee el nombre de la persona que realiza el registro.
-    getline(cin, NombreBitacoraEnEmpleados);
-    // Genera un código de aplicación para la bitácora.
+
     string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
     // Inserta un registro en la bitácora indicando el ingreso de un empleado.
-    bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Ing");
+    bitacoraempleado.insertar(usuarioRegistrante, codigoAplicacion, "Ing");
 }
 
 // Muestra la lista de todos los empleados registrados.
-void Empleados::listaEmpleados()
+void Empleados::listaEmpleados(const std::string& usuarioRegistrante)
 {
     // Limpia la pantalla de la consola.
     system("cls");
@@ -248,25 +236,17 @@ void Empleados::listaEmpleados()
     else
         // Muestra el número total de empleados registrados.
         cout << "\nTotal de empleados: " << total << endl;
-
+        system("pause");
     // Cierra el archivo.
     file.close();
-    // Solicita el nombre de la persona que revisó el sistema para la bitácora.
-    cout << "Ingresar nombre de persona que reviso el sistema: ";
-    // Declara una variable para almacenar el nombre de la bitácora.
-    string NombreBitacoraEnEmpleados;
-    // Limpia el búfer de entrada antes de leer el nombre de la bitácora.
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    // Lee el nombre de la persona que revisó el sistema.
-    getline(cin, NombreBitacoraEnEmpleados);
-    // Genera un código de aplicación para la bitácora.
+
     string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
     // Inserta un registro en la bitácora indicando la consulta de la lista de empleados.
-    bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Cons");
+    bitacoraempleado.insertar(usuarioRegistrante, codigoAplicacion, "Cons");
 }
 
 // Permite modificar el sueldo de un empleado.
-void Empleados::cambioEmpleados() {
+void Empleados::cambioEmpleados(const std::string& usuarioRegistrante) {
     // Limpia la pantalla de la consola.
     system("cls");
     // Declara objetos fstream para trabajar con el archivo original y temporal.
@@ -298,116 +278,114 @@ void Empleados::cambioEmpleados() {
         return;
     }
     // Declara una variable de tipo string llamada 'linea' para almacenar cada línea leída del archivo.
-string linea;
-// Inicia un bucle while que continúa mientras se puedan leer líneas del archivo 'file' y almacenarlas en 'linea'.
-while (getline(file, linea)) {
-    // Busca la posición de la primera ocurrencia del delimitador "|" en la línea actual.
-    size_t pos1 = linea.find("|");
-    // Busca la posición de la segunda ocurrencia del delimitador "|" en la línea actual, comenzando la búsqueda después de la primera ocurrencia.
-    size_t pos2 = linea.find("|", pos1 + 1);
-    // Verifica si se encontraron ambas ocurrencias del delimitador "|" en la línea.
-    if (pos1 != string::npos && pos2 != string::npos) {
-        // Extrae el nombre del empleado de la línea actual, que se encuentra entre el primer y el segundo delimitador "|".
-        string nombreTemp = linea.substr(pos1 + 1, pos2 - pos1 - 1);
-        // Compara el nombre extraído ('nombreTemp') con el nombre del empleado que se está buscando para modificar ('NombreCambio').
-        if (nombreTemp == NombreCambio) {
-            // Si los nombres coinciden, incrementa el contador 'found' para indicar que se encontró al empleado.
-            found++;
-            // Sale del bucle while ya que se encontró al empleado que se desea modificar.
-            break;
+    string linea;
+    // Inicia un bucle while que continúa mientras se puedan leer líneas del archivo 'file' y almacenarlas en 'linea'.
+    while (getline(file, linea)) {
+        // Busca la posición de la primera ocurrencia del delimitador "|" en la línea actual.
+        size_t pos1 = linea.find("|");
+        // Busca la posición de la segunda ocurrencia del delimitador "|" en la línea actual, comenzando la búsqueda después de la primera ocurrencia.
+        size_t pos2 = linea.find("|", pos1 + 1);
+        // Verifica si se encontraron ambas ocurrencias del delimitador "|" en la línea.
+        if (pos1 != string::npos && pos2 != string::npos) {
+            // Extrae el nombre del empleado de la línea actual, que se encuentra entre el primer y el segundo delimitador "|".
+            string nombreTemp = linea.substr(pos1 + 1, pos2 - pos1 - 1);
+            // Compara el nombre extraído ('nombreTemp') con el nombre del empleado que se está buscando para modificar ('NombreCambio').
+            if (nombreTemp == NombreCambio) {
+                // Si los nombres coinciden, incrementa el contador 'found' para indicar que se encontró al empleado.
+                found++;
+                // Sale del bucle while ya que se encontró al empleado que se desea modificar.
+                break;
+            }
         }
     }
-}
-// Cierra el archivo 'file' después de la búsqueda.
-file.close();
-
-// Verifica si no se encontró al usuario con el nombre ingresado.
-if (found == 0) {
-    // Muestra un mensaje indicando que el usuario no fue encontrado.
-    cout << "\n\t\t\tUsuario no encontrado..." << endl;
-    // Sale de la función 'cambioEmpleados' sin realizar modificaciones.
-    return;
-}
-
-// Solicitar los nuevos datos
-// Muestra un mensaje solicitando el nuevo sueldo del empleado.
-cout << "\n Ingrese el nuevo sueldo: ";
-// Lee el nuevo sueldo ingresado por el usuario y lo almacena en la variable 'sueldoCambio'.
-cin >> sueldoCambio;
-// Verifica si el nuevo sueldo ingresado es menor que 4000 (posible validación según ley).
-if (sueldoCambio<4000)
-{
-    // Muestra un mensaje indicando que el sueldo ingresado no es válido según la ley.
-    cout<<"Ingrese un sueldo valido segun ley.."<<endl;
-    // Pausa la ejecución del programa para que el usuario pueda ver el mensaje.
-    system("pause");
-}else
-{
-// Crear archivo temporal para escribir los datos actualizados
-// Abre el archivo "Empleados.bin" en modo input (lectura).
-fstream file1;
-file.open("Empleados.bin", ios::in);
-// Abre un nuevo archivo llamado "Record.txt" en modo output (escritura). Este archivo se utilizará como temporal para guardar los datos actualizados.
-file1.open("Record.txt", ios::out);
-// Verifica si el archivo temporal se abrió correctamente.
-if (!file1.is_open()) {
-    // Muestra un mensaje de error si no se pudo crear el archivo temporal.
-    cout << "\n\t\t\tError al crear archivo temporal." << endl;
-    // Cierra el archivo original.
+    // Cierra el archivo 'file' después de la búsqueda.
     file.close();
-    // Sale de la función 'cambioEmpleados' debido al error.
-    return;
+
+    // Verifica si no se encontró al usuario con el nombre ingresado.
+    if (found == 0) {
+        // Muestra un mensaje indicando que el usuario no fue encontrado.
+        cout << "\n\t\t\tUsuario no encontrado..." << endl;
+        // Sale de la función 'cambioEmpleados' sin realizar modificaciones.
+        return;
+    }
+
+    // Solicitar los nuevos datos
+    // Muestra un mensaje solicitando el nuevo sueldo del empleado.
+    cout << "\n Ingrese el nuevo sueldo: ";
+    // Lee el nuevo sueldo ingresado por el usuario y lo almacena en la variable 'sueldoCambio'.
+    cin >> sueldoCambio;
+    // Verifica si el nuevo sueldo ingresado es menor que 4000 (posible validación según ley).
+    if (sueldoCambio<4000)
+    {
+        // Muestra un mensaje indicando que el sueldo ingresado no es válido según la ley.
+        cout<<"Ingrese un sueldo valido segun ley.."<<endl;
+        // Pausa la ejecución del programa para que el usuario pueda ver el mensaje.
+        system("pause");
+    }else
+    {
+        // Crear archivo temporal para escribir los datos actualizados
+        // Abre el archivo "Empleados.bin" en modo input (lectura).
+        file.open("Empleados.bin", ios::in);
+        // Abre un nuevo archivo llamado "Record.txt" en modo output (escritura). Este archivo se utilizará como temporal para guardar los datos actualizados.
+        file1.open("Record.txt", ios::out);
+        // Verifica si el archivo temporal se abrió correctamente.
+        if (!file1.is_open()) {
+            // Muestra un mensaje de error si no se pudo crear el archivo temporal.
+            cout << "\n\t\t\tError al crear archivo temporal." << endl;
+            // Cierra el archivo original.
+            file.close();
+            // Sale de la función 'cambioEmpleados' debido al error.
+            return;
+        }
+
+        // Inicia un bucle while para leer el archivo original línea por línea.
+        while (getline(file, linea)) {
+            // Busca la posición de la primera ocurrencia del delimitador "|" en la línea actual.
+            size_t pos1 = linea.find("|");
+            // Busca la posición de la segunda ocurrencia del delimitador "|" en la línea actual, comenzando la búsqueda después de la primera ocurrencia.
+            size_t pos2 = linea.find("|", pos1 + 1);
+            // Verifica si se encontraron ambas ocurrencias del delimitador "|" en la línea.
+            if (pos1 != string::npos && pos2 != string::npos) {
+                // Extrae el tipo de empleado de la línea actual.
+                string tipoTemp = linea.substr(0, pos1);
+                // Extrae el nombre del empleado de la línea actual.
+                string nombreTemp = linea.substr(pos1 + 1, pos2 - pos1 - 1);
+                // Extrae y convierte el sueldo del empleado de la línea actual a tipo float.
+                float sueldoTemp = stof(linea.substr(pos2 + 1));
+                // Escribe los datos en el archivo temporal
+                if (nombreTemp == NombreCambio)
+                    // Guarda en el archivo temporal el nombre junto con el nuevo sueldo
+                    file1 << tipoTemp << "|" << nombreTemp << "|" << sueldoCambio << endl;
+                else
+                    // Si no coincide el nombre, escribe la línea original en el archivo temporal.
+                    file1 << linea << endl;
+            } else {
+                // Si la línea no tiene el formato esperado, escribe la línea original en el archivo temporal.
+                file1 << linea << endl;
+            }
+        }
+        // Cerrar archivos
+        // Cierra el archivo original.
+        file.close();
+        // Cierra el archivo temporal.
+        file1.close();
+        // Eliminar el archivo original
+        // Elimina el archivo "Empleados.bin".
+        remove("Empleados.bin");
+        // Renombrar el archivo temporal
+        // Renombra el archivo "Record.txt" a "Empleados.bin".
+        rename("Record.txt", "Empleados.bin");
+        // Mensaje de éxito
+        // Muestra un mensaje indicando que se ha modificado el registro del empleado.
+        cout << "\n\t\t\tRegistro modificado exitosamente..." << endl;
+    }
+    // Genera un código de aplicación para la bitácora.
+    string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
+    // Inserta un registro en la bitácora indicando la modificación de un empleado.
+    bitacoraempleado.insertar(usuarioRegistrante, codigoAplicacion, "Mod");
 }
 
-// Inicia un bucle while para leer el archivo original línea por línea.
-while (getline(file, linea)) {
-    // Busca la posición de la primera ocurrencia del delimitador "|" en la línea actual.
-    size_t pos1 = linea.find("|");
-    // Busca la posición de la segunda ocurrencia del delimitador "|" en la línea actual, comenzando la búsqueda después de la primera ocurrencia.
-    size_t pos2 = linea.find("|", pos1 + 1);
-    // Verifica si se encontraron ambas ocurrencias del delimitador "|" en la línea.
-    if (pos1 != string::npos && pos2 != string::npos) {
-        // Extrae el tipo de empleado de la línea actual.
-        string tipoTemp = linea.substr(0, pos1);
-        // Extrae el nombre del empleado de la línea actual.
-        string nombreTemp = linea.substr(pos1 + 1, pos2 - pos1 - 1);
-        // Extrae y convierte el sueldo del empleado de la línea actual a tipo float.
-        float sueldoTemp = stof(linea.substr(pos2 + 1));
-        // Compara el nombre del empleado extraído con el nombre del empleado que se está modificando.
-        if (nombreTemp == NombreCambio) {
-            // Si los nombres coinciden, escribe en el archivo temporal la información actualizada del empleado (delimitadores y el nuevo sueldo).
-            file1 << tipoTemp << "|" << NombreCambio << "|" << sueldoCambio << "\n";
-            // Muestra un mensaje indicando que el empleado fue actualizado con éxito.
-            cout << "\n\t\t\tEmpleado actualizado con exito." << endl;
-        } else {
-            // Si los nombres no coinciden, escribe la línea original en el archivo temporal sin modificaciones.
-            file1 << tipoTemp << "|" << nombreTemp << "|" << sueldoTemp << "\n";
-        }
-    }
-}
-// Cierra el archivo original.
-file.close();
-// Cierra el archivo temporal.
-file1.close();
-// Muestra un mensaje solicitando el nombre de la persona que realizó el cambio para la bitácora.
-cout << "Ingresar nombre de persona que realizo el cambio: ";
-// Declara una variable para almacenar el nombre de la persona que realizó el cambio.
-string NombreBitacoraEnEmpleados;
-// Limpia el búfer de entrada antes de leer el nombre.
-cin.ignore(numeric_limits<streamsize>::max(), '\n');
-// Lee el nombre de la persona que realizó el cambio.
-getline(cin, NombreBitacoraEnEmpleados);
-// Genera un código de aplicación para la bitácora.
-string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
-// Inserta un registro en la bitácora indicando la modificación de un empleado.
-bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
-// Elimina el archivo original "Empleados.bin".
-remove("Empleados.bin");
-// Renombra el archivo temporal "Record.txt" a "Empleados.bin", reemplazando así el archivo original con los datos actualizados.
-rename("Record.txt", "Empleados.bin");
-}
-}
-void Empleados::borrarEmpleados()
+void Empleados::borrarEmpleados(const std::string& usuarioRegistrante)
 {
 // Limpiar la pantalla
 system("cls");
@@ -482,25 +460,15 @@ else
     remove("Empleados.bin");         // Borrar archivo original
     rename("Record.txt", "Empleados.bin"); // Renombrar archivo temporal como definitivo
 }
-  string nombre;
-cout << "Ingresar nombre de persona que borro el empleado: ";
-getline(cin, nombre);
-if (nombre.empty()) {
-    cout << "Por favor, ingrese un nombre válido." << endl;
-    cout << "Ingresar nombre de persona que borro el empleado: ";
-    getline(cin, nombre);
-}else
-{
-    string NombreBitacoraEnEmpleados;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Limpiar buffer antes de getline
-    getline(cin, NombreBitacoraEnEmpleados);  // Corregido: usar la variable correcta
+
+// Genera un código de aplicación para la bitácora.
     string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
-    bitacoraempleado.insertar(NombreBitacoraEnEmpleados, codigoAplicacion, "Mod");
-}
+    // Inserta un registro en la bitácora indicando la modificación de un empleado.
+    bitacoraempleado.insertar(usuarioRegistrante, codigoAplicacion, "Mod");
 
 }
 // Busca un empleado por su nombre.
-void Empleados::buscarEmpleado() {
+void Empleados::buscarEmpleado(const std::string& usuarioRegistrante) {
     // Limpia la pantalla de la consola.
     system("cls");
     // Declara un objeto fstream para trabajar con archivos.
@@ -568,16 +536,15 @@ void Empleados::buscarEmpleado() {
                     // Caso 1: Calcular y mostrar la nómina anual.
                     case 1:
                         // Llama a la función calcularNominaAnual del objeto empleados.
-                        empleados.calcularNominaAnual();
+                        calcularNominaAnual();
                     // Sale del caso.
                     break;
                     // Caso 2: Calcular y mostrar la nómina mensual.
                     case 2:
                         // Llama a la función calcularNominaMensual del objeto empleados.
-                        empleados.calcularNominaMensual();
+                        calcularNominaMensual();
                     // Sale del caso.
                     break;
-
                 }
                 // Establece la variable encontrado en true para indicar que se encontró al empleado.
                 encontrado = true;
@@ -596,6 +563,10 @@ void Empleados::buscarEmpleado() {
     }
     // Cierra el archivo.
     file.close();
+
+    // Registra la búsqueda en la bitácora
+    string codigoAplicacion = bitacoraempleado.generarCodigoAplicacion();
+    bitacoraempleado.insertar(usuarioRegistrante, codigoAplicacion, "Bus");
 }
 //Realizado por XANDER REYES
 void Empleados::calcularNominaMensual() {
