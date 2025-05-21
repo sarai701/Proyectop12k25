@@ -1,16 +1,27 @@
+// Venta.h
 #ifndef VENTA_H
 #define VENTA_H
 
-#include "Cliente.h"
-#include "Producto.h"
+#include <string>
+#include <vector>
+
+struct DetalleProducto {
+    int codigoProducto;
+    std::string nombreProducto;
+    int cantidad;
+    double precioUnitario;
+};
 
 class Venta {
 public:
-    Cliente cliente;
-    Producto producto;
-    int cantidad;
+    int codigoVenta;
+    std::string codCliente;
+    std::string codVendedor;
+    std::vector<DetalleProducto> productos;
+    double total;
 
-    Venta(Cliente c, Producto p, int cant);
+    Venta(int codVta, std::string cliente, std::string vendedor)
+        : codigoVenta(codVta), codCliente(cliente), codVendedor(vendedor), total(0.0) {}
 };
 
-#endif // VENTA_H
+#endif
