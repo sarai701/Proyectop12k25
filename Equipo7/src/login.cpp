@@ -1,7 +1,9 @@
+//Marlon De León 5001
 #include "Login.h"
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "encabezado.h"
 
 using namespace std;
 
@@ -56,14 +58,11 @@ bool iniciarSesion(string& usuarioActual) {
     while (file >> user >> pass) {
         if (user == username && pass == password) {
             usuarioActual = username; // ← Guarda el nombre del usuario para bitácora
-            cout << "\t\n\nInicio de sesion exitoso Bienvenido, " << username << ".\n";
-             system("pause");
+            cout << "Inicio de sesión exitoso. Bienvenido, " << username << ".\n";
             return true;
-
         }
     }
 
     cout << "Credenciales incorrectas.\n";
-    system("pause");
     return false;
 }
