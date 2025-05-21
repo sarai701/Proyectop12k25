@@ -1,4 +1,6 @@
-// Angoly Araujo Mayo 2025
+// Angoly Camila Araujo Mayen Mayo 2025 Progra1
+// 9959-24-17623
+
 #include "facturacion.h" // Inclusión del encabezado donde están declaradas las funciones de la clase Facturacion
 #include <iostream> // Inclusión de la biblioteca estándar para entrada/salida
 using namespace std;

@@ -1,9 +1,11 @@
-//Programaddo por Boris Ivan de Leon Santos 9959-24-6203
+//Boris de León 9959-24-6203
 #include "Proveedores.h"
+#include "Bitacora.h"
 #include <iostream>
 #include <fstream>
 #include <algorithm>
 
+Bitacora bitacoralog1;  // Instancia global para registrar eventos
 using namespace std;
 
 // Limpia la pantalla según el sistema operativo
@@ -117,6 +119,7 @@ void Proveedor::crearProveedor() {
     guardarProveedores();
 
     cout << "\nProveedor agregado correctamente.";
+    bitacoralog1.insertar("Admin", 4201, "Proveedores", "Crear Proveedor");
     pausar();
 }
 
@@ -141,6 +144,7 @@ void Proveedor::borrarProveedor() {
     if (eliminado) {
         proveedores = nuevaLista;
         guardarProveedores();
+        bitacoralog1.insertar("Admin", 4204, "Proveedores", "Borrar Proveedor");
         cout << "\nProveedor eliminado correctamente.";
     } else {
         cout << "\nProveedor no encontrado.";
@@ -167,6 +171,7 @@ void Proveedor::buscarProveedor() {
             cout << "\nDirección : " << p.direccion;
             encontrado = true;
             break;
+            bitacoralog1.insertar("Admin", 4202, "Proveedores", "Busqueda de Proveedor");
         }
     }
 
@@ -200,6 +205,7 @@ void Proveedor::modificarProveedor() {
     if (modificado) {
         ordenarProveedores();
         guardarProveedores();
+        bitacoralog1.insertar("Admin", 4203, "Proveedores", "Modificacion de Proveedor");
         cout << "\nProveedor modificado exitosamente.";
     } else {
         cout << "\nProveedor no encontrado.";

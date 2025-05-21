@@ -5,3 +5,5 @@ usuario        100            LOGS
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS           
+"Xander Reyes","10000","ING",2025-05-05 09:35:44
+"angel","edit","edit",2025-05-11 18:32:09

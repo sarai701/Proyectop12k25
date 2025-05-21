@@ -1,19 +1,24 @@
 #ifndef BITACORA_H
 #define BITACORA_H
-#include<iostream>
 
-using std::string;
+#include <string>
 
-class bitacora
+// Clase que maneja el sistema de bitácora
+class bitacora // Registro de bitacora - Xander Reyes
 {
-    public:
-        void menu();
-        void insertar(string nombre, string aplicacion, string accion);
-        void desplegar();
-    protected:
+private:
+    // Variables para almacenar información de cada registro
+    std::string nombre, aplicacion, accion;
 
-    private:
-		string nombre, aplicacion, accion;
+public:
+    // Muestra el menú principal al usuario
+    void menu();
 
+    // Inserta un nuevo registro en la bitácora
+    void insertar(std::string nombre, std::string aplicacion, std::string accion);
+
+    // Muestra todos los registros almacenados
+    void desplegar();
 };
-#endif // BITACORA_H
+
+#endif

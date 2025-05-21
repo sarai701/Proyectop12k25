@@ -1,63 +1,51 @@
-//LUIS ANGEL MENDEZ FUENTES 9959-24-6845
-// MAYO 2025
-#include "bitacora.h"  // Inclusión del encabezado que declara la clase bitacora
-#include <iostream>    // Librería para entrada y salida estándar
-#include <iomanip>     // Librería para manipulación de formato (como setw)
+// LUIS ANGEL MENDEZ FUENTES 9959-24-6845
+#include "bitacora.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
-using namespace std;   // Uso del espacio de nombres estándar para evitar el uso de std::
-
-// Método para insertar un registro en la bitácora
+// Inserta un nuevo registro en el archivo "bitacora.txt"
 void bitacora::insertar(string usuario, string codigo, string accion) {
-    // Abre el archivo bitacora.txt en modo de añadir al final (append)
-    ofstream file("bitacora.txt", ios::app);
+    ofstream file("bitacora.txt", ios::app); // Abre el archivo en modo agregar
     if (file.is_open()) {
-        // Escribe en el archivo el usuario, el código y la acción con formato fijo
-        file << left << setw(20) << usuario    // Campo de 20 caracteres alineado a la izquierda
-             << setw(10) << codigo             // Campo de 10 caracteres
-             << setw(15) << accion << endl;    // Campo de 15 caracteres y salto de línea
-        file.close();  // Cierra el archivo después de escribir
+        // Escribe los datos con formato alineado
+        file << left << setw(20) << usuario
+             << setw(10) << codigo
+             << setw(15) << accion << endl;
+        file.close();
     } else {
-        // Mensaje de error si no se pudo abrir el archivo
         cerr << "\n\t\tError al abrir la bitácora!";
     }
 }
 
-// Método para mostrar el contenido de la bitácora en pantalla
+// Muestra en pantalla los registros de la bitácora
 void bitacora::desplegar() {
-    system("cls");  // Limpia la pantalla (solo en sistemas Windows)
-
-    ifstream file("bitacora.txt");  // Abre el archivo para lectura
-
-    // Encabezado decorativo de la bitácora
+    system("cls"); // Limpia la consola
+    ifstream file("bitacora.txt");
     cout << "\t\t========================================" << endl;
     cout << "\t\t| REGISTRO DE BITACORA - LOGISTICA     |" << endl;
     cout << "\t\t========================================" << endl;
 
     if (file.is_open()) {
         string linea;
+        // Muestra línea por línea el contenido del archivo
         while (getline(file, linea)) {
-            // Muestra cada línea del archivo con sangría
             cout << "\t\t" << linea << endl;
         }
-        file.close();  // Cierra el archivo después de la lectura
+        file.close();
     } else {
-        // Si el archivo no existe o no se pudo abrir, muestra este mensaje
         cout << "\t\tNo hay registros en la bitácora." << endl;
     }
 
-    // Pie del marco
     cout << "\t\t========================================" << endl;
-    system("pause");  // Pausa la ejecución hasta que el usuario presione una tecla
+    system("pause"); // Pausa para que el usuario lea la información
 }
 
-// Método que muestra el menú de opciones de la bitácora
+// Menú interactivo para acceder a funciones de la bitácora
 void bitacora::menuBitacora() {
-    int opcion;  // Variable para almacenar la opción del usuario
-
+    int opcion;
     do {
-        system("cls");  // Limpia la pantalla antes de mostrar el menú
-
-        // Menú principal de la bitácora
+        system("cls");
         cout << "\t\t========================================" << endl;
         cout << "\t\t| ADMINISTRACION DE BITACORA           |" << endl;
         cout << "\t\t========================================" << endl;
@@ -66,24 +54,21 @@ void bitacora::menuBitacora() {
         cout << "\t\t 3. Volver" << endl;
         cout << "\t\t========================================" << endl;
         cout << "\t\tOpcion: ";
-        cin >> opcion;  // Se lee la opción ingresada por el usuario
+        cin >> opcion;
 
         switch(opcion) {
             case 1:
-                desplegar();  // Muestra los registros
+                desplegar();
                 break;
             case 2:
-                // Este caso está aún sin implementar
                 cout << "\n\t\t[Exportando bitácora...]" << endl;
-                system("pause");
+                system("pause"); // Simulación de exportación
                 break;
             case 3:
-                // Vuelve al menú anterior o finaliza el ciclo
-                break;
+                break; // Salir del menú
             default:
-                // Si la opción no es válida, se notifica al usuario
                 cout << "\n\t\tOpcion invalida!";
-                cin.get(); // Espera entrada para evitar que se salte la pausa
+                cin.get();
         }
-    } while(opcion != 3);  // Repite hasta que el usuario seleccione la opción 3 (Volver)
+    } while(opcion != 3);
 }

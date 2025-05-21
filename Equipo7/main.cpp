@@ -11,13 +11,13 @@
 
 using namespace std;
 
-// Aqu� defines la variable global 5001
+
 string usuarioActual; // Para guardar el nombre del usuario bitacora
-std::string usuarioActu1 = usuarioActual; // o lo que recibas del login
+
 void mostrarMenuPrincipal();
 void MenuCatalogo();
 void MenuProcesos();
-
+void MenuArchivos();
 
 int main() {
     int opcion;
@@ -26,7 +26,6 @@ int main() {
     do {
 
         system ("cls");
-
         cout << "\n--- Bienvenido al Sistema ---\n";
         cout << "1. Iniciar Sesion\n";
         cout << "2. Registrarse\n";
@@ -48,28 +47,30 @@ int main() {
                 cout << "\n\nSaliendo del sistema...\n";
                 return 0;
             default:
-                cout << "Opci�n invalida.\n";
+                cout << "Opción invalida.\n";
         }
     } while (!accesoPermitido);
 
     mostrarMenuPrincipal();
-     registrarEvento(usuarioActual, "Cerr� sesi�n desde men� principal");
+     registrarEvento(usuarioActual, "Cerró sesión desde menú principal");
     return 0;
 }
+
 
 
 
 void mostrarMenuPrincipal() {
     int opcion;
     do {
-        system ("cls");
-        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual;
+        system("cls");
+        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual; //Marlon De Leon 5001
         cout << "\n\t\t\t|------------------------ \n" ;
         cout << "\t\t\t|     MENU PRINCIPAL     | \n";
         cout << "\t\t\t|------------------------- \n" ;
         cout << "\t\t\t|1. Catalogos\n";
         cout << "\t\t\t|2. Procesos\n";
-        cout << "\t\t\t|3. Salir del sistema\n";
+        cout << "\t\t\t|3. Archivos\n";  // Nueva opción
+        cout << "\t\t\t|4. Salir del sistema\n";
         cout << "\t\t\t|Seleccione una opcion: ";
         cin >> opcion;
 
@@ -83,13 +84,17 @@ void mostrarMenuPrincipal() {
                 MenuProcesos();
                 break;
             case 3:
+                registrarEvento(usuarioActual, "Entro a la opcion Archivos 5002 ");
+                MenuArchivos();
+                break;
+            case 4:
                 registrarEvento(usuarioActual, "Salio del menu general 5002 ");
                 cout << "Cerrando sesion...\n";
                 break;
             default:
                 cout << "Opcion no valida.\n";
         }
-    } while (opcion != 3);
+    } while (opcion != 4);
 }
 
 void MenuProcesos() {
@@ -97,7 +102,7 @@ void MenuProcesos() {
     int opcion;
     do {
         system ("cls");
-        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual;
+        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual; //Marlon De Leon 5001
         cout << "\n\t\t\t|------------------------- \n" ;
         cout << "\t\t\t|      MENU PROCESOS     | \n";
         cout << "\t\t\t|------------------------- \n" ;
@@ -160,15 +165,14 @@ void MenuCatalogo() {
     int opcion;
     do {
         system ("cls");
-        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual;
+        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual; //Marlon De Leon 5001
         cout << "\n\t\t\t|--------------------------- \n" ;
         cout << "\t\t\t|      MENU CATALOGOS      | \n";
         cout << "\t\t\t|--------------------------- \n" ;
         cout << "\t\t\t|1. REGISTRO CLIENTES \n";
         cout << "\t\t\t|2. REGISTRO VENDEDORES\n";
         cout << "\t\t\t|3. REGISTRO PRODUCTOS\n";
-        cout << "\t\t\t|4. REGISTRO VENTAS\n";
-        cout << "\t\t\t|5. REGRESAR AL MENU PRINCIPAL\n";
+        cout << "\t\t\t|4. REGRESAR AL MENU PRINCIPAL\n";
         cout << "\t\t\t| Seleccione una opcion: ";
         cin >> opcion;
 
@@ -180,13 +184,13 @@ void MenuCatalogo() {
                     Cliente.MostrarClientes();
                 }
                 break;
-            case 2:
+           case 2:
                 registrarEvento(usuarioActual, "Entro a la opcion REGISTRO VENDEDORES 5002 ");
                 {
-                    Vendedores Vendedores;
-                    Vendedores.MostrarVendedores();
-                }
-                break;
+                   Vendedores vendedores; // Instanciar la clase
+                   vendedores.MostrarVendedores(); // Llamar la función de mostrar vendedores
+                 }
+    break;
             case 3:
                 registrarEvento(usuarioActual, "Entro a la opcion REGISTRO PRODUCTOS 5002 ");
                 {
@@ -196,18 +200,40 @@ void MenuCatalogo() {
                 }
                 break;
             case 4:
-                registrarEvento(usuarioActual, "Entro a la opcion  REGISTRO VENTAS 5002 ");
-                {
-                    SistemaVentas SistemaVentas;
-                    SistemaVentas.registroVenta();
-                }
-                break;
-            case 5:
                 registrarEvento(usuarioActual, "Salio del menu de procesos 5002 ");
                 break;
             default:
                 cout << "Opcion no valida.\n";
         }
-    } while (opcion != 5);
+    } while (opcion != 4);
 }
+//meilyn juleisy garcia lima 9959-23-17838
+void MenuArchivos() {
+    int opcion;
+    do {
+        system("cls");
+        //muestra las opciones
+        cout << "\n\t\t\t USUARIO ACTUAL: " << usuarioActual; //Marlon De Leon 5001
+        cout << "\n\t\t\t|-------------------------\n";
+        cout << "\t\t\t|     MENU ARCHIVOS      |\n";
+        cout << "\t\t\t|-------------------------\n";
+        cout << "\t\t\t|1. Ver Bitacora\n";
+        cout << "\t\t\t|2. Regresar al Menu Principal\n";
+        cout << "\t\t\t|Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:// Registrar evento y mostrar la bitácora
+                registrarEvento(usuarioActual, "Visualizo la bitácora desde Archivos 5003");
+                Bitacora::mostrarBitacora();// Llamada al método estático para mostrar bitácora
+                system("pause");
+                break;
+            case 2:
+                break;// SALIR DEL MENU ARCHIVOS
+            default:
+                cout << "Opción inválida.\n";
+        }
+    } while (opcion != 2);//Repite hasta que el usuario elija salir
+}
+
 

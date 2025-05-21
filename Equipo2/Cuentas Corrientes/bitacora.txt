@@ -15,4 +15,113 @@ usuario        100            LOGS
 usuario        100            LOGS           
 usuario        100            LOGS           
 usuario        100            LOGS           
-usuario1       Transacción    Registro de nueva transacción ID: 8701
+usuario        100            LOGS          
+usuario1       TransacciÃ³n    Registro de nueva transacciÃ³n ID: 8701
+usuario        100            LOGS           
+usuario        100            LOGS           
+
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario        100            LOGS           
+Juan           8011           INS            
+Juan           8011           INS            
+
+usuario        100            LOGS           
+usuario registrado8011           INC            
+usuario registrado8011           MC             
+usuario registrado8011           UPD            
+usuario registrado8011           MC             
+usuario registrado8011           DEL            
+usuario registrado8012           INP            
+usuario registrado8012           MP             
+usuario        100            LOGS           
+usuario        100            LOGS           
+usuario registrado8011           INC            
+usuario registrado8011           INC            
+usuario registrado8011           MC             
+usuario registrado8011           MC             
+Fernanda       100            LOGS           
+Luisa          100            LOGS           
+Luisa          100            LOGS           
+Luisa          100            LOGS           
+
+usuario        100            LOGS           05-10-2025 10:11 PM
+
+
+Luisa          100            LOGS           05-11-2025 03:01 AM
+Luisa          100            SRCH           05-11-2025 03:01 AM
+Luisa          100            INSUS          05-11-2025 03:01 AM
+Luisa          100            SRCH           05-11-2025 03:01 AM
+Luisa          100            INSUS          05-11-2025 03:02 AM
+Luisa          100            SRCH           05-11-2025 03:02 AM
+               100            INSUS          05-11-2025 03:05 AM
+Emi            100            LOGS           05-11-2025 03:05 AM
+Emi            100            SRCH           05-11-2025 03:05 AM
+Emi            100            LOGS           05-11-2025 03:07 AM
+Emi            100            INSUS          05-11-2025 03:07 AM
+Emi            100            SRCH           05-11-2025 03:07 AM
+Emi            100            LOGS           05-11-2025 03:09 AM
+Emi            100            LOGS           05-11-2025 03:09 AM
+Emi            100            LOGS           05-11-2025 03:10 AM
+Emi            100            LOGS           05-11-2025 03:10 AM
+Emi            100            LOGS           05-11-2025 03:13 AM
+Emi            100            DELUS          05-11-2025 03:13 AM
+Emi            100            UPDUS          05-11-2025 03:14 AM
+Emi            100            LOGF           05-11-2025 03:15 AM
+Emi            100            LOGF           05-11-2025 03:15 AM
+               100            LOGS           05-11-2025 03:15 AM
+               100            INSUS          05-11-2025 03:15 AM
+Emi            100            LOGF           05-11-2025 03:18 AM
+               100            LOGS           05-11-2025 03:18 AM
+Emi            100            LOGF           05-11-2025 03:18 AM
+Luisa          100            LOGS           05-11-2025 03:18 AM
+Luisa          100            SRCH           05-11-2025 03:23 AM
+Luisa          100            LOGS           05-11-2025 03:32 AM
+Luisa          100            SRCH           05-11-2025 03:32 AM
+Luisa          100            LOGF           05-11-2025 03:33 AM
+               100            LOGS           05-11-2025 03:33 AM
+Luisa          100            LOGF           05-11-2025 03:37 AM
+Luisa          100            LOGF           05-11-2025 03:37 AM
+               100            LOGS           05-11-2025 03:37 AM
+usuario        100            LOGF           05-11-2025 03:51 AM
+usuario        100            LOGF           05-11-2025 03:51 AM
+               100            LOGS           05-11-2025 03:51 AM
+               100            INSUS          05-11-2025 03:52 AM
+usuario        100            LOGF           05-11-2025 03:52 AM
+usuario        100            LOGF           05-11-2025 03:52 AM
+               100            LOGS           05-11-2025 03:52 AM
+usuario        100            LOGF           05-11-2025 03:52 AM
+               100            LOGS           05-11-2025 03:52 AM
+               100            SRCH           05-11-2025 03:53 AM
+usuario        100            LOGF           05-11-2025 03:53 AM
+               100            LOGS           05-11-2025 03:53 AM
+usuario        100            LOGF           05-11-2025 04:00 AM
+usuario        100            LOGF           05-11-2025 04:00 AM
+               100            LOGS           05-11-2025 04:00 AM
+               100            SRCH           05-11-2025 04:00 AM
+               100            INSUS          05-11-2025 04:01 AM
+               100            INSUS          05-11-2025 04:01 AM
+               100            SRCH           05-11-2025 04:01 AM
+               100            INSUS          05-11-2025 04:01 AM
+               100            DELUS          05-11-2025 04:01 AM
+               100            UPDUS          05-11-2025 04:02 AM
+               100            SRCH           05-11-2025 04:02 AM
+usuario        100            LOGF           05-11-2025 04:02 AM
+usuario        100            LOGF           05-11-2025 04:02 AM
+               100            LOGS           05-11-2025 04:02 AM
+Emily          100            LOGS           05-11-2025 04:06 AM
+Emily          100            LOGS           05-11-2025 04:07 AM
+Emily          100            SRCH           05-11-2025 04:07 AM
+Emily          100            DELUS          05-11-2025 04:07 AM
+Emily          100            SRCH           05-11-2025 04:07 AM
+Emily          100            LOGS           05-11-2025 04:08 AM
+Emily          100            LOGS           05-11-2025 04:12 AM
+Emily          100            BACK           05-11-2025 04:12 AM
+
+usuario        100            LOGS           
+usuario        100            LOGS           
+Juan           8035           RAR            
+Juan           8040           INA            
+
+Juan           100            LOGS           05-11-2025 10:19 AM
+

@@ -34,9 +34,30 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+<<<<<<< HEAD
+		<Unit filename="include/Reportes.h" />
 		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/envios.h" />
+		<Unit filename="include/inventario.h" />
+=======
+		<Unit filename="include/Inventario.h" />
+		<Unit filename="include/Reportes.h" />
+		<Unit filename="include/bitacora.h" />
+		<Unit filename="include/envios.h" />
+>>>>>>> c2dd98f6893dcf4e06a25520b6c5b1c536fe86b8
+		<Unit filename="include/pedidos.h" />
+		<Unit filename="include/usuarios.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Reportes.cpp" />
 		<Unit filename="src/bitacora.cpp" />
+		<Unit filename="src/envios.cpp" />
+		<Unit filename="src/facturacion.cpp" />
+<<<<<<< HEAD
+		<Unit filename="src/inventario.cpp" />
+=======
+>>>>>>> c2dd98f6893dcf4e06a25520b6c5b1c536fe86b8
+		<Unit filename="src/pedidos.cpp" />
+		<Unit filename="src/usuarios.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
