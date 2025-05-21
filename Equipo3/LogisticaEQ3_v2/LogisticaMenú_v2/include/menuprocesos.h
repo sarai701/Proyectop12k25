@@ -15,10 +15,10 @@ class usuarios;
 class MenuProcesos
 {
 public:
-    // Método para mostrar el menú principal
-    static void mostrar(const std::vector<Clientes>& clientes,
-                      const std::vector<Producto>& productos,
-                      const std::vector<Almacen>& almacenes);
+    // MÃ©todo para mostrar el menÃº principal
+    void mostrar(std::vector<Clientes>& clientes,
+            std::vector<Producto>& productos,
+            std::vector<Almacen>& almacenes);
 };
 
 #endif // MENUPROCESOS_H

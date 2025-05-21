@@ -20,8 +20,6 @@ private:
 
 public:
     usuarios();
-    ~usuarios();
-
     bool loginUsuarios();
     void registrarUsuario();
     bool buscarUsuario(const std::string& user, const std::string& pass);

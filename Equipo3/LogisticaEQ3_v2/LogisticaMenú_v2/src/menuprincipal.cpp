@@ -2,14 +2,17 @@
 #include "menuarchivo.h"
 #include "menucatalogos.h"
 #include "menuprocesos.h"
+#include "menuinformes.h"
 #include "usuarios.h"
+#include "bitacora.h"
 #include <vector>
 #include <iostream>
 using namespace std;
 
-//JENNIFER ALBA DAYAMI BARRIOS FLORES
+//Creado JENNIFER ALBA DAYAMI BARRIOS FLORES
 //9959-24-10016
 //MAYO 2025
+// Modificado por Camila Araujo
 
 void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
                           std::vector<Proveedor>& proveedores,
@@ -31,7 +34,8 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
              << "\t\t 2. Catálogos\n"
              << "\t\t 3. Procesos\n"
              << "\t\t 4. Informes\n"
-             << "\t\t 5. Salir\n"
+             << "\t\t 5. Bitácora\n"
+             << "\t\t 6. Salir\n"
              << "\t\t========================================\n"
              << "\t\tIngresa tu opción: ";
 
@@ -50,18 +54,26 @@ void MenuPrincipal::mostrar(std::vector<Clientes>& clientes,
 
             case 3:
                 // Llamada corregida pasando los vectores necesarios
-                MenuProcesos::mostrar(clientes, productos, almacenes);
+                MenuProcesos menuProcesos;
+                menuProcesos.mostrar(clientes, productos, almacenes);
                 break;
 
             case 4:
-                // Funcionalidad de informes
+                MenuInformes::mostrar();
                 break;
 
-            case 5:
+            case 5: {
+                bitacora b;
+                b.menuBitacora();
+                break;
+            }
+
+            case 6:
                 return;
 
             default:
                 cout << "\n\t\tOpción inválida... Intenta de nuevo...";
         }
-    } while(choice != 5);
+    } while(choice != 6);
 }
+

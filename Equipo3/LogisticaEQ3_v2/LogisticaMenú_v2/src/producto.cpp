@@ -86,7 +86,7 @@ void Producto::agregar(vector<Producto>& lista, const string& usuarioActual) {
 
     // Agrega a la lista y guarda en archivo
     lista.push_back(nuevo);
-    guardarEnArchivo(lista);
+    guardarEnArchivoBin(lista);
 
     // Registra en bitácora
     bitacora::registrar(usuarioActual, "PRODUCTOS", "Agregado: " + nuevo.codigo);
@@ -143,7 +143,7 @@ void Producto::modificar(vector<Producto>& lista, const string& usuarioActual, c
         }
 
         // Guarda cambios y registra modificación
-        guardarEnArchivo(lista);
+        guardarEnArchivoBin(lista);
         bitacora::registrar(usuarioActual, "PRODUCTOS", "Producto modificado - Código: " + codigo);
         cout << "\n\t\tProducto modificado exitosamente!\n";
     } else {
@@ -162,7 +162,7 @@ void Producto::eliminar(vector<Producto>& lista, const string& usuarioActual, co
     // Si lo encuentra, lo elimina
     if (it != lista.end()) {
         lista.erase(it); // Elimina producto
-        guardarEnArchivo(lista); // Guarda cambios
+        guardarEnArchivoBin(lista); // Guarda cambios
         bitacora::registrar(usuarioActual, "PRODUCTOS", "Producto eliminado - Código: " + codigo);
         cout << "\n\t\tProducto eliminado exitosamente!\n";
     } else {
@@ -173,112 +173,98 @@ void Producto::eliminar(vector<Producto>& lista, const string& usuarioActual, co
 }
 
 // Guarda la lista de productos en el archivo de texto
-void Producto::guardarEnArchivo(const vector<Producto>& lista) {
-    // Crea archivo temporal para evitar pérdida de datos
-    ofstream archivo("Productos.tmp", ios::out);
+
+void Producto::guardarEnArchivoBin(const vector<Producto>& productos) {
+    ofstream archivo("productos.bin", ios::binary | ios::out);
+
     if (!archivo.is_open()) {
-        cerr << "\n\t\tError crítico: No se pudo crear archivo temporal!\n";
+        cerr << "\n\t\tError crítico: No se pudo abrir archivo de productos!\n";
         return;
     }
 
-    // Escribe cada producto en el archivo
-    bool errorEscritura = false;
-    for (const auto& producto : lista) {
-        if (!(archivo << producto.codigo << ","
-                     << producto.nombre << ","
-                     << producto.precio << ","
-                     << producto.stock << "\n")) {
-            // Error al escribir un producto
-            cerr << "\n\t\tError al escribir producto Código: " << producto.codigo << "\n";
-            errorEscritura = true;
+    try {
+        // Escribir cantidad de productos primero
+        size_t cantidad = productos.size();
+        archivo.write(reinterpret_cast<const char*>(&cantidad), sizeof(cantidad));
+
+        // Escribir cada producto
+        for (const auto& producto : productos) {
+            // Escribir código
+            size_t codigoSize = producto.codigo.size();
+            archivo.write(reinterpret_cast<const char*>(&codigoSize), sizeof(codigoSize));
+            archivo.write(producto.codigo.c_str(), codigoSize);
+
+            // Escribir nombre
+            size_t nombreSize = producto.nombre.size();
+            archivo.write(reinterpret_cast<const char*>(&nombreSize), sizeof(nombreSize));
+            archivo.write(producto.nombre.c_str(), nombreSize);
+
+            // Escribir precio y stock
+            archivo.write(reinterpret_cast<const char*>(&producto.precio), sizeof(producto.precio));
+            archivo.write(reinterpret_cast<const char*>(&producto.stock), sizeof(producto.stock));
         }
-    }
 
-    // Fuerza guardado y verifica integridad
-    archivo.flush();
-    if (!archivo || errorEscritura) {
-        cerr << "\n\t\tError: No se pudieron guardar todos los datos!\n";
+        archivo.flush();
+        if (!archivo) {
+            throw runtime_error("Error al escribir en archivo");
+        }
+    } catch (const exception& e) {
+        cerr << "\n\t\tError al guardar productos: " << e.what() << "\n";
         archivo.close();
-        remove("Productos.tmp"); // Elimina archivo temporal
+        remove("productos.bin");
         return;
     }
-    archivo.close();
 
-    // Reemplaza el archivo anterior por el nuevo
-    if (remove("Productos.txt") != 0 && errno != ENOENT) {
-        cerr << "\n\t\tAdvertencia: No se pudo eliminar archivo anterior\n";
-    }
-    if (rename("Productos.tmp", "Productos.txt") != 0) {
-        cerr << "\n\t\tError crítico: Falló el guardado final!\n";
-    }
+    archivo.close();
 }
 
-// Carga los productos desde el archivo a la lista en memoria
-void Producto::cargarDesdeArchivo(vector<Producto>& lista) {
-    // Limpia la lista actual
-    lista.clear();
 
-    // Abre archivo existente o lo crea si no existe
-    ifstream archivo("Productos.txt");
+void Producto::cargarDesdeArchivoBin(vector<Producto>& productos) {
+    productos.clear();
+    ifstream archivo("productos.bin", ios::binary | ios::in);
+
+
     if (!archivo) {
-        ofstream nuevoArchivo("Productos.txt");
-        if (!nuevoArchivo) {
-            cerr << "\n\t\tError crítico: No se pudo crear archivo de productos!\n";
-        }
+        // Si el archivo no existe, no es un error (primera ejecución)
         return;
     }
 
-    // Contadores de estadísticas
-    int cargados = 0, omitidos = 0;
-    string linea;
+    try {
+        // Leer cantidad de productos
+        size_t cantidad;
+        archivo.read(reinterpret_cast<char*>(&cantidad), sizeof(cantidad));
 
-    // Lee línea por línea
-    while (getline(archivo, linea)) {
-        // Elimina espacios innecesarios
-        linea.erase(remove_if(linea.begin(), linea.end(), ::isspace), linea.end());
-        if (linea.empty()) continue;
+        for (size_t i = 0; i < cantidad; ++i) {
+            Producto producto;
 
-        istringstream ss(linea);
-        Producto temp;
-        string campo;
+            // Leer código
+            size_t codigoSize;
+            archivo.read(reinterpret_cast<char*>(&codigoSize), sizeof(codigoSize));
+            producto.codigo.resize(codigoSize);
+            archivo.read(&producto.codigo[0], codigoSize);
 
-        // Intenta extraer los campos del producto
-        try {
-            if (!getline(ss, temp.codigo, ',') ||
-                !getline(ss, temp.nombre, ',') ||
-                !(ss >> temp.precio) ||
-                !(ss.ignore() && (ss >> temp.stock))) {
-                throw runtime_error("Formato inválido");
-            }
+            // Leer nombre
+            size_t nombreSize;
+            archivo.read(reinterpret_cast<char*>(&nombreSize), sizeof(nombreSize));
+            producto.nombre.resize(nombreSize);
+            archivo.read(&producto.nombre[0], nombreSize);
 
-            // Verifica validez del código
-            if (!esCodigoValido(temp.codigo)) {
-                throw runtime_error("Código fuera de rango");
-            }
+            // Leer precio y stock
+            archivo.read(reinterpret_cast<char*>(&producto.precio), sizeof(producto.precio));
+            archivo.read(reinterpret_cast<char*>(&producto.stock), sizeof(producto.stock));
 
-            // Verifica duplicados
-            if (!codigoDisponible(lista, temp.codigo)) {
-                throw runtime_error("Código duplicado");
-            }
-
-            // Agrega a la lista
-            lista.push_back(temp);
-            cargados++;
-        } catch (const exception& e) {
-            // Muestra advertencia y omite producto
-            cerr << "\n\t\tAdvertencia: Producto omitido (" << e.what() << "): " << linea << "\n";
-            omitidos++;
+            productos.push_back(producto);
         }
+
+        if (archivo.bad()) {
+            throw runtime_error("Error de lectura del archivo");
+        }
+    } catch (const exception& e) {
+        cerr << "\n\t\tError al cargar productos: " << e.what() << "\n";
+        productos.clear(); // Limpiar lista parcialmente cargada
     }
 
-    // Verifica error de lectura
-    if (archivo.bad()) {
-        cerr << "\n\t\tError: Fallo durante la lectura del archivo!\n";
-    }
-
-    // Muestra resumen de carga
-    cout << "\n\t\tCarga completada. " << cargados << " productos cargados, "
-         << omitidos << " omitidos.\n";
+    archivo.close();
 }
 
 void Producto::setStock(int nuevoStock) {

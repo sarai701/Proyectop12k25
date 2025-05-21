@@ -25,12 +25,17 @@ void MenuArchivo::mostrar() {
         cin >> opcion;
 
         switch(opcion) {
-            case 1:
-                if(cerrarSesion()) {  // Si cierra sesión exitosamente
-                    return;  // Esto hará que regrese al menú de login
+            case 1: {
+                if(cerrarSesion()) {
+                    usuarios user;
+                    user.loginUsuarios();
+                    return;
                 }
                 break;
-            case 2: /* ... */ break;
+            }
+            case 2:
+                // Código para backup
+                break;
             case 3:
                 return;
             default:
@@ -46,16 +51,13 @@ bool MenuArchivo::cerrarSesion() {
     cin >> confirmacion;
 
     if(toupper(confirmacion) == 'S') {
-        // Registrar en bitácora
         auditoria.insertar(usuarioRegistrado.getNombre(), "000", "LOGOUT");
-
         cout << "\n\t\tSesion cerrada correctamente.\n";
         system("pause");
-
-        return true;  // Indica que se cerró sesión exitosamente
-    } else {
-        cout << "\n\t\tOperacion cancelada.\n";
-        system("pause");
-        return false;  // Indica que no se cerró sesión
+        usuarioRegistrado = usuarios();
+        return true;
     }
+    cout << "\n\t\tOperacion cancelada.\n";
+    system("pause");
+    return false;
 }

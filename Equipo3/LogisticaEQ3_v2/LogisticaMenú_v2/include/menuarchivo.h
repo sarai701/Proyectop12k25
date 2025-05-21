@@ -4,7 +4,7 @@
 class MenuArchivo {
 public:
     static void mostrar();
-    static bool cerrarSesion();  // Cambiamos el tipo de retorno a bool
+    static bool cerrarSesion();
 };
 
 #endif // MENUARCHIVO_H

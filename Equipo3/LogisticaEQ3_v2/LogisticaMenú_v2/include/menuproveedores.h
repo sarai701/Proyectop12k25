@@ -1,5 +1,6 @@
 // Angoly Araujo Mayo 2025 9959-24-17623
 
+
 #ifndef MENUPROVEEDORES_H
 #define MENUPROVEEDORES_H
 #pragma once  // Previene inclusiones múltiples del archivo de encabezado
