@@ -10,6 +10,7 @@
 #include "clientes.h"
 #include "producto.h"
 #include "Almacen.h"
+#include "menuinformes.h"
 
 ///CREADO POR: JENNIFER BARRIOS EQ3
 

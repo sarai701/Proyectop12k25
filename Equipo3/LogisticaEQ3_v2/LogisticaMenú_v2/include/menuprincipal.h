@@ -15,6 +15,8 @@
 #include "transportistas.h"    // Manejo de transportistas
 #include "usuarios.h"         // Control de usuarios
 #include "pedidos.h"
+#include "menuinformes.h"
+
 
 // Clase que implementa el menú principal del sistema
 class MenuPrincipal {

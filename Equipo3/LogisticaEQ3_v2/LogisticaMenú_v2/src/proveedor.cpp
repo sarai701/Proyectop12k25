@@ -139,7 +139,8 @@ void Proveedor::modificar(vector<Proveedor>& lista, const string& usuarioActual,
     cin >> opcion;
     if (opcion == 1) return;
 
-    mostrar(lista);
+    mostrar(lista); // Mostrar la tabla de proveedores
+
     string id;
     cout << "\n\t\tIngrese el ID del proveedor a modificar: ";
     cin >> id;
@@ -168,6 +169,7 @@ void Proveedor::modificar(vector<Proveedor>& lista, const string& usuarioActual,
     } else {
         cout << "\n\t\tProveedor no encontrado.\n";
     }
+
     system("pause");
 }
 
@@ -178,7 +180,8 @@ void Proveedor::eliminar(vector<Proveedor>& lista, const string& usuarioActual, 
     cin >> opcion;
     if (opcion == 1) return;
 
-    mostrar(lista);
+    mostrar(lista); // Mostrar tabla de proveedores
+
     string id;
     cout << "\n\t\tIngrese el ID del proveedor a eliminar: ";
     cin >> id;
@@ -193,6 +196,7 @@ void Proveedor::eliminar(vector<Proveedor>& lista, const string& usuarioActual, 
     } else {
         cout << "\n\t\tProveedor no encontrado.\n";
     }
+
     system("pause");
 }
 
@@ -233,4 +237,3 @@ void Proveedor::guardarEnArchivo(vector<Proveedor>& lista) {
 void Proveedor::cargarDesdeArchivo(vector<Proveedor>& lista) {
     cargarDesdeArchivoBinario(lista);
 }
-

@@ -21,10 +21,10 @@ public:
     static void decodificar(char* texto, size_t tam);
 
     // Métodos CRUD
-    static void agregar(std::vector<Proveedor>& lista, const std::string& usuarioActual);
-    static void modificar(std::vector<Proveedor>& lista, const std::string& usuarioActual, const std::string& id);
-    static void eliminar(std::vector<Proveedor>& lista, const std::string& usuarioActual, const std::string& id);
+    static void agregar(std::vector<Proveedor>& lista, const std::string& usuario);
     static void mostrar(const std::vector<Proveedor>& lista);
+    static void modificar(std::vector<Proveedor>& lista, const std::string& usuario, const std::string& nombreUsuario);
+    static void eliminar(std::vector<Proveedor>& lista, const std::string& usuario, const std::string& nombreUsuario);
 
     // Persistencia (solo binario)
     static void guardarEnArchivoBinario(const std::vector<Proveedor>& lista);
