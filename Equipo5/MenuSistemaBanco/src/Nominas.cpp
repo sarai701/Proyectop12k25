@@ -1,19 +1,19 @@
-//Programado por Priscila Sarai Guzmán Calgua 9959-23-450
+// Programado por Priscila Sarai Guzmán Calgua 9959-23-450
 #include "Nominas.h"
-#include <iostream> //Entrada y salida de datos
-#include <fstream>   // Para manejo de archivos lectura y escritura
-#include <algorithm> // Para la función sort (orden)
+#include <iostream>
+#include <fstream>
+#include <algorithm>
 #include "Bitacora.h"
 #include "Moneda.h"
-#include <string>       // Para string
-#include <stdexcept>    // Para runtime_error
+#include <string>
+#include <stdexcept>
 
-// Bitácora global para registrar acciones realizadas en Nóminas
+// Instancia global de la bitácora para registrar operaciones
 Bitacora bitacoralogNominas;
 
 using namespace std;
 
-// Limpia la pantalla dependiendo del sistema operativo
+// Limpia la pantalla según el sistema operativo
 void Nominas::limpiarPantalla() {
 #ifdef _WIN32
     system("cls");
@@ -22,73 +22,94 @@ void Nominas::limpiarPantalla() {
 #endif
 }
 
-// Pausa hasta que el usuario presione ENTER
+// Pausa el programa hasta que el usuario presione ENTER
 void Nominas::pausar() {
     cout << "\nPresione ENTER para continuar...";
-    cin.ignore();//Limpia el buffer de entrada
-    cin.get();//Espera que el usuario presione ENTER
+    cin.ignore();
+    cin.get();
 }
 
-// Carga los empleados desde el archivo "nominas.txt"
+// Carga empleados desde el archivo binario 'nominas.dat'
 void Nominas::cargarEmpleados() {
-    empleados.clear();
-    ifstream archivo("nominas.txt");//Abre el archivo en modo lectura
+    empleados.clear(); // Limpia el vector antes de cargar
+    ifstream archivo("nominas.dat", ios::binary);
 
     try {
-       //verifica si el archivo se puede abrir
-       if (!archivo.is_open()) {
-       //lanza una excepción del tipo runtime_error con el mensaje especifico
-       //Si es así el flujo se lanza a catch
-            throw runtime_error("No se pudo abrir el archivo empleados.txt");
+        if (!archivo.is_open()) {
+            throw runtime_error("No se pudo abrir el archivo nominas.dat");
         }
 
-        EmpleadoNomina e;
-        string linea;
-//Procesa línea por línea
-        while (getline(archivo, linea)) {
-            size_t pos = 0;
-            string datos[5];
-//Separa los datos por comas
-            for (int i = 0; i < 4; ++i) {
-                pos = linea.find(',');
-                if (pos == string::npos) throw runtime_error("Formato inválido en nominas.txt");
-                datos[i] = linea.substr(0, pos);
-                linea.erase(0, pos + 1);
-            }
+        while (archivo.peek() != EOF) {
+            EmpleadoNomina e;
+            size_t len;
 
-            datos[4] = linea;
-          //Asigna valores al objeto EmpleadoNomina
-            e.nombre = datos[0];
-            e.telefono = datos[1];
-            e.codigo = datos[2];
-            e.direccion = datos[3];
-            //stod()convierte de string a double
-            //Si datos[4] tiene letras en lugar de números este fallará
-            e.salario = stod(datos[4]);
+            // Lectura de nombre
+            archivo.read(reinterpret_cast<char*>(&len), sizeof(len));
+            e.nombre.resize(len);
+            archivo.read(&e.nombre[0], len);
 
-            empleados.push_back(e);//agrega el empleado al vector
+            // Lectura de teléfono
+            archivo.read(reinterpret_cast<char*>(&len), sizeof(len));
+            e.telefono.resize(len);
+            archivo.read(&e.telefono[0], len);
+
+            // Lectura de código
+            archivo.read(reinterpret_cast<char*>(&len), sizeof(len));
+            e.codigo.resize(len);
+            archivo.read(&e.codigo[0], len);
+
+            // Lectura de dirección
+            archivo.read(reinterpret_cast<char*>(&len), sizeof(len));
+            e.direccion.resize(len);
+            archivo.read(&e.direccion[0], len);
+
+            // Lectura de salario
+            archivo.read(reinterpret_cast<char*>(&e.salario), sizeof(e.salario));
+
+            empleados.push_back(e);
         }
 
         archivo.close();
-        ordenarEmpleados();
-//captura cualquier excepción derivada de exception
+        ordenarEmpleados(); // Ordena alfabéticamente por nombre
+
     } catch (const exception& ex) {
-    //imprime el mensaje del error lanzado con throw
         cout << "\nError al cargar empleados: " << ex.what() << endl;
     }
 }
 
-// Guarda los empleados actuales en "nominas.txt"
+// Guarda empleados en el archivo binario 'nominas.dat'
 void Nominas::guardarEmpleados() {
     try {
-        ofstream archivo("nominas.txt");//Modo escritura (sobrescribe)
+        ofstream archivo("nominas.dat", ios::binary | ios::trunc);
         if (!archivo.is_open()) {
-            throw runtime_error("No se pudo abrir el archivo nominas.txt para escritura.");
+            throw runtime_error("No se pudo abrir el archivo nominas.dat para escritura.");
         }
-//Escribe los datos separados por comas
+
         for (const auto& e : empleados) {
-            archivo << e.nombre << "," << e.telefono << "," << e.codigo << ","
-                    << e.direccion << "," << e.salario << "\n";
+            size_t len;
+
+            // Guardar nombre
+            len = e.nombre.size();
+            archivo.write(reinterpret_cast<const char*>(&len), sizeof(len));
+            archivo.write(e.nombre.c_str(), len);
+
+            // Guardar teléfono
+            len = e.telefono.size();
+            archivo.write(reinterpret_cast<const char*>(&len), sizeof(len));
+            archivo.write(e.telefono.c_str(), len);
+
+            // Guardar código
+            len = e.codigo.size();
+            archivo.write(reinterpret_cast<const char*>(&len), sizeof(len));
+            archivo.write(e.codigo.c_str(), len);
+
+            // Guardar dirección
+            len = e.direccion.size();
+            archivo.write(reinterpret_cast<const char*>(&len), sizeof(len));
+            archivo.write(e.direccion.c_str(), len);
+
+            // Guardar salario
+            archivo.write(reinterpret_cast<const char*>(&e.salario), sizeof(e.salario));
         }
 
         archivo.close();
@@ -98,27 +119,26 @@ void Nominas::guardarEmpleados() {
     }
 }
 
-// Ordena empleados alfabéticamente por nombre
+// Ordena la lista de empleados por nombre
 void Nominas::ordenarEmpleados() {
     sort(empleados.begin(), empleados.end(), [](const EmpleadoNomina& a, const EmpleadoNomina& b) {
         return a.nombre < b.nombre;
     });
 }
 
-
-
+// Asigna el nombre del usuario que usa el sistema
 void Nominas::setUsuario(const string& u) {
     usuario = u;
 }
 
+// Lee el salario ingresado y lo convierte a double, validando errores
 double leerSalario() {
     string entrada;
     double salario;
     cout << "Salario (GTQ): Q";
-    getline(cin, entrada);  // Se lee como string
+    getline(cin, entrada);
 
     try {
-        // Intenta convertir a double
         salario = stod(entrada);
     } catch (const invalid_argument& e) {
         throw runtime_error("Entrada inválida. Debe ingresar un número para el salario.");
@@ -129,7 +149,7 @@ double leerSalario() {
     return salario;
 }
 
-// Menú principal de Nóminas
+// Muestra el menú principal de gestión de nóminas
 void Nominas::menuNominas() {
     int opcion;
     do {
@@ -145,7 +165,7 @@ void Nominas::menuNominas() {
         cout << "\n6. Salir";
         cout << "\nSeleccione una opción: ";
         cin >> opcion;
-        cin.ignore(); // Limpieza para uso de getline (buffer)
+        cin.ignore();
 
         switch (opcion) {
             case 1: crearEmpleado(); break;
@@ -159,7 +179,7 @@ void Nominas::menuNominas() {
     } while (true);
 }
 
-// Crear y registar un nuevo empleado
+// Crea un nuevo empleado y lo agrega a la lista
 void Nominas::crearEmpleado() {
     limpiarPantalla();
     EmpleadoNomina e;
@@ -171,6 +191,7 @@ void Nominas::crearEmpleado() {
     cout << "Código: "; getline(cin, e.codigo);
     cout << "Dirección: "; getline(cin, e.direccion);
 
+    // Validación del salario ingresado
     bool valido = false;
     while (!valido) {
         try {
@@ -191,8 +212,7 @@ void Nominas::crearEmpleado() {
     pausar();
 }
 
-
-// Borra un empleado existente
+// Elimina un empleado que coincida con nombre y código
 void Nominas::borrarEmpleado() {
     limpiarPantalla();
     string nombre, codigo;
@@ -204,11 +224,12 @@ void Nominas::borrarEmpleado() {
     bool eliminado = false;
     vector<EmpleadoNomina> nuevaLista;
 
+    // Crea una nueva lista sin el empleado a eliminar
     for (const auto& e : empleados) {
         if (e.nombre != nombre || e.codigo != codigo) {
-            nuevaLista.push_back(e);//Mantiene si no coincide
+            nuevaLista.push_back(e);
         } else {
-            eliminado = true;//se elimina
+            eliminado = true;
         }
     }
 
@@ -224,7 +245,7 @@ void Nominas::borrarEmpleado() {
     pausar();
 }
 
-// Busca un empleado por nombre y código
+// Busca un empleado por nombre y código y muestra sus datos
 void Nominas::buscarEmpleado() {
     limpiarPantalla();
     string nombre, codigo;
@@ -257,7 +278,7 @@ void Nominas::buscarEmpleado() {
     pausar();
 }
 
-// Modifica los datos de un empleado ya registrado
+// Modifica los datos de un empleado existente
 void Nominas::modificarEmpleado() {
     limpiarPantalla();
     string nombre, codigo;
@@ -318,4 +339,3 @@ void Nominas::desplegarEmpleados() {
 
     pausar();
 }
-

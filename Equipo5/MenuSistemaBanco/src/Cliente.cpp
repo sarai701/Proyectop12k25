@@ -6,6 +6,8 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <cstring> //Para la implementacion de strncpy
+
 
 Bitacora bitacoralogCliente; // Instancia global para registrar eventos
 using namespace std;
@@ -28,42 +30,38 @@ void Cliente::pausar() {
 
 // Carga los clientes desde el archivo clientes.txt
 void Cliente::cargarClientes() {
-    clientes.clear();  // Vaciar lista actual
-    ifstream archivo("clientes.txt");
-    Cliente c;
-    string linea;
-
-    while (getline(archivo, linea)) {
-        size_t pos = 0;
-        int campo = 0;
-        string datos[4];  // Solo 4 campos ahora (sin saldo)
-        for (int i = 0; i < 3; ++i) {
-            pos = linea.find(',');
-            datos[i] = linea.substr(0, pos);
-            linea.erase(0, pos + 1);
-        }
-        datos[3] = linea; // Dirección
-
-        c.codigo = datos[0];
-        c.nombre = datos[1];
-        c.telefono = datos[2];
-        c.direccion = datos[3];
-
+    clientes.clear();
+    ifstream archivo("clientes.dat", ios::binary);
+    RegistroCliente reg;
+    while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+        Cliente c;
+        c.codigo = reg.codigo;
+        c.nombre = reg.nombre;
+        c.telefono = reg.telefono;
+        c.direccion = reg.direccion;
         clientes.push_back(c);
     }
-
     archivo.close();
     ordenarClientes();
 }
 
+
+
 // Guarda todos los clientes en el archivo clientes
 void Cliente::guardarClientes() {
-    ofstream archivo("clientes.txt");
+    ofstream archivo("clientes.dat", ios::binary | ios::trunc);
     for (const auto& c : clientes) {
-        archivo << c.codigo << "," << c.nombre << "," << c.telefono << "," << c.direccion << "\n";
+        RegistroCliente reg{};
+        strncpy(reg.codigo, c.codigo.c_str(), sizeof(reg.codigo) - 1);
+        strncpy(reg.nombre, c.nombre.c_str(), sizeof(reg.nombre) - 1);
+        strncpy(reg.telefono, c.telefono.c_str(), sizeof(reg.telefono) - 1);
+        strncpy(reg.direccion, c.direccion.c_str(), sizeof(reg.direccion) - 1);
+        archivo.write(reinterpret_cast<char*>(&reg), sizeof(reg));
     }
     archivo.close();
 }
+
+
 
 // Ordena los clientes alfabéticamente por nombre
 void Cliente::ordenarClientes() {
@@ -318,9 +316,14 @@ void Cliente::registrarMovimiento() {
             cin >> monto;
             cin.ignore();
 
-            ofstream archivo("movimientos.txt", ios::app);
-            archivo << codigoCliente << "," << descripcion << "," << fecha << "," << monto  << "\n";
-            archivo.close();
+            ofstream archivo("movimientos.dat", ios::binary | ios::app);
+RegistroMovimiento reg{};
+strncpy(reg.codigoCliente, codigoCliente.c_str(), sizeof(reg.codigoCliente) - 1);
+strncpy(reg.descripcion, descripcion.c_str(), sizeof(reg.descripcion) - 1);
+strncpy(reg.fecha, fecha.c_str(), sizeof(reg.fecha) - 1);
+reg.monto = monto;
+archivo.write(reinterpret_cast<char*>(&reg), sizeof(reg));
+archivo.close();
 
             cout << "\nMovimiento registrado correctamente.";
 
@@ -344,26 +347,20 @@ void Cliente::mostrarMovimientos() {
     cin.ignore();                             // Limpia el buffer de entrada para evitar errores.
     getline(cin, codigoCliente);              // Lee el código del cliente ingresado por el usuario.
 
-    ifstream archivo("movimientos.txt");      // Abre el archivo con los movimientos.
-    bool hayMovimientos = false;               // Variable para saber si hay movimientos encontrados.
-
-    while (getline(archivo, linea)) {          // Lee línea por línea el archivo.
-        size_t pos = linea.find(',');          // Encuentra la posición de la coma separadora.
-        string codigo = linea.substr(0, pos);  // Extrae el código del cliente de la línea.
-        string descripcion = linea.substr(pos + 1); // Extrae la descripción del movimiento.
-
-        if (codigo == codigoCliente) {          // Compara el código leído con el ingresado.
-            cout << "\n- " << descripcion;      // Muestra la descripción del movimiento.
-            hayMovimientos = true;               // Marca que sí hay movimientos para este cliente.
-        }
+ifstream archivo("movimientos.dat", ios::binary);
+RegistroMovimiento reg;
+bool hayMovimientos = false;
+while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+    if (codigoCliente == reg.codigoCliente) {
+        cout << "\n- " << reg.descripcion << " | Fecha: " << reg.fecha << " | Monto: Q" << reg.monto;
+        hayMovimientos = true;
     }
+}
+archivo.close();
+if (!hayMovimientos) {
+    cout << "\nNo hay movimientos registrados para este cliente.";
+}
 
-
-    archivo.close();
-
-    if (!hayMovimientos) {
-        cout << "\nNo hay movimientos registrados para este cliente.";
-    }
 
     pausar();
 }
@@ -372,12 +369,15 @@ void Cliente::abrirArchivoMovimientos() {
     limpiarPantalla();                       // Limpia la pantalla antes de mostrar contenido.
     cout << "\n=== Contenido del archivo movimientos.txt ===\n";  // Muestra título.
 
-    ifstream archivo("movimientos.txt");    // Abre el archivo de movimientos en modo lectura.
-    string linea;                           // Variable para almacenar cada línea leída.
-    while (getline(archivo, linea)) {      // Lee línea por línea hasta el final del archivo.
-        cout << linea << "\n";              // Imprime cada línea del archivo en pantalla.
-    }
-    archivo.close();                        // Cierra el archivo después de leerlo.
+    ifstream archivo("movimientos.dat", ios::binary);
+RegistroMovimiento reg;
+while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+    cout << "\nCliente: " << reg.codigoCliente
+         << " | Desc: " << reg.descripcion
+         << " | Fecha: " << reg.fecha
+         << " | Monto: Q" << reg.monto;
+}
+archivo.close(); // Cierra el archivo después de leerlo.
 
     pausar();                              // Pausa el programa hasta que el usuario presione ENTER.
 }
@@ -402,9 +402,14 @@ void Cliente::registrarPrestamo() {
             cout << "¿Está pagado? (Sí/No): ";         // Pregunta estado del pago.
             getline(cin, estado);                       // Lee el estado del préstamo.
 
-            ofstream archivo("prestamos.txt", ios::app); // Abre archivo para agregar datos.
-            archivo << codigoCliente << "," << monto << ", se realizo el pago del prestamo? " << estado << "\n"; // Escribe datos en archivo.
-            archivo.close();                            // Cierra el archivo.
+            ofstream archivo("prestamos.dat", ios::binary | ios::app);
+RegistroPrestamo reg{};
+strncpy(reg.codigoCliente, codigoCliente.c_str(), sizeof(reg.codigoCliente) - 1);
+reg.monto = monto;
+strncpy(reg.estado, estado.c_str(), sizeof(reg.estado) - 1);
+archivo.write(reinterpret_cast<char*>(&reg), sizeof(reg));
+archivo.close();
+
 
             cout << "\nPréstamo registrado correctamente."; // Mensaje de confirmación.
 
@@ -420,34 +425,28 @@ void Cliente::registrarPrestamo() {
 }
 
 void Cliente::mostrarPrestamos() {
-    limpiarPantalla();                                // Limpia pantalla antes de mostrar préstamos.
-    string codigoCliente, linea;                       // Variables para código y línea leída.
-    cout << "\n=== Mostrar Préstamos ===";             // Muestra título.
-    cout << "\nCódigo del Cliente: ";                  // Solicita código del cliente.
-    cin.ignore();                                      // Ignora caracteres previos.
-    getline(cin, codigoCliente);                       // Lee código del cliente.
+    limpiarPantalla();
+    string codigoCliente;
+    cout << "\n=== Mostrar Préstamos ===";
+    cout << "\nCódigo del Cliente: ";
+    cin.ignore();
+    getline(cin, codigoCliente);
 
-    ifstream archivo("prestamos.txt");                 // Abre archivo de préstamos.
-    bool hayPrestamos = false;                          // Indicador si hay préstamos para cliente.
+    ifstream archivo("prestamos.dat", ios::binary);
+    RegistroPrestamo reg;
+    bool encontrado = false;
 
-    while (getline(archivo, linea)) {                   // Lee línea por línea.
-        size_t pos1 = linea.find(',');                  // Encuentra primer separador.
-        size_t pos2 = linea.find(',', pos1 + 1);        // Encuentra segundo separador.
-        string codigo = linea.substr(0, pos1);           // Extrae código cliente.
-        string monto = linea.substr(pos1 + 1, pos2 - pos1 - 1); // Extrae monto.
-        string estado = linea.substr(pos2 + 1);          // Extrae estado del préstamo.
-
-        if (codigo == codigoCliente) {                   // Si el código coincide con el cliente.
-            cout << "\nMonto: Q." << monto << " - Estado: " << estado; // Muestra préstamo.
-            hayPrestamos = true;                         // Marca que hay préstamos.
+    while (archivo.read(reinterpret_cast<char*>(&reg), sizeof(reg))) {
+        if (codigoCliente == reg.codigoCliente) {
+            cout << "\nMonto: Q" << reg.monto << " | Estado: " << reg.estado;
+            encontrado = true;
         }
     }
+    archivo.close();
 
-    archivo.close();                                    // Cierra archivo.
-
-    if (!hayPrestamos) {                               // Si no hay préstamos.
-        cout << "\nNo hay préstamos registrados para este cliente."; // Muestra mensaje.
+    if (!encontrado) {
+        cout << "\nNo se encontraron préstamos para este cliente.";
     }
 
-    pausar();                                          // Pausa hasta que usuario presione ENTER.
+    pausar();
 }
