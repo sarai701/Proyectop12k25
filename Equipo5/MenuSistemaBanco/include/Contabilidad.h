@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include "Bitacora.h"
+using namespace std;
 
 // Estructura para representar el estado de pago de un empleado
 struct RegistroPago {
@@ -15,7 +16,7 @@ struct RegistroPago {
 
 class Contabilidad {
 public:
-    void setUsuario(const std::string& u);     // bitácora
+    void setUsuario(const string& u);     // bitácora
     void menuContabilidad();                   // Menú principal
     void registroNomina();                     // Registrar pago
     void desplegarRegistroSalarios();          // Mostrar registros
@@ -23,7 +24,7 @@ public:
     void pausar();                             // Pausar ejecución
 
 private:
-    std::string usuario;                       // Usuario actual para bitácora
+    string usuario;                       // Usuario actual para bitácora
 };
 
 #endif

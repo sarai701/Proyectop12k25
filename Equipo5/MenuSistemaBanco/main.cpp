@@ -263,8 +263,7 @@ void menuProcesos(const string& usuario, Bitacora& bitacora, Cliente& cliente, C
                 // Muestra configuración actual del banco y moneda
                 cout << "\n--- Configuración bancaria actual ---\n";
                 bancos.mostrarConfiguracion();
-                moneda.mostrarMoneda();
-                bitacora.insertar(usuario, 4302, "Procesos", "Mostró configuración bancaria y moneda");
+                bitacora.insertar(usuario, 4302, "Procesos", "Mostró configuración bancaria");
                 pausar();
                 Usuario::limpiarPantalla();
                 break;

@@ -9,14 +9,6 @@
 
 using namespace std;
 
-// Estructura para almacenar un registro de bitácora en formato binario
-struct RegistroBitacora {
-    char usuario[30];
-    int codigo;
-    char aplicacion[30];
-    char accion[50];
-    char fechaHora[30];
-};
 
 // Inserta un registro en el archivo binario "bitacora.dat"
 void Bitacora::insertar(const string& usuario, int codigo, const string& aplicacion, const string& accion) {

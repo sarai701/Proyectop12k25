@@ -159,10 +159,10 @@ void Bancos::pausar() {
 }
 
 // Devuelve el banco seleccionado
-std::string Bancos::getBanco() const { return bancoSeleccionado; }
+string Bancos::getBanco() const { return bancoSeleccionado; }
 
 // Devuelve el tipo de cuenta seleccionado
-std::string Bancos::getCuenta() const { return tipoCuentaSeleccionada; }
+string Bancos::getCuenta() const { return tipoCuentaSeleccionada; }
 
 // Devuelve la moneda seleccionada
-std::string Bancos::getMoneda() const { return monedaSeleccionada; }
+string Bancos::getMoneda() const { return monedaSeleccionada; }
